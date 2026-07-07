@@ -1,14 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import ReadinessBadge from "../components/ReadinessBadge.astro";
-import ConfidenceBadge from "../components/ConfidenceBadge.astro";
-import DashboardCharts from "../components/DashboardCharts";
-import { getCompetitors, getSummaries, getTasks } from "../lib/data";
-import { classLabel } from "../lib/format";
-import { getUi, type Locale } from "../lib/i18n";
-import { url } from "../lib/routes";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadinessBadge from "../../components/ReadinessBadge.astro";
+import ConfidenceBadge from "../../components/ConfidenceBadge.astro";
+import DashboardCharts from "../../components/DashboardCharts";
+import { getCompetitors, getSummaries, getTasks } from "../../lib/data";
+import { classLabel } from "../../lib/format";
+import { getUi, type Locale } from "../../lib/i18n";
+import { url } from "../../lib/routes";
 
-const locale: Locale = "en";
+const locale: Locale = "pt";
 const t = getUi(locale);
 const competitors = getCompetitors();
 const summaries = getSummaries();

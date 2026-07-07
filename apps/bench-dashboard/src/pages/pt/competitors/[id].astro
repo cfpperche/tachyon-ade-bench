@@ -1,10 +1,10 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import ReadinessBadge from "../../components/ReadinessBadge.astro";
-import ConfidenceBadge from "../../components/ConfidenceBadge.astro";
-import { getCompetitors } from "../../lib/data";
-import { classLabel, label } from "../../lib/format";
-import { getUi, type Locale } from "../../lib/i18n";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import ReadinessBadge from "../../../components/ReadinessBadge.astro";
+import ConfidenceBadge from "../../../components/ConfidenceBadge.astro";
+import { getCompetitors } from "../../../lib/data";
+import { classLabel, label } from "../../../lib/format";
+import { getUi, type Locale } from "../../../lib/i18n";
 
 export function getStaticPaths() {
   return getCompetitors().map((competitor) => ({
@@ -14,7 +14,7 @@ export function getStaticPaths() {
 }
 
 const { competitor } = Astro.props;
-const locale: Locale = "en";
+const locale: Locale = "pt";
 const t = getUi(locale);
 const featureEntries = Object.entries(competitor.research.features);
 const stackEntries = Object.entries(competitor.research.stack).filter(([key]) => key !== "unknowns");

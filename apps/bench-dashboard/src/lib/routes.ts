@@ -1,7 +1,10 @@
-export function url(path: string): string {
+import { localizedPath, type Locale } from "./i18n";
+
+export function url(path: string, locale: Locale = "en"): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-  if (path === "/") {
+  const localized = localizedPath(path, locale);
+  if (localized === "/") {
     return `${base}/`;
   }
-  return `${base}${path}`;
+  return `${base}${localized}`;
 }

@@ -68,6 +68,7 @@ will publish the dashboard at:
 
 ```text
 https://cfpperche.github.io/tachyon-ade-bench/
+https://cfpperche.github.io/tachyon-ade-bench/pt/
 ```
 
 ## Repository layout

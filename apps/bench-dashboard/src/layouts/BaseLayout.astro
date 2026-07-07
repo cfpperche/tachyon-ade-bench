@@ -2,24 +2,33 @@
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 import { url } from "../lib/routes";
+import { getUi, localeNames, localizedPath, type Locale } from "../lib/i18n";
 
 interface Props {
   title: string;
   description?: string;
+  locale?: Locale;
+  currentPath?: string;
 }
 
-const { title, description = "Structured dashboard for Tachyon ADE Bench competitor intelligence." } = Astro.props;
+const {
+  title,
+  locale = "en",
+  currentPath = "/",
+} = Astro.props;
+const t = getUi(locale);
+const description = Astro.props.description ?? t.metaDescription;
 const navItems = [
-  ["Overview", "/"],
-  ["Matrix", "/matrix/"],
-  ["Competitors", "/competitors/"],
-  ["Protocol", "/protocol/"],
-  ["Sources", "/sources/"],
-];
+  [t.nav.overview, "/"],
+  [t.nav.matrix, "/matrix/"],
+  [t.nav.competitors, "/competitors/"],
+  [t.nav.protocol, "/protocol/"],
+  [t.nav.sources, "/sources/"],
+] as const;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -29,21 +38,31 @@ const navItems = [
     <ClientRouter />
   </head>
   <body>
-    <a class="skip-link" href="#content">Skip to content</a>
+    <a class="skip-link" href="#content">{t.skip}</a>
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="brand" href={url("/")}>
+        <a class="brand" href={url("/", locale)}>
           <span class="brand__mark">T</span>
           <span>
             <strong>Tachyon ADE Bench</strong>
-            <small>competitor intelligence</small>
+            <small>{t.brandSubtitle}</small>
           </span>
         </a>
-        <nav class="nav" aria-label="Primary">
+        <nav class="nav" aria-label={t.nav.aria}>
           {navItems.map(([label, href]) => (
-            <a href={url(href)}>{label}</a>
+            <a href={url(href, locale)}>{label}</a>
           ))}
         </nav>
+        <div class="language-switch" aria-label={t.common.language}>
+          <a class={locale === "en" ? "is-active" : ""} href={url(localizedPath(currentPath, "en"), "en")}>
+            EN
+            <span>{localeNames.en}</span>
+          </a>
+          <a class={locale === "pt" ? "is-active" : ""} href={url(localizedPath(currentPath, "pt"), "en")}>
+            PT
+            <span>{localeNames.pt}</span>
+          </a>
+        </div>
       </div>
     </header>
     <main id="content">

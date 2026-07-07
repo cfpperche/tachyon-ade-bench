@@ -133,6 +133,42 @@ main {
   color: var(--ink);
 }
 
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  padding: 3px;
+}
+
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  min-height: 28px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.language-switch a span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.language-switch a.is-active {
+  background: var(--ink);
+  color: white;
+}
+
 .shell {
   margin: 0 auto;
   max-width: 1440px;
@@ -656,6 +692,10 @@ button:focus-visible {
 
   .nav {
     justify-content: flex-start;
+  }
+
+  .language-switch {
+    width: max-content;
   }
 
   .metric-grid,

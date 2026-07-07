@@ -4,6 +4,17 @@ import type { CompetitorSummary } from "../lib/types";
 
 interface Props {
   competitors: CompetitorSummary[];
+  labels: {
+    aria: string;
+    readinessTitle: string;
+    readinessDescription: string;
+    moatTitle: string;
+    moatDescription: string;
+    localFirst: string;
+    orchestrationDepth: string;
+    features: string;
+    readinessLabels: Record<string, string>;
+  };
 }
 
 function readinessColor(value: string): string {
@@ -17,7 +28,7 @@ function readinessColor(value: string): string {
   return colors[value] ?? "#5d6872";
 }
 
-export default function DashboardCharts({ competitors }: Props) {
+export default function DashboardCharts({ competitors, labels }: Props) {
   const readinessRef = useRef<HTMLDivElement | null>(null);
   const moatRef = useRef<HTMLDivElement | null>(null);
 
@@ -34,7 +45,7 @@ export default function DashboardCharts({ competitors }: Props) {
       return counts;
     }, {});
     const readinessData = Object.entries(readinessCounts).map(([name, value]) => ({
-      name,
+      name: labels.readinessLabels[name] ?? name,
       value,
       itemStyle: { color: readinessColor(name) },
     }));
@@ -44,7 +55,7 @@ export default function DashboardCharts({ competitors }: Props) {
       legend: { bottom: 0, left: "center", itemWidth: 12, itemHeight: 12 },
       series: [
         {
-          name: "Benchmark readiness",
+          name: labels.readinessTitle,
           type: "pie",
           radius: ["42%", "68%"],
           center: ["50%", "43%"],
@@ -60,17 +71,17 @@ export default function DashboardCharts({ competitors }: Props) {
       tooltip: {
         formatter: (params: any) => {
           const data = params.data;
-          return `${data.name}<br/>Local-first: ${data.value[0]}<br/>Orchestration: ${data.value[1]}<br/>Features: ${data.value[2]}`;
+          return `${data.name}<br/>${labels.localFirst}: ${data.value[0]}<br/>${labels.orchestrationDepth}: ${data.value[1]}<br/>${labels.features}: ${data.value[2]}`;
         },
       },
       xAxis: {
-        name: "Local-first",
+        name: labels.localFirst,
         min: 0,
         max: 100,
         splitLine: { lineStyle: { color: "#e6edf2" } },
       },
       yAxis: {
-        name: "Orchestration depth",
+        name: labels.orchestrationDepth,
         min: 0,
         max: 100,
         splitLine: { lineStyle: { color: "#e6edf2" } },
@@ -126,15 +137,15 @@ export default function DashboardCharts({ competitors }: Props) {
       readinessChart.dispose();
       moatChart.dispose();
     };
-  }, [competitors]);
+  }, [competitors, labels]);
 
   return (
-    <div className="charts-grid" aria-label="Competitor charts">
+    <div className="charts-grid" aria-label={labels.aria}>
       <section className="panel">
         <div className="panel__head">
           <div>
-            <h2>Benchmark Readiness</h2>
-            <p>Profiles are grouped by how close they are to a comparable benchmark run.</p>
+            <h2>{labels.readinessTitle}</h2>
+            <p>{labels.readinessDescription}</p>
           </div>
         </div>
         <div className="panel__body">
@@ -144,8 +155,8 @@ export default function DashboardCharts({ competitors }: Props) {
       <section className="panel">
         <div className="panel__head">
           <div>
-            <h2>Moat Map</h2>
-            <p>Derived positioning map from local-first and orchestration signals in the profiles.</p>
+            <h2>{labels.moatTitle}</h2>
+            <p>{labels.moatDescription}</p>
           </div>
         </div>
         <div className="panel__body">

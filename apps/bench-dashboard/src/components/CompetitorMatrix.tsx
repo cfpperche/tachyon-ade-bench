@@ -1,38 +1,52 @@
 import { useMemo, useState } from "react";
 import { RotateCcw, Search } from "lucide-react";
 import type { CompetitorSummary } from "../lib/types";
+import type { Locale } from "../lib/i18n";
+
+interface MatrixLabels {
+  aria: string;
+  search: string;
+  searchPlaceholder: string;
+  allClasses: string;
+  allReadiness: string;
+  openSourceVisible: string;
+  resetFilters: string;
+  showing: string;
+  of: string;
+  trackedProducts: string;
+  product: string;
+  class: string;
+  readiness: string;
+  stackSignals: string;
+  stack: string;
+  integrations: string;
+  evidence: string;
+  notMapped: string;
+  source: string;
+  sources: string;
+  features: string;
+  classA: string;
+  classB: string;
+  readinessLabels: Record<string, string>;
+}
 
 interface Props {
   competitors: CompetitorSummary[];
   baseUrl: string;
+  locale: Locale;
+  labels: MatrixLabels;
 }
 
-const classOptions = [
-  ["all", "All classes"],
-  ["A-local-ade", "Class A"],
-  ["B-enterprise-agentic-platform", "Class B"],
-];
-
-const readinessOptions = [
-  ["all", "All readiness"],
-  ["manual-ready", "Manual ready"],
-  ["needs-install", "Needs install"],
-  ["enterprise-gated", "Enterprise gated"],
-  ["owned-reference", "Owned reference"],
-];
-
-function badgeLabel(value: string): string {
-  return value
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (letter) => letter.toUpperCase())
-    .replace(/\bAde\b/g, "ADE");
+function productUrl(baseUrl: string, locale: Locale, id: string): string {
+  const prefix = locale === "pt" ? "/pt" : "";
+  return `${baseUrl.replace(/\/$/, "")}${prefix}/competitors/${id}/`;
 }
 
-function productUrl(baseUrl: string, id: string): string {
-  return `${baseUrl.replace(/\/$/, "")}/competitors/${id}/`;
+function sourceCountLabel(count: number, labels: MatrixLabels): string {
+  return count === 1 ? labels.source : labels.sources;
 }
 
-export default function CompetitorMatrix({ competitors, baseUrl }: Props) {
+export default function CompetitorMatrix({ competitors, baseUrl, locale, labels }: Props) {
   const [query, setQuery] = useState("");
   const [klass, setKlass] = useState("all");
   const [readiness, setReadiness] = useState("all");
@@ -71,21 +85,25 @@ export default function CompetitorMatrix({ competitors, baseUrl }: Props) {
   };
 
   return (
-    <section className="matrix-app" aria-label="Competitor matrix">
+    <section className="matrix-app" aria-label={labels.aria}>
       <div className="matrix-toolbar">
         <label className="search-box">
           <Search aria-hidden="true" size={18} />
-          <span className="sr-only">Search competitors</span>
+          <span className="sr-only">{labels.search}</span>
           <input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search stack, integrations, moat..."
+            placeholder={labels.searchPlaceholder}
           />
         </label>
         <label>
-          <span>Class</span>
+          <span>{labels.class}</span>
           <select value={klass} onChange={(event) => setKlass(event.target.value)}>
-            {classOptions.map(([value, label]) => (
+            {[
+              ["all", labels.allClasses],
+              ["A-local-ade", labels.classA],
+              ["B-enterprise-agentic-platform", labels.classB],
+            ].map(([value, label]) => (
               <option key={value} value={value}>
                 {label}
               </option>
@@ -93,9 +111,15 @@ export default function CompetitorMatrix({ competitors, baseUrl }: Props) {
           </select>
         </label>
         <label>
-          <span>Readiness</span>
+          <span>{labels.readiness}</span>
           <select value={readiness} onChange={(event) => setReadiness(event.target.value)}>
-            {readinessOptions.map(([value, label]) => (
+            {[
+              ["all", labels.allReadiness],
+              ["manual-ready", labels.readinessLabels["manual-ready"]],
+              ["needs-install", labels.readinessLabels["needs-install"]],
+              ["enterprise-gated", labels.readinessLabels["enterprise-gated"]],
+              ["owned-reference", labels.readinessLabels["owned-reference"]],
+            ].map(([value, label]) => (
               <option key={value} value={value}>
                 {label}
               </option>
@@ -108,49 +132,51 @@ export default function CompetitorMatrix({ competitors, baseUrl }: Props) {
             checked={opensourceOnly}
             onChange={(event) => setOpenSourceOnly(event.target.checked)}
           />
-          <span>Open/source-visible</span>
+          <span>{labels.openSourceVisible}</span>
         </label>
-        <button className="icon-button" type="button" onClick={reset} title="Reset filters">
+        <button className="icon-button" type="button" onClick={reset} title={labels.resetFilters}>
           <RotateCcw aria-hidden="true" size={18} />
-          <span className="sr-only">Reset filters</span>
+          <span className="sr-only">{labels.resetFilters}</span>
         </button>
       </div>
 
       <p className="matrix-count">
-        Showing <strong>{filtered.length}</strong> of {competitors.length} tracked products.
+        {labels.showing} <strong>{filtered.length}</strong> {labels.of} {competitors.length}{" "}
+        {labels.trackedProducts}
       </p>
 
       <div className="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Class</th>
-              <th>Readiness</th>
-              <th>Stack signals</th>
-              <th>Integrations</th>
-              <th>Evidence</th>
+              <th>{labels.product}</th>
+              <th>{labels.class}</th>
+              <th>{labels.readiness}</th>
+              <th>{labels.stackSignals}</th>
+              <th>{labels.integrations}</th>
+              <th>{labels.evidence}</th>
             </tr>
           </thead>
           <tbody>
             {filtered.map((competitor) => (
               <tr key={competitor.id}>
                 <td>
-                  <a className="link" href={productUrl(baseUrl, competitor.id)}>
+                  <a className="link" href={productUrl(baseUrl, locale, competitor.id)}>
                     {competitor.name}
                   </a>
                   <small className="table-note">{competitor.license}</small>
                 </td>
-                <td>{competitor.class === "A-local-ade" ? "Class A" : "Class B"}</td>
+                <td>{competitor.class === "A-local-ade" ? labels.classA : labels.classB}</td>
                 <td>
                   <span className={`badge badge--${competitor.readiness}`}>
-                    {badgeLabel(competitor.readiness)}
+                    {labels.readinessLabels[competitor.readiness]}
                   </span>
                 </td>
                 <td>{competitor.stack.slice(0, 5).join(", ")}</td>
-                <td>{competitor.integrations.slice(0, 5).join(", ") || "Not mapped"}</td>
+                <td>{competitor.integrations.slice(0, 5).join(", ") || labels.notMapped}</td>
                 <td>
-                  {competitor.sourceCount} sources, {competitor.featureCount} features
+                  {competitor.sourceCount} {sourceCountLabel(competitor.sourceCount, labels)}, {competitor.featureCount}{" "}
+                  {labels.features}
                 </td>
               </tr>
             ))}
@@ -162,32 +188,33 @@ export default function CompetitorMatrix({ competitors, baseUrl }: Props) {
         {filtered.map((competitor) => (
           <article className="matrix-mobile-card" key={competitor.id}>
             <div>
-              <a className="link" href={productUrl(baseUrl, competitor.id)}>
+              <a className="link" href={productUrl(baseUrl, locale, competitor.id)}>
                 {competitor.name}
               </a>
               <small>{competitor.license}</small>
             </div>
             <div className="badge-row">
               <span className="badge">
-                {competitor.class === "A-local-ade" ? "Class A" : "Class B"}
+                {competitor.class === "A-local-ade" ? labels.classA : labels.classB}
               </span>
               <span className={`badge badge--${competitor.readiness}`}>
-                {badgeLabel(competitor.readiness)}
+                {labels.readinessLabels[competitor.readiness]}
               </span>
             </div>
             <dl>
               <div>
-                <dt>Stack</dt>
+                <dt>{labels.stack}</dt>
                 <dd>{competitor.stack.slice(0, 5).join(", ")}</dd>
               </div>
               <div>
-                <dt>Integrations</dt>
-                <dd>{competitor.integrations.slice(0, 5).join(", ") || "Not mapped"}</dd>
+                <dt>{labels.integrations}</dt>
+                <dd>{competitor.integrations.slice(0, 5).join(", ") || labels.notMapped}</dd>
               </div>
               <div>
-                <dt>Evidence</dt>
+                <dt>{labels.evidence}</dt>
                 <dd>
-                  {competitor.sourceCount} sources, {competitor.featureCount} features
+                  {competitor.sourceCount} {sourceCountLabel(competitor.sourceCount, labels)}, {competitor.featureCount}{" "}
+                  {labels.features}
                 </dd>
               </div>
             </dl>

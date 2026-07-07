@@ -1,11 +1,13 @@
 ---
 import { label } from "../lib/format";
+import type { Locale } from "../lib/i18n";
 
 interface Props {
   value: string;
+  locale?: Locale;
 }
 
-const { value } = Astro.props;
+const { value, locale = "en" } = Astro.props;
 ---
 
-<span class={`badge badge--${value}`}>{label(value)}</span>
+<span class={`badge badge--${value}`}>{label(value, locale)}</span>
