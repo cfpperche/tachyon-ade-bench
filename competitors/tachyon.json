@@ -11,7 +11,10 @@
   },
   "inclusion": "Reference product under test.",
   "pricing_model": "depends on configured agent runtimes",
-  "public_stack_signals": [],
+  "public_stack_signals": [
+    "Owned reference profile; public product/source URLs are intentionally not asserted in this benchmark repo yet.",
+    "Benchmark-relevant capabilities are tracked as owned assumptions until public product documentation is available."
+  ],
   "capabilities_to_probe": [
     "multi-agent orchestration",
     "worktree isolation",
@@ -27,7 +30,112 @@
   "setup_notes": [
     "Fill homepage and source_url when the public product surface is ready."
   ],
-  "research_status": "owned product profile; fill current public links before external report",
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "owned",
+    "sources": [
+      {
+        "url": "https://github.com/cfpperche/tachyon-ade-bench",
+        "kind": "owned",
+        "notes": "Benchmark-owned reference profile placeholder; public Tachyon product docs/source are not asserted here."
+      }
+    ],
+    "positioning": "Owned reference ADE for audited multi-agent development, reproducible task worktrees, evidence capture, and verification-first handoff.",
+    "stack": {
+      "runtime": [
+        "owned/internal"
+      ],
+      "frontend": [
+        "owned/internal"
+      ],
+      "backend": [
+        "owned/internal"
+      ],
+      "packaging": [
+        "owned/internal"
+      ],
+      "data": [
+        "benchmark-visible artifacts",
+        "run metadata",
+        "handoff/evidence records",
+        "worktree state"
+      ],
+      "unknowns": [
+        "Do not publish private implementation details from Tachyon in this public benchmark repo.",
+        "Replace owned/internal stack notes with public docs when available."
+      ]
+    },
+    "infrastructure": [
+      "Runs benchmark tasks from prepared worktrees.",
+      "Uses isolated agent workspaces and evidence/handoff primitives in the owned product flow.",
+      "Verification is treated as a gate before accepting delivered work."
+    ],
+    "features": {
+      "agent_support": [
+        "configured local agent runtimes",
+        "sub-agent workflows"
+      ],
+      "orchestration": [
+        "multi-agent delegation",
+        "review handoff",
+        "task-specific verification"
+      ],
+      "workspace_isolation": [
+        "git worktree isolation",
+        "explicit owned path boundaries for delegated work"
+      ],
+      "review_shipping": [
+        "evidence records",
+        "verification logs",
+        "human-readable handoff and review flow"
+      ],
+      "remote_mobile": [
+        "not claimed in public competitor profile"
+      ],
+      "context_memory": [
+        "handoff context",
+        "task evidence",
+        "spec-driven development records when used"
+      ],
+      "integrations": [
+        "plugins",
+        "host action governance",
+        "repository-local verification commands"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "owned-reference",
+      "install_surface": [
+        "owned Tachyon environment",
+        "benchmark prepared worktree",
+        "configured agent runtime"
+      ],
+      "parity_risks": [
+        "Owned product knowledge can bias prompts or manual intervention; keep prompts identical and record intervention counts.",
+        "Public report should avoid private implementation claims until Tachyon publishes matching docs.",
+        "Use this as a reference profile, not a sourced public competitor profile."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Auditable agent operations and verification-first delivery can be a durable differentiator.",
+        "Worktree isolation plus evidence/handoff makes multi-agent output easier to trust.",
+        "Plugin and host-action governance can support safer local automation."
+      ],
+      "evidence": [
+        "Owned product workflow uses task verification and handoff/evidence records as operating primitives.",
+        "Benchmark suite is designed around reproducible worktrees and independent verifiers."
+      ],
+      "unknowns": [
+        "Publicly citable Tachyon docs, source, product homepage, and pricing are not yet represented here."
+      ]
+    }
+  },
+  "research_status": "owned-reference-v0.1",
   "updated_at": "2026-07-07"
 }
-

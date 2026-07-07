@@ -3,27 +3,158 @@
   "name": "Hive",
   "class": "A-local-ade",
   "homepage": "https://hivehq.dev/en/",
-  "source_url": null,
-  "license": "unknown",
+  "source_url": "https://github.com/tt-a1i/hive",
+  "license": "BUSL-1.1",
   "runner": {
     "kind": "manual",
-    "notes": "Prepare a run worktree, open it in Hive, provide prompt.md exactly, then run harness verification."
+    "notes": "Install Hive, prepare a run worktree, open it in Hive's local browser UI, provide prompt.md exactly, then run harness verification."
   },
-  "inclusion": "Direct ADE competitor centered on local agent teamwork.",
-  "pricing_model": "unknown",
-  "public_stack_signals": [],
+  "inclusion": "Direct ADE competitor centered on local browser-based orchestration of CLI agent teams.",
+  "pricing_model": "Source-available/local install; bring-your-own agent CLIs and subscriptions.",
+  "public_stack_signals": [
+    "Official site says npm global install, local 127.0.0.1 browser app, Node >= 22, BSL 1.1.",
+    "Runs Claude Code, Codex, Gemini and other real CLI processes in browser terminals.",
+    "Task graph is .hive/tasks.md in the repository."
+  ],
   "capabilities_to_probe": [
     "orchestrator and worker agents",
-    "terminal integration",
-    "persistent task memory",
-    "remote operation"
+    "team send/report protocol",
+    "auto-staff",
+    "multi-stage workflows",
+    "persistent team memory",
+    "markdown task graph",
+    "remote phone access"
   ],
   "moat_hypotheses": [
-    "simple local team protocol",
-    "browser-based operational surface"
+    "simple local browser UI",
+    "team protocol through CLI commands",
+    "repo-native .hive/tasks.md task graph",
+    "PWA/mobile remote access while execution stays local"
   ],
-  "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "setup_notes": [
+    "Install with npm i -g @tt-a1i/hive and open the printed 127.0.0.1 URL."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://hivehq.dev/en/",
+        "kind": "official-site",
+        "notes": "Product model, CLI agent list, install, Node requirement, local/remote claims."
+      },
+      {
+        "url": "https://github.com/tt-a1i/hive",
+        "kind": "source-repo",
+        "notes": "Linked official source repository from product page."
+      }
+    ],
+    "positioning": "A local browser workbench for an orchestrator to dispatch tasks to CLI agent workers.",
+    "stack": {
+      "runtime": [
+        "Node >= 22",
+        "npm package @tt-a1i/hive"
+      ],
+      "frontend": [
+        "browser UI",
+        "PWA-style install per official page"
+      ],
+      "backend": [
+        "local server bound to 127.0.0.1",
+        "real CLI agent processes",
+        "terminal sessions in browser"
+      ],
+      "packaging": [
+        "npm global package"
+      ],
+      "data": [
+        ".hive/tasks.md task graph in the repo",
+        "team memory",
+        "workspace constraints/conventions"
+      ],
+      "unknowns": [
+        "Internal database/storage implementation not mapped in this pass."
+      ]
+    },
+    "infrastructure": [
+      "Local app binds to 127.0.0.1.",
+      "Optional remote access pairs a phone/browser with the local machine; execution stays local.",
+      "No account/key required for Hive itself according to official site."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex CLI",
+        "Gemini CLI",
+        "OpenCode",
+        "Antigravity",
+        "Cursor CLI",
+        "Grok Build",
+        "Hermes",
+        "Qwen Code",
+        "any local CLI agent"
+      ],
+      "orchestration": [
+        "Orchestrator dispatches workers via team send",
+        "Workers report back via team report",
+        "Auto-staff experimental",
+        "Multi-stage workflows experimental",
+        "Role template market"
+      ],
+      "workspace_isolation": [
+        "Local workspace in browser terminals",
+        "Task graph with dependency declarations"
+      ],
+      "review_shipping": [
+        "Write/review and test/fix patterns are central examples; final diff remains user-reviewed"
+      ],
+      "remote_mobile": [
+        "Optional remote access with E2E encryption",
+        "Phone/browser can type, dispatch, and steer after pairing",
+        "No public ports required; local machine dials outbound"
+      ],
+      "context_memory": [
+        "Team memory",
+        ".hive/tasks.md",
+        "workspace constraints and past decisions"
+      ],
+      "integrations": [
+        "Completion webhooks for Slack/CI",
+        "VS Code/terminal open shortcuts",
+        "desktop notifications"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "npm i -g @tt-a1i/hive",
+        "hive",
+        "browser at 127.0.0.1"
+      ],
+      "parity_risks": [
+        "Team protocol may need a benchmark prompt variant that asks orchestrator to delegate.",
+        "Remote phone access is out of scope for current local task suite."
+      ],
+      "suggested_first_tasks": [
+        "T002-python-discount-feature",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Repo-native task graph could make agent teamwork auditable and portable.",
+        "Browser-local install lowers desktop app friction.",
+        "Explicit team send/report model is easy to observe in benchmarks."
+      ],
+      "evidence": [
+        "Official site documents .hive/tasks.md, team memory, auto-staff, workflows, and local 127.0.0.1 execution.",
+        "Official site documents optional E2E remote access with execution staying local."
+      ],
+      "unknowns": [
+        "How robustly Hive preserves worktrees and review evidence under dirty-worktree tasks remains untested."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

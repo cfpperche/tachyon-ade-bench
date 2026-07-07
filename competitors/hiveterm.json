@@ -10,21 +10,154 @@
     "notes": "Prepare a run worktree, open it in HiveTerm, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct terminal-oriented multi-agent ADE competitor.",
-  "pricing_model": "unknown",
-  "public_stack_signals": [],
+  "pricing_model": "Commercial desktop product with free/pro tiers; model/agent subscriptions are bring-your-own where applicable.",
+  "public_stack_signals": [
+    "Official site states Rust + Tauri desktop app around 20MB.",
+    "Built-in MCP server called Queen exposes orchestration tools.",
+    "Config-as-code workspace is centered on hive.yml."
+  ],
   "capabilities_to_probe": [
     "split terminal workflows",
     "MCP-based sub-agents",
-    "voice or notes workflow",
-    "BYO model credentials"
+    "dev stack management",
+    "pins and notes via MCP",
+    "inline diff, commit, and PR",
+    "voice input",
+    "BYO agent credentials"
   ],
   "moat_hypotheses": [
     "terminal-native team UX",
-    "local-first execution",
-    "MCP-centered coordination"
+    "local-first Rust/Tauri desktop footprint",
+    "MCP-centered agent spawning and project-isolated sub-agent tree",
+    "config-as-code process stack"
   ],
   "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://hiveterm.com/",
+        "kind": "official-site",
+        "notes": "Product positioning, Rust/Tauri stack, platforms, local-first claims, Queen MCP tool list."
+      },
+      {
+        "url": "https://hiveterm.com/agents/",
+        "kind": "official-site",
+        "notes": "Supported first-class agents and role/preset behavior."
+      },
+      {
+        "url": "https://hiveterm.com/docs/",
+        "kind": "official-docs",
+        "notes": "Queen MCP server and project-isolated tool behavior."
+      },
+      {
+        "url": "https://hiveterm.com/compare/t3/",
+        "kind": "official-site",
+        "notes": "Feature comparison claims around config-as-code, live tree, dev stack, diff/PR, voice, localization."
+      }
+    ],
+    "positioning": "Terminal where AI agents work as a team, with a live split-pane grid and MCP-based sub-agent tree.",
+    "stack": {
+      "runtime": [
+        "Rust",
+        "Tauri"
+      ],
+      "frontend": [
+        "Tauri webview UI",
+        "terminal split grid"
+      ],
+      "backend": [
+        "local MCP server Queen",
+        "local process/agent management"
+      ],
+      "packaging": [
+        "desktop app for macOS, Windows, Linux"
+      ],
+      "data": [
+        "project-local config-as-code via hive.yml",
+        "pins and notes managed through MCP"
+      ],
+      "unknowns": [
+        "Internal UI framework and persistence implementation are not public in official docs."
+      ]
+    },
+    "infrastructure": [
+      "Local-first desktop app.",
+      "Project-isolated sub-agent access through built-in MCP.",
+      "Runs dev servers, workers, and agents in one workspace."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "Antigravity",
+        "Grok",
+        "Kimi",
+        "Aider through hosted terminal-like agent support"
+      ],
+      "orchestration": [
+        "Agents spawn sub-agents through Queen MCP",
+        "Live sub-agent tree",
+        "Split-pane grid",
+        "Config-as-code workspace and dev stack"
+      ],
+      "workspace_isolation": [
+        "Sub-agents only see their own project",
+        "Project-local process tree"
+      ],
+      "review_shipping": [
+        "Inline diff, commit, and PR are claimed in comparison pages"
+      ],
+      "remote_mobile": [
+        "Native OS notifications",
+        "No mobile app identified in official sources reviewed"
+      ],
+      "context_memory": [
+        "Project notes scratchpad",
+        "Pins",
+        "Role instructions",
+        "hive.yml workspace configuration"
+      ],
+      "integrations": [
+        "MCP",
+        "desktop notifications",
+        "voice prompts",
+        "English, Portuguese, and Spanish UI"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "Desktop app download",
+        "Configure project and agent CLIs",
+        "Optional hive.yml"
+      ],
+      "parity_risks": [
+        "MCP sub-agent behavior may not be exercised by single-agent v0.1 tasks.",
+        "Review/PR features need GitHub-backed tasks to compare fairly."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "MCP-native nested agent model is the core differentiator.",
+        "Rust/Tauri footprint and terminal-first UX appeal to developers who do not want a full IDE.",
+        "Config-as-code stack management could make repeated benchmark setup reproducible."
+      ],
+      "evidence": [
+        "Official site documents Queen MCP with 20 tools and project-isolated sub-agents.",
+        "Official site states Rust + Tauri and cross-platform desktop support."
+      ],
+      "unknowns": [
+        "Actual implementation quality of review, commit, and PR surfaces requires hands-on run."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

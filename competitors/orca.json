@@ -4,32 +4,179 @@
   "class": "A-local-ade",
   "homepage": "https://www.onorca.dev/",
   "source_url": "https://github.com/stablyai/orca",
-  "license": "unknown",
+  "license": "MIT",
   "runner": {
     "kind": "manual",
-    "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
+    "notes": "Install Orca, open the prepared worktree, provide prompt.md exactly, then run harness verification. Later adapter candidate: Orca CLI/server if a stable non-interactive run path is documented."
   },
   "inclusion": "Direct open-source ADE competitor for running multiple coding agents across isolated worktrees.",
-  "pricing_model": "open-source plus external model or agent subscriptions; verify details",
+  "pricing_model": "Open-source app plus bring-your-own agent/model subscriptions.",
   "public_stack_signals": [
-    "public repository available",
-    "landing page positions product around multiple coding agents"
+    "Electron desktop app with TypeScript, React, Vite/electron-vite, node-pty, xterm, ssh2, ws, and mobile-related repo folders.",
+    "CLI binary exposed as orca in package metadata.",
+    "Remote server mode runs orca serve on a headless machine."
   ],
   "capabilities_to_probe": [
     "multi-agent worktree orchestration",
-    "agent CLI support",
-    "diff review",
-    "browser or design mode",
-    "GitHub integration",
-    "mobile companion"
+    "any CLI-agent support",
+    "diff review and annotations",
+    "browser/design mode",
+    "GitHub and Linear workflow",
+    "mobile companion",
+    "remote server or SSH worktrees",
+    "CLI automation"
   ],
   "moat_hypotheses": [
-    "broad product surface",
-    "open-source distribution",
-    "mobile and remote control loop"
+    "broad product surface across desktop, mobile, browser, GitHub/Linear, and remote runtime",
+    "open-source distribution and strong GitHub visibility",
+    "worktree-first mental model for racing and reviewing agent outputs"
   ],
-  "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "setup_notes": [
+    "Start with manual desktop run. For remote parity, use a machine where target agent CLIs and credentials are installed."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://github.com/stablyai/orca",
+        "kind": "source-repo",
+        "notes": "README, feature list, license, supported agents, and repository language signals."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/stablyai/orca/main/package.json",
+        "kind": "package-manifest",
+        "notes": "Runtime/package signals: Node 24, Electron, React, Vite, TypeScript, node-pty, xterm, ssh2, ws, pnpm, Monaco, and Tailwind."
+      },
+      {
+        "url": "https://www.onorca.dev/docs/remote-servers",
+        "kind": "official-docs",
+        "notes": "Remote Orca Server model and orca serve setup."
+      },
+      {
+        "url": "https://www.onorca.dev/docs/agents/custom-cli",
+        "kind": "official-docs",
+        "notes": "Custom CLI agent support and worktree cwd behavior."
+      }
+    ],
+    "positioning": "Worktree IDE/ADE for fleets of parallel coding agents using existing CLI agents and subscriptions.",
+    "stack": {
+      "runtime": [
+        "TypeScript",
+        "Node 24",
+        "Electron",
+        "pnpm"
+      ],
+      "frontend": [
+        "React",
+        "Vite",
+        "xterm.js",
+        "Monaco editor",
+        "Tailwind CSS"
+      ],
+      "backend": [
+        "Electron main process",
+        "node-pty terminal processes",
+        "ssh2",
+        "ws",
+        "Orca CLI/server runtime"
+      ],
+      "packaging": [
+        "electron-builder",
+        "AppImage/deb/Windows/macOS release artifacts",
+        "Homebrew cask and AUR"
+      ],
+      "data": [
+        "git worktrees",
+        "local terminal/session state",
+        "usage/rate-limit tracking per supported agent where configured"
+      ],
+      "unknowns": [
+        "Mobile app internal implementation and sync protocol details are not fully mapped in this pass."
+      ]
+    },
+    "infrastructure": [
+      "Local desktop app owns repos, worktrees, terminals, tabs, provider checks, and agent sessions.",
+      "Remote Orca Server lets a headless machine own runtime state while clients connect over a controlled network path.",
+      "SSH worktrees support remote execution and port forwarding."
+    ],
+    "features": {
+      "agent_support": [
+        "Any CLI agent that runs in a terminal",
+        "Documented support includes Claude Code, Codex, OpenCode, Cursor, Copilot, Grok, Auggie, Gemini/Antigravity, Kiro, Qwen, Devin, and others"
+      ],
+      "orchestration": [
+        "Run agents side by side",
+        "Fan one prompt across multiple worktrees",
+        "Quick open across worktrees, files, agents, commands, and repo context",
+        "CLI automation commands such as worktree create, snapshot, click, and fill"
+      ],
+      "workspace_isolation": [
+        "Parallel git worktrees",
+        "Working directory for CLI agents is the current worktree",
+        "SSH and remote server runtime ownership"
+      ],
+      "review_shipping": [
+        "Diff viewer",
+        "Annotate AI diff",
+        "Commit and push from Orca",
+        "Hosted reviews, GitHub issues/actions, Linear/Jira drawers"
+      ],
+      "remote_mobile": [
+        "Mobile companion for monitoring and steering agents",
+        "Remote Orca Server",
+        "SSH worktrees"
+      ],
+      "context_memory": [
+        "Agent session history",
+        "Session restore",
+        "Agent hooks and memory",
+        "Rich repo previews"
+      ],
+      "integrations": [
+        "GitHub",
+        "Linear",
+        "Jira",
+        "Browser/design mode",
+        "Computer use",
+        "MCP/skills registry"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "Desktop app for macOS, Windows, Linux",
+        "Linux AppImage",
+        "Homebrew cask",
+        "AUR package",
+        "Orca CLI/server"
+      ],
+      "parity_risks": [
+        "Large feature surface may make manual runs faster than products without GUI helpers.",
+        "Mobile/remote features are not exercised by the current v0.1 local task suite.",
+        "CLI automation path needs separate validation before replacing manual protocol."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Open-source + high visibility creates distribution advantage.",
+        "Worktree-first fleet UX is a strong direct competitor to Tachyon's orchestration story.",
+        "Mobile and remote server surfaces expand use cases beyond local desktop."
+      ],
+      "evidence": [
+        "Official README lists parallel worktrees, mobile companion, terminal splits, design mode, native GitHub/Linear, SSH worktrees, diff annotation, and CLI.",
+        "Official docs describe remote server mode and custom CLI agent support."
+      ],
+      "unknowns": [
+        "Quality of verification gates and evidence capture compared with Tachyon remains unbenchmarked."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

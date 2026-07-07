@@ -10,21 +10,155 @@
     "notes": "Prepare a run worktree, open it in AgentsRoom, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct ADE competitor focused on teams of coding agents.",
-  "pricing_model": "unknown",
-  "public_stack_signals": [],
+  "pricing_model": "Commercial desktop product; bring-your-own provider credentials where the underlying CLI requires them.",
+  "public_stack_signals": [
+    "Official site positions AgentsRoom as a desktop app for macOS and Linux with an online demo using simulated data.",
+    "Runs multiple project folders and multiple CLI agent sessions in parallel.",
+    "Remote fleet and mobile companion features are presented as product features, including E2E relay for remote machines."
+  ],
   "capabilities_to_probe": [
     "multi-agent orchestration",
     "local CLI integration",
     "review workflow",
-    "remote or mobile control"
+    "remote or mobile control",
+    "role-labeled agent workflows",
+    "backlog-to-agent flow",
+    "scheduled tasks"
   ],
   "moat_hypotheses": [
-    "agent team UX",
-    "remote fleet control",
-    "role-based workflows"
+    "visual multi-agent cockpit",
+    "remote fleet and mobile companion",
+    "role-based workflows",
+    "rich communication modes for steering agents"
   ],
-  "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "setup_notes": [
+    "Use the desktop app, not the simulated browser demo, for any scored benchmark run."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://agentsroom.dev/pt",
+        "kind": "official-site",
+        "notes": "Product positioning, supported agents, feature surface, role agents, remote fleet, review, and mobile companion claims."
+      }
+    ],
+    "positioning": "Visual desktop cockpit for coordinating many coding agents across projects, providers, roles, and machines.",
+    "stack": {
+      "runtime": [
+        "desktop application"
+      ],
+      "frontend": [
+        "visual multi-agent desktop cockpit",
+        "browser demo with simulated data"
+      ],
+      "backend": [
+        "local CLI agent sessions",
+        "remote fleet relay according to official site"
+      ],
+      "packaging": [
+        "desktop app for macOS and Linux identified on official site"
+      ],
+      "data": [
+        "real local project folders",
+        "agent status/state visible in UI",
+        "backlog and scheduled task surfaces"
+      ],
+      "unknowns": [
+        "Internal desktop framework is not published in official sources reviewed.",
+        "Windows support and mobile app internals need direct install verification.",
+        "Persistence, sync protocol, and relay implementation are not public in official sources reviewed."
+      ]
+    },
+    "infrastructure": [
+      "Desktop app opens real project folders on the user's computer.",
+      "Agents run as provider CLI sessions in terminals managed by the app.",
+      "Remote fleet feature connects multiple machines through an E2E relay according to the official site.",
+      "Mobile companion can send prompts and screenshots to the active desktop agent according to the official site."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude",
+        "Codex",
+        "Antigravity CLI",
+        "Grok Build",
+        "Mistral Vibe",
+        "OpenCode",
+        "Aider"
+      ],
+      "orchestration": [
+        "multi-project/multi-agent cockpit",
+        "role-labeled agents such as DevOps, Frontend, Backend, Architect, QA, Fullstack, Mobile, Security, PM, Marketing, Git Expert, SEO, localization, and brainstorming",
+        "backlog tasks that become agents",
+        "agent teams that hand work between roles",
+        "scheduled recurring agent tasks"
+      ],
+      "workspace_isolation": [
+        "project folders are real local folders",
+        "agents are attached to projects and roles",
+        "diff review can be filtered by agent"
+      ],
+      "review_shipping": [
+        "side-by-side diff review",
+        "review by agent",
+        "commit context carrying agent conversation/rationale"
+      ],
+      "remote_mobile": [
+        "remote fleet",
+        "mobile companion",
+        "public remote backlog",
+        "voice dictation and voice mode",
+        "drawing, screenshot sharing, browser pointer, prompt library, message queue"
+      ],
+      "context_memory": [
+        "agent status/state",
+        "context canary",
+        "adaptive mode for model choice",
+        "prompt library",
+        "commit context"
+      ],
+      "integrations": [
+        "provider CLIs",
+        "real terminals",
+        "public preview tunnel",
+        "skills",
+        "SSH"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "desktop app download",
+        "provider CLI setup and authentication",
+        "open prepared benchmark worktree as a project folder"
+      ],
+      "parity_risks": [
+        "The online demo is simulated and must not be used for scoring.",
+        "Broad remote/mobile feature set is outside the current v0.1 local task suite.",
+        "Closed-source internals limit stack comparison to public claims and hands-on behavior."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Strong visual cockpit may reduce operator overload when many agents run at once.",
+        "Remote fleet plus mobile companion creates a broader control surface than local-only ADEs.",
+        "Role library and scheduled tasks make the product feel like a managed agent team rather than a terminal wrapper."
+      ],
+      "evidence": [
+        "Official site describes one screen for multiple projects, agents, providers, and statuses.",
+        "Official site describes backlog, agent teams, scheduled tasks, remote fleet, mobile companion, review by agent, and commit context."
+      ],
+      "unknowns": [
+        "Quality of local isolation, reproducibility, and verifier-proof evidence needs a hands-on run."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

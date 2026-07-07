@@ -4,30 +4,175 @@
   "class": "A-local-ade",
   "homepage": "https://github.com/kdlbs/kandev",
   "source_url": "https://github.com/kdlbs/kandev",
-  "license": "unknown",
+  "license": "AGPL-3.0",
   "runner": {
     "kind": "manual",
     "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct open-source ADE competitor with kanban, agents, worktrees, and self-hosting emphasis.",
-  "pricing_model": "open-source or self-hosted; verify license",
+  "pricing_model": "Open-source/self-hostable; bring-your-own agent/model credentials.",
   "public_stack_signals": [
-    "repository documentation references backend, frontend, CLI, self-hosting, and worktree-oriented workflows"
+    "GitHub repository is AGPL-3.0 and describes no telemetry, self-hosting, multi-provider agents, code review, PRs, and worktrees.",
+    "Repository metadata identifies Go as the primary language and topics include Next.js, self-hosted, kanban, ACP, workflow automation, and worktrees.",
+    "Feature docs describe Go backend, Next.js frontend, CLI, and Tauri desktop surfaces."
   ],
   "capabilities_to_probe": [
     "kanban workflow",
     "agent control protocol support",
     "worktree management",
     "multi-repository tasks",
-    "pull request flow"
+    "pull request flow",
+    "executor isolation",
+    "review-first workflow"
   ],
   "moat_hypotheses": [
     "workflow-first server model",
     "self-hosted control plane",
-    "kanban-native agent operations"
+    "kanban-native agent operations",
+    "ACP and executor breadth"
   ],
-  "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "setup_notes": [
+    "Benchmark with a local/self-hosted install and document executor choice."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://github.com/kdlbs/kandev",
+        "kind": "source-repo",
+        "notes": "Repository description, license, topics, installation docs, and implementation signals."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/kdlbs/kandev/main/README.md",
+        "kind": "source-repo",
+        "notes": "Top-level product positioning and no-telemetry/self-hosting claims."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/kdlbs/kandev/main/docs/features.md",
+        "kind": "source-repo",
+        "notes": "Feature list covering kanban, ACP agents, executors, worktrees, integrations, and app surfaces."
+      }
+    ],
+    "positioning": "Open-source AI kanban and development environment for orchestrating multiple agents, reviewing changes, and opening PRs.",
+    "stack": {
+      "runtime": [
+        "Go",
+        "Node/pnpm for frontend app surfaces"
+      ],
+      "frontend": [
+        "Next.js web frontend",
+        "kanban/workflow UI"
+      ],
+      "backend": [
+        "Go backend",
+        "CLI",
+        "agent/executor orchestration"
+      ],
+      "packaging": [
+        "self-hostable server",
+        "CLI",
+        "Tauri desktop"
+      ],
+      "data": [
+        "git worktrees",
+        "multi-repository/multi-branch task state",
+        "local database under user home according to setup docs",
+        "task docs/history"
+      ],
+      "unknowns": [
+        "Exact production database/storage choices should be verified from source or install docs before comparing infrastructure cost.",
+        "Maturity of desktop packaging needs hands-on install."
+      ]
+    },
+    "infrastructure": [
+      "Self-hostable/local control plane.",
+      "Tasks can execute via local, Docker, SSH, and Sprites-style executors according to feature docs.",
+      "Worktree-centric task isolation across repositories and branches.",
+      "No telemetry claim in upstream README."
+    ],
+    "features": {
+      "agent_support": [
+        "Agent Control Protocol agents",
+        "Claude Code",
+        "Codex",
+        "Gemini CLI",
+        "OpenCode",
+        "Amp",
+        "Qwen Code",
+        "CLI passthrough"
+      ],
+      "orchestration": [
+        "kanban and pipeline workflows",
+        "parallel task execution",
+        "multi-repo and multi-branch tasks",
+        "task-scoped plans/docs/history"
+      ],
+      "workspace_isolation": [
+        "git worktrees",
+        "local/Docker/SSH/Sprites executors",
+        "task-scoped repositories and branches"
+      ],
+      "review_shipping": [
+        "review changes",
+        "open pull requests",
+        "GitHub/GitLab workflows",
+        "public Gist snapshots"
+      ],
+      "remote_mobile": [
+        "self-hosted server reachable through the user's network/VPN setup",
+        "no dedicated mobile companion mapped in official docs reviewed"
+      ],
+      "context_memory": [
+        "task docs",
+        "task history",
+        "external/session MCP",
+        "task-scoped MCP"
+      ],
+      "integrations": [
+        "GitHub",
+        "GitLab",
+        "Jira",
+        "Linear",
+        "Sentry",
+        "Slack",
+        "MCP"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "source clone or release install",
+        "backend/frontend/CLI setup",
+        "agent CLI credentials",
+        "executor choice"
+      ],
+      "parity_risks": [
+        "Server/workflow product may outperform on task queue/review operations not covered by v0.1 single-worktree tasks.",
+        "Executor choice can affect speed, isolation, and reproducibility; record it in run metadata.",
+        "Some features may require integrations or self-hosted setup beyond local smoke."
+      ],
+      "suggested_first_tasks": [
+        "T003-dirty-worktree-safety",
+        "T004-ci-status-normalizer",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Kanban-native workflow gives a clearer operations model for many concurrent tasks.",
+        "Self-hosted/no-telemetry posture appeals to teams that cannot use SaaS ADE control planes.",
+        "ACP plus executor breadth may make it easier to plug in heterogeneous agent and runtime setups."
+      ],
+      "evidence": [
+        "Upstream repository description states orchestration, review, PRs, multi-provider, self-hostable, and no telemetry.",
+        "Feature docs list workflow boards, ACP agents, worktrees, executors, integrations, and MCP."
+      ],
+      "unknowns": [
+        "How much review/evidence Kandev captures compared with Tachyon should be measured, not inferred."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

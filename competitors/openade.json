@@ -2,32 +2,168 @@
   "id": "openade",
   "name": "OpenADE / ADE App",
   "class": "A-local-ade",
-  "homepage": "https://www.ade-app.dev/",
-  "source_url": "https://github.com/bearlyai/openade",
-  "license": "unknown",
+  "homepage": "https://openade.ai/",
+  "source_url": "https://github.com/bearlyai/OpenADE",
+  "license": "MIT",
   "runner": {
     "kind": "manual",
     "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct open-source ADE competitor focused on local agentic planning and execution.",
-  "pricing_model": "open-source or local; verify license and model costs",
+  "pricing_model": "Free/open-source app; bring-your-own Claude Code or Codex/API access.",
   "public_stack_signals": [
-    "public repository available"
+    "README states free/open-source, local/offline, powered by Claude Code and Codex.",
+    "Repository metadata identifies TypeScript as primary language.",
+    "README describes projects/web and projects/electron development flow, TypeScript throughout, and MobX state management."
   ],
   "capabilities_to_probe": [
     "plan revise execute loop",
     "multi-agent planning",
     "local snapshots",
     "MCP connectors",
-    "worktree isolation"
+    "worktree isolation",
+    "comment-driven iteration"
   ],
   "moat_hypotheses": [
     "plan-centric execution",
     "local-first workflow",
-    "open-source adoption"
+    "open-source adoption",
+    "git snapshot rollback model"
   ],
-  "setup_notes": [],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "setup_notes": [
+    "Retain ade-app.dev as a legacy roster URL, but use openade.ai and GitHub OpenADE as current official sources."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://openade.ai/",
+        "kind": "official-site",
+        "notes": "Current product landing page."
+      },
+      {
+        "url": "https://www.ade-app.dev/",
+        "kind": "official-site",
+        "notes": "Original roster URL; retained as legacy/alternate ADE App landing source."
+      },
+      {
+        "url": "https://github.com/bearlyai/OpenADE",
+        "kind": "source-repo",
+        "notes": "README, license badge, feature list, platform downloads, and implementation signals."
+      }
+    ],
+    "positioning": "Open-source local ADE that makes agents plan, revise, and then execute, with comments and snapshots around the workflow.",
+    "stack": {
+      "runtime": [
+        "TypeScript",
+        "Electron app",
+        "web app"
+      ],
+      "frontend": [
+        "projects/web",
+        "TypeScript UI",
+        "MobX state management"
+      ],
+      "backend": [
+        "projects/electron",
+        "local agent harnesses for Claude Code and Codex",
+        "process manager/terminal"
+      ],
+      "packaging": [
+        "macOS DMG",
+        "Linux AppImage",
+        "Windows installer marked experimental in README"
+      ],
+      "data": [
+        "git snapshots",
+        "worktrees",
+        "local/offline project state",
+        "usage stats/scoreboards"
+      ],
+      "unknowns": [
+        "Internal persistence format and extension/plugin boundary need source inspection beyond README.",
+        "Windows maturity is experimental according to README."
+      ]
+    },
+    "infrastructure": [
+      "100% local/offline claim: no cloud and no sync for code according to README.",
+      "Uses user-provided Claude Code or Codex access as execution engine.",
+      "Every execution creates a git patch snapshot according to README."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "OpenAI Codex"
+      ],
+      "orchestration": [
+        "Plan -> Revise -> Do workflow",
+        "HyperPlan multi-agent planning",
+        "Ensemble and cross-review planning strategies",
+        "single-click execution after plan refinement"
+      ],
+      "workspace_isolation": [
+        "git worktree support",
+        "automated git snapshots and rollback"
+      ],
+      "review_shipping": [
+        "comment on files, diffs, changes, and agent messages",
+        "diff viewer",
+        "no direct code editing anti-feature"
+      ],
+      "remote_mobile": [
+        "desktop/local app",
+        "no mobile or remote fleet feature mapped in official sources reviewed"
+      ],
+      "context_memory": [
+        "rich drafting input with @ mentions",
+        "slash commands and skills",
+        "usage stats/scoreboards",
+        "git snapshots"
+      ],
+      "integrations": [
+        "MCP servers/connectors",
+        "Linear",
+        "Notion",
+        "Asana",
+        "Stripe",
+        "Vercel",
+        "GitHub"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "desktop app download from releases",
+        "Claude Code or Codex credentials",
+        "open prepared benchmark worktree"
+      ],
+      "parity_risks": [
+        "Plan-first workflow may need prompts that ask for plan, revision, and execution without adding extra hints.",
+        "No-direct-editing anti-feature changes how manual intervention should be counted.",
+        "Windows is experimental in upstream README."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Plan-first flow may improve correctness on tasks where prompt interpretation is the main risk.",
+        "Local/offline and free/open-source distribution lower adoption friction.",
+        "Automated git snapshots and rollback are valuable for repeatable experiments."
+      ],
+      "evidence": [
+        "README states Plan -> Revise -> Do, HyperPlan, comments on files/diffs/messages, local/offline, git snapshots, worktrees, and built-in diff/file/terminal/process manager.",
+        "README states OpenADE is free/open-source and powered by Claude Code and Codex."
+      ],
+      "unknowns": [
+        "How well plan reconciliation translates to final benchmark correctness remains untested."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

@@ -10,14 +10,20 @@
     "notes": "Benchmark separately from Class A unless setup parity is documented."
   },
   "inclusion": "Enterprise agentic coding platform with context and governance emphasis.",
-  "pricing_model": "unknown",
-  "public_stack_signals": [],
+  "pricing_model": "Commercial enterprise platform; Auggie CLI and Context Engine usage require Augment account/billing.",
+  "public_stack_signals": [
+    "Official docs expose Cosmos, Auggie CLI, IDE clients, Context Engine MCP, and SDLC automations.",
+    "Auggie CLI setup requires Node.js 20+.",
+    "Context Engine supports local MCP over Auggie CLI and remote hosted indexing through the Augment GitHub App."
+  ],
   "capabilities_to_probe": [
     "large codebase context",
     "ticket to PR workflow",
     "code review",
     "security remediation",
-    "enterprise governance"
+    "enterprise governance",
+    "Context Engine retrieval",
+    "Auggie CLI automation"
   ],
   "moat_hypotheses": [
     "organizational context engine",
@@ -27,7 +33,144 @@
   "setup_notes": [
     "Report separately when enterprise-only setup differs from local ADE setup."
   ],
-  "research_status": "seeded; verify current claims before publishing scored reports",
+  "research": {
+    "last_reviewed": "2026-07-07",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://www.augmentcode.com/",
+        "kind": "official-site",
+        "notes": "Enterprise positioning and product surface."
+      },
+      {
+        "url": "https://docs.augmentcode.com/introduction",
+        "kind": "official-docs",
+        "notes": "Official product docs index for Cosmos, Auggie CLI, clients, and automations."
+      },
+      {
+        "url": "https://docs.augmentcode.com/cli/overview",
+        "kind": "official-docs",
+        "notes": "Auggie CLI positioning and usage."
+      },
+      {
+        "url": "https://www.augmentcode.com/context-engine",
+        "kind": "official-site",
+        "notes": "Context Engine positioning and large-codebase context claims."
+      },
+      {
+        "url": "https://docs.augmentcode.com/context-services/mcp/overview",
+        "kind": "official-docs",
+        "notes": "Local vs remote Context Engine MCP architecture and indexing behavior."
+      }
+    ],
+    "positioning": "Enterprise agentic software development platform centered on organizational context, governance, review, and SDLC workflow automation.",
+    "stack": {
+      "runtime": [
+        "SaaS platform",
+        "Auggie CLI requires Node.js 20+"
+      ],
+      "frontend": [
+        "IDE clients for VS Code, JetBrains, Vim/Neovim",
+        "web/admin surfaces implied by docs"
+      ],
+      "backend": [
+        "Augment-hosted services",
+        "Context Engine",
+        "Auggie CLI",
+        "local MCP server mode",
+        "remote HTTP MCP server mode"
+      ],
+      "packaging": [
+        "CLI",
+        "IDE extensions",
+        "enterprise SaaS"
+      ],
+      "data": [
+        "working directory indexed in real time for local MCP",
+        "selected repository default branches indexed through Augment GitHub App for remote MCP",
+        "commit history, codebase patterns, docs, tickets, and tribal knowledge according to official docs"
+      ],
+      "unknowns": [
+        "Core service implementation language, storage backend, and deployment topology are not public.",
+        "Exact enterprise governance controls available by plan need account-backed verification."
+      ]
+    },
+    "infrastructure": [
+      "Local development can run Auggie CLI locally as an MCP stdio server.",
+      "Remote Context Engine uses Augment-hosted HTTP MCP and the Augment GitHub App.",
+      "Enterprise workflows include code review, ticket-to-PR, security remediation, and incident-oriented automations according to public positioning."
+    ],
+    "features": {
+      "agent_support": [
+        "Auggie CLI",
+        "Cosmos agents",
+        "Context Engine MCP clients including Claude Code, Codex, Cursor, Zed, GitHub Copilot, OpenCode, Kiro, Antigravity, Gemini CLI, and others"
+      ],
+      "orchestration": [
+        "Cosmos sessions and specialized experts",
+        "Auggie CLI interactive and automation modes",
+        "workflow automation around SDLC tasks"
+      ],
+      "workspace_isolation": [
+        "local MCP indexes active working directory",
+        "remote MCP indexes selected repositories/default branches",
+        "not a local worktree fleet product in the same class as Orca/Kandev/Tachyon"
+      ],
+      "review_shipping": [
+        "Augment Code Review",
+        "ticket-to-PR automation",
+        "security remediation workflows"
+      ],
+      "remote_mobile": [
+        "remote hosted platform",
+        "no mobile companion mapped in this pass"
+      ],
+      "context_memory": [
+        "Context Engine semantic understanding",
+        "relationship awareness across repos/services/architectures",
+        "external sources such as docs and tickets",
+        "smart curation/compression"
+      ],
+      "integrations": [
+        "GitHub App",
+        "MCP",
+        "IDE clients",
+        "enterprise SDLC systems referenced in product/docs"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "enterprise-gated",
+      "install_surface": [
+        "Augment account",
+        "Auggie CLI",
+        "IDE client or MCP client",
+        "optional GitHub App for remote Context Engine"
+      ],
+      "parity_risks": [
+        "Class B enterprise platform should not be mixed into Class A local ADE leaderboard without caveats.",
+        "Account, billing, repo indexing, and policy settings can materially affect results.",
+        "Context retrieval value may require larger multi-repo tasks than the v0.1 fixture suite.",
+        "Add a future cross-repo context task before using Augment's Context Engine as a scored differentiator."
+      ],
+      "suggested_first_tasks": [
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Organizational Context Engine is the main differentiation against local ADEs.",
+        "Enterprise governance, code review, and SDLC integrations create a moat for large teams.",
+        "MCP exposure lets Augment's context layer augment many competing agent surfaces instead of replacing them."
+      ],
+      "evidence": [
+        "Official docs describe local and remote Context Engine MCP indexing, cross-repo context, docs/tickets/tribal knowledge, and smart curation.",
+        "Official docs expose Cosmos, Auggie CLI, IDE clients, Context Engine MCP, and Augment Code Review surfaces."
+      ],
+      "unknowns": [
+        "Hands-on benchmark quality depends on account access and enterprise configuration."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
   "updated_at": "2026-07-07"
 }
-

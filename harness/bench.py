@@ -99,7 +99,7 @@ def list_tasks(_: argparse.Namespace) -> int:
     return 0
 
 
-def validate_competitor(path: Path) -> list[str]:
+def validate_competitor(path: Path, task_ids: set[str] | None = None) -> list[str]:
     required = [
         "id",
         "name",
@@ -109,11 +109,24 @@ def validate_competitor(path: Path) -> list[str]:
         "license",
         "runner",
         "inclusion",
+        "research",
         "research_status",
         "updated_at",
     ]
     data = read_json(path)
+    optional = {
+        "pricing_model",
+        "public_stack_signals",
+        "capabilities_to_probe",
+        "moat_hypotheses",
+        "setup_notes",
+    }
     errors = [f"{path}: missing {key}" for key in required if key not in data]
+    for key in sorted(set(data) - set(required) - optional):
+        errors.append(f"{path}: {key} is not allowed")
+    for key in ["public_stack_signals", "capabilities_to_probe", "moat_hypotheses", "setup_notes"]:
+        if key in data and not isinstance(data[key], list):
+            errors.append(f"{path}: {key} must be a list")
     if data.get("id") and path.stem != data["id"]:
         errors.append(f"{path}: id must match filename")
     if data.get("class") not in {"A-local-ade", "B-enterprise-agentic-platform"}:
@@ -122,6 +135,126 @@ def validate_competitor(path: Path) -> list[str]:
         errors.append(f"{path}: runner.kind is required")
     elif "runner" in data and data["runner"].get("kind") not in {"manual", "cli", "api"}:
         errors.append(f"{path}: runner.kind must be manual, cli, or api")
+    research = data.get("research")
+    if not isinstance(research, dict):
+        errors.append(f"{path}: research must be an object")
+    else:
+        errors.extend(validate_competitor_research(path, research, task_ids or set()))
+    return errors
+
+
+def validate_competitor_research(path: Path, research: dict, task_ids: set[str]) -> list[str]:
+    errors: list[str] = []
+    allowed_source_kinds = {
+        "official-site",
+        "official-docs",
+        "source-repo",
+        "package-manifest",
+        "app-store",
+        "owned",
+    }
+    required = [
+        "last_reviewed",
+        "confidence",
+        "sources",
+        "positioning",
+        "stack",
+        "infrastructure",
+        "features",
+        "benchmarking",
+        "moat",
+    ]
+    allowed_research_keys = set(required)
+    errors.extend(f"{path}: research.{key} is required" for key in required if key not in research)
+    for key in sorted(set(research) - allowed_research_keys):
+        errors.append(f"{path}: research.{key} is not allowed")
+    if not isinstance(research.get("last_reviewed"), str) or not research.get("last_reviewed"):
+        errors.append(f"{path}: research.last_reviewed must be a non-empty string")
+    if research.get("confidence") not in {"owned", "official-sourced", "partial-official", "seed"}:
+        errors.append(f"{path}: research.confidence is invalid")
+    sources = research.get("sources")
+    if not isinstance(sources, list) or not sources:
+        errors.append(f"{path}: research.sources must contain at least one source")
+    else:
+        for index, source in enumerate(sources):
+            if not isinstance(source, dict):
+                errors.append(f"{path}: research.sources[{index}] must be an object")
+                continue
+            for key in sorted(set(source) - {"url", "kind", "notes"}):
+                errors.append(f"{path}: research.sources[{index}].{key} is not allowed")
+            if not source.get("url") or not source.get("kind") or not source.get("notes"):
+                errors.append(f"{path}: every research source needs url, kind, and notes")
+                continue
+            if source["kind"] not in allowed_source_kinds:
+                errors.append(f"{path}: research.sources[{index}].kind is invalid")
+            if not isinstance(source["url"], str) or "://" not in source["url"]:
+                errors.append(f"{path}: research.sources[{index}].url must be a URI")
+            if not isinstance(source["notes"], str):
+                errors.append(f"{path}: research.sources[{index}].notes must be a string")
+    if not isinstance(research.get("positioning"), str) or not research.get("positioning"):
+        errors.append(f"{path}: research.positioning must be a non-empty string")
+    if not isinstance(research.get("infrastructure"), list):
+        errors.append(f"{path}: research.infrastructure must be a list")
+    stack = research.get("stack")
+    if not isinstance(stack, dict):
+        errors.append(f"{path}: research.stack must be an object")
+    else:
+        for key in sorted(set(stack) - {"runtime", "frontend", "backend", "packaging", "data", "unknowns"}):
+            errors.append(f"{path}: research.stack.{key} is not allowed")
+        for key in ["runtime", "frontend", "backend", "packaging", "data", "unknowns"]:
+            if not isinstance(stack.get(key), list):
+                errors.append(f"{path}: research.stack.{key} must be a list")
+    features = research.get("features")
+    feature_keys = [
+        "agent_support",
+        "orchestration",
+        "workspace_isolation",
+        "review_shipping",
+        "remote_mobile",
+        "context_memory",
+        "integrations",
+    ]
+    if not isinstance(features, dict):
+        errors.append(f"{path}: research.features must be an object")
+    else:
+        for key in sorted(set(features) - set(feature_keys)):
+            errors.append(f"{path}: research.features.{key} is not allowed")
+        for key in feature_keys:
+            if not isinstance(features.get(key), list):
+                errors.append(f"{path}: research.features.{key} must be a list")
+    benchmarking = research.get("benchmarking")
+    if not isinstance(benchmarking, dict):
+        errors.append(f"{path}: research.benchmarking must be an object")
+    else:
+        for key in sorted(set(benchmarking) - {"readiness", "install_surface", "parity_risks", "suggested_first_tasks"}):
+            errors.append(f"{path}: research.benchmarking.{key} is not allowed")
+        if benchmarking.get("readiness") not in {
+            "manual-ready",
+            "needs-install",
+            "enterprise-gated",
+            "owned-reference",
+            "research-only",
+        }:
+            errors.append(f"{path}: research.benchmarking.readiness is invalid")
+        for key in ["install_surface", "parity_risks", "suggested_first_tasks"]:
+            if not isinstance(benchmarking.get(key), list):
+                errors.append(f"{path}: research.benchmarking.{key} must be a list")
+        suggested = benchmarking.get("suggested_first_tasks")
+        if isinstance(suggested, list):
+            for task_id in suggested:
+                if not isinstance(task_id, str):
+                    errors.append(f"{path}: research.benchmarking.suggested_first_tasks must contain strings")
+                elif task_ids and task_id not in task_ids:
+                    errors.append(f"{path}: research.benchmarking.suggested_first_tasks unknown task {task_id}")
+    moat = research.get("moat")
+    if not isinstance(moat, dict):
+        errors.append(f"{path}: research.moat must be an object")
+    else:
+        for key in sorted(set(moat) - {"hypotheses", "evidence", "unknowns"}):
+            errors.append(f"{path}: research.moat.{key} is not allowed")
+        for key in ["hypotheses", "evidence", "unknowns"]:
+            if not isinstance(moat.get(key), list):
+                errors.append(f"{path}: research.moat.{key} must be a list")
     return errors
 
 
@@ -159,8 +292,9 @@ def validate_task(path: Path) -> list[str]:
 
 def check(_: argparse.Namespace) -> int:
     errors: list[str] = []
+    task_ids = {read_json(path)["id"] for path in sorted(TASKS.glob("*/task.json"))}
     for path in sorted(COMPETITORS.glob("*.json")):
-        errors.extend(validate_competitor(path))
+        errors.extend(validate_competitor(path, task_ids))
     for path in sorted(TASKS.glob("*/task.json")):
         errors.extend(validate_task(path))
     if errors:
