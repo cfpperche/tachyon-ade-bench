@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/marketing/source-registry.schema.json",
+  "title": "Marketing Source Registry",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "sources"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "updated_at": { "type": "string", "format": "date" },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "platform",
+          "channel_class",
+          "display_name",
+          "source_url",
+          "automation_level",
+          "cadence",
+          "query_fields",
+          "limitations"
+        ],
+        "properties": {
+          "platform": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "channel_class": {
+            "type": "string",
+            "enum": ["primary-paid", "secondary-paid", "adjacent-signal"]
+          },
+          "display_name": { "type": "string" },
+          "source_url": { "type": "string", "format": "uri" },
+          "automation_level": {
+            "type": "string",
+            "enum": ["automatable", "semi_automatable", "manual_required", "not_supported"]
+          },
+          "cadence": { "type": "string", "enum": ["weekly", "monthly", "manual"] },
+          "query_fields": { "type": "array", "items": { "type": "string" } },
+          "limitations": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

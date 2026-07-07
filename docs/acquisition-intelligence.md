@@ -120,6 +120,52 @@ marketing/
     ad-snapshot.schema.json
 ```
 
+Implemented foundation:
+
+```text
+marketing/
+  registry/
+    advertisers.json              # product aliases and query hints
+    sources.json                  # channel catalog, cadence, automation level
+  scans/                          # append-only scan folders
+  history/                        # generated or reviewed NDJSON history
+  current/                        # generated current-state summaries
+  creatives/                      # optional creative notes or captured evidence
+schemas/marketing/                # JSON schema contracts
+scripts/marketing/
+  check-marketing.py
+  normalize-scan.py
+  summarize-history.py
+```
+
+Validation:
+
+```sh
+python3 scripts/marketing/check-marketing.py
+python3 scripts/marketing/summarize-history.py --check
+```
+
+Normalize a manual or exported raw scan:
+
+```sh
+python3 scripts/marketing/normalize-scan.py \
+  --scan-id 20260707T200000Z \
+  --platform google \
+  --product agentsroom \
+  --raw-file marketing/scans/20260707T200000Z/google/agentsroom.raw.json
+```
+
+Generate derived history and current-state files from normalized scans:
+
+```sh
+python3 scripts/marketing/summarize-history.py
+```
+
+The generated `marketing/current/*.json` files are derived from normalized scan
+observations. Review diffs before committing them. `marketing/scans/` is the
+durable evidence layer; do not rewrite older scan folders unless correcting a
+documented data-entry error.
+
 ## Collection Workflow
 
 1. Build an advertiser alias list for each competitor: product name, company

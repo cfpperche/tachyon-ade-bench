@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/marketing/normalized-scan.schema.json",
+  "title": "Marketing Normalized Scan",
+  "type": "object",
+  "required": ["schema_version", "scan_id", "product_id", "platform", "observed_at", "observations"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "scan_id": { "type": "string" },
+    "product_id": { "type": "string" },
+    "platform": { "type": "string" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "observations": {
+      "type": "array",
+      "items": { "$ref": "ad-observation.schema.json" }
+    }
+  },
+  "additionalProperties": false
+}

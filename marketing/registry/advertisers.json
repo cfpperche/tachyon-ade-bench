@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1",
+  "updated_at": "2026-07-07",
+  "advertisers": [
+    {
+      "product_id": "tachyon",
+      "display_name": "Tachyon",
+      "included": true,
+      "aliases": {
+        "names": ["Tachyon", "Tachyon ADE", "Tachyon ADE Bench"],
+        "domains": ["cfpperche.github.io"],
+        "handles": [],
+        "github_orgs": ["cfpperche"]
+      },
+      "notes": "Owned reference product; acquisition scans should distinguish benchmark repo visibility from product marketing."
+    },
+    {
+      "product_id": "agentsroom",
+      "display_name": "AgentsRoom",
+      "included": true,
+      "aliases": {
+        "names": ["AgentsRoom", "Agents Room"],
+        "domains": ["agentsroom.dev"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Search both English and Portuguese landing-page variants."
+    },
+    {
+      "product_id": "augment-code",
+      "display_name": "Augment Code",
+      "included": true,
+      "aliases": {
+        "names": ["Augment Code", "Augment", "Auggie"],
+        "domains": ["augmentcode.com"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Enterprise B2B channel; LinkedIn and Google are likely high-signal."
+    },
+    {
+      "product_id": "hive",
+      "display_name": "Hive",
+      "included": true,
+      "aliases": {
+        "names": ["Hive", "Hive HQ", "Hive ADE", "@tt-a1i/hive"],
+        "domains": ["hivehq.dev"],
+        "handles": [],
+        "github_orgs": ["tt-a1i"]
+      },
+      "notes": "Name is generic; include domain/package qualifiers in searches."
+    },
+    {
+      "product_id": "hiveterm",
+      "display_name": "HiveTerm",
+      "included": true,
+      "aliases": {
+        "names": ["HiveTerm", "Hive Term"],
+        "domains": ["hiveterm.com"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Search exact product name first to avoid Hive-related false positives."
+    },
+    {
+      "product_id": "kandev",
+      "display_name": "Kandev",
+      "included": true,
+      "aliases": {
+        "names": ["Kandev", "KanDev"],
+        "domains": ["github.com/kdlbs/kandev"],
+        "handles": [],
+        "github_orgs": ["kdlbs"]
+      },
+      "notes": "Open-source project; GitHub and Product Hunt signals may matter more than paid ads."
+    },
+    {
+      "product_id": "openade",
+      "display_name": "OpenADE / ADE App",
+      "included": true,
+      "aliases": {
+        "names": ["OpenADE", "ADE App", "Bearly OpenADE"],
+        "domains": ["openade.ai", "ade-app.dev"],
+        "handles": [],
+        "github_orgs": ["bearlyai"]
+      },
+      "notes": "Search both OpenADE and ADE App branding."
+    },
+    {
+      "product_id": "orca",
+      "display_name": "Orca",
+      "included": true,
+      "aliases": {
+        "names": ["Orca", "OnOrca", "Stably Orca"],
+        "domains": ["onorca.dev"],
+        "handles": [],
+        "github_orgs": ["stablyai"]
+      },
+      "notes": "Name is generic; include domain/company qualifiers in searches."
+    },
+    {
+      "product_id": "t3-code",
+      "display_name": "T3 Code",
+      "included": true,
+      "aliases": {
+        "names": ["T3 Code", "T3Code", "ping.gg T3 Code"],
+        "domains": ["t3.codes"],
+        "handles": [],
+        "github_orgs": ["pingdotgg"]
+      },
+      "notes": "Search exact product and domain; T3 is otherwise ambiguous."
+    }
+  ]
+}

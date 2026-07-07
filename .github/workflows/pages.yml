@@ -34,6 +34,11 @@ jobs:
       - name: Validate benchmark metadata
         run: python3 harness/bench.py check
 
+      - name: Validate marketing metadata
+        run: |
+          python3 scripts/marketing/check-marketing.py
+          python3 scripts/marketing/summarize-history.py --check
+
       - name: Check dashboard
         run: npm run dashboard:check
 

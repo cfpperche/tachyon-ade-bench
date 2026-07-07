@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/marketing/current-coverage.schema.json",
+  "title": "Marketing Current Coverage",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "products", "platforms"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "products": { "type": "object" },
+    "platforms": { "type": "object" }
+  },
+  "additionalProperties": false
+}

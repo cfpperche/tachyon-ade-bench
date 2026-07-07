@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/marketing/current-ads.schema.json",
+  "title": "Marketing Current Ads",
+  "type": "object",
+  "required": ["schema_version", "generated_at", "ads"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "ads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["ad_fingerprint", "product_id", "platform", "first_seen", "last_seen", "seen_count", "status"],
+        "properties": {
+          "ad_fingerprint": { "type": "string" },
+          "product_id": { "type": "string" },
+          "platform": { "type": "string" },
+          "platform_ad_id": { "type": ["string", "null"] },
+          "advertiser_name": { "type": "string" },
+          "first_seen": { "type": "string", "format": "date-time" },
+          "last_seen": { "type": "string", "format": "date-time" },
+          "seen_count": { "type": "integer", "minimum": 1 },
+          "status": { "type": "string" },
+          "latest": { "type": "object" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

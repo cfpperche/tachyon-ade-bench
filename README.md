@@ -78,6 +78,7 @@ competitors/   Seed profiles for products under test
 apps/          Static dashboard and presentation surfaces
 docs/specs/    Spec-driven development records for benchmark changes
 harness/       Local reproducibility tooling
+marketing/     Acquisition-intelligence registries, scans, and summaries
 reports/       Human-readable benchmark summaries
 runs/          Ignored local run outputs
 schemas/       JSON schemas for tracked benchmark documents
@@ -91,6 +92,13 @@ Research docs:
 - `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
   sponsorships, newsletters, podcasts, and other marketing/distribution
   signals.
+
+Marketing acquisition checks:
+
+```sh
+python3 scripts/marketing/check-marketing.py
+python3 scripts/marketing/summarize-history.py --check
+```
 
 ## Benchmark principles
 

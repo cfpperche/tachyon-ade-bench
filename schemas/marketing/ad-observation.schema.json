@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/marketing/ad-observation.schema.json",
+  "title": "Marketing Ad Observation",
+  "type": "object",
+  "required": [
+    "event_type",
+    "scan_id",
+    "product_id",
+    "platform",
+    "ad_fingerprint",
+    "observed_at",
+    "source_url",
+    "advertiser_name",
+    "status"
+  ],
+  "properties": {
+    "event_type": { "type": "string", "enum": ["ad_seen"] },
+    "scan_id": { "type": "string" },
+    "product_id": { "type": "string" },
+    "platform": { "type": "string" },
+    "platform_ad_id": { "type": ["string", "null"] },
+    "ad_fingerprint": { "type": "string" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "source_url": { "type": "string", "format": "uri" },
+    "advertiser_name": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "inactive", "unknown"] },
+    "headline": { "type": ["string", "null"] },
+    "body": { "type": ["string", "null"] },
+    "cta": { "type": ["string", "null"] },
+    "landing_url": { "type": ["string", "null"] },
+    "landing_domain": { "type": ["string", "null"] },
+    "countries": { "type": "array", "items": { "type": "string" } },
+    "creative_type": { "type": ["string", "null"] },
+    "creative_url": { "type": ["string", "null"] },
+    "creative_hash": { "type": ["string", "null"] },
+    "claims": { "type": "array", "items": { "type": "string" } },
+    "positioning_tags": { "type": "array", "items": { "type": "string" } },
+    "raw_ref": { "type": "string" },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

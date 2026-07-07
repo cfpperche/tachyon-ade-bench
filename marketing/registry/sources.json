@@ -1,0 +1,151 @@
+{
+  "schema_version": "0.1",
+  "updated_at": "2026-07-07",
+  "sources": [
+    {
+      "platform": "meta",
+      "channel_class": "primary-paid",
+      "display_name": "Meta / Facebook / Instagram",
+      "source_url": "https://www.facebook.com/ads/library/",
+      "automation_level": "semi_automatable",
+      "cadence": "weekly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "Performance, spend, and full targeting are not exposed for ordinary competitor research.",
+        "API access and fields vary by ad category and region."
+      ]
+    },
+    {
+      "platform": "google",
+      "channel_class": "primary-paid",
+      "display_name": "Google / YouTube / Display / Search",
+      "source_url": "https://adstransparency.google.com/",
+      "automation_level": "semi_automatable",
+      "cadence": "weekly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "Records are thin and do not expose reliable budget, keyword, targeting, or performance data."
+      ]
+    },
+    {
+      "platform": "linkedin",
+      "channel_class": "primary-paid",
+      "display_name": "LinkedIn",
+      "source_url": "https://www.linkedin.com/",
+      "automation_level": "manual_required",
+      "cadence": "weekly",
+      "query_fields": ["name", "domain", "company_page"],
+      "limitations": [
+        "Access, fields, and visibility can vary by login state and region."
+      ]
+    },
+    {
+      "platform": "x",
+      "channel_class": "primary-paid",
+      "display_name": "X.com",
+      "source_url": "https://ads.twitter.com/ads-repository",
+      "automation_level": "semi_automatable",
+      "cadence": "weekly",
+      "query_fields": ["name", "domain", "handle"],
+      "limitations": [
+        "Coverage is uneven outside DSA surfaces and historical political/issue archives."
+      ]
+    },
+    {
+      "platform": "tiktok",
+      "channel_class": "secondary-paid",
+      "display_name": "TikTok",
+      "source_url": "https://ads.tiktok.com/business/creativecenter",
+      "automation_level": "semi_automatable",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "ADE and B2B signal may be sparse; fields vary by country and library surface."
+      ]
+    },
+    {
+      "platform": "reddit",
+      "channel_class": "secondary-paid",
+      "display_name": "Reddit Ads",
+      "source_url": "https://business.reddithelp.com/s/article/ads-inspiration-library",
+      "automation_level": "manual_required",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "General competitive ad transparency is less complete than Meta or Google."
+      ]
+    },
+    {
+      "platform": "snapchat",
+      "channel_class": "secondary-paid",
+      "display_name": "Snapchat",
+      "source_url": "https://www.snap.com/political-ads",
+      "automation_level": "manual_required",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "Mostly political and advocacy transparency; likely low signal for ADEs."
+      ]
+    },
+    {
+      "platform": "pinterest",
+      "channel_class": "secondary-paid",
+      "display_name": "Pinterest",
+      "source_url": "https://ads.pinterest.com/ads-repository/",
+      "automation_level": "manual_required",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "Repository is DSA/EU-oriented and likely low relevance for ADEs."
+      ]
+    },
+    {
+      "platform": "product-hunt",
+      "channel_class": "adjacent-signal",
+      "display_name": "Product Hunt",
+      "source_url": "https://www.producthunt.com/",
+      "automation_level": "semi_automatable",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain"],
+      "limitations": [
+        "Launch signal is not paid acquisition or benchmark evidence."
+      ]
+    },
+    {
+      "platform": "github-sponsors",
+      "channel_class": "adjacent-signal",
+      "display_name": "GitHub Sponsors",
+      "source_url": "https://docs.github.com/en/sponsors",
+      "automation_level": "semi_automatable",
+      "cadence": "monthly",
+      "query_fields": ["github_org", "domain"],
+      "limitations": [
+        "Sponsorship is an open-source sustainability signal, not advertising."
+      ]
+    },
+    {
+      "platform": "newsletter",
+      "channel_class": "adjacent-signal",
+      "display_name": "Sponsored newsletters",
+      "source_url": "https://example.invalid/manual-newsletter-scan",
+      "automation_level": "manual_required",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain", "utm_source"],
+      "limitations": [
+        "No universal public library; observations must cite issue archives or sponsor pages."
+      ]
+    },
+    {
+      "platform": "podcast",
+      "channel_class": "adjacent-signal",
+      "display_name": "Podcasts and video sponsorships",
+      "source_url": "https://example.invalid/manual-podcast-scan",
+      "automation_level": "manual_required",
+      "cadence": "monthly",
+      "query_fields": ["name", "domain", "promo_code"],
+      "limitations": [
+        "No universal public library; observations must cite episode pages, descriptions, or transcripts."
+      ]
+    }
+  ]
+}
