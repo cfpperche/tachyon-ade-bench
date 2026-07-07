@@ -1,0 +1,18 @@
+{
+  "campaigns": [
+    {
+      "ad_count": 3,
+      "first_seen": "2026-07-07T22:11:00Z",
+      "last_seen": "2026-07-07T22:11:00Z",
+      "platform": "google",
+      "positioning_tags": [
+        "enterprise-governance",
+        "positioning",
+        "review_shipping"
+      ],
+      "product_id": "augment-code"
+    }
+  ],
+  "generated_at": "2026-07-07T22:12:35Z",
+  "schema_version": "0.1"
+}

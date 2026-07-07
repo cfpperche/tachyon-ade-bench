@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-07-07T22:12:35Z",
+  "platforms": {
+    "google": {
+      "observation_count": 3,
+      "products": [
+        "augment-code"
+      ]
+    }
+  },
+  "products": {
+    "augment-code": {
+      "observation_count": 3,
+      "platforms": [
+        "google"
+      ]
+    }
+  },
+  "schema_version": "0.1"
+}

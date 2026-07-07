@@ -1,0 +1,76 @@
+{
+  "ads": [
+    {
+      "advertiser_name": "Augment Code",
+      "body": "A fleet of agents reviews every PR.",
+      "claims": [
+        "agentic code review"
+      ],
+      "countries": [
+        "US"
+      ],
+      "creative_hash": null,
+      "creative_type": "text",
+      "creative_url": null,
+      "cta": "Learn more",
+      "headline": "End 20-Hour PR Reviews - Agentic Code Review",
+      "landing_url": "https://www.augmentcode.com/",
+      "notes": "Observed in Google Ads Transparency Center assisted domain scan; screenshot shows approximately 700 ads for augmentcode.com. Evidence: marketing/creatives/google/augment-code/20260707T220758Z-augmentcode-google-domain.png.",
+      "platform_ad_id": null,
+      "positioning_tags": [
+        "enterprise-governance",
+        "review_shipping"
+      ],
+      "source_url": "https://adstransparency.google.com/?region=US&domain=augmentcode.com",
+      "status": "active"
+    },
+    {
+      "advertiser_name": "Augment Code",
+      "body": "Agents handle incidents faster now.",
+      "claims": [
+        "incident response"
+      ],
+      "countries": [
+        "US"
+      ],
+      "creative_hash": null,
+      "creative_type": "text",
+      "creative_url": null,
+      "cta": "Learn more",
+      "headline": "Cosmos Incident Response - 5x Faster Root Cause",
+      "landing_url": "https://www.augmentcode.com/",
+      "notes": "Observed in Google Ads Transparency Center assisted domain scan card. Evidence: marketing/creatives/google/augment-code/20260707T220758Z-augmentcode-google-domain.png.",
+      "platform_ad_id": null,
+      "positioning_tags": [
+        "enterprise-governance"
+      ],
+      "source_url": "https://adstransparency.google.com/?region=US&domain=augmentcode.com",
+      "status": "active"
+    },
+    {
+      "advertiser_name": "Augment Code",
+      "body": "Cosmos is multi-model by default.",
+      "claims": [
+        "Cursor alternative"
+      ],
+      "countries": [
+        "US"
+      ],
+      "creative_hash": null,
+      "creative_type": "text",
+      "creative_url": null,
+      "cta": "Learn more",
+      "headline": "Cursor Alternative: Cosmos",
+      "landing_url": "https://www.augmentcode.com/",
+      "notes": "Observed in Google Ads Transparency Center assisted domain scan card. Evidence: marketing/creatives/google/augment-code/20260707T220758Z-augmentcode-google-domain.png.",
+      "platform_ad_id": null,
+      "positioning_tags": [
+        "positioning"
+      ],
+      "source_url": "https://adstransparency.google.com/?region=US&domain=augmentcode.com",
+      "status": "active"
+    }
+  ],
+  "observed_at": "2026-07-07T22:11:00Z",
+  "source_url": "https://adstransparency.google.com/?region=US&domain=augmentcode.com"
+}
