@@ -4,21 +4,21 @@ _Generated from `plan.md` on 2026-07-07. Work top-to-bottom. Check boxes as task
 
 ## Implementation
 
-- [ ] Add harness support for `post_prepare`, dirty benchmark commit markers, and bytecode suppression.
-- [ ] Add T002 feature task for checkout discount support.
-- [ ] Add T003 dirty-worktree safety task.
-- [ ] Add T004 CI failure/status normalizer task.
-- [ ] Add T005 static UI responsive card task.
-- [ ] Add suite-level fixture check script.
-- [ ] Run local Tachyon/Codex dogfood across all five tasks.
-- [ ] Write `reports/tachyon-baseline-v0.1.md`.
+- [x] Add harness support for `post_prepare`, dirty benchmark commit markers, and bytecode suppression.
+- [x] Add T002 feature task for checkout discount support.
+- [x] Add T003 dirty-worktree safety task.
+- [x] Add T004 CI failure/status normalizer task.
+- [x] Add T005 static UI responsive card task.
+- [x] Add suite-level fixture check script.
+- [x] Run local Tachyon/Codex dogfood across all five tasks.
+- [x] Write `reports/tachyon-baseline-v0.1.md`.
 
 ## Verification
 
-- [ ] `python3 harness/bench.py check` passes.
-- [ ] `scripts/check-suite.sh` passes.
-- [ ] `scripts/smoke.sh` passes.
-- [ ] All five `runs/tachyon-v0.1-*` local dogfood runs pass verification.
+- [x] `python3 harness/bench.py check` passes.
+- [x] `scripts/check-suite.sh` passes.
+- [x] `scripts/smoke.sh` passes.
+- [x] All five `runs/tachyon-v0.1-*` local dogfood runs pass verification.
 
 **Headless check:** `scripts/check-suite.sh`
 <!-- A mechanical command an agent can run to validate this spec's implementation
@@ -29,10 +29,11 @@ _Generated from `plan.md` on 2026-07-07. Work top-to-bottom. Check boxes as task
      default, and runs only with --run. Multiple **Verify:** lines run in order. -->
 
 **Verify:** `scripts/check-suite.sh`
+**Verify:** `scripts/smoke.sh`
 
 ## Dogfood
 
-**Dogfood:** `scripts/smoke.sh`
+**Dogfood:** `scripts/check-suite.sh`
 <!-- A representative command that exercises the shipped behavior end-to-end.
      `/sdd dogfood` previews by default and runs only with --run, then logs under
      notes.md `## Dogfood log`. If no meaningful headless dogfood exists, replace

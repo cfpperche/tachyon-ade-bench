@@ -8,7 +8,7 @@ python3 harness/bench.py check
 
 for task_json in tasks/T*/task.json; do
   task_id="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["id"])' "$task_json")"
-  run_id="suite-check-$task_id"
+  run_id="suite-check-$$-$task_id"
   rm -rf "runs/$run_id"
   python3 harness/bench.py prepare --product tachyon --task "$task_id" --run-id "$run_id" >/dev/null
   if python3 harness/bench.py verify "runs/$run_id" >/dev/null; then

@@ -2,7 +2,8 @@
 
 _Created 2026-07-07._
 
-**Status:** in-progress
+**Status:** shipped
+**Closure:** Shipped the v0.1 task suite, dirty-worktree harness support, suite check script, and local Tachyon/Codex baseline report.
 <!-- Bare enum only: draft | in-progress | shipped | shipped-partial | superseded | abandoned | deferred.
      When this ships, add a **Closure:** line here recording what shipped (commit/evidence);
      `/sdd close` flags a shipped spec that still lacks one (alongside unchecked boxes,
@@ -22,24 +23,24 @@ evidence.
 
 ## Acceptance criteria
 
-- [ ] **Scenario: Suite metadata**
+- [x] **Scenario: Suite metadata**
   - **Given** the repository after this spec
   - **When** `python3 harness/bench.py list-tasks` runs
   - **Then** it lists five tasks covering bugfix, feature, dirty-worktree, CI failure, and UI regression categories
-- [ ] **Scenario: Baseline fixtures fail before product work**
+- [x] **Scenario: Baseline fixtures fail before product work**
   - **Given** the v0.1 task suite
   - **When** `scripts/check-suite.sh` runs
   - **Then** every task prepares successfully and fails verification before a product fix
-- [ ] **Scenario: Dirty worktree setup**
+- [x] **Scenario: Dirty worktree setup**
   - **Given** task `T003-dirty-worktree-safety`
   - **When** it is prepared
   - **Then** the worktree contains a tracked README modification and an untracked `local-user-note.txt` after the baseline commit
-- [ ] **Scenario: Tachyon dogfood baseline**
+- [x] **Scenario: Tachyon dogfood baseline**
   - **Given** a clean benchmark commit containing the v0.1 suite
   - **When** local Tachyon/Codex dogfood runs each task and verifies the result
   - **Then** all five task verifiers pass and a report records status, diff footprint, and evidence limitations
-- [ ] Harness run metadata marks dirty benchmark checkouts with `-dirty`.
-- [ ] Verifier execution avoids writing Python bytecode into product worktrees.
+- [x] Harness run metadata marks dirty benchmark checkouts with `-dirty`.
+- [x] Verifier execution avoids writing Python bytecode into product worktrees.
 
 ## Non-goals
 
