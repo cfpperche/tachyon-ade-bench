@@ -1,0 +1,29 @@
+{
+  "id": "t3-code",
+  "name": "T3 Code",
+  "class": "A-local-ade",
+  "homepage": "https://t3.codes/",
+  "source_url": null,
+  "license": "unknown",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prepare a run worktree, open it in T3 Code, provide prompt.md exactly, then run harness verification."
+  },
+  "inclusion": "Direct ADE competitor for operating coding agents from a desktop or web control plane.",
+  "pricing_model": "unknown",
+  "public_stack_signals": [],
+  "capabilities_to_probe": [
+    "agent selection",
+    "diff review",
+    "commit or pull request workflow",
+    "BYO subscriptions"
+  ],
+  "moat_hypotheses": [
+    "community distribution",
+    "simple agent control UX"
+  ],
+  "setup_notes": [],
+  "research_status": "seeded; verify current claims before publishing scored reports",
+  "updated_at": "2026-07-07"
+}
+

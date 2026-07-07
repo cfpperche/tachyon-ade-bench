@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/run-result.schema.json",
+  "title": "Run Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "status",
+    "created_at",
+    "updated_at",
+    "product",
+    "task",
+    "run_config",
+    "paths",
+    "verification"
+  ],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "run_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["prepared", "pass", "fail", "aborted", "invalid"] },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "product": {
+      "type": "object",
+      "required": ["id", "name", "class"],
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "class": { "type": "string" }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["id", "title", "category"],
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" }
+      }
+    },
+    "benchmark_commit": { "type": ["string", "null"] },
+    "fixture_baseline_commit": { "type": "string" },
+    "human_interventions": { "type": ["integer", "null"], "minimum": 0 },
+    "run_config": {
+      "type": "object",
+      "properties": {
+        "product_version": { "type": ["string", "null"] },
+        "model": { "type": ["string", "null"] },
+        "network_policy": { "type": "string" },
+        "time_budget_minutes": { "type": ["integer", "null"], "minimum": 1 },
+        "cost_usd": { "type": ["number", "null"], "minimum": 0 },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "paths": { "type": "object" },
+    "verification": { "type": ["object", "null"] },
+    "events": { "type": "array" }
+  },
+  "additionalProperties": true
+}

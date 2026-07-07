@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/task.schema.json",
+  "title": "Benchmark Task",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "category",
+    "difficulty",
+    "prompt",
+    "repo",
+    "verify"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^T[0-9]{3}-[a-z0-9-]+$" },
+    "title": { "type": "string" },
+    "category": { "type": "string" },
+    "difficulty": { "type": "string", "enum": ["smoke", "small", "medium", "large"] },
+    "prompt": { "type": "string" },
+    "repo": { "type": "string" },
+    "time_budget_minutes": { "type": "integer", "minimum": 1 },
+    "success_criteria": { "type": "array", "items": { "type": "string" } },
+    "verify": {
+      "type": "object",
+      "required": ["directory", "command"],
+      "properties": {
+        "directory": { "type": "string" },
+        "command": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

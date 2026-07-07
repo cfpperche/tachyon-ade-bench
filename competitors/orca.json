@@ -1,0 +1,35 @@
+{
+  "id": "orca",
+  "name": "Orca",
+  "class": "A-local-ade",
+  "homepage": "https://www.onorca.dev/",
+  "source_url": "https://github.com/stablyai/orca",
+  "license": "unknown",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
+  },
+  "inclusion": "Direct open-source ADE competitor for running multiple coding agents across isolated worktrees.",
+  "pricing_model": "open-source plus external model or agent subscriptions; verify details",
+  "public_stack_signals": [
+    "public repository available",
+    "landing page positions product around multiple coding agents"
+  ],
+  "capabilities_to_probe": [
+    "multi-agent worktree orchestration",
+    "agent CLI support",
+    "diff review",
+    "browser or design mode",
+    "GitHub integration",
+    "mobile companion"
+  ],
+  "moat_hypotheses": [
+    "broad product surface",
+    "open-source distribution",
+    "mobile and remote control loop"
+  ],
+  "setup_notes": [],
+  "research_status": "seeded; verify current claims before publishing scored reports",
+  "updated_at": "2026-07-07"
+}
+

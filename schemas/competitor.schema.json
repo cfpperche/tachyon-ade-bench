@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/competitor.schema.json",
+  "title": "Competitor Profile",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "class",
+    "homepage",
+    "source_url",
+    "license",
+    "runner",
+    "inclusion",
+    "research_status",
+    "updated_at"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "string" },
+    "class": {
+      "type": "string",
+      "enum": [
+        "A-local-ade",
+        "B-enterprise-agentic-platform"
+      ]
+    },
+    "homepage": { "type": ["string", "null"], "format": "uri" },
+    "source_url": { "type": ["string", "null"], "format": "uri" },
+    "license": { "type": "string" },
+    "runner": {
+      "type": "object",
+      "required": ["kind", "notes"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["manual", "cli", "api"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "inclusion": { "type": "string" },
+    "pricing_model": { "type": "string" },
+    "public_stack_signals": { "type": "array", "items": { "type": "string" } },
+    "capabilities_to_probe": { "type": "array", "items": { "type": "string" } },
+    "moat_hypotheses": { "type": "array", "items": { "type": "string" } },
+    "setup_notes": { "type": "array", "items": { "type": "string" } },
+    "research_status": { "type": "string" },
+    "updated_at": { "type": "string", "format": "date" }
+  },
+  "additionalProperties": false
+}
+

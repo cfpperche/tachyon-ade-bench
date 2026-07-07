@@ -1,0 +1,77 @@
+# Tachyon ADE Bench
+
+Tachyon ADE Bench is a reproducible benchmark harness for comparing Tachyon
+against other Agentic Development Environments.
+
+The repository starts with a conservative scope: prepare identical task
+worktrees, capture comparable run artifacts, and verify the final result with
+task-owned checks. It does not publish scored claims until every competitor run
+has replayable evidence.
+
+## Included products
+
+The initial roster is limited to products that can reasonably compete with an
+agentic software development environment:
+
+- Tachyon
+- Orca
+- HiveTerm
+- T3 Code
+- Hive
+- AgentsRoom
+- Augment Code
+- OpenADE / ADE App
+- Kandev
+
+LandingAI is intentionally excluded from the first benchmark roster because its
+ADE product is Agentic Document Extraction, not an agentic software development
+environment.
+
+## Quickstart
+
+Requirements: Python 3 and Git.
+
+```sh
+python3 harness/bench.py check
+python3 harness/bench.py list-products
+python3 harness/bench.py list-tasks
+
+python3 harness/bench.py prepare --product tachyon --task T001-python-bugfix --run-id local-smoke
+
+# Point the product under test at runs/local-smoke/worktree and give it
+# runs/local-smoke/prompt.md.
+
+python3 harness/bench.py verify runs/local-smoke
+```
+
+Every run writes a `result.json` plus collected artifacts under its run
+directory. The verifier is independent of the product under test.
+
+## Repository layout
+
+```text
+competitors/   Seed profiles for products under test
+docs/specs/    Spec-driven development records for benchmark changes
+harness/       Local reproducibility tooling
+reports/       Human-readable benchmark summaries
+runs/          Ignored local run outputs
+schemas/       JSON schemas for tracked benchmark documents
+tasks/         Versioned benchmark tasks and fixtures
+```
+
+## Benchmark principles
+
+- Same starting repo, prompt, model constraints, and time budget per comparable
+  run.
+- Product claims are not accepted as evidence. The harness collects diffs,
+  verification output, timestamps, and run metadata.
+- Manual products are allowed, but manual intervention must be counted.
+- Raw measurements stay visible even when a summary score is introduced.
+- Competitor profile claims must remain sourced or marked as needing
+  verification.
+
+## Status
+
+Alpha. The first commit establishes the protocol, schemas, seed competitors,
+one fixture task, and a local harness. It is not a scored public benchmark yet.
+

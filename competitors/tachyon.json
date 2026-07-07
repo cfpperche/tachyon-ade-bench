@@ -1,0 +1,33 @@
+{
+  "id": "tachyon",
+  "name": "Tachyon",
+  "class": "A-local-ade",
+  "homepage": null,
+  "source_url": null,
+  "license": "unknown",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prepare a run worktree, launch Tachyon against it, provide prompt.md exactly, then run harness verification."
+  },
+  "inclusion": "Reference product under test.",
+  "pricing_model": "depends on configured agent runtimes",
+  "public_stack_signals": [],
+  "capabilities_to_probe": [
+    "multi-agent orchestration",
+    "worktree isolation",
+    "handoff and evidence capture",
+    "verification gates",
+    "host action governance"
+  ],
+  "moat_hypotheses": [
+    "auditable agent operations",
+    "verification-first workflow",
+    "plugin and host-action governance"
+  ],
+  "setup_notes": [
+    "Fill homepage and source_url when the public product surface is ready."
+  ],
+  "research_status": "owned product profile; fill current public links before external report",
+  "updated_at": "2026-07-07"
+}
+

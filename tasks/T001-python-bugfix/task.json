@@ -1,0 +1,21 @@
+{
+  "id": "T001-python-bugfix",
+  "title": "Fix multiplication parser identity value",
+  "category": "bugfix",
+  "difficulty": "smoke",
+  "prompt": "prompt.md",
+  "repo": "repo",
+  "time_budget_minutes": 10,
+  "success_criteria": [
+    "All unit tests pass",
+    "The multiplication function returns 24 for '2,3,4'",
+    "The addition behavior remains unchanged"
+  ],
+  "verify": {
+    "directory": "verifier",
+    "command": [
+      "bash",
+      "verify.sh"
+    ]
+  }
+}

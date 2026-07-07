@@ -1,0 +1,33 @@
+{
+  "id": "augment-code",
+  "name": "Augment Code",
+  "class": "B-enterprise-agentic-platform",
+  "homepage": "https://www.augmentcode.com/",
+  "source_url": null,
+  "license": "proprietary",
+  "runner": {
+    "kind": "manual",
+    "notes": "Benchmark separately from Class A unless setup parity is documented."
+  },
+  "inclusion": "Enterprise agentic coding platform with context and governance emphasis.",
+  "pricing_model": "unknown",
+  "public_stack_signals": [],
+  "capabilities_to_probe": [
+    "large codebase context",
+    "ticket to PR workflow",
+    "code review",
+    "security remediation",
+    "enterprise governance"
+  ],
+  "moat_hypotheses": [
+    "organizational context engine",
+    "enterprise trust and compliance",
+    "deep SDLC integrations"
+  ],
+  "setup_notes": [
+    "Report separately when enterprise-only setup differs from local ADE setup."
+  ],
+  "research_status": "seeded; verify current claims before publishing scored reports",
+  "updated_at": "2026-07-07"
+}
+
