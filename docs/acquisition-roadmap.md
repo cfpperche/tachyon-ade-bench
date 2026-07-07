@@ -51,6 +51,24 @@ Acceptance signals:
   tracked products and primary platforms.
 - Ambiguous results are queued for review rather than silently discarded.
 
+Initial command:
+
+```sh
+npm run acquisition:plan -- \
+  --scan-id 20260707T230000Z \
+  --limit-primary
+```
+
+Preview without writing:
+
+```sh
+npm run acquisition:plan -- \
+  --scan-id 20260707T230000Z \
+  --platform google \
+  --platform meta \
+  --dry-run
+```
+
 ## Phase 3 - Assisted Evidence Capture
 
 Status: planned.

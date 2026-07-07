@@ -10,7 +10,8 @@
     "dashboard:dev": "npm --workspace apps/bench-dashboard run dev",
     "dashboard:check": "npm --workspace apps/bench-dashboard run check",
     "dashboard:build": "npm --workspace apps/bench-dashboard run build",
-    "dashboard:preview": "npm --workspace apps/bench-dashboard run preview"
+    "dashboard:preview": "npm --workspace apps/bench-dashboard run preview",
+    "acquisition:plan": "python3 scripts/marketing/plan-scan.py"
   },
   "engines": {
     "node": ">=22"

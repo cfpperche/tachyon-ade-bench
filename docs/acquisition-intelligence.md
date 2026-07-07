@@ -159,6 +159,25 @@ scripts/marketing/new-scan.py \
   --source-url https://adstransparency.google.com/
 ```
 
+Plan a complete registry-driven scan manifest without querying platforms:
+
+```sh
+npm run acquisition:plan -- \
+  --scan-id 20260707T230000Z \
+  --platform google \
+  --platform meta \
+  --dry-run
+```
+
+Write the planned manifest when the rows look correct:
+
+```sh
+npm run acquisition:plan -- \
+  --scan-id 20260707T230000Z \
+  --platform google \
+  --platform meta
+```
+
 Record a negative library lookup:
 
 ```sh
