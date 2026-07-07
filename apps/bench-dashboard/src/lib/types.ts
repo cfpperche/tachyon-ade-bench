@@ -189,6 +189,22 @@ export interface AcquisitionCampaignRow extends MarketingCampaign {
   product_name: string;
 }
 
+export interface AcquisitionScanHistoryRow {
+  blocked: number;
+  completed_at?: string;
+  found: number;
+  not_found: number;
+  partial: number;
+  platform_count: number;
+  query_count: number;
+  scan_id: string;
+  started_at: string;
+}
+
+export interface AcquisitionReviewItem extends AcquisitionCoverageRow {
+  reason: "partial-result" | "blocked-source" | "generic-domain";
+}
+
 export interface AcquisitionBoardData {
   ads: AcquisitionAdRow[];
   campaigns: AcquisitionCampaignRow[];
@@ -198,6 +214,8 @@ export interface AcquisitionBoardData {
   manifests: MarketingManifest[];
   platformCount: number;
   queryCount: number;
+  reviewQueue: AcquisitionReviewItem[];
   scanCount: number;
+  scanHistory: AcquisitionScanHistoryRow[];
   statusCounts: Partial<Record<AcquisitionResult, number>>;
 }

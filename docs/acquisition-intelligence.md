@@ -5,6 +5,9 @@ paid ads, launch channels, sponsored distribution, and adjacent demand signals.
 It is separate from benchmark evidence. A product can have strong acquisition
 signals without being better in a reproducible task run.
 
+Roadmap: see `docs/acquisition-roadmap.md` for the phased plan from board,
+review queue, and scan history to scheduled monitoring and reporting.
+
 ## Scope
 
 Track acquisition evidence for the same software ADE roster used by

@@ -5,7 +5,9 @@ import type {
   AcquisitionBoardData,
   AcquisitionCampaignRow,
   AcquisitionCoverageRow,
+  AcquisitionReviewItem,
   AcquisitionResult,
+  AcquisitionScanHistoryRow,
   Competitor,
   CompetitorSummary,
   MarketingCampaign,
@@ -191,6 +193,50 @@ function latestCoverageRows(manifest: MarketingManifest | null): AcquisitionCove
   }));
 }
 
+function scanHistoryRows(manifests: MarketingManifest[]): AcquisitionScanHistoryRow[] {
+  return manifests
+    .map((manifest) => {
+      const counts = manifest.queries.reduce<Record<AcquisitionResult, number>>(
+        (accumulator, query) => {
+          accumulator[query.result] = (accumulator[query.result] ?? 0) + 1;
+          return accumulator;
+        },
+        { found: 0, partial: 0, blocked: 0, "not-found": 0 },
+      );
+      return {
+        blocked: counts.blocked,
+        completed_at: manifest.completed_at,
+        found: counts.found,
+        not_found: counts["not-found"],
+        partial: counts.partial,
+        platform_count: new Set(manifest.queries.map((query) => query.platform)).size,
+        query_count: manifest.queries.length,
+        scan_id: manifest.scan_id,
+        started_at: manifest.started_at,
+      };
+    })
+    .sort((a, b) => b.scan_id.localeCompare(a.scan_id));
+}
+
+function reviewQueueRows(rows: AcquisitionCoverageRow[]): AcquisitionReviewItem[] {
+  return rows
+    .filter((row) => {
+      if (row.result === "partial" || row.result === "blocked") {
+        return true;
+      }
+      return row.product_id === "kandev" && row.query === "github.com";
+    })
+    .map((row) => ({
+      ...row,
+      reason:
+        row.product_id === "kandev" && row.query === "github.com"
+          ? "generic-domain"
+          : row.result === "blocked"
+            ? "blocked-source"
+            : "partial-result",
+    }));
+}
+
 export function getAcquisitionBoardData(): AcquisitionBoardData {
   const manifests = getMarketingManifests();
   const latestScan = manifests.at(-1) ?? null;
@@ -213,6 +259,7 @@ export function getAcquisitionBoardData(): AcquisitionBoardData {
     product_name: names.get(campaign.product_id) ?? campaign.product_id,
   }));
   const coverageRows = latestCoverageRows(latestScan);
+  const reviewQueue = reviewQueueRows(coverageRows);
   const platforms = new Set([
     ...coverageRows.map((row) => row.platform),
     ...ads.map((ad) => ad.platform),
@@ -235,7 +282,9 @@ export function getAcquisitionBoardData(): AcquisitionBoardData {
     manifests,
     platformCount: platforms.size,
     queryCount: coverageRows.length,
+    reviewQueue,
     scanCount: manifests.length,
+    scanHistory: scanHistoryRows(manifests),
     statusCounts,
   };
 }

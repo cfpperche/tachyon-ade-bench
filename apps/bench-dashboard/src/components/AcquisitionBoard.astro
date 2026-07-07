@@ -34,6 +34,15 @@ function platformLabel(value: string): string {
   return (t.labels as Record<string, string>)[value] ?? label(value, locale);
 }
 
+function reviewReasonLabel(value: string): string {
+  const labels: Record<string, string> = {
+    "partial-result": t.acquisition.partialResult,
+    "blocked-source": t.acquisition.blockedSource,
+    "generic-domain": t.acquisition.genericDomain,
+  };
+  return labels[value] ?? label(value, locale);
+}
+
 const metrics = [
   [t.acquisition.metrics.scans, board.scanCount, t.acquisition.metrics.scansNote],
   [t.acquisition.metrics.platforms, board.platformCount, t.acquisition.metrics.platformsNote],
@@ -116,6 +125,84 @@ const limitations = board.latestScan?.limitations ?? [];
       </div>
     ) : (
       <div class="empty-state">{t.acquisition.noCoverage}</div>
+    )}
+  </section>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.acquisition.historyTitle}</h2>
+        <p>{t.acquisition.historyDescription}</p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>{t.acquisition.scan}</th>
+            <th>{t.acquisition.started}</th>
+            <th>{t.acquisition.completed}</th>
+            <th>{t.acquisition.platforms}</th>
+            <th>{t.acquisition.queries}</th>
+            <th>{statusLabel("found")}</th>
+            <th>{statusLabel("partial")}</th>
+            <th>{statusLabel("blocked")}</th>
+            <th>{statusLabel("not-found")}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {board.scanHistory.map((scan) => (
+            <tr>
+              <td><strong>{scan.scan_id}</strong></td>
+              <td>{formatDate(scan.started_at)}</td>
+              <td>{formatDate(scan.completed_at)}</td>
+              <td>{scan.platform_count}</td>
+              <td>{scan.query_count}</td>
+              <td>{scan.found}</td>
+              <td>{scan.partial}</td>
+              <td>{scan.blocked}</td>
+              <td>{scan.not_found}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.acquisition.reviewTitle}</h2>
+        <p>{t.acquisition.reviewDescription}</p>
+      </div>
+    </div>
+
+    {board.reviewQueue.length > 0 ? (
+      <div class="review-grid">
+        {board.reviewQueue.map((item) => (
+          <article class="review-card">
+            <div>
+              <span class={`badge badge--${item.result}`}>{statusLabel(item.result)}</span>
+              <h3>{item.product_name}</h3>
+              <p>{platformLabel(item.platform)} · {item.query}</p>
+            </div>
+            <dl class="compact-dl">
+              <div>
+                <dt>{t.acquisition.reason}</dt>
+                <dd>{reviewReasonLabel(item.reason)}</dd>
+              </div>
+              <div>
+                <dt>{t.acquisition.method}</dt>
+                <dd>{item.method}</dd>
+              </div>
+            </dl>
+            <a class="link" href={item.source_url}>{t.acquisition.openSource}</a>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">{t.acquisition.noReviewItems}</div>
     )}
   </section>
 
