@@ -1,6 +1,18 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
-import type { Competitor, CompetitorSummary, TaskMeta } from "./types";
+import type {
+  AcquisitionAdRow,
+  AcquisitionBoardData,
+  AcquisitionCampaignRow,
+  AcquisitionCoverageRow,
+  AcquisitionResult,
+  Competitor,
+  CompetitorSummary,
+  MarketingCampaign,
+  MarketingCurrentAd,
+  MarketingManifest,
+  TaskMeta,
+} from "./types";
 
 function findRepoRoot(start: string): string {
   let current = resolve(start);
@@ -20,6 +32,7 @@ function findRepoRoot(start: string): string {
 const repoRoot = findRepoRoot(process.env.INIT_CWD ?? process.cwd());
 const competitorsDir = resolve(repoRoot, "competitors");
 const tasksDir = resolve(repoRoot, "tasks");
+const marketingDir = resolve(repoRoot, "marketing");
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf-8")) as T;
@@ -116,4 +129,113 @@ export function countBy<T extends string>(values: T[]): Record<T, number> {
     },
     {} as Record<T, number>,
   );
+}
+
+interface CurrentAdsFile {
+  ads: MarketingCurrentAd[];
+  generated_at: string;
+  schema_version: string;
+}
+
+interface CurrentCampaignsFile {
+  campaigns: MarketingCampaign[];
+  generated_at: string;
+  schema_version: string;
+}
+
+function readJsonIfExists<T>(path: string, fallback: T): T {
+  if (!existsSync(path)) {
+    return fallback;
+  }
+  return readJson<T>(path);
+}
+
+function productNameMap(): Map<string, string> {
+  return new Map(getCompetitors().map((competitor) => [competitor.id, competitor.name]));
+}
+
+function evidenceRefsFromNotes(notes: string | null): string[] {
+  if (!notes) {
+    return [];
+  }
+  const refs = new Set<string>();
+  const pattern = /marketing\/[A-Za-z0-9_./-]+/g;
+  for (const match of notes.matchAll(pattern)) {
+    refs.add(match[0].replace(/[.)]+$/, ""));
+  }
+  return Array.from(refs);
+}
+
+function getMarketingManifests(): MarketingManifest[] {
+  const scansDir = join(marketingDir, "scans");
+  if (!existsSync(scansDir)) {
+    return [];
+  }
+  return readdirSync(scansDir)
+    .map((dir) => join(scansDir, dir, "manifest.json"))
+    .filter((path) => existsSync(path))
+    .map((path) => readJson<MarketingManifest>(path))
+    .sort((a, b) => a.scan_id.localeCompare(b.scan_id));
+}
+
+function latestCoverageRows(manifest: MarketingManifest | null): AcquisitionCoverageRow[] {
+  if (!manifest) {
+    return [];
+  }
+  const names = productNameMap();
+  return manifest.queries.map((query) => ({
+    ...query,
+    product_name: names.get(query.product_id) ?? query.product_id,
+    result: query.result as AcquisitionResult,
+    scan_id: manifest.scan_id,
+  }));
+}
+
+export function getAcquisitionBoardData(): AcquisitionBoardData {
+  const manifests = getMarketingManifests();
+  const latestScan = manifests.at(-1) ?? null;
+  const adsFile = readJsonIfExists<CurrentAdsFile>(
+    join(marketingDir, "current", "ads.json"),
+    { ads: [], generated_at: "", schema_version: "0.1" },
+  );
+  const campaignsFile = readJsonIfExists<CurrentCampaignsFile>(
+    join(marketingDir, "current", "campaigns.json"),
+    { campaigns: [], generated_at: "", schema_version: "0.1" },
+  );
+  const names = productNameMap();
+  const ads: AcquisitionAdRow[] = adsFile.ads.map((ad) => ({
+    ...ad,
+    product_name: names.get(ad.product_id) ?? ad.product_id,
+    evidence_refs: evidenceRefsFromNotes(ad.latest.notes),
+  }));
+  const campaigns: AcquisitionCampaignRow[] = campaignsFile.campaigns.map((campaign) => ({
+    ...campaign,
+    product_name: names.get(campaign.product_id) ?? campaign.product_id,
+  }));
+  const coverageRows = latestCoverageRows(latestScan);
+  const platforms = new Set([
+    ...coverageRows.map((row) => row.platform),
+    ...ads.map((ad) => ad.platform),
+    ...campaigns.map((campaign) => campaign.platform),
+  ]);
+  const statusCounts = coverageRows.reduce<Partial<Record<AcquisitionResult, number>>>(
+    (counts, row) => {
+      counts[row.result] = (counts[row.result] ?? 0) + 1;
+      return counts;
+    },
+    {},
+  );
+
+  return {
+    ads,
+    campaigns,
+    coverageRows,
+    generatedAt: adsFile.generated_at || campaignsFile.generated_at || null,
+    latestScan,
+    manifests,
+    platformCount: platforms.size,
+    queryCount: coverageRows.length,
+    scanCount: manifests.length,
+    statusCounts,
+  };
 }

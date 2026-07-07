@@ -103,3 +103,101 @@ export interface CompetitorSummary {
   integrations: string[];
   suggestedTasks: string[];
 }
+
+export type AcquisitionResult = "found" | "not-found" | "partial" | "blocked";
+
+export interface MarketingAdEvent {
+  ad_fingerprint: string;
+  advertiser_name: string;
+  body: string | null;
+  claims: string[];
+  countries: string[];
+  creative_hash: string | null;
+  creative_type: string;
+  creative_url: string | null;
+  cta: string | null;
+  event_type: string;
+  headline: string | null;
+  landing_domain: string | null;
+  landing_url: string | null;
+  notes: string | null;
+  observed_at: string;
+  platform: string;
+  platform_ad_id: string | null;
+  positioning_tags: string[];
+  product_id: string;
+  raw_ref: string;
+  scan_id: string;
+  source_url: string;
+  status: string;
+}
+
+export interface MarketingCurrentAd {
+  ad_fingerprint: string;
+  advertiser_name: string;
+  first_seen: string;
+  last_seen: string;
+  latest: MarketingAdEvent;
+  platform: string;
+  platform_ad_id: string | null;
+  product_id: string;
+  seen_count: number;
+  status: string;
+}
+
+export interface MarketingCampaign {
+  ad_count: number;
+  first_seen: string;
+  last_seen: string;
+  platform: string;
+  positioning_tags: string[];
+  product_id: string;
+}
+
+export interface MarketingManifestQuery {
+  country: string | null;
+  method: string;
+  platform: string;
+  product_id: string;
+  query: string;
+  result: AcquisitionResult;
+  source_url: string;
+}
+
+export interface MarketingManifest {
+  completed_at?: string;
+  git_commit: string;
+  limitations: string[];
+  queries: MarketingManifestQuery[];
+  scan_id: string;
+  schema_version: string;
+  started_at: string;
+  tool_version: string;
+}
+
+export interface AcquisitionCoverageRow extends MarketingManifestQuery {
+  product_name: string;
+  scan_id: string;
+}
+
+export interface AcquisitionAdRow extends MarketingCurrentAd {
+  product_name: string;
+  evidence_refs: string[];
+}
+
+export interface AcquisitionCampaignRow extends MarketingCampaign {
+  product_name: string;
+}
+
+export interface AcquisitionBoardData {
+  ads: AcquisitionAdRow[];
+  campaigns: AcquisitionCampaignRow[];
+  coverageRows: AcquisitionCoverageRow[];
+  generatedAt: string | null;
+  latestScan: MarketingManifest | null;
+  manifests: MarketingManifest[];
+  platformCount: number;
+  queryCount: number;
+  scanCount: number;
+  statusCounts: Partial<Record<AcquisitionResult, number>>;
+}

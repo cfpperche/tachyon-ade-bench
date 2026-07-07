@@ -1,0 +1,12 @@
+---
+import AcquisitionBoard from "../../components/AcquisitionBoard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getUi, type Locale } from "../../lib/i18n";
+
+const locale: Locale = "pt";
+const t = getUi(locale);
+---
+
+<BaseLayout title={t.acquisition.title} locale={locale} currentPath="/acquisition/">
+  <AcquisitionBoard locale={locale} />
+</BaseLayout>

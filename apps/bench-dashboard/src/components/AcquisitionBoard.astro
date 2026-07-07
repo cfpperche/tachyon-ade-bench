@@ -1,0 +1,208 @@
+---
+import { getAcquisitionBoardData } from "../lib/data";
+import { label } from "../lib/format";
+import { getUi, type Locale } from "../lib/i18n";
+import { url } from "../lib/routes";
+import type { AcquisitionResult } from "../lib/types";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getUi(locale);
+const board = getAcquisitionBoardData();
+const dateLocale = locale === "pt" ? "pt-BR" : "en-US";
+const statusOrder: AcquisitionResult[] = ["found", "partial", "blocked", "not-found"];
+const repoBlobBase = "https://github.com/cfpperche/tachyon-ade-bench/blob/main/";
+
+function formatDate(value: string | null | undefined): string {
+  if (!value) {
+    return t.common.notMapped;
+  }
+  return new Intl.DateTimeFormat(dateLocale, {
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(new Date(value));
+}
+
+function statusLabel(value: AcquisitionResult): string {
+  return (t.labels as Record<string, string>)[value] ?? label(value, locale);
+}
+
+function platformLabel(value: string): string {
+  return (t.labels as Record<string, string>)[value] ?? label(value, locale);
+}
+
+const metrics = [
+  [t.acquisition.metrics.scans, board.scanCount, t.acquisition.metrics.scansNote],
+  [t.acquisition.metrics.platforms, board.platformCount, t.acquisition.metrics.platformsNote],
+  [t.acquisition.metrics.queries, board.queryCount, t.acquisition.metrics.queriesNote],
+  [t.acquisition.metrics.observedAds, board.ads.length, t.acquisition.metrics.observedAdsNote],
+  [t.acquisition.metrics.campaigns, board.campaigns.length, t.acquisition.metrics.campaignsNote],
+] as const;
+
+const limitations = board.latestScan?.limitations ?? [];
+---
+
+<section class="shell acquisition-board">
+  <div class="page-head">
+    <div>
+      <p class="eyebrow">{t.acquisition.eyebrow}</p>
+      <h1>{t.acquisition.h1}</h1>
+      <p class="lede">{t.acquisition.lede}</p>
+    </div>
+    <div class="scan-stamp">
+      <span>{t.acquisition.latestScan}</span>
+      <strong>{board.latestScan?.scan_id ?? t.common.notMapped}</strong>
+      <small>{formatDate(board.latestScan?.completed_at ?? board.latestScan?.started_at)}</small>
+    </div>
+  </div>
+
+  <div class="metric-grid" aria-label={t.acquisition.title}>
+    {metrics.map(([name, value, note]) => (
+      <div class="metric">
+        <span>{name}</span>
+        <strong>{value}</strong>
+        <small>{note}</small>
+      </div>
+    ))}
+  </div>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.acquisition.coverageTitle}</h2>
+        <p>{t.acquisition.coverageDescription}</p>
+      </div>
+      <div class="badge-row">
+        {statusOrder.map((status) => (
+          <span class={`badge badge--${status}`}>
+            {statusLabel(status)}: {board.statusCounts[status] ?? 0}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    {board.coverageRows.length > 0 ? (
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>{t.acquisition.productPlatform}</th>
+              <th>{t.acquisition.query}</th>
+              <th>{t.acquisition.method}</th>
+              <th>{t.acquisition.status}</th>
+              <th>{t.acquisition.source}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {board.coverageRows.map((row) => (
+              <tr>
+                <td>
+                  <a class="link" href={url(`/competitors/${row.product_id}/`, locale)}>
+                    {row.product_name}
+                  </a>
+                  <span class="table-note">{platformLabel(row.platform)}</span>
+                </td>
+                <td>{row.query}</td>
+                <td>{row.method}</td>
+                <td><span class={`badge badge--${row.result}`}>{statusLabel(row.result)}</span></td>
+                <td><a class="link break-link" href={row.source_url}>{t.acquisition.openSource}</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="empty-state">{t.acquisition.noCoverage}</div>
+    )}
+  </section>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.acquisition.campaignsTitle}</h2>
+        <p>{t.acquisition.campaignsDescription}</p>
+      </div>
+    </div>
+
+    {board.campaigns.length > 0 ? (
+      <div class="campaign-grid">
+        {board.campaigns.map((campaign) => (
+          <article class="campaign-card">
+            <div>
+              <span class="badge">{platformLabel(campaign.platform)}</span>
+              <h3>{campaign.product_name}</h3>
+              <p>{campaign.ad_count} {t.acquisition.metrics.observedAdsNote}</p>
+            </div>
+            <dl class="compact-dl">
+              <div>
+                <dt>{t.acquisition.observedWindow}</dt>
+                <dd>{formatDate(campaign.first_seen)} - {formatDate(campaign.last_seen)}</dd>
+              </div>
+              <div>
+                <dt>{t.acquisition.tags}</dt>
+                <dd>{campaign.positioning_tags.join(", ") || t.common.notMapped}</dd>
+              </div>
+            </dl>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">{t.acquisition.noCampaigns}</div>
+    )}
+  </section>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.acquisition.creativesTitle}</h2>
+        <p>{t.acquisition.creativesDescription}</p>
+      </div>
+    </div>
+
+    {board.ads.length > 0 ? (
+      <div class="ad-grid">
+        {board.ads.map((ad) => (
+          <article class="ad-card">
+            <div class="ad-card__meta">
+              <span class="badge">{platformLabel(ad.platform)}</span>
+              <span>{formatDate(ad.latest.observed_at)}</span>
+            </div>
+            <h3>{ad.latest.headline ?? ad.advertiser_name}</h3>
+            <p>{ad.latest.body ?? t.common.notMapped}</p>
+            <div class="badge-row">
+              {ad.latest.claims.map((claim) => <span class="badge">{claim}</span>)}
+              {ad.latest.positioning_tags.map((tag) => <span class="badge badge--soft">{tag}</span>)}
+            </div>
+            <div class="ad-card__footer">
+              <a class="link" href={ad.latest.source_url}>{t.acquisition.openSource}</a>
+              {ad.evidence_refs.map((ref) => (
+                <a class="link" href={`${repoBlobBase}${ref}`}>{t.acquisition.openEvidence}</a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">{t.acquisition.noAds}</div>
+    )}
+  </section>
+
+  <section class="section evidence-band">
+    <div>
+      <h2>{t.acquisition.evidenceTitle}</h2>
+      <p>{t.acquisition.evidenceDescription}</p>
+      <p class="evidence-meta">
+        {t.common.generated}: {formatDate(board.generatedAt)} · {t.acquisition.latestScan}: {board.latestScan?.scan_id ?? t.common.notMapped}
+      </p>
+    </div>
+    <div>
+      <h3>{t.acquisition.limitations}</h3>
+      <ul class="text-list">
+        {limitations.map((limitation) => <li>{limitation}</li>)}
+      </ul>
+    </div>
+  </section>
+</section>
