@@ -98,6 +98,8 @@ Marketing acquisition checks:
 ```sh
 python3 scripts/marketing/check-marketing.py
 python3 scripts/marketing/summarize-history.py --check
+scripts/marketing/new-scan.py --help
+scripts/marketing/add-manual-ad.py --help
 ```
 
 ## Benchmark principles

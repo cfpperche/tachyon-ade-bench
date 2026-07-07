@@ -145,7 +145,47 @@ python3 scripts/marketing/check-marketing.py
 python3 scripts/marketing/summarize-history.py --check
 ```
 
-Normalize a manual or exported raw scan:
+Create a manual scan manifest:
+
+```sh
+scripts/marketing/new-scan.py \
+  --scan-id 20260707T200000Z \
+  --platform google \
+  --product agentsroom \
+  --query AgentsRoom \
+  --source-url https://adstransparency.google.com/
+```
+
+Record a negative library lookup:
+
+```sh
+scripts/marketing/add-not-found.py \
+  --scan-id 20260707T200000Z \
+  --platform meta \
+  --product augment-code \
+  --query "Augment Code" \
+  --source-url https://www.facebook.com/ads/library/
+```
+
+Add a manually observed ad and normalize it:
+
+```sh
+scripts/marketing/add-manual-ad.py \
+  --scan-id 20260707T200000Z \
+  --platform google \
+  --product agentsroom \
+  --advertiser-name AgentsRoom \
+  --source-url https://adstransparency.google.com/example \
+  --landing-url https://agentsroom.dev/pt \
+  --headline "Coordinate coding agents" \
+  --body "Run many agents across projects." \
+  --cta "Try now" \
+  --country US \
+  --claim multi-agent \
+  --tag orchestration
+```
+
+Normalize a raw scan created by hand or exported from another tool:
 
 ```sh
 python3 scripts/marketing/normalize-scan.py \
