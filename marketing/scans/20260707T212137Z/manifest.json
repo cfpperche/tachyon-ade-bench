@@ -1,0 +1,51 @@
+{
+  "completed_at": "2026-07-07T21:24:00Z",
+  "git_commit": "65a53826d667da042f40042f9db660231c7b56f9",
+  "limitations": [
+    "Manual scan helper output; platform libraries may omit spend, targeting, and performance data.",
+    "Google Ads Transparency direct query URLs opened the public home/search shell without a rendered advertiser result list in the captured browser snapshot.",
+    "Meta Ad Library direct query URLs opened the public search shell; no ad result list or explicit no-results message was visible in the captured browser snapshot."
+  ],
+  "queries": [
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "agentsroom",
+      "query": "AgentsRoom",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=AgentsRoom&search_type=keyword_unordered"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "augment-code",
+      "query": "Augment Code",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Augment%20Code&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "agentsroom",
+      "query": "AgentsRoom",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=AgentsRoom"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "augment-code",
+      "query": "Augment Code",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Augment%20Code"
+    }
+  ],
+  "scan_id": "20260707T212137Z",
+  "schema_version": "0.1",
+  "started_at": "2026-07-07T21:22:56Z",
+  "tool_version": "0.1"
+}
