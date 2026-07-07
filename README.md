@@ -84,6 +84,14 @@ schemas/       JSON schemas for tracked benchmark documents
 tasks/         Versioned benchmark tasks and fixtures
 ```
 
+Research docs:
+
+- `docs/competitor-intelligence.md` covers stack, infrastructure, features,
+  moat hypotheses, and benchmark caveats.
+- `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
+  sponsorships, newsletters, podcasts, and other marketing/distribution
+  signals.
+
 ## Benchmark principles
 
 - Same starting repo, prompt, model constraints, and time budget per comparable

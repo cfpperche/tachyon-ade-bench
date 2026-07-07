@@ -98,3 +98,11 @@ Reports must state whether they are research-only or scored. A research map can
 compare stack, infrastructure, features, and moat hypotheses. A scored benchmark
 requires reproducible run artifacts, task verifier output, product/version
 metadata, model/subscription notes, and human intervention counts.
+
+## Acquisition Intelligence
+
+Marketing and distribution signals live in
+`docs/acquisition-intelligence.md`. Keep those records separate from technical
+competitor facts: ad creative, launch channels, sponsorships, and newsletter or
+podcast placements can explain positioning and go-to-market strategy, but they
+are not benchmark evidence.
