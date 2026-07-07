@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadinessBadge from "../../components/ReadinessBadge.astro";
+import ConfidenceBadge from "../../components/ConfidenceBadge.astro";
+import { getCompetitors } from "../../lib/data";
+import { classLabel } from "../../lib/format";
+import { url } from "../../lib/routes";
+
+const competitors = getCompetitors();
+---
+
+<BaseLayout title="Competitors">
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Roster</p>
+        <h1>Tracked ADE and agentic-platform profiles.</h1>
+        <p class="lede">
+          Each profile exposes positioning, stack, infrastructure, feature groups,
+          benchmarking caveats, moat hypotheses, and source evidence.
+        </p>
+      </div>
+    </div>
+
+    <div class="list-grid">
+      {competitors.map((competitor) => (
+        <article class="item-card">
+          <div class="badge-row">
+            <span class="badge">{classLabel(competitor.class)}</span>
+            <ReadinessBadge value={competitor.research.benchmarking.readiness} />
+            <ConfidenceBadge value={competitor.research.confidence} />
+          </div>
+          <h2>{competitor.name}</h2>
+          <p>{competitor.research.positioning}</p>
+          <div class="item-card__footer">
+            <a class="link" href={url(`/competitors/${competitor.id}/`)}>Open profile</a>
+            {competitor.homepage && <a class="link" href={competitor.homepage}>Homepage</a>}
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

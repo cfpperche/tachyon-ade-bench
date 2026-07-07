@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCompetitors } from "../lib/data";
+import { url } from "../lib/routes";
+
+const rows = getCompetitors().flatMap((competitor) =>
+  competitor.research.sources.map((source) => ({
+    product: competitor.name,
+    productId: competitor.id,
+    ...source,
+  })),
+);
+---
+
+<BaseLayout title="Sources">
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Evidence index</p>
+        <h1>Every profile claim should resolve back to a source.</h1>
+        <p class="lede">
+          This index exposes the source list behind the competitor intelligence
+          layer so claims can be audited before public benchmark reports.
+        </p>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Kind</th>
+            <th>Source</th>
+            <th>Supports</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <td>
+                <a class="link" href={url(`/competitors/${row.productId}/`)}>
+                  {row.product}
+                </a>
+              </td>
+              <td><span class="badge">{row.kind}</span></td>
+              <td><a class="link" href={row.url}>{row.url}</a></td>
+              <td>{row.notes}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

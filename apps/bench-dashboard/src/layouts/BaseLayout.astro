@@ -1,0 +1,53 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import { url } from "../lib/routes";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Structured dashboard for Tachyon ADE Bench competitor intelligence." } = Astro.props;
+const navItems = [
+  ["Overview", "/"],
+  ["Matrix", "/matrix/"],
+  ["Competitors", "/competitors/"],
+  ["Protocol", "/protocol/"],
+  ["Sources", "/sources/"],
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Tachyon ADE Bench</title>
+    <ClientRouter />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href={url("/")}>
+          <span class="brand__mark">T</span>
+          <span>
+            <strong>Tachyon ADE Bench</strong>
+            <small>competitor intelligence</small>
+          </span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          {navItems.map(([label, href]) => (
+            <a href={url(href)}>{label}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main id="content">
+      <slot />
+    </main>
+  </body>
+</html>

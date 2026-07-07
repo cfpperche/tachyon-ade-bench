@@ -1,0 +1,11 @@
+---
+import { readinessLabel } from "../lib/format";
+
+interface Props {
+  value: string;
+}
+
+const { value } = Astro.props;
+---
+
+<span class={`badge badge--${value}`}>{readinessLabel(value)}</span>

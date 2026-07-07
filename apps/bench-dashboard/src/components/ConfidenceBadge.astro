@@ -1,0 +1,11 @@
+---
+import { label } from "../lib/format";
+
+interface Props {
+  value: string;
+}
+
+const { value } = Astro.props;
+---
+
+<span class={`badge badge--${value}`}>{label(value)}</span>

@@ -3,4 +3,7 @@ runs/*
 __pycache__/
 *.pyc
 .DS_Store
-
+node_modules/
+apps/*/dist/
+apps/*/.astro/
+npm-debug.log*

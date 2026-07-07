@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CompetitorMatrix from "../components/CompetitorMatrix";
+import { getSummaries } from "../lib/data";
+
+const summaries = getSummaries();
+---
+
+<BaseLayout title="Competitor Matrix">
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Comparison workspace</p>
+        <h1>Filter competitors by readiness, class, stack, and evidence.</h1>
+        <p class="lede">
+          The matrix is generated from `competitors/*.json`; use it to choose the
+          next fair benchmark target before running tasks.
+        </p>
+      </div>
+    </div>
+    <CompetitorMatrix client:load competitors={summaries} baseUrl={import.meta.env.BASE_URL} />
+  </section>
+</BaseLayout>

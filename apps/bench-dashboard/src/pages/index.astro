@@ -1,0 +1,134 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ReadinessBadge from "../components/ReadinessBadge.astro";
+import ConfidenceBadge from "../components/ConfidenceBadge.astro";
+import DashboardCharts from "../components/DashboardCharts";
+import { getCompetitors, getSummaries, getTasks } from "../lib/data";
+import { classLabel } from "../lib/format";
+import { url } from "../lib/routes";
+
+const competitors = getCompetitors();
+const summaries = getSummaries();
+const tasks = getTasks();
+const classACount = competitors.filter((competitor) => competitor.class === "A-local-ade").length;
+const sourceCount = competitors.reduce((total, competitor) => total + competitor.research.sources.length, 0);
+const manualReady = competitors.filter((competitor) =>
+  ["manual-ready", "owned-reference"].includes(competitor.research.benchmarking.readiness),
+).length;
+const openSourceVisible = competitors.filter(
+  (competitor) => competitor.source_url || /mit|agpl|busl|open/i.test(competitor.license),
+).length;
+const nextRuns = summaries
+  .filter((competitor) => competitor.id !== "tachyon")
+  .filter((competitor) => ["manual-ready", "needs-install"].includes(competitor.readiness))
+  .slice(0, 5);
+---
+
+<BaseLayout title="Dashboard">
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Structured ADE intelligence</p>
+        <h1>Compare agentic development environments from one source of truth.</h1>
+        <p class="lede">
+          The dashboard renders tracked competitor research, benchmark readiness, source
+          evidence, and protocol context from this public repository.
+        </p>
+      </div>
+      <a class="badge" href={url("/matrix/")}>Open matrix</a>
+    </div>
+
+    <div class="metric-grid" aria-label="Benchmark profile metrics">
+      <div class="metric">
+        <span>Products tracked</span>
+        <strong>{competitors.length}</strong>
+        <small>{classACount} direct Class A ADE competitors</small>
+      </div>
+      <div class="metric">
+        <span>Task suite</span>
+        <strong>{tasks.length}</strong>
+        <small>Versioned public benchmark fixtures</small>
+      </div>
+      <div class="metric">
+        <span>Source links</span>
+        <strong>{sourceCount}</strong>
+        <small>Official, repo, package, or owned sources</small>
+      </div>
+      <div class="metric">
+        <span>Run-ready profiles</span>
+        <strong>{manualReady}</strong>
+        <small>Manual-ready or owned reference</small>
+      </div>
+      <div class="metric">
+        <span>Source-visible</span>
+        <strong>{openSourceVisible}</strong>
+        <small>Open/source-visible implementation signals</small>
+      </div>
+    </div>
+
+    <div class="section">
+      <DashboardCharts client:only="react" competitors={summaries} />
+    </div>
+
+    <div class="section two-col">
+      <section class="panel">
+        <div class="panel__head">
+          <div>
+            <h2>Next Benchmark Candidates</h2>
+            <p>Products closest to a first comparable run, excluding the Tachyon reference profile.</p>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Class</th>
+                  <th>Readiness</th>
+                  <th>Suggested tasks</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nextRuns.map((competitor) => (
+                  <tr>
+                    <td>
+                      <a class="link" href={url(`/competitors/${competitor.id}/`)}>
+                        {competitor.name}
+                      </a>
+                    </td>
+                    <td>{classLabel(competitor.class)}</td>
+                    <td><ReadinessBadge value={competitor.readiness} /></td>
+                    <td>{competitor.suggestedTasks.join(", ") || "Not mapped"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <div>
+            <h2>Research Discipline</h2>
+            <p>Each row keeps facts, hypotheses, caveats, and unknowns separate.</p>
+          </div>
+        </div>
+        <div class="panel__body">
+          <div class="badge-row">
+            <ConfidenceBadge value="official-sourced" />
+            <ConfidenceBadge value="partial-official" />
+            <ConfidenceBadge value="owned" />
+          </div>
+          <ul class="text-list" style="margin-top: 16px;">
+            <li>Competitor claims are sourced or explicitly marked unknown.</li>
+            <li>Class B enterprise platforms stay out of direct Class A leaderboards.</li>
+            <li>LandingAI remains excluded because it is not a software ADE competitor.</li>
+            <li>No benchmark score appears until run artifacts exist.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

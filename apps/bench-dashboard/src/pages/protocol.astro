@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProtocolDiagram from "../components/ProtocolDiagram";
+---
+
+<BaseLayout title="Protocol">
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">Benchmark mechanism</p>
+        <h1>Research data feeds presentation; task verifiers gate scored runs.</h1>
+        <p class="lede">
+          The dashboard presents the research layer. Benchmark scores still require
+          prepared worktrees, product runs, canonical verifiers, and preserved artifacts.
+        </p>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <section class="panel">
+        <div class="panel__head">
+          <div>
+            <h2>Data & Benchmark Flow</h2>
+            <p>Static dashboard generation and benchmark run mechanics stay separate.</p>
+          </div>
+        </div>
+        <div class="panel__body">
+          <ProtocolDiagram client:only="react" />
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__head">
+          <div>
+            <h2>Rules</h2>
+            <p>The public view should make evidence boundaries obvious.</p>
+          </div>
+        </div>
+        <div class="panel__body">
+          <ol class="text-list">
+            <li>Use official or owned sources for factual competitor claims.</li>
+            <li>Prepare identical task worktrees for comparable runs.</li>
+            <li>Keep product output separate from canonical task verifiers.</li>
+            <li>Publish raw artifacts before introducing summary scores.</li>
+            <li>Report Class B enterprise platforms separately from Class A ADEs.</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </section>
+</BaseLayout>

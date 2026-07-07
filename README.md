@@ -29,7 +29,7 @@ environment.
 
 ## Quickstart
 
-Requirements: Python 3 and Git.
+Requirements: Python 3 and Git. The dashboard also requires Node.js 22+.
 
 ```sh
 python3 harness/bench.py check
@@ -48,10 +48,33 @@ python3 harness/bench.py verify runs/local-smoke
 Every run writes a `result.json` plus collected artifacts under its run
 directory. The verifier is independent of the product under test.
 
+## Dashboard
+
+The public presentation app lives in `apps/bench-dashboard`. It renders the
+structured competitor profiles from `competitors/*.json` as an Astro dashboard
+with an overview, matrix, profile pages, charts, protocol view, and source
+index.
+
+```sh
+npm install
+npm run dashboard:dev
+npm run dashboard:check
+npm run dashboard:build
+```
+
+GitHub Pages deployment is defined in `.github/workflows/pages.yml`. Enable
+Pages in repository settings with source "GitHub Actions"; pushes to `main`
+will publish the dashboard at:
+
+```text
+https://cfpperche.github.io/tachyon-ade-bench/
+```
+
 ## Repository layout
 
 ```text
 competitors/   Seed profiles for products under test
+apps/          Static dashboard and presentation surfaces
 docs/specs/    Spec-driven development records for benchmark changes
 harness/       Local reproducibility tooling
 reports/       Human-readable benchmark summaries

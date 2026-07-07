@@ -1,0 +1,151 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ReadinessBadge from "../../components/ReadinessBadge.astro";
+import ConfidenceBadge from "../../components/ConfidenceBadge.astro";
+import { getCompetitors } from "../../lib/data";
+import { classLabel, label } from "../../lib/format";
+
+export function getStaticPaths() {
+  return getCompetitors().map((competitor) => ({
+    params: { id: competitor.id },
+    props: { competitor },
+  }));
+}
+
+const { competitor } = Astro.props;
+const featureEntries = Object.entries(competitor.research.features);
+const stackEntries = Object.entries(competitor.research.stack).filter(([key]) => key !== "unknowns");
+---
+
+<BaseLayout title={competitor.name}>
+  <section class="shell">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow">{classLabel(competitor.class)} profile</p>
+        <h1>{competitor.name}</h1>
+        <p class="lede">{competitor.research.positioning}</p>
+        <div class="badge-row">
+          <ReadinessBadge value={competitor.research.benchmarking.readiness} />
+          <ConfidenceBadge value={competitor.research.confidence} />
+          <span class="badge">{competitor.license}</span>
+          <span class="badge">Reviewed {competitor.research.last_reviewed}</span>
+        </div>
+      </div>
+      <div class="badge-row">
+        {competitor.homepage && <a class="badge" href={competitor.homepage}>Homepage</a>}
+        {competitor.source_url && <a class="badge" href={competitor.source_url}>Source</a>}
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div>
+        <section class="panel">
+          <div class="panel__head">
+            <div>
+              <h2>Stack & Infrastructure</h2>
+              <p>Published implementation signals and runtime model.</p>
+            </div>
+          </div>
+          <div class="panel__body split-list">
+            {stackEntries.map(([group, values]) => (
+              <div>
+                <h3>{label(group)}</h3>
+                <ul class="text-list">
+                  {(values as string[]).map((value) => <li>{value}</li>)}
+                </ul>
+              </div>
+            ))}
+            <div>
+              <h3>Infrastructure</h3>
+              <ul class="text-list">
+                {competitor.research.infrastructure.map((value) => <li>{value}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel__head">
+            <div>
+              <h2>Feature Groups</h2>
+              <p>Capability areas to probe during benchmark design.</p>
+            </div>
+          </div>
+          <div class="panel__body feature-groups">
+            {featureEntries.map(([group, values]) => (
+              <div>
+                <h3>{label(group)}</h3>
+                <ul class="text-list">
+                  {(values as string[]).map((value) => <li>{value}</li>)}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <aside>
+        <section class="panel">
+          <div class="panel__head">
+            <div>
+              <h2>Benchmarking</h2>
+              <p>How this profile should enter the task suite.</p>
+            </div>
+          </div>
+          <div class="panel__body">
+            <h3>Install surface</h3>
+            <ul class="text-list">
+              {competitor.research.benchmarking.install_surface.map((value) => <li>{value}</li>)}
+            </ul>
+            <h3 style="margin-top: 16px;">Parity risks</h3>
+            <ul class="text-list">
+              {competitor.research.benchmarking.parity_risks.map((value) => <li>{value}</li>)}
+            </ul>
+            <h3 style="margin-top: 16px;">First tasks</h3>
+            <div class="badge-row">
+              {competitor.research.benchmarking.suggested_first_tasks.map((task) => (
+                <span class="badge">{task}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel__head">
+            <div>
+              <h2>Moat</h2>
+              <p>Hypotheses are separate from sourced evidence.</p>
+            </div>
+          </div>
+          <div class="panel__body">
+            <h3>Hypotheses</h3>
+            <ul class="text-list">
+              {competitor.research.moat.hypotheses.map((value) => <li>{value}</li>)}
+            </ul>
+            <h3 style="margin-top: 16px;">Unknowns</h3>
+            <ul class="text-list">
+              {competitor.research.moat.unknowns.map((value) => <li>{value}</li>)}
+            </ul>
+          </div>
+        </section>
+
+        <section class="panel section">
+          <div class="panel__head">
+            <div>
+              <h2>Sources</h2>
+              <p>{competitor.research.sources.length} tracked source links.</p>
+            </div>
+          </div>
+          <div class="panel__body source-list">
+            {competitor.research.sources.map((source) => (
+              <div class="source-row">
+                <a class="link" href={source.url}>{source.kind}</a>
+                <small>{source.notes}</small>
+              </div>
+            ))}
+          </div>
+        </section>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
