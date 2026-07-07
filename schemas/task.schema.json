@@ -19,6 +19,7 @@
     "difficulty": { "type": "string", "enum": ["smoke", "small", "medium", "large"] },
     "prompt": { "type": "string" },
     "repo": { "type": "string" },
+    "post_prepare": { "type": "string" },
     "time_budget_minutes": { "type": "integer", "minimum": 1 },
     "success_criteria": { "type": "array", "items": { "type": "string" } },
     "verify": {

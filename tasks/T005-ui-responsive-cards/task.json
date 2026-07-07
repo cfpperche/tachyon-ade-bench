@@ -1,0 +1,23 @@
+{
+  "id": "T005-ui-responsive-cards",
+  "title": "Fix responsive dashboard card layout",
+  "category": "ui-regression",
+  "difficulty": "small",
+  "prompt": "prompt.md",
+  "repo": "repo",
+  "time_budget_minutes": 20,
+  "success_criteria": [
+    "Cards use a responsive grid layout",
+    "Cards can shrink without horizontal overflow",
+    "A narrow-screen media query is present",
+    "Dashboard action buttons remain accessible"
+  ],
+  "verify": {
+    "directory": "verifier",
+    "command": [
+      "bash",
+      "verify.sh"
+    ]
+  }
+}
+

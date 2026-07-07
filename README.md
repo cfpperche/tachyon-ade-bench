@@ -35,6 +35,7 @@ Requirements: Python 3 and Git.
 python3 harness/bench.py check
 python3 harness/bench.py list-products
 python3 harness/bench.py list-tasks
+scripts/check-suite.sh
 
 python3 harness/bench.py prepare --product tachyon --task T001-python-bugfix --run-id local-smoke
 
@@ -74,4 +75,3 @@ tasks/         Versioned benchmark tasks and fixtures
 
 Alpha. The first commit establishes the protocol, schemas, seed competitors,
 one fixture task, and a local harness. It is not a scored public benchmark yet.
-

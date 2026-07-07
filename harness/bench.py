@@ -95,7 +95,7 @@ def list_products(_: argparse.Namespace) -> int:
 def list_tasks(_: argparse.Namespace) -> int:
     for path in sorted(TASKS.glob("*/task.json")):
         data = read_json(path)
-        print(f"{data['id']}\t{data['title']}\t{data['category']}")
+        print(f"{data['id']}\t{data['title']}\t{data['category']}\t{data['difficulty']}")
     return 0
 
 
@@ -138,6 +138,12 @@ def validate_task(path: Path) -> list[str]:
         errors.append(f"{path}: prompt file not found")
     if data.get("repo") and not (task_dir / data["repo"]).is_dir():
         errors.append(f"{path}: repo directory not found")
+    post_prepare = data.get("post_prepare")
+    if post_prepare is not None:
+        if not isinstance(post_prepare, str) or not post_prepare:
+            errors.append(f"{path}: post_prepare must be a non-empty string")
+        elif not (task_dir / post_prepare).is_dir():
+            errors.append(f"{path}: post_prepare directory not found")
     command = data.get("verify", {}).get("command")
     if not isinstance(command, list) or not command:
         errors.append(f"{path}: verify.command must be a non-empty string array")
@@ -214,6 +220,13 @@ def prepare(args: argparse.Namespace) -> int:
         "baseline fixture",
     )
     baseline = git(worktree, "rev-parse", "HEAD").stdout.strip()
+    post_prepare_dir = task.get("post_prepare")
+    if post_prepare_dir:
+        shutil.copytree(task_dir / post_prepare_dir, worktree, dirs_exist_ok=True)
+    initial_status = git(worktree, "status", "--short", check=False).stdout
+    initial_diff = collect_final_diff(worktree)
+    (artifacts / "initial-git-status.txt").write_text(initial_status, encoding="utf-8")
+    (artifacts / "initial-dirty.diff").write_text(initial_diff, encoding="utf-8")
 
     result = {
         "schema_version": "0.1",
@@ -245,6 +258,7 @@ def prepare(args: argparse.Namespace) -> int:
         "paths": {
             "worktree": "worktree",
             "verifier": verifier_dir,
+            "post_prepare": post_prepare_dir,
             "prompt": "prompt.md",
             "task": "task.json",
             "product": "product.json",
@@ -255,7 +269,11 @@ def prepare(args: argparse.Namespace) -> int:
             {
                 "at": utc_now(),
                 "type": "prepared",
-                "message": "Fixture copied and baseline commit created",
+                "message": (
+                    "Fixture copied, baseline commit created, and post-prepare overlay applied"
+                    if post_prepare_dir
+                    else "Fixture copied and baseline commit created"
+                ),
             }
         ],
     }
@@ -269,9 +287,11 @@ def prepare(args: argparse.Namespace) -> int:
 
 def current_benchmark_commit() -> str | None:
     result = run_command(["git", "rev-parse", "--verify", "HEAD"], cwd=ROOT)
-    if result.returncode == 0:
-        return result.stdout.strip()
-    return None
+    if result.returncode != 0:
+        return None
+    head = result.stdout.strip()
+    status = run_command(["git", "status", "--short"], cwd=ROOT)
+    return f"{head}-dirty" if status.stdout.strip() else head
 
 
 def verify(args: argparse.Namespace) -> int:
@@ -301,6 +321,7 @@ def verify(args: argparse.Namespace) -> int:
     verify_cwd = run_verifier
     env = os.environ.copy()
     env["BENCH_WORKTREE"] = str(worktree)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
     started_at = dt.datetime.now(dt.timezone.utc)
     started = utc_now()
     completed = run_command(command, cwd=verify_cwd, env=env)

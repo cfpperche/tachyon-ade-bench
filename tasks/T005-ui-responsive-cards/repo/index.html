@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Operations Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="dashboard-shell">
+      <h1>Operations Dashboard</h1>
+      <section class="cards" aria-label="Service health cards">
+        <article class="card">
+          <h2>API</h2>
+          <p>Latency is above the target threshold.</p>
+          <button type="button">Inspect API</button>
+        </article>
+        <article class="card">
+          <h2>Workers</h2>
+          <p>Queue depth is stable across regions.</p>
+          <button type="button">Inspect Workers</button>
+        </article>
+        <article class="card">
+          <h2>Billing</h2>
+          <p>Invoice sync completed successfully.</p>
+          <button type="button">Inspect Billing</button>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
+

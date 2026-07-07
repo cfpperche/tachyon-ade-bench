@@ -1,0 +1,22 @@
+{
+  "id": "T004-ci-status-normalizer",
+  "title": "Fix status normalizer CI failure",
+  "category": "ci-failure",
+  "difficulty": "small",
+  "prompt": "prompt.md",
+  "repo": "repo",
+  "time_budget_minutes": 15,
+  "success_criteria": [
+    "Whitespace, case, underscore, and hyphen variants normalize consistently",
+    "Unknown statuses normalize to unknown",
+    "The fixture CI script passes"
+  ],
+  "verify": {
+    "directory": "verifier",
+    "command": [
+      "bash",
+      "verify.sh"
+    ]
+  }
+}
+

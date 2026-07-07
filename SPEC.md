@@ -67,10 +67,14 @@ Each run directory should contain:
 - `product.json`: copied product profile
 - `worktree/`: isolated copy of the fixture repository, which is the only path
   the product under test should edit
+- optional `post_prepare/` overlay effects: reproducible dirty state applied
+  after the baseline fixture commit
 - `verifier/`: task-owned verifier copy restored from the tracked task
   definition before each verification
 - `artifacts/verify.stdout.txt`
 - `artifacts/verify.stderr.txt`
+- `artifacts/initial-git-status.txt`
+- `artifacts/initial-dirty.diff`
 - `artifacts/git-status.txt`
 - `artifacts/git-diff-stat.txt`
 - `artifacts/final.diff`: tracked changes plus untracked text files

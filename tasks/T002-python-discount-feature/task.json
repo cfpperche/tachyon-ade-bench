@@ -1,0 +1,24 @@
+{
+  "id": "T002-python-discount-feature",
+  "title": "Add checkout discount code support",
+  "category": "feature",
+  "difficulty": "small",
+  "prompt": "prompt.md",
+  "repo": "repo",
+  "time_budget_minutes": 20,
+  "success_criteria": [
+    "Existing subtotal behavior remains unchanged",
+    "SAVE10 applies a 10 percent discount",
+    "VIP20 applies a 20 percent discount",
+    "Unknown or blank codes leave the total unchanged",
+    "Receipt generation exposes subtotal, discount, and total"
+  ],
+  "verify": {
+    "directory": "verifier",
+    "command": [
+      "bash",
+      "verify.sh"
+    ]
+  }
+}
+

@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.dashboard-shell {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.cards {
+  display: flex;
+  gap: 16px;
+  width: 960px;
+}
+
+.card {
+  width: 288px;
+  padding: 16px;
+  border: 1px solid #d6dbe6;
+  background: #ffffff;
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+.card button {
+  padding: 8px 10px;
+}
+
