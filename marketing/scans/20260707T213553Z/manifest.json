@@ -1,0 +1,179 @@
+{
+  "completed_at": "2026-07-07T21:38:30Z",
+  "git_commit": "4fb040fd55ec63f1e6d105cdafd93f7add0a2bbb",
+  "limitations": [
+    "Manual scan helper output; platform libraries may omit spend, targeting, and performance data.",
+    "Public no-login scan across all tracked products for Meta Ad Library and Google Ads Transparency.",
+    "Meta Ad Library direct query URLs opened the public search shell; no ad result list or explicit no-results message was visible in captured browser snapshots.",
+    "Google Ads Transparency direct query URLs opened the public home/search shell without a rendered advertiser result list in captured browser snapshots.",
+    "All queries are marked partial: this records that a public query was attempted, not that ads are absent."
+  ],
+  "queries": [
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "tachyon",
+      "query": "Tachyon",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Tachyon&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "tachyon",
+      "query": "Tachyon",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Tachyon"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "agentsroom",
+      "query": "AgentsRoom",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=AgentsRoom&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "agentsroom",
+      "query": "AgentsRoom",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=AgentsRoom"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "augment-code",
+      "query": "Augment Code",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Augment%20Code&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "augment-code",
+      "query": "Augment Code",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Augment%20Code"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "hive",
+      "query": "Hive",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Hive&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "hive",
+      "query": "Hive",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Hive"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "hiveterm",
+      "query": "HiveTerm",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=HiveTerm&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "hiveterm",
+      "query": "HiveTerm",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=HiveTerm"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "kandev",
+      "query": "Kandev",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Kandev&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "kandev",
+      "query": "Kandev",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Kandev"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "openade",
+      "query": "OpenADE",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=OpenADE&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "openade",
+      "query": "OpenADE",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=OpenADE"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "orca",
+      "query": "Orca",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=Orca&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "orca",
+      "query": "Orca",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=Orca"
+    },
+    {
+      "country": null,
+      "method": "manual-url",
+      "platform": "meta",
+      "product_id": "t3-code",
+      "query": "T3 Code",
+      "result": "partial",
+      "source_url": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=ALL&is_targeted_country=false&media_type=all&q=T3%20Code&search_type=keyword_unordered"
+    },
+    {
+      "country": "US",
+      "method": "manual-url",
+      "platform": "google",
+      "product_id": "t3-code",
+      "query": "T3 Code",
+      "result": "partial",
+      "source_url": "https://adstransparency.google.com/?region=US&query=T3%20Code"
+    }
+  ],
+  "scan_id": "20260707T213553Z",
+  "schema_version": "0.1",
+  "started_at": "2026-07-07T21:37:15Z",
+  "tool_version": "0.1"
+}
