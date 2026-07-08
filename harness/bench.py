@@ -77,6 +77,70 @@ def collect_final_diff(worktree: Path) -> str:
     return "\n".join(chunk.rstrip() for chunk in chunks if chunk).rstrip() + ("\n" if chunks else "")
 
 
+def initial_metrics(prepared_at: str) -> dict:
+    return {
+        "intervention_burden": {
+            "count": 0,
+            "minutes": 0,
+            "operator_decision_points": 0,
+            "interventions": [],
+        },
+        "timing": {
+            "prepared_at": prepared_at,
+            "verified_at": None,
+            "time_to_verified_change_seconds": None,
+            "verification_elapsed_seconds": None,
+        },
+        "cost": {
+            "usd": None,
+            "input_tokens": None,
+            "output_tokens": None,
+            "tool_calls": None,
+        },
+        "artifact_completeness": {
+            "has_result": True,
+            "has_prompt": True,
+            "has_diff": False,
+            "has_verifier_stdout": False,
+            "has_verifier_stderr": False,
+            "has_git_status": False,
+        },
+        "isolation": {
+            "verifier_refreshed_from_canonical": False,
+            "workspace_modified": False,
+            "untracked_files_count": 0,
+            "suspected_scope_violations": 0,
+        },
+        "review_burden": {
+            "changed_files": None,
+            "diff_lines": None,
+            "final_diff_bytes": None,
+        },
+        "failure_recovery": {
+            "retry_count": 0,
+            "rollback_count": 0,
+            "recovered_from_failure": None,
+        },
+    }
+
+
+def parse_iso(value: str | None) -> dt.datetime | None:
+    if not value:
+        return None
+    try:
+        return dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
+def count_untracked(status: str) -> int:
+    return sum(1 for line in status.splitlines() if line.startswith("?? "))
+
+
+def count_changed_files(status: str) -> int:
+    return sum(1 for line in status.splitlines() if line.strip())
+
+
 def product_path(product_id: str) -> Path:
     return COMPETITORS / f"{product_id}.json"
 
@@ -362,12 +426,13 @@ def prepare(args: argparse.Namespace) -> int:
     (artifacts / "initial-git-status.txt").write_text(initial_status, encoding="utf-8")
     (artifacts / "initial-dirty.diff").write_text(initial_diff, encoding="utf-8")
 
+    created = utc_now()
     result = {
         "schema_version": "0.1",
         "run_id": run_id,
         "status": "prepared",
-        "created_at": utc_now(),
-        "updated_at": utc_now(),
+        "created_at": created,
+        "updated_at": created,
         "product": {
             "id": product["id"],
             "name": product["name"],
@@ -381,6 +446,7 @@ def prepare(args: argparse.Namespace) -> int:
         "benchmark_commit": current_benchmark_commit(),
         "fixture_baseline_commit": baseline,
         "human_interventions": None,
+        "metrics": initial_metrics(created),
         "run_config": {
             "product_version": None,
             "model": None,
@@ -401,7 +467,7 @@ def prepare(args: argparse.Namespace) -> int:
         "verification": None,
         "events": [
             {
-                "at": utc_now(),
+                "at": created,
                 "type": "prepared",
                 "message": (
                     "Fixture copied, baseline commit created, and post-prepare overlay applied"
@@ -465,9 +531,11 @@ def verify(args: argparse.Namespace) -> int:
     artifacts.mkdir(exist_ok=True)
     (artifacts / "verify.stdout.txt").write_text(completed.stdout, encoding="utf-8")
     (artifacts / "verify.stderr.txt").write_text(completed.stderr, encoding="utf-8")
-    (artifacts / "git-status.txt").write_text(git(worktree, "status", "--short", check=False).stdout, encoding="utf-8")
+    git_status = git(worktree, "status", "--short", check=False).stdout
+    (artifacts / "git-status.txt").write_text(git_status, encoding="utf-8")
     (artifacts / "git-diff-stat.txt").write_text(git(worktree, "diff", "--stat", check=False).stdout, encoding="utf-8")
-    (artifacts / "final.diff").write_text(collect_final_diff(worktree), encoding="utf-8")
+    final_diff = collect_final_diff(worktree)
+    (artifacts / "final.diff").write_text(final_diff, encoding="utf-8")
 
     passed = completed.returncode == 0
     result["status"] = "pass" if passed else "fail"
@@ -486,6 +554,32 @@ def verify(args: argparse.Namespace) -> int:
             "git_diff_stat": "artifacts/git-diff-stat.txt",
             "final_diff": "artifacts/final.diff",
         },
+    }
+    metrics = result.setdefault("metrics", initial_metrics(result.get("created_at", started)))
+    timing = metrics.setdefault("timing", initial_metrics(result.get("created_at", started))["timing"])
+    timing["verified_at"] = ended
+    timing["verification_elapsed_seconds"] = round((ended_at - started_at).total_seconds(), 3)
+    prepared_at = parse_iso(timing.get("prepared_at") or result.get("created_at", started))
+    if prepared_at:
+        timing["time_to_verified_change_seconds"] = round((ended_at - prepared_at).total_seconds(), 3)
+    metrics["artifact_completeness"] = {
+        "has_result": True,
+        "has_prompt": (run_dir / "prompt.md").is_file(),
+        "has_diff": bool(final_diff.strip()),
+        "has_verifier_stdout": (artifacts / "verify.stdout.txt").is_file(),
+        "has_verifier_stderr": (artifacts / "verify.stderr.txt").is_file(),
+        "has_git_status": (artifacts / "git-status.txt").is_file(),
+    }
+    metrics["isolation"] = {
+        "verifier_refreshed_from_canonical": True,
+        "workspace_modified": bool(git_status.strip()),
+        "untracked_files_count": count_untracked(git_status),
+        "suspected_scope_violations": 0,
+    }
+    metrics["review_burden"] = {
+        "changed_files": count_changed_files(git_status),
+        "diff_lines": len(final_diff.splitlines()) if final_diff else 0,
+        "final_diff_bytes": len(final_diff.encode("utf-8")),
     }
     result.setdefault("events", []).append(
         {

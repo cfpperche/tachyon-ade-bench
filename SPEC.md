@@ -49,6 +49,8 @@ Each comparable run must declare:
 - network policy
 - time budget
 - human intervention count
+- intervention burden, time-to-verified-change, artifact completeness,
+  isolation, review burden, and recovery indicators from `result.json.metrics`
 - starting fixture commit
 - final diff and verification output
 
@@ -60,6 +62,8 @@ zero in the final worktree.
 Each run directory should contain:
 
 - `result.json`: structured run metadata and final status
+- `result.json.metrics`: intervention burden, timing, cost, artifact
+  completeness, isolation, review burden, and failure recovery fields
 - `result.json.run_config`: product version, model, network policy, time
   budget, cost, and notes when available
 - `prompt.md`: exact user-facing prompt supplied to the product

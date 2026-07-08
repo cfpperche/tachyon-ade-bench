@@ -11,6 +11,7 @@
     "updated_at",
     "product",
     "task",
+    "metrics",
     "run_config",
     "paths",
     "verification"
@@ -42,6 +43,126 @@
     "benchmark_commit": { "type": ["string", "null"] },
     "fixture_baseline_commit": { "type": "string" },
     "human_interventions": { "type": ["integer", "null"], "minimum": 0 },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "intervention_burden",
+        "timing",
+        "cost",
+        "artifact_completeness",
+        "isolation",
+        "review_burden",
+        "failure_recovery"
+      ],
+      "properties": {
+        "intervention_burden": {
+          "type": "object",
+          "required": ["count", "minutes", "operator_decision_points", "interventions"],
+          "properties": {
+            "count": { "type": "integer", "minimum": 0 },
+            "minutes": { "type": "number", "minimum": 0 },
+            "operator_decision_points": { "type": "integer", "minimum": 0 },
+            "interventions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["type", "at", "description"],
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "additional_prompt",
+                      "manual_code_edit",
+                      "plan_acceptance",
+                      "plan_rejection",
+                      "agent_restart",
+                      "environment_fix",
+                      "conflict_resolution",
+                      "manual_diff_review",
+                      "rollback",
+                      "retry",
+                      "other"
+                    ]
+                  },
+                  "at": { "type": "string" },
+                  "description": { "type": "string" },
+                  "minutes": { "type": ["number", "null"], "minimum": 0 }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "timing": {
+          "type": "object",
+          "required": ["prepared_at", "verified_at", "time_to_verified_change_seconds", "verification_elapsed_seconds"],
+          "properties": {
+            "prepared_at": { "type": "string" },
+            "verified_at": { "type": ["string", "null"] },
+            "time_to_verified_change_seconds": { "type": ["number", "null"], "minimum": 0 },
+            "verification_elapsed_seconds": { "type": ["number", "null"], "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "cost": {
+          "type": "object",
+          "required": ["usd", "input_tokens", "output_tokens", "tool_calls"],
+          "properties": {
+            "usd": { "type": ["number", "null"], "minimum": 0 },
+            "input_tokens": { "type": ["integer", "null"], "minimum": 0 },
+            "output_tokens": { "type": ["integer", "null"], "minimum": 0 },
+            "tool_calls": { "type": ["integer", "null"], "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "artifact_completeness": {
+          "type": "object",
+          "required": ["has_result", "has_prompt", "has_diff", "has_verifier_stdout", "has_verifier_stderr", "has_git_status"],
+          "properties": {
+            "has_result": { "type": "boolean" },
+            "has_prompt": { "type": "boolean" },
+            "has_diff": { "type": "boolean" },
+            "has_verifier_stdout": { "type": "boolean" },
+            "has_verifier_stderr": { "type": "boolean" },
+            "has_git_status": { "type": "boolean" }
+          },
+          "additionalProperties": false
+        },
+        "isolation": {
+          "type": "object",
+          "required": ["verifier_refreshed_from_canonical", "workspace_modified", "untracked_files_count", "suspected_scope_violations"],
+          "properties": {
+            "verifier_refreshed_from_canonical": { "type": "boolean" },
+            "workspace_modified": { "type": "boolean" },
+            "untracked_files_count": { "type": "integer", "minimum": 0 },
+            "suspected_scope_violations": { "type": "integer", "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "review_burden": {
+          "type": "object",
+          "required": ["changed_files", "diff_lines", "final_diff_bytes"],
+          "properties": {
+            "changed_files": { "type": ["integer", "null"], "minimum": 0 },
+            "diff_lines": { "type": ["integer", "null"], "minimum": 0 },
+            "final_diff_bytes": { "type": ["integer", "null"], "minimum": 0 }
+          },
+          "additionalProperties": false
+        },
+        "failure_recovery": {
+          "type": "object",
+          "required": ["retry_count", "rollback_count", "recovered_from_failure"],
+          "properties": {
+            "retry_count": { "type": "integer", "minimum": 0 },
+            "rollback_count": { "type": "integer", "minimum": 0 },
+            "recovered_from_failure": { "type": ["boolean", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
     "run_config": {
       "type": "object",
       "properties": {

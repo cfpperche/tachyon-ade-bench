@@ -46,7 +46,10 @@ python3 harness/bench.py verify runs/local-smoke
 ```
 
 Every run writes a `result.json` plus collected artifacts under its run
-directory. The verifier is independent of the product under test.
+directory. The verifier is independent of the product under test. Run reports
+also include `metrics` for intervention burden, timing, cost slots, artifact
+completeness, isolation, review burden, and failure recovery; see
+`docs/run-report-metrics.md`.
 
 ## Dashboard
 
@@ -92,6 +95,8 @@ Research docs:
 - `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
   sponsorships, newsletters, podcasts, and other marketing/distribution
   signals.
+- `docs/run-report-metrics.md` defines the run-level indicators required before
+  any scored leaderboard.
 
 Marketing acquisition checks:
 
