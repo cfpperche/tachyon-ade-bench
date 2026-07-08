@@ -1,0 +1,12 @@
+---
+import StrategyBoard from "../../components/StrategyBoard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getUi, type Locale } from "../../lib/i18n";
+
+const locale: Locale = "pt";
+const t = getUi(locale);
+---
+
+<BaseLayout title={t.strategy.title} locale={locale} currentPath="/strategy/">
+  <StrategyBoard locale={locale} />
+</BaseLayout>

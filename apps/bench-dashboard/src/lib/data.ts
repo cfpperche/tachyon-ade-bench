@@ -13,6 +13,8 @@ import type {
   MarketingCampaign,
   MarketingCurrentAd,
   MarketingManifest,
+  StrategyPressureAxis,
+  StrategyPressureRow,
   TaskMeta,
 } from "./types";
 
@@ -287,4 +289,66 @@ export function getAcquisitionBoardData(): AcquisitionBoardData {
     scanHistory: scanHistoryRows(manifests),
     statusCounts,
   };
+}
+
+function pressureAxes(competitor: Competitor, hasAcquisitionSignal: boolean): StrategyPressureAxis[] {
+  const features = competitor.research.features;
+  const text = [
+    competitor.research.positioning,
+    competitor.license,
+    ...competitor.research.stack.runtime,
+    ...competitor.research.stack.frontend,
+    ...competitor.research.stack.backend,
+    ...features.orchestration,
+    ...features.review_shipping,
+    ...features.remote_mobile,
+    ...features.integrations,
+  ].join(" ").toLowerCase();
+  const axes = new Set<StrategyPressureAxis>();
+  if (text.includes("visual") || text.includes("cockpit") || text.includes("mobile") || text.includes("remote")) {
+    axes.add("ux");
+  }
+  if (features.orchestration.length >= 4 || text.includes("multi-agent") || text.includes("worktree")) {
+    axes.add("orchestration");
+  }
+  if (text.includes("review") || text.includes("diff") || text.includes("evidence") || text.includes("snapshot")) {
+    axes.add("evidence");
+  }
+  if (competitor.class === "B-enterprise-agentic-platform" || text.includes("enterprise") || text.includes("governance")) {
+    axes.add("enterprise");
+  }
+  if (competitor.source_url || /mit|agpl|busl|open-source|open source/i.test(competitor.license)) {
+    axes.add("community");
+  }
+  if (hasAcquisitionSignal) {
+    axes.add("acquisition");
+  }
+  return Array.from(axes);
+}
+
+export function getStrategyPressureRows(): StrategyPressureRow[] {
+  const acquisitionProducts = new Set(
+    getAcquisitionBoardData().campaigns.map((campaign) => campaign.product_id),
+  );
+  return getCompetitors()
+    .filter((competitor) => competitor.id !== "tachyon")
+    .map((competitor) => {
+      const hasAcquisitionSignal = acquisitionProducts.has(competitor.id);
+      const axes = pressureAxes(competitor, hasAcquisitionSignal);
+      return {
+        acquisitionSignal: hasAcquisitionSignal,
+        axes,
+        class: competitor.class,
+        id: competitor.id,
+        name: competitor.name,
+        pressure:
+          axes.length >= 5 || competitor.id === "orca" || competitor.id === "augment-code"
+            ? "high"
+            : axes.length >= 3
+              ? "medium"
+              : "focused",
+        readiness: competitor.research.benchmarking.readiness,
+        summary: competitor.research.positioning,
+      };
+    });
 }

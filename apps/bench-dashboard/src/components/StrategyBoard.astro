@@ -1,0 +1,123 @@
+---
+import ReadinessBadge from "./ReadinessBadge.astro";
+import { getStrategyPressureRows } from "../lib/data";
+import { classLabel } from "../lib/format";
+import { getUi, type Locale } from "../lib/i18n";
+import { url } from "../lib/routes";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getUi(locale);
+const rows = getStrategyPressureRows();
+const swotGroups = [
+  ["strengths", t.strategy.strengths, t.strategy.swot.strengths],
+  ["weaknesses", t.strategy.weaknesses, t.strategy.swot.weaknesses],
+  ["opportunities", t.strategy.opportunities, t.strategy.swot.opportunities],
+  ["threats", t.strategy.threats, t.strategy.swot.threats],
+] as const;
+---
+
+<section class="shell strategy-board">
+  <div class="page-head">
+    <div>
+      <p class="eyebrow">{t.strategy.eyebrow}</p>
+      <h1>{t.strategy.h1}</h1>
+      <p class="lede">{t.strategy.lede}</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>{t.strategy.swotTitle}</h2>
+      </div>
+    </div>
+    <div class="swot-grid">
+      {swotGroups.map(([kind, title, items]) => (
+        <article class={`swot-card swot-card--${kind}`}>
+          <h3>{title}</h3>
+          <ul class="text-list">
+            {items.map((item) => <li>{item}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section board-section">
+    <div class="section-head">
+      <div>
+        <h2>{t.strategy.pressureTitle}</h2>
+        <p>{t.strategy.pressureDescription}</p>
+      </div>
+    </div>
+
+    <div class="table-wrap strategy-table">
+      <table>
+        <thead>
+          <tr>
+            <th>{t.strategy.columns.competitor}</th>
+            <th>{t.common.class}</th>
+            <th>{t.common.readiness}</th>
+            <th>{t.strategy.columns.pressure}</th>
+            <th>{t.strategy.columns.axes}</th>
+            <th>{t.strategy.columns.posture}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr>
+              <td>
+                <a class="link" href={url(`/competitors/${row.id}/`, locale)}>{row.name}</a>
+              </td>
+              <td>{classLabel(row.class, locale)}</td>
+              <td><ReadinessBadge value={row.readiness} locale={locale} /></td>
+              <td><span class={`badge badge--pressure-${row.pressure}`}>{t.strategy.pressure[row.pressure]}</span></td>
+              <td>
+                <div class="badge-row">
+                  {row.axes.map((axis) => <span class="badge badge--soft">{t.strategy.axes[axis]}</span>)}
+                </div>
+              </td>
+              <td>{row.summary}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <div class="strategy-mobile-list">
+      {rows.map((row) => (
+        <article class="strategy-mobile-card">
+          <div>
+            <a class="link" href={url(`/competitors/${row.id}/`, locale)}>{row.name}</a>
+            <small>{classLabel(row.class, locale)} · {t.strategy.pressure[row.pressure]}</small>
+          </div>
+          <ReadinessBadge value={row.readiness} locale={locale} />
+          <div class="badge-row">
+            {row.axes.map((axis) => <span class="badge badge--soft">{t.strategy.axes[axis]}</span>)}
+          </div>
+          <p>{row.summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>{t.strategy.betsTitle}</h2>
+        <p>{t.strategy.betsDescription}</p>
+      </div>
+    </div>
+    <div class="strategy-bets">
+      {t.strategy.bets.map((bet) => (
+        <article class="strategy-bet">
+          <h3>{bet.title}</h3>
+          <p>{bet.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</section>

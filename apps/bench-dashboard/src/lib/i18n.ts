@@ -18,6 +18,7 @@ export const ui = {
       matrix: "Matrix",
       competitors: "Competitors",
       acquisition: "Acquisition",
+      strategy: "Strategy",
       protocol: "Protocol",
       sources: "Sources",
     },
@@ -222,6 +223,87 @@ export const ui = {
       genericDomain: "Domain is too generic to attribute",
       noReviewItems: "No review items are queued from the latest scan.",
     },
+    strategy: {
+      title: "Strategy",
+      eyebrow: "SWOT and competitive pressure",
+      h1: "Position Tachyon around verifiable agentic development, not feature-count theater.",
+      lede:
+        "This view converts mapped competitor research into strategic posture: Tachyon SWOT, market pressure axes, and bets that should guide benchmarks and devlogs.",
+      swotTitle: "Tachyon SWOT",
+      strengths: "Strengths",
+      weaknesses: "Weaknesses",
+      opportunities: "Opportunities",
+      threats: "Threats",
+      pressureTitle: "Competitive Pressure Matrix",
+      pressureDescription:
+        "Axes are strategic signals derived from mapped profiles and acquisition observations. They are not benchmark scores.",
+      betsTitle: "Strategic Bets",
+      betsDescription:
+        "The clearest path is to own trust, evidence, and reproducibility while competitors race on cockpit UX, enterprise context, and community distribution.",
+      axes: {
+        ux: "UX / cockpit",
+        orchestration: "Orchestration",
+        evidence: "Evidence",
+        enterprise: "Enterprise",
+        community: "Open source / community",
+        acquisition: "Acquisition",
+      },
+      pressure: {
+        high: "High pressure",
+        medium: "Medium pressure",
+        focused: "Focused pressure",
+      },
+      columns: {
+        competitor: "Competitor",
+        pressure: "Pressure",
+        axes: "Pressure axes",
+        posture: "Strategic posture",
+      },
+      swot: {
+        strengths: [
+          "Auditability, verification, evidence capture, and handoff are clearer differentiators than raw agent count.",
+          "Worktree isolation plus repository-local verifiers can make multi-agent output easier to trust.",
+          "Plugin and host-action governance can become a safety moat for local automation.",
+          "The benchmark repo itself can become a credibility asset if artifacts stay reproducible.",
+        ],
+        weaknesses: [
+          "Public Tachyon implementation detail is intentionally sparse in this benchmark repo.",
+          "No public scored runs exist yet against the competitor set.",
+          "Visual product narrative is less obvious than cockpit-first competitors.",
+          "Acquisition history is early and currently observes stronger paid motion from Augment Code.",
+        ],
+        opportunities: [
+          "Own the category language around verification-first ADEs.",
+          "Publish devlogs, benchmark artifacts, and reproducible failure cases as acquisition content.",
+          "Design benchmark tasks where handoff, evidence, and safety matter more than UI breadth.",
+          "Turn the dashboard into a public strategy and trust surface for buyers and developers.",
+        ],
+        threats: [
+          "Orca can capture open-source mindshare with worktree-first fleet UX.",
+          "AgentsRoom can win first impressions with a strong visual multi-agent cockpit.",
+          "Kandev can appeal to teams wanting self-hosted kanban and broad integrations.",
+          "Augment Code can dominate enterprise budget and organizational-context narrative.",
+        ],
+      },
+      bets: [
+        {
+          title: "Own verifiability",
+          body: "Make every benchmark and devlog show what changed, how it was verified, and what evidence survived handoff.",
+        },
+        {
+          title: "Benchmark the hard workflows",
+          body: "Prioritize dirty worktrees, review gates, multi-step fixes, and reproducibility over flashy single-prompt demos.",
+        },
+        {
+          title: "Publish the operating model",
+          body: "Use the public bench repo, screenshots, videos, and postmortems to make Tachyon's trust model legible.",
+        },
+        {
+          title: "Separate Class A and Class B",
+          body: "Compare local ADEs directly, and handle enterprise platforms like Augment as a separate strategic pressure lane.",
+        },
+      ],
+    },
     protocol: {
       title: "Protocol",
       eyebrow: "Benchmark mechanism",
@@ -274,6 +356,7 @@ export const ui = {
       matrix: "Matriz",
       competitors: "Concorrentes",
       acquisition: "Aquisição",
+      strategy: "Estratégia",
       protocol: "Protocolo",
       sources: "Fontes",
     },
@@ -477,6 +560,87 @@ export const ui = {
       blockedSource: "Fonte bloqueada ou indisponível",
       genericDomain: "Domínio genérico demais para atribuir",
       noReviewItems: "Nenhum item de revisão foi gerado pelo último scan.",
+    },
+    strategy: {
+      title: "Estratégia",
+      eyebrow: "SWOT e pressão competitiva",
+      h1: "Posicione o Tachyon em desenvolvimento agentic verificável, não em teatro de contagem de features.",
+      lede:
+        "Esta visão transforma a pesquisa de concorrentes em postura estratégica: SWOT do Tachyon, eixos de pressão de mercado e apostas para guiar benchmarks e devlogs.",
+      swotTitle: "SWOT do Tachyon",
+      strengths: "Forças",
+      weaknesses: "Fraquezas",
+      opportunities: "Oportunidades",
+      threats: "Ameaças",
+      pressureTitle: "Matriz de Pressão Competitiva",
+      pressureDescription:
+        "Os eixos são sinais estratégicos derivados dos perfis mapeados e observações de aquisição. Não são scores de benchmark.",
+      betsTitle: "Apostas Estratégicas",
+      betsDescription:
+        "O caminho mais claro é dominar confiança, evidência e reprodutibilidade enquanto concorrentes correm em UX de cockpit, contexto enterprise e distribuição comunitária.",
+      axes: {
+        ux: "UX / cockpit",
+        orchestration: "Orquestração",
+        evidence: "Evidência",
+        enterprise: "Enterprise",
+        community: "Open source / comunidade",
+        acquisition: "Aquisição",
+      },
+      pressure: {
+        high: "Alta pressão",
+        medium: "Média pressão",
+        focused: "Pressão focada",
+      },
+      columns: {
+        competitor: "Concorrente",
+        pressure: "Pressão",
+        axes: "Eixos de pressão",
+        posture: "Postura estratégica",
+      },
+      swot: {
+        strengths: [
+          "Auditabilidade, verificação, captura de evidência e handoff diferenciam mais que número bruto de agentes.",
+          "Isolamento por worktree mais verificadores locais tornam saída multi-agente mais confiável.",
+          "Governança de plugins e host actions pode virar moat de segurança para automação local.",
+          "O próprio benchmark público pode virar ativo de credibilidade se os artefatos forem reproduzíveis.",
+        ],
+        weaknesses: [
+          "Detalhes públicos de implementação do Tachyon são intencionalmente limitados neste repo.",
+          "Ainda não há runs públicos pontuados contra o conjunto de concorrentes.",
+          "A narrativa visual do produto é menos óbvia que a de concorrentes cockpit-first.",
+          "Histórico de aquisição ainda é inicial e hoje mostra paid motion mais forte em Augment Code.",
+        ],
+        opportunities: [
+          "Dominar a linguagem da categoria de ADEs verification-first.",
+          "Publicar devlogs, artefatos de benchmark e falhas reproduzíveis como conteúdo de aquisição.",
+          "Criar tasks onde handoff, evidência e segurança importam mais que largura de UI.",
+          "Transformar o dashboard em uma superfície pública de estratégia e confiança.",
+        ],
+        threats: [
+          "Orca pode capturar mindshare open-source com UX de fleet worktree-first.",
+          "AgentsRoom pode vencer primeira impressão com cockpit visual multi-agente.",
+          "Kandev pode atrair times que querem kanban self-hosted e integrações amplas.",
+          "Augment Code pode dominar orçamento enterprise e narrativa de contexto organizacional.",
+        ],
+      },
+      bets: [
+        {
+          title: "Dominar verificabilidade",
+          body: "Fazer todo benchmark e devlog mostrar o que mudou, como foi verificado e qual evidência sobreviveu ao handoff.",
+        },
+        {
+          title: "Benchmarkar fluxos difíceis",
+          body: "Priorizar dirty worktrees, gates de review, correções multi-etapa e reprodutibilidade em vez de demos chamativas de prompt único.",
+        },
+        {
+          title: "Publicar o modelo operacional",
+          body: "Usar o bench público, screenshots, vídeos e postmortems para tornar o trust model do Tachyon legível.",
+        },
+        {
+          title: "Separar Classe A e Classe B",
+          body: "Comparar ADEs locais diretamente e tratar plataformas enterprise como Augment em uma faixa estratégica separada.",
+        },
+      ],
     },
     protocol: {
       title: "Protocolo",

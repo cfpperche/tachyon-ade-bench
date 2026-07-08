@@ -398,6 +398,21 @@ h3 {
   color: var(--red);
 }
 
+.badge--pressure-high {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.badge--pressure-medium {
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.badge--pressure-focused {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
 .badge--soft {
   background: var(--surface-subtle);
   color: var(--muted);
@@ -841,6 +856,86 @@ button:focus-visible {
   font-weight: 700;
 }
 
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.swot-card,
+.strategy-bet {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.swot-card {
+  border-top: 4px solid var(--teal);
+}
+
+.swot-card--weaknesses {
+  border-top-color: var(--amber);
+}
+
+.swot-card--opportunities {
+  border-top-color: var(--green);
+}
+
+.swot-card--threats {
+  border-top-color: var(--red);
+}
+
+.swot-card .text-list {
+  color: var(--ink);
+}
+
+.strategy-table td:nth-child(5) {
+  min-width: 280px;
+}
+
+.strategy-table td:nth-child(6) {
+  min-width: 420px;
+}
+
+.strategy-mobile-list {
+  display: none;
+}
+
+.strategy-mobile-card {
+  display: grid;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.strategy-mobile-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+}
+
+.strategy-mobile-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.strategy-bets {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.strategy-bet p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 @media (max-width: 980px) {
   .site-header__inner,
   .page-head,
@@ -870,7 +965,9 @@ button:focus-visible {
   .feature-groups,
   .campaign-grid,
   .ad-grid,
-  .review-grid {
+  .review-grid,
+  .swot-grid,
+  .strategy-bets {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -908,7 +1005,9 @@ button:focus-visible {
   .matrix-toolbar,
   .campaign-grid,
   .ad-grid,
-  .review-grid {
+  .review-grid,
+  .swot-grid,
+  .strategy-bets {
     grid-template-columns: 1fr;
   }
 
@@ -930,6 +1029,15 @@ button:focus-visible {
   }
 
   .matrix-mobile-list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .strategy-table {
+    display: none;
+  }
+
+  .strategy-mobile-list {
     display: grid;
     gap: 10px;
   }

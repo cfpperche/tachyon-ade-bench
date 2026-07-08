@@ -219,3 +219,22 @@ export interface AcquisitionBoardData {
   scanHistory: AcquisitionScanHistoryRow[];
   statusCounts: Partial<Record<AcquisitionResult, number>>;
 }
+
+export type StrategyPressureAxis =
+  | "ux"
+  | "orchestration"
+  | "evidence"
+  | "enterprise"
+  | "community"
+  | "acquisition";
+
+export interface StrategyPressureRow {
+  acquisitionSignal: boolean;
+  axes: StrategyPressureAxis[];
+  class: ProductClass;
+  id: string;
+  name: string;
+  pressure: "high" | "medium" | "focused";
+  readiness: BenchmarkReadiness;
+  summary: string;
+}
