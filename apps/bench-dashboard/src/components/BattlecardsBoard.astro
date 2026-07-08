@@ -1,0 +1,168 @@
+---
+import ReadinessBadge from "./ReadinessBadge.astro";
+import { getIntelligenceBoardData } from "../lib/data";
+import { classLabel } from "../lib/format";
+import { getUi, type Locale } from "../lib/i18n";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getUi(locale);
+const board = getIntelligenceBoardData();
+const metrics = [
+  [t.battlecards.metrics.signals, String(board.signalCount), t.battlecards.metrics.signalsNote],
+  [t.battlecards.metrics.categories, String(board.categoryCount), t.battlecards.metrics.categoriesNote],
+  [t.battlecards.metrics.pricing, String(board.pricingWatchCount), t.battlecards.metrics.pricingNote],
+  [t.battlecards.metrics.imports, String(board.importReadyCount), t.battlecards.metrics.importsNote],
+] as const;
+
+function signalLabel(count: number): string {
+  return count === 1 ? t.battlecards.signal : t.battlecards.signals;
+}
+---
+
+<section class="shell battlecards-board">
+  <div class="page-head">
+    <div>
+      <p class="eyebrow">{t.battlecards.eyebrow}</p>
+      <h1>{t.battlecards.h1}</h1>
+      <p class="lede">{t.battlecards.lede}</p>
+    </div>
+    {board.generatedAt && (
+      <div class="scan-stamp">
+        <span>{t.common.generated}</span>
+        <strong>{board.generatedAt}</strong>
+      </div>
+    )}
+  </div>
+
+  <section class="metric-grid metric-grid--four" aria-label={t.battlecards.title}>
+    {metrics.map(([label, value, note]) => (
+      <article class="metric">
+        <span>{label}</span>
+        <strong>{value}</strong>
+        <small>{note}</small>
+      </article>
+    ))}
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>{t.battlecards.workflowTitle}</h2>
+        <p>{t.battlecards.workflowDescription}</p>
+      </div>
+    </div>
+    <div class="workflow-grid">
+      {t.battlecards.blocks.map((block, index) => (
+        <article class="workflow-card">
+          <span>{String(index + 1).padStart(2, "0")}</span>
+          <h3>{block.title}</h3>
+          <p>{block.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>{t.battlecards.cardsTitle}</h2>
+        <p>{t.battlecards.cardsDescription}</p>
+      </div>
+    </div>
+
+    <div class="battlecard-grid">
+      {board.battlecards.map((card) => (
+        <article class="battlecard">
+          <header class="battlecard__head">
+            <div>
+              <h3>{card.name}</h3>
+              <small>{classLabel(card.class, locale)} · {card.signals.length} {signalLabel(card.signals.length)}</small>
+            </div>
+            <ReadinessBadge value={card.readiness} locale={locale} />
+          </header>
+
+          <p class="battlecard__positioning">{card.positioning}</p>
+
+          {card.signals.length === 0 ? (
+            <p class="empty-inline">{t.battlecards.noSignals}</p>
+          ) : (
+            <>
+              <div class="battlecard__meta">
+                <dl class="compact-dl">
+                  <div>
+                    <dt>{t.battlecards.categories}</dt>
+                    <dd>
+                      <div class="badge-row">
+                        {card.categories.map((category) => <span class="badge badge--soft">{category}</span>)}
+                      </div>
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>{t.battlecards.tags}</dt>
+                    <dd>
+                      <div class="badge-row">
+                        {card.tags.map((tag) => <span class="badge">{tag}</span>)}
+                      </div>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="battlecard__section">
+                <h4>{t.battlecards.objections}</h4>
+                <ul class="text-list">
+                  {card.objections.map((objection) => <li>{objection}</li>)}
+                </ul>
+              </div>
+
+              <div class="battlecard__section">
+                <h4>{t.battlecards.tachyonResponse}</h4>
+                <ul class="text-list">
+                  {card.responses.map((response) => <li>{response}</li>)}
+                </ul>
+              </div>
+
+              <div class="battlecard__section">
+                <h4>{t.battlecards.sourceSignals}</h4>
+                <div class="signal-list">
+                  {card.signals.map((signal) => (
+                    <article class="signal-row">
+                      <div class="signal-row__title">
+                        <strong>{signal.summary}</strong>
+                        <span class={`badge badge--freshness-${signal.freshness}`}>{signal.freshness}</span>
+                      </div>
+                      {signal.details && <p>{signal.details}</p>}
+                      <dl class="signal-row__meta">
+                        <div>
+                          <dt>{t.battlecards.confidence}</dt>
+                          <dd>{signal.confidence}</dd>
+                        </div>
+                        <div>
+                          <dt>{t.battlecards.observed}</dt>
+                          <dd>{signal.observed_at}</dd>
+                        </div>
+                        <div>
+                          <dt>{t.battlecards.sourceType}</dt>
+                          <dd>{signal.source_type}</dd>
+                        </div>
+                      </dl>
+                      <div class="signal-row__links">
+                        <a class="link" href={signal.source_url}>{t.battlecards.openSource}</a>
+                        {signal.evidence_path && <span>{t.battlecards.evidencePath}: {signal.evidence_path}</span>}
+                      </div>
+                      {signal.next_action && <p class="table-note">{t.battlecards.nextAction}: {signal.next_action}</p>}
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</section>

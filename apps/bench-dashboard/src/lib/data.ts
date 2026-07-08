@@ -10,6 +10,12 @@ import type {
   AcquisitionScanHistoryRow,
   Competitor,
   CompetitorSummary,
+  IntelligenceBattlecard,
+  IntelligenceBoardData,
+  IntelligenceCategory,
+  IntelligenceConfidence,
+  IntelligenceFreshness,
+  IntelligenceSignal,
   MarketingCampaign,
   MarketingCurrentAd,
   MarketingManifest,
@@ -37,6 +43,7 @@ const repoRoot = findRepoRoot(process.env.INIT_CWD ?? process.cwd());
 const competitorsDir = resolve(repoRoot, "competitors");
 const tasksDir = resolve(repoRoot, "tasks");
 const marketingDir = resolve(repoRoot, "marketing");
+const intelligenceDir = resolve(repoRoot, "intelligence");
 
 function readJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, "utf-8")) as T;
@@ -145,6 +152,12 @@ interface CurrentCampaignsFile {
   campaigns: MarketingCampaign[];
   generated_at: string;
   schema_version: string;
+}
+
+interface IntelligenceSignalsFile {
+  schema_version: string;
+  signals: IntelligenceSignal[];
+  updated_at: string;
 }
 
 function readJsonIfExists<T>(path: string, fallback: T): T {
@@ -351,4 +364,82 @@ export function getStrategyPressureRows(): StrategyPressureRow[] {
         summary: competitor.research.positioning,
       };
     });
+}
+
+function increment<T extends string>(counts: Partial<Record<T, number>>, key: T): void {
+  counts[key] = (counts[key] ?? 0) + 1;
+}
+
+function topTags(signals: IntelligenceSignal[]): string[] {
+  const counts = new Map<string, number>();
+  for (const signal of signals) {
+    for (const tag of signal.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return Array.from(counts.entries())
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([tag]) => tag)
+    .slice(0, 8);
+}
+
+function uniqueInOrder<T>(values: T[]): T[] {
+  return Array.from(new Set(values));
+}
+
+export function getIntelligenceBoardData(): IntelligenceBoardData {
+  const file = readJsonIfExists<IntelligenceSignalsFile>(
+    join(intelligenceDir, "current", "signals.json"),
+    { schema_version: "0.1", signals: [], updated_at: "" },
+  );
+  const competitors = getCompetitors();
+  const signalsByProduct = new Map<string, IntelligenceSignal[]>();
+  for (const signal of file.signals) {
+    const current = signalsByProduct.get(signal.product_id) ?? [];
+    current.push(signal);
+    signalsByProduct.set(signal.product_id, current);
+  }
+  const battlecards: IntelligenceBattlecard[] = competitors
+    .filter((competitor) => competitor.id !== "tachyon")
+    .map((competitor) => {
+      const signals = (signalsByProduct.get(competitor.id) ?? []).sort((a, b) =>
+        a.category.localeCompare(b.category) || a.id.localeCompare(b.id),
+      );
+      const confidence: Partial<Record<IntelligenceConfidence, number>> = {};
+      const freshness: Partial<Record<IntelligenceFreshness, number>> = {};
+      for (const signal of signals) {
+        increment(confidence, signal.confidence);
+        increment(freshness, signal.freshness);
+      }
+      return {
+        categories: uniqueInOrder(signals.map((signal) => signal.category)) as IntelligenceCategory[],
+        class: competitor.class,
+        confidence,
+        freshness,
+        homepage: competitor.homepage,
+        id: competitor.id,
+        name: competitor.name,
+        objections: uniqueInOrder(signals.map((signal) => signal.objection).filter(Boolean) as string[]),
+        positioning: competitor.research.positioning,
+        readiness: competitor.research.benchmarking.readiness,
+        responses: uniqueInOrder(signals.map((signal) => signal.tachyon_response)),
+        signals,
+        sourceCount: competitor.research.sources.length,
+        sourceUrl: competitor.source_url,
+        tags: topTags(signals),
+      };
+    })
+    .sort((a, b) => b.signals.length - a.signals.length || a.name.localeCompare(b.name));
+  return {
+    battlecards,
+    categoryCount: new Set(file.signals.map((signal) => signal.category)).size,
+    generatedAt: file.updated_at || null,
+    importReadyCount: file.signals.filter((signal) =>
+      ["traffic", "seo", "paid_search", "backlink", "share_of_search"].includes(signal.category),
+    ).length,
+    pricingWatchCount: file.signals.filter((signal) =>
+      signal.category === "pricing" || signal.category === "packaging",
+    ).length,
+    signalCount: file.signals.length,
+  };
 }

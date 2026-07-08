@@ -95,6 +95,9 @@ Research docs:
 - `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
   sponsorships, newsletters, podcasts, and other marketing/distribution
   signals.
+- `docs/competitive-intelligence.md` maps SaaS-style CI workflows into
+  repo-native battlecards, digital imports, source intelligence, pricing watch,
+  and reproducible collectors.
 - `docs/run-report-metrics.md` defines the run-level indicators required before
   any scored leaderboard.
 
@@ -102,9 +105,11 @@ Marketing acquisition checks:
 
 ```sh
 python3 scripts/marketing/check-marketing.py
+python3 scripts/intelligence/check-intelligence.py
 python3 scripts/marketing/summarize-history.py --check
 scripts/marketing/new-scan.py --help
 scripts/marketing/add-manual-ad.py --help
+scripts/intelligence/add-signal.py --help
 ```
 
 ## Benchmark principles

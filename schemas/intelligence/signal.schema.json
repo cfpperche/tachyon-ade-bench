@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/intelligence/signal.schema.json",
+  "title": "Competitive Intelligence Signals",
+  "type": "object",
+  "required": ["schema_version", "updated_at", "signals"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "signals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "product_id",
+          "category",
+          "source_type",
+          "source_url",
+          "observed_at",
+          "summary",
+          "confidence",
+          "freshness",
+          "tags",
+          "impact",
+          "tachyon_response"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]+$" },
+          "product_id": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": [
+              "battlecard",
+              "positioning",
+              "feature",
+              "stack",
+              "pricing",
+              "packaging",
+              "traffic",
+              "seo",
+              "paid_search",
+              "backlink",
+              "share_of_search",
+              "market",
+              "review",
+              "objection",
+              "source_watch"
+            ]
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "official-site",
+              "official-docs",
+              "source-repo",
+              "package-manifest",
+              "app-store",
+              "owned",
+              "manual-research",
+              "tool-export",
+              "ad-library",
+              "search-tool",
+              "market-intel-tool",
+              "pricing-watch",
+              "snapshot"
+            ]
+          },
+          "source_url": { "type": "string" },
+          "evidence_path": { "type": ["string", "null"] },
+          "observed_at": { "type": "string" },
+          "summary": { "type": "string" },
+          "details": { "type": ["string", "null"] },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+          "freshness": { "type": "string", "enum": ["current", "watch", "stale"] },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "impact": {
+            "type": "string",
+            "enum": ["sales", "benchmark", "roadmap", "acquisition", "objection", "moat", "pricing"]
+          },
+          "objection": { "type": ["string", "null"] },
+          "tachyon_response": { "type": "string" },
+          "next_action": { "type": ["string", "null"] }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

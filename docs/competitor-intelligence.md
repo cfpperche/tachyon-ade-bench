@@ -106,3 +106,11 @@ Marketing and distribution signals live in
 competitor facts: ad creative, launch channels, sponsorships, and newsletter or
 podcast placements can explain positioning and go-to-market strategy, but they
 are not benchmark evidence.
+
+## Battlecards and Competitive Signals
+
+Battlecards, pricing-watch records, market observations, and imported
+third-party intelligence live in `docs/competitive-intelligence.md` and
+`intelligence/current/signals.json`. Use them to summarize positioning,
+objections, freshness, confidence, and Tachyon responses without bloating
+`competitors/*.json` with sales-facing analysis.

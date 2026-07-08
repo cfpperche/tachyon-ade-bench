@@ -1,0 +1,12 @@
+---
+import BattlecardsBoard from "../../components/BattlecardsBoard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getUi, type Locale } from "../../lib/i18n";
+
+const locale: Locale = "pt";
+const t = getUi(locale);
+---
+
+<BaseLayout title={t.battlecards.title} locale={locale} currentPath="/battlecards/">
+  <BattlecardsBoard locale={locale} />
+</BaseLayout>

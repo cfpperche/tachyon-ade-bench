@@ -220,6 +220,72 @@ export interface AcquisitionBoardData {
   statusCounts: Partial<Record<AcquisitionResult, number>>;
 }
 
+export type IntelligenceCategory =
+  | "battlecard"
+  | "positioning"
+  | "feature"
+  | "stack"
+  | "pricing"
+  | "packaging"
+  | "traffic"
+  | "seo"
+  | "paid_search"
+  | "backlink"
+  | "share_of_search"
+  | "market"
+  | "review"
+  | "objection"
+  | "source_watch";
+
+export type IntelligenceConfidence = "high" | "medium" | "low";
+export type IntelligenceFreshness = "current" | "watch" | "stale";
+
+export interface IntelligenceSignal {
+  category: IntelligenceCategory;
+  confidence: IntelligenceConfidence;
+  details: string | null;
+  evidence_path: string | null;
+  freshness: IntelligenceFreshness;
+  id: string;
+  impact: "sales" | "benchmark" | "roadmap" | "acquisition" | "objection" | "moat" | "pricing";
+  next_action: string | null;
+  objection: string | null;
+  observed_at: string;
+  product_id: string;
+  source_type: string;
+  source_url: string;
+  summary: string;
+  tachyon_response: string;
+  tags: string[];
+}
+
+export interface IntelligenceBattlecard {
+  categories: IntelligenceCategory[];
+  class: ProductClass;
+  confidence: Partial<Record<IntelligenceConfidence, number>>;
+  freshness: Partial<Record<IntelligenceFreshness, number>>;
+  homepage: string | null;
+  id: string;
+  name: string;
+  objections: string[];
+  positioning: string;
+  readiness: BenchmarkReadiness;
+  responses: string[];
+  signals: IntelligenceSignal[];
+  sourceCount: number;
+  sourceUrl: string | null;
+  tags: string[];
+}
+
+export interface IntelligenceBoardData {
+  battlecards: IntelligenceBattlecard[];
+  generatedAt: string | null;
+  signalCount: number;
+  categoryCount: number;
+  pricingWatchCount: number;
+  importReadyCount: number;
+}
+
 export type StrategyPressureAxis =
   | "ux"
   | "orchestration"
