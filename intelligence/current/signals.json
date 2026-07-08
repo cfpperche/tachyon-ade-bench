@@ -17,7 +17,12 @@
       "source_url": "https://www.onorca.dev/",
       "summary": "Orca is positioned as a direct local ADE competitor with visible worktree/fleet pressure.",
       "tachyon_response": "Lead with verification-first orchestration: show canonical verifiers, preserved diffs, and intervention burden instead of only cockpit breadth.",
-      "tags": ["class-a", "orchestration", "worktree", "battlecard"]
+      "tags": [
+        "class-a",
+        "orchestration",
+        "worktree",
+        "battlecard"
+      ]
     },
     {
       "category": "positioning",
@@ -35,7 +40,12 @@
       "source_url": "https://agentsroom.dev/pt",
       "summary": "AgentsRoom pressures Tachyon on visual cockpit positioning.",
       "tachyon_response": "Compare visible UX separately from reliability: Tachyon should show benchmark evidence, handoff quality, and reproducible task completion.",
-      "tags": ["ux", "cockpit", "multi-agent", "battlecard"]
+      "tags": [
+        "ux",
+        "cockpit",
+        "multi-agent",
+        "battlecard"
+      ]
     },
     {
       "category": "packaging",
@@ -53,7 +63,12 @@
       "source_url": "https://github.com/kdlbs/kandev/blob/main/docs/features.md",
       "summary": "Kandev creates self-hosted packaging and workflow-control pressure.",
       "tachyon_response": "Frame Tachyon around controlled local automation, verifier isolation, and auditable agent work rather than project-management breadth.",
-      "tags": ["self-hosted", "packaging", "workflow", "battlecard"]
+      "tags": [
+        "self-hosted",
+        "packaging",
+        "workflow",
+        "battlecard"
+      ]
     },
     {
       "category": "market",
@@ -71,7 +86,12 @@
       "source_url": "https://www.augmentcode.com/",
       "summary": "Augment Code is strategic enterprise pressure rather than a clean Class A local ADE peer.",
       "tachyon_response": "Separate enterprise platform comparisons from local ADE benchmarks and emphasize Tachyon's reproducible, repo-local evidence model.",
-      "tags": ["class-b", "enterprise", "context", "market"]
+      "tags": [
+        "class-b",
+        "enterprise",
+        "context",
+        "market"
+      ]
     },
     {
       "category": "pricing",
@@ -89,7 +109,11 @@
       "source_url": "https://github.com/cfpperche/tachyon-ade-bench",
       "summary": "Pricing and packaging require first-class watch records before battlecards are sales-ready.",
       "tachyon_response": "Keep pricing unknowns visible and avoid implying free, cheap, or enterprise-only positioning without source-backed evidence.",
-      "tags": ["pricing-watch", "packaging", "sales-readiness"]
+      "tags": [
+        "pricing-watch",
+        "packaging",
+        "sales-readiness"
+      ]
     },
     {
       "category": "traffic",
@@ -107,8 +131,197 @@
       "source_url": "https://github.com/cfpperche/tachyon-ade-bench",
       "summary": "The repo is ready to store digital-market intelligence, but no paid traffic data is treated as evidence yet.",
       "tachyon_response": "Use acquisition intelligence as context only; keep benchmark claims grounded in task artifacts.",
-      "tags": ["similarweb", "semrush", "traffic", "import-ready"]
+      "tags": [
+        "similarweb",
+        "semrush",
+        "traffic",
+        "import-ready"
+      ]
+    },
+    {
+      "category": "pricing",
+      "confidence": "high",
+      "details": "Official page says Orca is free and open source, MIT licensed, and works with existing Claude Code, Codex, OpenCode, Grok, and other CLI subscriptions.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "orca-pricing-free-open-source",
+      "impact": "pricing",
+      "next_action": "Refresh the official page before publishing any pricing table.",
+      "objection": "Orca can compete aggressively on free/open-source packaging.",
+      "observed_at": "2026-07-08",
+      "product_id": "orca",
+      "source_type": "official-site",
+      "source_url": "https://www.onorca.dev/",
+      "summary": "Orca positions its ADE as free and open source across macOS, Windows, and Linux.",
+      "tachyon_response": "Do not compete only on price; compare verifier evidence, intervention burden, and local automation governance.",
+      "tags": [
+        "byos",
+        "free",
+        "mit",
+        "open-source"
+      ]
+    },
+    {
+      "category": "pricing",
+      "confidence": "high",
+      "details": "Official page says T3 Code does not resell tokens, has no quota caps, and uses the user's existing Claude Code, Codex, OpenCode, or Cursor credentials.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "t3-code-pricing-free-open-source-byos",
+      "impact": "pricing",
+      "next_action": "Track whether T3 Code introduces paid hosted or enterprise packaging later.",
+      "objection": "T3 Code may look economically simple for developers who already pay for agent subscriptions.",
+      "observed_at": "2026-07-08",
+      "product_id": "t3-code",
+      "source_type": "official-site",
+      "source_url": "https://t3.codes/",
+      "summary": "T3 Code presents itself as free, open source, MIT licensed, and bring-your-own-subscription.",
+      "tachyon_response": "Separate subscription pass-through from benchmark quality; show Tachyon's reproducible run artifacts and evidence model.",
+      "tags": [
+        "byos",
+        "free",
+        "mit",
+        "open-source"
+      ]
+    },
+    {
+      "category": "pricing",
+      "confidence": "medium",
+      "details": "FAQ states free up to 3 projects with unlimited agents and Pro at $9.99/month for unlimited projects; the same page also says AgentsRoom never charges, so this remains a watch signal.",
+      "evidence_path": null,
+      "freshness": "watch",
+      "id": "agentsroom-pricing-free-plus-pro-watch",
+      "impact": "pricing",
+      "next_action": "Revisit the official pricing/FAQ page and terms before sales use.",
+      "objection": "AgentsRoom can claim a low-friction free entry point and low Pro price.",
+      "observed_at": "2026-07-08",
+      "product_id": "agentsroom",
+      "source_type": "official-site",
+      "source_url": "https://agentsroom.dev/",
+      "summary": "AgentsRoom advertises a free tier and a Pro plan, but current page copy should be rechecked before public pricing claims.",
+      "tachyon_response": "Use AgentsRoom pricing as a sourced caveat, not a normalized comparison, until the pricing copy is reconciled.",
+      "tags": [
+        "byos",
+        "free-tier",
+        "pricing-watch",
+        "pro-plan"
+      ]
+    },
+    {
+      "category": "pricing",
+      "confidence": "high",
+      "details": "Business includes $100/month usage across LLM, Context Engine and compute, CLI access, MCP/native tools, top-ups, SOC 2 Type II, and no AI training; Enterprise is custom.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "augment-code-pricing-business-enterprise",
+      "impact": "pricing",
+      "next_action": "Track Augment docs for token-based service fee and compute-rate changes.",
+      "objection": "Augment can anchor enterprise buyers with explicit team pricing and compliance language.",
+      "observed_at": "2026-07-08",
+      "product_id": "augment-code",
+      "source_type": "official-site",
+      "source_url": "https://www.augmentcode.com/pricing",
+      "summary": "Augment Code publishes a Business plan at $100/month flat for up to 50 seats plus Enterprise custom pricing.",
+      "tachyon_response": "Treat Augment as Class B enterprise pressure; compare pricing separately from local ADE benchmark leaderboards.",
+      "tags": [
+        "business-plan",
+        "enterprise",
+        "flat-price",
+        "usage-included"
+      ]
+    },
+    {
+      "category": "pricing",
+      "confidence": "high",
+      "details": "Official pricing section lists Free at $0 forever with limits, Pro at $99/year with unlimited projects/agents/sub-agents, and BYO subscriptions/API keys; terms describe annual Pro licensing and two machine activations.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "hiveterm-pricing-free-pro-byos",
+      "impact": "pricing",
+      "next_action": "Refresh both homepage pricing and terms before public pricing table publication.",
+      "objection": "HiveTerm has clear low-cost packaging and explicit free limits.",
+      "observed_at": "2026-07-08",
+      "product_id": "hiveterm",
+      "source_type": "official-site",
+      "source_url": "https://hiveterm.com/",
+      "summary": "HiveTerm publishes a Free tier and a Pro plan at $99/year with a 14-day trial.",
+      "tachyon_response": "Compare HiveTerm's price clarity with Tachyon's evidence and run reproducibility; do not treat low price as benchmark quality.",
+      "tags": [
+        "annual",
+        "byos",
+        "free-tier",
+        "pro-plan"
+      ]
+    },
+    {
+      "category": "packaging",
+      "confidence": "high",
+      "details": "Official page says Hive asks for no account or key, CLIs bring their own logins, binds to 127.0.0.1, code stays home, and the project uses BSL 1.1.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "hive-packaging-local-source-available",
+      "impact": "pricing",
+      "next_action": "Monitor whether Hive adds hosted, mobile, or commercial paid packaging around remote access.",
+      "objection": "Hive can appeal to developers who want local execution and no separate product account.",
+      "observed_at": "2026-07-08",
+      "product_id": "hive",
+      "source_type": "official-site",
+      "source_url": "https://hivehq.dev/en/",
+      "summary": "Hive is packaged as a local browser-based agent orchestrator with source-visible install path and BYO CLI logins.",
+      "tachyon_response": "Track Hive as source-available local packaging pressure; compare governance, verification, and benchmark artifacts rather than assuming price parity.",
+      "tags": [
+        "bsl",
+        "byos",
+        "local",
+        "source-available"
+      ]
+    },
+    {
+      "category": "packaging",
+      "confidence": "high",
+      "details": "Official page describes OpenADE as an open-source ADE powered by Claude Code and Codex, with download for free across macOS, Linux, and Windows.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "openade-packaging-free-local-offline",
+      "impact": "pricing",
+      "next_action": "Track whether OpenADE introduces paid remote/mobile/hosted features later.",
+      "objection": "OpenADE can compete on trust, local/offline packaging, and a free download.",
+      "observed_at": "2026-07-08",
+      "product_id": "openade",
+      "source_type": "official-site",
+      "source_url": "https://openade.ai/",
+      "summary": "OpenADE presents itself as open source, free to download, no login/cloud, and 100% local/offline.",
+      "tachyon_response": "Answer with Tachyon's own local trust model plus benchmark evidence, not a feature-count claim.",
+      "tags": [
+        "free",
+        "local",
+        "offline",
+        "open-source"
+      ]
+    },
+    {
+      "category": "packaging",
+      "confidence": "high",
+      "details": "Repository README/about text says multi-provider, self-hostable, no telemetry; license is AGPL-3.0. No commercial pricing page was found in this pass.",
+      "evidence_path": null,
+      "freshness": "current",
+      "id": "kandev-packaging-agpl-self-hostable",
+      "impact": "pricing",
+      "next_action": "Check for hosted/support/commercial packaging before any public buyer-facing pricing table.",
+      "objection": "Kandev can appeal to teams prioritizing self-hosting and open-source governance.",
+      "observed_at": "2026-07-08",
+      "product_id": "kandev",
+      "source_type": "source-repo",
+      "source_url": "https://github.com/kdlbs/kandev",
+      "summary": "Kandev's upstream repository describes it as open source, self-hostable, no telemetry, and AGPL-3.0 licensed.",
+      "tachyon_response": "Compare self-hosting with Tachyon's controlled local automation and verifier isolation; keep license and support model explicit.",
+      "tags": [
+        "agpl",
+        "no-telemetry",
+        "open-source",
+        "self-hosted"
+      ]
     }
   ],
-  "updated_at": "2026-07-08T00:00:00Z"
+  "updated_at": "2026-07-08T23:36:00Z"
 }

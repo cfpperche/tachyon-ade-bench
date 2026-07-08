@@ -71,6 +71,19 @@ Pricing claims should prefer official pricing, docs, app-store, or source
 metadata. If pricing is absent or unclear, record that absence as a watch signal
 instead of inferring a business model.
 
+Refresh workflow:
+
+1. Prefer official product pricing pages, official terms, official docs, app
+   stores, package metadata, or upstream repositories.
+2. Record the exact source URL in the signal.
+3. Use `confidence: high` only when the source directly supports the summary.
+4. Use `freshness: watch` when a page is ambiguous, internally inconsistent, or
+   missing commercial plan details.
+5. Keep bring-your-own-subscription/token models separate from the ADE's own
+   price.
+6. When adding shell arguments that contain dollar amounts, wrap them in single
+   quotes or escape the dollar sign so the shell does not expand `$100` or `$99`.
+
 ### 5. Reproducible collectors
 
 Inspired by Apify-style collectors, the first collector is intentionally simple:
