@@ -15,6 +15,7 @@ agentic software development environment:
 
 - Tachyon
 - Orca
+- Herdr
 - HiveTerm
 - T3 Code
 - Hive
