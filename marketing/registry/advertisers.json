@@ -121,6 +121,18 @@
         "github_orgs": ["Runfusion"]
       },
       "notes": "Name Fusion is generic; always qualify with Runfusion or runfusion.ai. Do not confuse with RunDiffusion or NVIDIA Run:ai."
+    },
+    {
+      "product_id": "maestri",
+      "display_name": "Maestri",
+      "included": true,
+      "aliases": {
+        "names": ["Maestri", "The Maestri", "themaestri"],
+        "domains": ["themaestri.app", "www.themaestri.app"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "macOS canvas orchestrator; search EN and PT-BR landings. Name can collide with unrelated Maestro products."
     }
   ]
 }

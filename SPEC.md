@@ -26,6 +26,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - OpenADE / ADE App
 - Kandev
 - Fusion (Runfusion)
+- Maestri
 
 Class B products are enterprise agentic platforms:
 

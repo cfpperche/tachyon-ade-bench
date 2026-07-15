@@ -21,6 +21,7 @@ later. Unknown closed-source internals remain unknown by design.
 | OpenADE / ADE App | A-local-ade | TypeScript, Electron/web app, local/offline, Claude Code/Codex harnesses, git snapshots/worktrees. | Plan -> Revise -> Do, HyperPlan multi-agent planning, comments on files/diffs/messages, MCP integrations, diff/file/terminal/process manager. | Plan-first local workflow with snapshots/rollback and free open-source distribution. | `needs-install`; start with T001, T002, T005; re-check LICENSE packaging before legal claims. |
 | Kandev | A-local-ade | Go backend, Next.js frontend, CLI, Tauri desktop, self-hostable, worktrees, executor model. | Kanban/pipeline + workflow import/export, subtasks, multi-repo/branch, broad ACP agent list, voice mode, PRs, MCP/integrations. | Workflow-first self-hosted control plane with kanban-native operations and executor breadth. | `needs-install`; record executor choice. |
 | Fusion (Runfusion) | A-local-ade | TypeScript pnpm monorepo; React/Vite dashboard; Electron desktop; Capacitor mobile; Pi coding agent; embedded-postgres; MIT npm CLI. | Software factory board, plan/review/execute gates, worktree isolation, multi-node mesh, missions, agent companies, Command Center cost telemetry. | Open-source multi-agent factory with quality gates, worktree shipping, and multi-surface control. | `manual-ready`; T001 smoke passed after 1 merge intervention; nested worktrees + stuck auto-merge are parity risks. |
+| Maestri | A-local-ade | Native macOS Swift/SwiftUI canvas app; PTY terminals; APFS floors; optional SSH; Ombro on-device companion; proprietary. | Infinite canvas multi-agent orchestration, inter-agent connections, roles, routines, portals, notes, workspaces. | Spatial native canvas + agent-agnostic PTY links + local-first privacy on macOS. | `manual-ready` on Mac only; floors ≠ git worktree semantics; guest agent dominates single-task correctness. |
 
 ## Direct Benchmark Set
 
@@ -36,6 +37,7 @@ Use Class A for the first direct comparison:
 - OpenADE / ADE App
 - Kandev
 - Fusion (Runfusion)
+- Maestri
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -53,6 +55,7 @@ normalized and the caveats are visible.
 - OpenADE / ADE App: https://openade.ai/, https://www.ade-app.dev/, https://github.com/bearlyai/OpenADE
 - Kandev: https://github.com/kdlbs/kandev, https://raw.githubusercontent.com/kdlbs/kandev/main/README.md, https://raw.githubusercontent.com/kdlbs/kandev/main/docs/features.md
 - Fusion (Runfusion): https://runfusion.ai/, https://github.com/Runfusion/Fusion, https://www.npmjs.com/package/@runfusion/fusion, https://raw.githubusercontent.com/Runfusion/Fusion/main/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/cli/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/dashboard/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/desktop/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/mobile/package.json
+- Maestri: https://www.themaestri.app/en, https://www.themaestri.app/pt-br, https://www.themaestri.app/en/docs/intro, https://www.themaestri.app/en/docs/terminals, https://www.themaestri.app/en/docs/connections, https://www.themaestri.app/en/docs/floors, https://www.themaestri.app/en/docs/workspaces, https://www.themaestri.app/en/docs/routines, https://www.themaestri.app/en/docs/portals, https://www.themaestri.app/en/docs/ombro, https://www.themaestri.app/en/docs/ssh
 
 ## Caveats Before Scoring
 

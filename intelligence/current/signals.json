@@ -368,7 +368,31 @@
         "packaging",
         "self-hosted"
       ]
+    },
+    {
+      "category": "battlecard",
+      "confidence": "high",
+      "details": "Official site/docs position Maestri as a spatial canvas and orchestration layer (not an agent) with PTY agent connections, APFS floors, routines, portals, SSH, and Ombro. Treat as direct ADE pressure near Orca/Herdr/AgentsRoom with macOS-only parity caveats.",
+      "evidence_path": "competitors/maestri.json",
+      "freshness": "current",
+      "id": "maestri-battlecard-maestri-is-a-class-a-macos-native-multi-agent-orchestration-canvas-aroun",
+      "impact": "sales",
+      "next_action": "Optional Mac-hosted T001 smoke with workspace dir = harness worktree; record guest agent separately.",
+      "objection": "Maestri may look more polished for multi-agent spatial orchestration on Mac.",
+      "observed_at": "2026-07-15",
+      "product_id": "maestri",
+      "source_type": "official-site",
+      "source_url": "https://www.themaestri.app/en",
+      "summary": "Maestri is a Class A macOS-native multi-agent orchestration canvas around BYO coding CLIs.",
+      "tachyon_response": "Separate canvas UX from verification-first delivery: show identical tasks, worktree evidence, and intervention burden.",
+      "tags": [
+        "battlecard",
+        "canvas",
+        "class-a",
+        "macos",
+        "orchestration"
+      ]
     }
   ],
-  "updated_at": "2026-07-15T18:33:58Z"
+  "updated_at": "2026-07-15T19:55:09Z"
 }

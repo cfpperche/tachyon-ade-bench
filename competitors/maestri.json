@@ -1,0 +1,229 @@
+{
+  "id": "maestri",
+  "name": "Maestri",
+  "class": "A-local-ade",
+  "homepage": "https://www.themaestri.app/",
+  "source_url": null,
+  "license": "proprietary",
+  "runner": {
+    "kind": "manual",
+    "notes": "macOS-only desktop app. Install agents (Claude Code, Codex, OpenCode, etc.) first, open the prepared harness worktree as a Maestri workspace working directory, create terminals for the agent(s), provide prompt.md, then run harness verification. Record guest agent/model separately from Maestri. Floors use APFS copy-on-write clones, not the same semantics as git worktree isolation in Orca/Tachyon."
+  },
+  "inclusion": "Direct Class A ADE competitor: native macOS orchestration canvas around BYO coding-agent CLIs with inter-agent PTY connections, workspace floors, and local-first privacy posture.",
+  "pricing_model": "Free tier (1 workspace, unlimited agents); Pro lifetime license for unlimited workspaces (site shows free trial then one-time pay; regional pricing varies).",
+  "public_stack_signals": [
+    "Official positioning: infinite spatial canvas for terminals, agents, notes, files, and sketches — not an AI agent itself.",
+    "Native macOS app (Swift/SwiftUI/AppKit, custom Metal canvas); no Electron/web views claimed; terminal stack associated with SwiftTerm.",
+    "Expects pre-installed coding agents (Claude Code, Codex, OpenCode, plain shell); agent-to-agent via Maestri Agent Skill over connections.",
+    "Floors: APFS copy-on-write isolated repo copies for branch/context switching; Remote SSH workspaces with reverse tunnel script.",
+    "Ombro on-device companion via Apple Foundation Models (requires newer macOS for full support); zero telemetry / no account claims."
+  ],
+  "capabilities_to_probe": [
+    "multi-agent canvas orchestration",
+    "inter-agent PTY connections and skill install",
+    "role presets on terminals",
+    "APFS floors isolation vs dirty worktree safety",
+    "workspace working-directory binding for harness worktrees",
+    "routines scheduled prompts",
+    "portals browser automation by agents",
+    "SSH remote workspaces",
+    "Ombro monitoring and summaries"
+  ],
+  "moat_hypotheses": [
+    "spatial infinite-canvas UX for multi-agent operations",
+    "native Swift performance and macOS integration (Liquid Glass, Foundation Models)",
+    "agent-agnostic PTY connection model without cloud middleware",
+    "local-first privacy and lifetime pricing simplicity"
+  ],
+  "setup_notes": [
+    "Requires macOS 15.4+ and Apple Silicon per official download messaging.",
+    "Do not score from marketing screenshots alone; use the installed desktop app.",
+    "For fair comparison, point workspace working directory at the harness worktree only.",
+    "Guest agent CLIs must already be installed and authenticated."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-15",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://www.themaestri.app/en",
+        "kind": "official-site",
+        "notes": "English product landing: orchestration canvas positioning, agent connections, floors, Ombro, portals, routines, Swift/native stack, privacy, free/Pro pricing, macOS download."
+      },
+      {
+        "url": "https://www.themaestri.app/pt-br",
+        "kind": "official-site",
+        "notes": "Portuguese landing (default for many locales); same product claims as EN surface."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/intro",
+        "kind": "official-docs",
+        "notes": "Defines Maestri as canvas/orchestration layer around existing agents; core concepts workspace/canvas/terminal/connection/note/file tree; macOS only."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/terminals",
+        "kind": "official-docs",
+        "notes": "Terminals host coding agents; role instructions per terminal; expects agents pre-installed."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/connections",
+        "kind": "official-docs",
+        "notes": "Inter-agent communication via Maestri Agent Skill; agent-agnostic CLI-level prompting across harnesses."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/floors",
+        "kind": "official-docs",
+        "notes": "APFS copy-on-write floors as isolated branch/workspace copies with own terminals."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/workspaces",
+        "kind": "official-docs",
+        "notes": "Workspace as project container with working directory, layout, multi-workspace switching."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/routines",
+        "kind": "official-docs",
+        "notes": "Scheduled prompts to agent terminals at intervals."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/portals",
+        "kind": "official-docs",
+        "notes": "Embedded WebKit portals; agents can control connected portals."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/ombro",
+        "kind": "official-docs",
+        "notes": "On-device companion monitoring agents, summaries, next-step suggestions via Apple Foundation Models."
+      },
+      {
+        "url": "https://www.themaestri.app/en/docs/ssh",
+        "kind": "official-docs",
+        "notes": "Remote SSH workspaces with reverse tunnel and inspectable remote script; no claimed always-on daemon install."
+      }
+    ],
+    "positioning": "Native macOS infinite-canvas orchestration environment where BYO coding-agent terminals are spatial nodes that can connect, share notes, and run isolated floors — the conductor layer, not the agent itself.",
+    "stack": {
+      "runtime": [
+        "macOS 15.4+ desktop app",
+        "Swift / SwiftUI / AppKit",
+        "native terminal emulation (SwiftTerm lineage per public product claims)"
+      ],
+      "frontend": [
+        "infinite canvas with Metal-accelerated rendering",
+        "Liquid Glass / native macOS UI conventions"
+      ],
+      "backend": [
+        "local-first workspace state",
+        "PTY/terminal sessions for agents",
+        "optional SSH reverse tunnel for remote workspaces"
+      ],
+      "packaging": [
+        "DMG download from official site",
+        "macOS Apple Silicon"
+      ],
+      "data": [
+        "workspace layouts",
+        "markdown notes as files",
+        "JSON configuration claimed local",
+        "APFS floor clones for isolation"
+      ],
+      "unknowns": [
+        "Closed-source internals beyond official docs; no public source_url mapped.",
+        "Exact agent preset list and skill injection mechanism beyond docs summary.",
+        "Windows/Linux support not offered; Linux harness hosts cannot run the app natively."
+      ]
+    },
+    "infrastructure": [
+      "Local macOS app owns canvas, workspaces, terminals, and local notes.",
+      "Coding agents run as local CLI processes inside terminals; provider traffic follows each agent’s own privacy policy.",
+      "Floors create APFS copy-on-write isolated working copies for branch/context switches.",
+      "Optional SSH mode installs a small remote script and reverse tunnel for cross-machine agent communication.",
+      "Ombro companion uses on-device Apple Foundation Models when available."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "plain shell terminals",
+        "BYO CLI agents via terminal presets",
+        "Maestri Agent Skill for connected agents"
+      ],
+      "orchestration": [
+        "infinite canvas multi-agent layout",
+        "inter-agent connections with prompt/response skill",
+        "per-terminal roles/instructions",
+        "routines (scheduled prompts)",
+        "multi-workspace project switching",
+        "Ombro monitoring and next-step suggestions"
+      ],
+      "workspace_isolation": [
+        "workspace working directory binding",
+        "APFS floors as isolated repo copies",
+        "per-floor terminals and branches"
+      ],
+      "review_shipping": [
+        "open project in VS Code/Zed/Xcode from workspace",
+        "agent-written sticky notes for progress/review text",
+        "human spatial review of multiple agent terminals"
+      ],
+      "remote_mobile": [
+        "Remote SSH workspaces",
+        "Ombro floating companion window on the same Mac",
+        "no dedicated phone companion mapped in official docs reviewed"
+      ],
+      "context_memory": [
+        "saved canvas layouts per workspace",
+        "markdown notes readable/writable by agents",
+        "file tree on canvas",
+        "Ombro summaries of agent progress"
+      ],
+      "integrations": [
+        "VS Code / Zed / Xcode open shortcuts",
+        "embedded browser portals (WebKit)",
+        "SSH remote hosts",
+        "Apple Foundation Models (Ombro)",
+        "Spotlight / keyboard-first macOS workflow claims"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "Maestri DMG for macOS Apple Silicon",
+        "guest agent CLI installs (Claude Code, Codex, OpenCode, etc.)",
+        "workspace pointing at prepared harness worktree"
+      ],
+      "parity_risks": [
+        "macOS-only product; cannot be run on typical Linux CI hosts without a Mac runner.",
+        "APFS floors isolation is not the same as git worktree race/merge semantics used by Orca/Fusion/Tachyon probes.",
+        "Spatial orchestration and agent-to-agent PTY may not exercise plan/verify/merge gates the suite optimizes for.",
+        "Closed source: stack claims limited to official site/docs; no source_url.",
+        "Guest agent quality dominates single-task correctness; measure Maestri as orchestration environment, not as the coding model."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Canvas-native multi-agent UX can reduce operator overload versus tabbed terminals.",
+        "Native Swift stack and on-device Ombro may differentiate from Electron ADE cockpits on macOS.",
+        "Agent-agnostic PTY connections lower glue-code cost between heterogeneous CLIs.",
+        "Lifetime pricing and no-account local posture can attract individual power users."
+      ],
+      "evidence": [
+        "Official docs state Maestri is not an agent but an orchestration canvas around Claude Code/Codex/OpenCode.",
+        "Official docs document connections with Maestri Agent Skill, floors via APFS, routines, portals, SSH, and Ombro.",
+        "Official site claims Swift/SwiftUI, Metal canvas, zero telemetry, no account, free and Pro tiers."
+      ],
+      "unknowns": [
+        "Hands-on isolation quality under dirty worktrees and multi-agent collision needs a Mac-hosted bench run.",
+        "How much Maestri improves verification/evidence capture versus raw CLIs remains unmeasured."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
+  "updated_at": "2026-07-15"
+}
