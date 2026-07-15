@@ -84,6 +84,25 @@ export interface TaskMeta {
   difficulty: string;
 }
 
+export type CapabilityAxis =
+  | "agent_support"
+  | "orchestration"
+  | "workspace_isolation"
+  | "review_shipping"
+  | "remote_mobile"
+  | "context_memory"
+  | "integrations";
+
+export const CAPABILITY_AXES: CapabilityAxis[] = [
+  "agent_support",
+  "orchestration",
+  "workspace_isolation",
+  "review_shipping",
+  "remote_mobile",
+  "context_memory",
+  "integrations",
+];
+
 export interface CompetitorSummary {
   id: string;
   name: string;
@@ -99,6 +118,8 @@ export interface CompetitorSummary {
   taskCount: number;
   localScore: number;
   orchestrationScore: number;
+  /** 0–100 heuristic scores from profile feature list lengths (not benchmark scores). */
+  capabilityScores: Record<CapabilityAxis, number>;
   stack: string[];
   integrations: string[];
   suggestedTasks: string[];

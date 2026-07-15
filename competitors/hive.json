@@ -35,7 +35,7 @@
     "Install with npm i -g @tt-a1i/hive and open the printed 127.0.0.1 URL."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -46,7 +46,7 @@
       {
         "url": "https://github.com/tt-a1i/hive",
         "kind": "source-repo",
-        "notes": "Linked official source repository from product page."
+        "notes": "Linked official source repository from product page. Refresh 2026-07-15: ~420 stars; last push 2026-06-18 (slower than Orca/Kandev/Fusion); BSL remains via LICENSE.BSL path for post-0.6.0-alpha.8."
       }
     ],
     "positioning": "A local browser workbench for an orchestrator to dispatch tasks to CLI agent workers.",
@@ -156,5 +156,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

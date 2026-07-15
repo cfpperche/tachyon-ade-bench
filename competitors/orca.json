@@ -13,8 +13,9 @@
   "pricing_model": "Open-source app plus bring-your-own agent/model subscriptions.",
   "public_stack_signals": [
     "Electron desktop app with TypeScript, React, Vite/electron-vite, node-pty, xterm, ssh2, ws, and mobile-related repo folders.",
-    "CLI binary exposed as orca in package metadata.",
-    "Remote server mode runs orca serve on a headless machine."
+    "CLI binary exposed as orca in package metadata; package.json version observed 1.4.142-rc.7 on 2026-07-15.",
+    "Remote server mode runs orca serve on a headless machine.",
+    "GitHub positioning remains fleet-of-parallel-agents ADE; high visibility (~19.7k stars at refresh)."
   ],
   "capabilities_to_probe": [
     "multi-agent worktree orchestration",
@@ -35,18 +36,18 @@
     "Start with manual desktop run. For remote parity, use a machine where target agent CLIs and credentials are installed."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://github.com/stablyai/orca",
         "kind": "source-repo",
-        "notes": "README, feature list, license, supported agents, and repository language signals."
+        "notes": "README, feature list, license, supported agents, and repository language signals. Refresh 2026-07-15: still MIT TypeScript; pushed same day; ~19.7k stars."
       },
       {
         "url": "https://raw.githubusercontent.com/stablyai/orca/main/package.json",
         "kind": "package-manifest",
-        "notes": "Runtime/package signals: Node 24, Electron, React, Vite, TypeScript, node-pty, xterm, ssh2, ws, pnpm, Monaco, and Tailwind."
+        "notes": "Runtime/package signals: Node 24, Electron, React, Vite, TypeScript, node-pty, xterm, ssh2, ws, pnpm, Monaco, and Tailwind. Refresh 2026-07-15 version field: 1.4.142-rc.7."
       },
       {
         "url": "https://www.onorca.dev/docs/remote-servers",
@@ -103,7 +104,9 @@
     "features": {
       "agent_support": [
         "Any CLI agent that runs in a terminal",
-        "Documented support includes Claude Code, Codex, OpenCode, Cursor, Copilot, Grok, Auggie, Gemini/Antigravity, Kiro, Qwen, Devin, and others"
+        "Documented support includes Claude Code, Codex, OpenCode, Cursor, Copilot, Grok, Auggie, Gemini/Antigravity, Kiro, Qwen, Devin, and others",
+        "OpenClaude",
+        "Pi coding agent"
       ],
       "orchestration": [
         "Run agents side by side",
@@ -170,7 +173,8 @@
       ],
       "evidence": [
         "Official README lists parallel worktrees, mobile companion, terminal splits, design mode, native GitHub/Linear, SSH worktrees, diff annotation, and CLI.",
-        "Official docs describe remote server mode and custom CLI agent support."
+        "Official docs describe remote server mode and custom CLI agent support.",
+        "Refresh 2026-07-15: GitHub remains highly active with large star count; landing still positions Orca as an ADE for agent fleets."
       ],
       "unknowns": [
         "Quality of verification gates and evidence capture compared with Tachyon remains unbenchmarked."
@@ -178,5 +182,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

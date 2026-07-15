@@ -76,6 +76,25 @@ inside `research`.
 6. If the change affects comparison language, update
    `reports/competitor-map-v0.1.md`.
 
+### Tachyon special case
+
+Tachyon claims start in the owned product surface:
+
+- `docs/product/` (Markdown)
+- `docs/product/capabilities.json` (SSOT for radar axes)
+
+Do not invent Tachyon features only inside `competitors/tachyon.json`. Prefer:
+
+```sh
+# edit docs/product/capabilities.json and docs
+python3 scripts/product/check-capabilities.py
+python3 scripts/product/sync-tachyon-profile.py
+python3 harness/bench.py check
+```
+
+The competitor profile remains the dashboard input; the product docs remain the
+canonical source.
+
 ## Benchmark Readiness
 
 Use `research.benchmarking.readiness` consistently:

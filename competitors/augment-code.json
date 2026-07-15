@@ -34,13 +34,13 @@
     "Report separately when enterprise-only setup differs from local ADE setup."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://www.augmentcode.com/",
         "kind": "official-site",
-        "notes": "Enterprise positioning and product surface."
+        "notes": "Enterprise agentic software development positioning and product surface claims. Refresh 2026-07-15: site live; title still 'Agentic software development at organizational scale'."
       },
       {
         "url": "https://docs.augmentcode.com/introduction",
@@ -50,7 +50,7 @@
       {
         "url": "https://docs.augmentcode.com/cli/overview",
         "kind": "official-docs",
-        "notes": "Auggie CLI positioning and usage."
+        "notes": "Auggie CLI overview remains published in official docs (refresh 2026-07-15)."
       },
       {
         "url": "https://www.augmentcode.com/context-engine",
@@ -172,5 +172,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

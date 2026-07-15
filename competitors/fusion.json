@@ -53,7 +53,7 @@
       {
         "url": "https://github.com/Runfusion/Fusion",
         "kind": "source-repo",
-        "notes": "README, MIT license, early-preview status, architecture packages, install paths, workflow docs links, multi-platform packaging."
+        "notes": "README, MIT license, early-preview status, architecture packages, install paths, workflow docs links, multi-platform packaging. Refresh 2026-07-15: ~961 stars, active daily pushes."
       },
       {
         "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/package.json",

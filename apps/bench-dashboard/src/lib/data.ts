@@ -8,6 +8,7 @@ import type {
   AcquisitionReviewItem,
   AcquisitionResult,
   AcquisitionScanHistoryRow,
+  CapabilityAxis,
   Competitor,
   CompetitorSummary,
   IntelligenceBattlecard,
@@ -23,6 +24,7 @@ import type {
   StrategyPressureRow,
   TaskMeta,
 } from "./types";
+import { CAPABILITY_AXES } from "./types";
 
 function findRepoRoot(start: string): string {
   let current = resolve(start);
@@ -69,6 +71,23 @@ export function getTasks(): TaskMeta[] {
     .filter((dir) => dir.startsWith("T"))
     .map((dir) => readJson<TaskMeta>(join(tasksDir, dir, "task.json")))
     .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+/** Soft-cap feature-list length into a 0–100 surface score (8 listed items ≈ 100). */
+export function capabilityScoreFromCount(count: number): number {
+  return Math.max(0, Math.min(100, Math.round(count * 12.5)));
+}
+
+export function capabilityScoresFor(
+  features: Competitor["research"]["features"],
+): Record<CapabilityAxis, number> {
+  return CAPABILITY_AXES.reduce(
+    (scores, axis) => {
+      scores[axis] = capabilityScoreFromCount(features[axis].length);
+      return scores;
+    },
+    {} as Record<CapabilityAxis, number>,
+  );
 }
 
 export function summarizeCompetitor(competitor: Competitor): CompetitorSummary {
@@ -122,6 +141,7 @@ export function summarizeCompetitor(competitor: Competitor): CompetitorSummary {
     taskCount: competitor.research.benchmarking.suggested_first_tasks.length,
     localScore,
     orchestrationScore,
+    capabilityScores: capabilityScoresFor(features),
     stack: Array.from(new Set(stack)).slice(0, 8),
     integrations: competitor.research.features.integrations,
     suggestedTasks: competitor.research.benchmarking.suggested_first_tasks,

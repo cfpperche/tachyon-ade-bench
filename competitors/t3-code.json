@@ -12,9 +12,9 @@
   "inclusion": "Direct ADE competitor for operating coding agents from a desktop or web control plane.",
   "pricing_model": "Open-source control plane with bring-your-own subscriptions.",
   "public_stack_signals": [
-    "Official landing page positions T3 Code as an open-source control plane for Claude Code, Codex, OpenCode, and Cursor.",
-    "Package manifest shows pnpm monorepo, Node 24.13.1+, web, desktop, marketing apps, Vite/vite-plus build tooling.",
-    "Docs state development uses Bun for install in some flows."
+    "Open-source control plane for Claude Code, Codex, OpenCode, and Cursor (README 2026-07-15).",
+    "Install via npx t3@latest, desktop releases, winget, Homebrew cask, AUR.",
+    "TypeScript monorepo; early project warns of bugs and limited contributions."
   ],
   "capabilities_to_probe": [
     "agent selection",
@@ -33,7 +33,7 @@
     "Confirm current desktop/web install path before benchmark; docs mention provider CLI auth prerequisites."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -44,7 +44,7 @@
       {
         "url": "https://github.com/pingdotgg/t3code",
         "kind": "source-repo",
-        "notes": "README installation and supported provider claims."
+        "notes": "Source repository, README install paths, and provider auth instructions. Refresh 2026-07-15: MIT TypeScript monorepo, ~14.0k stars, active same-day pushes."
       },
       {
         "url": "https://raw.githubusercontent.com/pingdotgg/t3code/main/package.json",
@@ -54,7 +54,7 @@
       {
         "url": "https://pingdotgg-t3code.mintlify.app/installation",
         "kind": "official-docs",
-        "notes": "Development setup and Bun/Node requirements."
+        "notes": "Installation docs site still reachable (Mintlify). README also points to in-repo docs/ markdown as primary documentation while public docs mature."
       }
     ],
     "positioning": "Open-source control plane for coding agents with bring-your-own subscriptions.",
@@ -86,8 +86,8 @@
       ]
     },
     "infrastructure": [
-      "Local/web control plane over existing agent CLIs.",
-      "Provider credentials remain with the user's existing CLI logins."
+      "Local/web/desktop control plane over existing agent CLIs.",
+      "Provider credentials remain with the user's existing CLI logins (codex login, claude auth login, cursor-agent login, opencode auth login)."
     ],
     "features": {
       "agent_support": [
@@ -148,5 +148,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

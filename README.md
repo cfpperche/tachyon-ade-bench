@@ -81,17 +81,22 @@ https://cfpperche.github.io/tachyon-ade-bench/pt/
 ```text
 competitors/   Seed profiles for products under test
 apps/          Static dashboard and presentation surfaces
+docs/product/  Owned canonical Tachyon product surface (SSOT)
 docs/specs/    Spec-driven development records for benchmark changes
 harness/       Local reproducibility tooling
 marketing/     Acquisition-intelligence registries, scans, and summaries
 reports/       Human-readable benchmark summaries
 runs/          Ignored local run outputs
 schemas/       JSON schemas for tracked benchmark documents
+scripts/product/  Validate/sync Tachyon capabilities SSOT
 tasks/         Versioned benchmark tasks and fixtures
 ```
 
 Research docs:
 
+- `docs/product/` is the owned canonical Tachyon product surface
+  (`capabilities.json` SSOT; sync into `competitors/tachyon.json` via
+  `scripts/product/sync-tachyon-profile.py`).
 - `docs/competitor-intelligence.md` covers stack, infrastructure, features,
   moat hypotheses, and benchmark caveats.
 - `docs/acquisition-intelligence.md` covers paid channels, launch surfaces,
@@ -102,6 +107,14 @@ Research docs:
   and reproducible collectors.
 - `docs/run-report-metrics.md` defines the run-level indicators required before
   any scored leaderboard.
+
+Tachyon product surface checks:
+
+```sh
+python3 scripts/product/check-capabilities.py
+python3 scripts/product/sync-tachyon-profile.py
+python3 harness/bench.py check
+```
 
 Marketing acquisition checks:
 

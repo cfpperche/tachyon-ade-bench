@@ -121,12 +121,48 @@ export const ui = {
       readinessTitle: "Benchmark Readiness",
       readinessDescription:
         "Profiles are grouped by how close they are to a comparable benchmark run.",
-      moatTitle: "Moat Map",
-      moatDescription:
-        "Derived positioning map from local-first and orchestration signals in the profiles.",
+      readinessCalcTitle: "How slices are calculated",
+      readinessCalc: [
+        "Each profile contributes 1 to its research.benchmarking.readiness bucket from competitors/*.json.",
+        "Slices are simple counts (manual-ready, needs-install, enterprise-gated, owned-reference, research-only) — no score formula.",
+        "This is operational readiness for a fair run, not product quality.",
+      ],
+      positioningTitle: "Positioning Map",
+      positioningDescription:
+        "Derived 2D map from local-first and orchestration signals in the profiles.",
+      positioningCalcTitle: "How points are calculated",
+      positioningCalc: [
+        "X · Local-first: scan positioning + infrastructure + stack text for local terms (local, offline, desktop, worktree, 127.0.0.1, self-host) and enterprise terms (enterprise, saas, hosted, cloud). Class A starts at 46, +9 per local hit, −8 per enterprise hit, clamped 35–92. Class B is fixed at 24.",
+        "Y · Orchestration depth: 28 + (orchestration features × 7) + (agent_support × 3) + (workspace_isolation × 4), clamped 25–96.",
+        "Bubble size: total number of items across all feature groups in the profile.",
+        "Heuristic only — keyword and list-length proxies, not benchmark scores.",
+      ],
+      capabilityTitle: "Capability Radar",
+      capabilityDescription:
+        "Toggle products to overlay ADE capability surface across feature groups.",
+      capabilityDisclaimer:
+        "Heuristic surface scores from profile feature lists (not benchmark scores or quality).",
+      capabilityCalcTitle: "How radar points are calculated",
+      capabilityCalc: [
+        "Each axis is one feature group: agent_support, orchestration, workspace_isolation, review_shipping, remote_mobile, context_memory, integrations.",
+        "Score per axis = min(100, round(list_length × 12.5)). About 8 listed capabilities ≈ 100 on that axis.",
+        "Toggles only show/hide polygons; they do not recompute scores.",
+        "Longer feature lists raise surface scores — they do not prove better real-world quality.",
+      ],
+      compareProducts: "Compare products",
+      resetDefaults: "Reset defaults",
       localFirst: "Local-first",
       orchestrationDepth: "Orchestration depth",
       features: "Features",
+      capabilityAxes: {
+        agent_support: "Agents",
+        orchestration: "Orchestration",
+        workspace_isolation: "Isolation",
+        review_shipping: "Review",
+        remote_mobile: "Remote",
+        context_memory: "Memory",
+        integrations: "Integrations",
+      },
     },
     matrix: {
       title: "Competitor Matrix",
@@ -522,12 +558,48 @@ export const ui = {
       readinessTitle: "Prontidão de Benchmark",
       readinessDescription:
         "Perfis agrupados por proximidade de uma execução comparável de benchmark.",
-      moatTitle: "Mapa de Moat",
-      moatDescription:
-        "Mapa derivado de sinais local-first e de profundidade de orquestração nos perfis.",
+      readinessCalcTitle: "Como as fatias são calculadas",
+      readinessCalc: [
+        "Cada perfil conta 1 no bucket research.benchmarking.readiness de competitors/*.json.",
+        "As fatias são contagens simples (manual-ready, needs-install, enterprise-gated, owned-reference, research-only) — sem fórmula de score.",
+        "Isso mede prontidão operacional para um run justo, não qualidade do produto.",
+      ],
+      positioningTitle: "Mapa de Posicionamento",
+      positioningDescription:
+        "Mapa 2D derivado de sinais local-first e de profundidade de orquestração nos perfis.",
+      positioningCalcTitle: "Como os pontos são calculados",
+      positioningCalc: [
+        "X · Local-first: varre positioning + infrastructure + stack em busca de termos locais (local, offline, desktop, worktree, 127.0.0.1, self-host) e enterprise (enterprise, saas, hosted, cloud). Classe A começa em 46, +9 por hit local, −8 por hit enterprise, limitado a 35–92. Classe B fica fixa em 24.",
+        "Y · Profundidade de orquestração: 28 + (features de orchestration × 7) + (agent_support × 3) + (workspace_isolation × 4), limitado a 25–96.",
+        "Tamanho da bolha: total de itens em todos os grupos de features do perfil.",
+        "Apenas heurística — proxies por palavra-chave e tamanho de lista, não scores de benchmark.",
+      ],
+      capabilityTitle: "Radar de Capacidades",
+      capabilityDescription:
+        "Ligue produtos para sobrepor a superfície de capacidades ADE por grupo de features.",
+      capabilityDisclaimer:
+        "Scores heurísticos de superfície a partir das listas de features dos perfis (não são scores de benchmark nem qualidade).",
+      capabilityCalcTitle: "Como os pontos do radar são calculados",
+      capabilityCalc: [
+        "Cada eixo é um grupo de features: agent_support, orchestration, workspace_isolation, review_shipping, remote_mobile, context_memory, integrations.",
+        "Score por eixo = min(100, arredonda(tamanho_da_lista × 12.5)). Cerca de 8 capacidades listadas ≈ 100 naquele eixo.",
+        "Os toggles só mostram/escondem polígonos; não recalculam scores.",
+        "Listas de features mais longas sobem o score de superfície — não provam qualidade real melhor.",
+      ],
+      compareProducts: "Comparar produtos",
+      resetDefaults: "Restaurar padrão",
       localFirst: "Local-first",
       orchestrationDepth: "Profundidade de orquestração",
       features: "Funcionalidades",
+      capabilityAxes: {
+        agent_support: "Agentes",
+        orchestration: "Orquestração",
+        workspace_isolation: "Isolamento",
+        review_shipping: "Review",
+        remote_mobile: "Remoto",
+        context_memory: "Memória",
+        integrations: "Integrações",
+      },
     },
     matrix: {
       title: "Matriz de Concorrentes",

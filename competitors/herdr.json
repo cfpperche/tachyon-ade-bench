@@ -1,181 +1,181 @@
 {
- "id": "herdr",
- "name": "Herdr",
- "class": "A-local-ade",
- "homepage": "https://herdr.dev/",
- "source_url": "https://github.com/ogulcancelik/herdr",
- "license": "AGPL-3.0-or-later (commercial license negotiable)",
- "runner": {
-  "kind": "manual",
-  "notes": "Prepare a run worktree, start herdr, open the worktree in a pane, launch the guest agent CLI with prompt.md, then run harness verification. Single-task runs measure the guest CLI more than Herdr itself; record environment=herdr plus the guest agent/model as separate run dimensions."
- },
- "inclusion": "Direct terminal-native agent runtime and multi-agent ADE competitor.",
- "pricing_model": "Open source (AGPL) single binary, no account or telemetry; sponsorship-funded with negotiable commercial licensing.",
- "public_stack_signals": [
-  "Rust single binary using ratatui, portable-pty (vendored patch), tokio, and interprocess; no Electron.",
-  "Server-client model over Unix domain sockets / Windows named pipes with newline-delimited JSON and a bundled JSON Schema (herdr api schema).",
-  "Per-agent detection manifests in TOML with a remote catalog at herdr.dev/agent-detection/index.toml, hot-updatable without a binary release.",
-  "Lifecycle hook installation into agent configs (claude hooks, codex/kimi config blocks, hermes plugin) for session identity and native resume.",
-  "Astro website with docs, plugin marketplace, and public stats; ~173k LOC Rust across 208 files at review time."
- ],
- "capabilities_to_probe": [
-  "persistent PTY sessions with detach/reattach and SSH/phone thin-client attach",
-  "semantic agent state (idle/working/blocked/done) across ~20 runtime CLIs",
-  "agent-shaped socket API: pane read/send/split/run, wait output --match, wait agent-status",
-  "public agent skill (npx skills add) enabling agents to orchestrate sibling agents",
-  "git worktree create/open/remove with dirty-checkout safety",
-  "plugin system (herdr-plugin.toml) sharing the CLI/socket control surface",
-  "terminal session observe/control streams for third-party integrations",
-  "native agent session resume via installed lifecycle hooks",
-  "detection explainability (agent explain) and state-authority arbitration"
- ],
- "moat_hypotheses": [
-  "owned persistent PTY runtime with detach, SSH, direct-agent attach, and experimental live server handoff",
-  "broad explainable agent-state compatibility through foreground-process detection, lifecycle integrations, and hot-reloadable screen manifests",
-  "terminal-independent distribution as one Rust binary with a typed CLI/socket control surface",
-  "agent-operable workspace primitives spanning panes, waits, worktrees, terminal observe/control streams, and executable plugins",
-  "rapid open-source adoption and ecosystem momentum around a terminal-native agent runtime"
- ],
- "setup_notes": [
-  "Install via curl script or Homebrew; Windows install is beta (PowerShell script).",
-  "Dual-read tracked in intelligence: competitor today AND potential runtime backend (terminal session observe/control primitives could replace tmux-layer responsibilities); any backend spike is gated on AGPL/distribution decision, solo-maintainer bus factor, and the ungoverned same-user socket authority (no per-agent identity or capability scoping)."
- ],
- "research": {
-  "last_reviewed": "2026-07-09",
-  "confidence": "official-sourced",
-  "sources": [
-   {
-    "url": "https://herdr.dev/",
-    "kind": "official-site",
-    "notes": "Positioning (one terminal, whole herd), install paths, comparison framing, no-account/no-telemetry claims."
-   },
-   {
-    "url": "https://github.com/ogulcancelik/herdr",
-    "kind": "source-repo",
-    "notes": "Full source read at post-v0.7.3 HEAD (2026-07-09): detection manifests, agent_resume, worktree ops, integration hook installers, SKILL.md. 14.7k stars / 861 forks / created 2026-03-27 per GitHub API."
-   },
-   {
-    "url": "https://herdr.dev/docs/socket-api/",
-    "kind": "official-docs",
-    "notes": "NDJSON request/response protocol, method families, events.subscribe, env injection, socket paths; no caller authentication beyond same-user file permissions."
-   },
-   {
-    "url": "https://herdr.dev/docs/agent-skill/",
-    "kind": "official-docs",
-    "notes": "Public SKILL.md teaching agents to inspect/control panes, spawn helper agents, and wait on state; HERDR_ENV=1 guard is agent-honor-system."
-   },
-   {
-    "url": "https://herdr.dev/compare/",
-    "kind": "official-site",
-    "notes": "Self-positioning against tmux/Zellij, cmux/Warp, Solo, Conductor/Emdash/Superset; claims unique combo of PTY runtime + semantic state + agent-shaped API."
-   },
-   {
-    "url": "https://formulae.brew.sh/formula/herdr",
-    "kind": "package-manifest",
-    "notes": "Homebrew formula confirms distribution channel and install count telemetry."
-   }
+  "id": "herdr",
+  "name": "Herdr",
+  "class": "A-local-ade",
+  "homepage": "https://herdr.dev/",
+  "source_url": "https://github.com/ogulcancelik/herdr",
+  "license": "AGPL-3.0-or-later (commercial license negotiable)",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prepare a run worktree, start herdr, open the worktree in a pane, launch the guest agent CLI with prompt.md, then run harness verification. Single-task runs measure the guest CLI more than Herdr itself; record environment=herdr plus the guest agent/model as separate run dimensions."
+  },
+  "inclusion": "Direct terminal-native agent runtime and multi-agent ADE competitor.",
+  "pricing_model": "Open source (AGPL) single binary, no account or telemetry; sponsorship-funded with negotiable commercial licensing.",
+  "public_stack_signals": [
+    "Rust single binary using ratatui, portable-pty (vendored patch), tokio, and interprocess; no Electron.",
+    "Server-client model over Unix domain sockets / Windows named pipes with newline-delimited JSON and a bundled JSON Schema (herdr api schema).",
+    "Per-agent detection manifests in TOML with a remote catalog at herdr.dev/agent-detection/index.toml, hot-updatable without a binary release.",
+    "Lifecycle hook installation into agent configs (claude hooks, codex/kimi config blocks, hermes plugin) for session identity and native resume.",
+    "Astro website with docs, plugin marketplace, and public stats; ~173k LOC Rust across 208 files at review time."
   ],
-  "positioning": "Agent multiplexer that lives in your terminal: tmux-style persistent PTY runtime extended with semantic agent state for ~20 coding CLIs, SSH/mobile attach, and an agent-shaped socket API that lets agents and plugins drive the workspace.",
-  "stack": {
-   "runtime": [
-    "Rust single binary",
-    "tokio async runtime"
-   ],
-   "frontend": [
-    "ratatui TUI inside the user's existing terminal",
-    "mouse-first panes/tabs/workspaces with responsive mobile switcher"
-   ],
-   "backend": [
-    "server-client over Unix sockets / named pipes, NDJSON protocol",
-    "portable-pty process ownership (vendored patch)",
-    "per-agent TOML detection manifests with remote catalog updates"
-   ],
-   "packaging": [
-    "curl install script, Homebrew formula, Windows beta installer",
-    "no account, no telemetry, no Electron"
-   ],
-   "data": [
-    "session persistence and restore snapshots under ~/.config/herdr",
-    "in-memory 512-event ring for client sync (no durable audit log)"
-   ],
-   "unknowns": [
-    "Remote manifest catalog signing/provenance not evidenced in source at review time.",
-    "Commercial licensing terms and long-term funding model are not public."
-   ]
-  },
-  "infrastructure": [
-   "Local-first single binary; server keeps PTYs alive across client detach, SSH reattach, and thin-client (herdr --remote) access.",
-   "Lifecycle hooks installed into agent configs provide session identity and native resume across ~20 runtime CLIs.",
-   "Terminal session observe/control streams expose read-only frames and single-owner input authority for third-party products."
+  "capabilities_to_probe": [
+    "persistent PTY sessions with detach/reattach and SSH/phone thin-client attach",
+    "semantic agent state (idle/working/blocked/done) across ~20 runtime CLIs",
+    "agent-shaped socket API: pane read/send/split/run, wait output --match, wait agent-status",
+    "public agent skill (npx skills add) enabling agents to orchestrate sibling agents",
+    "git worktree create/open/remove with dirty-checkout safety",
+    "plugin system (herdr-plugin.toml) sharing the CLI/socket control surface",
+    "terminal session observe/control streams for third-party integrations",
+    "native agent session resume via installed lifecycle hooks",
+    "detection explainability (agent explain) and state-authority arbitration"
   ],
-  "features": {
-   "agent_support": [
-    "~20 runtimes detected via manifests (claude, codex, gemini, cursor, devin, antigravity, cline, opencode, copilot, kimi, kiro, droid, amp, grok, hermes, kilo, qodercli, pi, omp, mastracode).",
-    "Any terminal agent runs unrecognized as a plain pane."
-   ],
-   "orchestration": [
-    "Read/send/wait/split/spawn primitives via CLI+socket and a public agent skill.",
-    "No delegation contracts, caller identity, verification, or approval layer — coordination is ungoverned plumbing."
-   ],
-   "workspace_isolation": [
-    "Workspace/tab/pane hierarchy plus git worktree create/open/remove with dirty-checkout safety.",
-    "Worktrees are layout convenience, not authority containers."
-   ],
-   "review_shipping": [
-    "None provided — no tasks, review, verification evidence, or delivery pipeline; left to the guest agent and operator."
-   ],
-   "remote_mobile": [
-    "Detach/reattach with server-owned PTYs.",
-    "SSH from phone/tablet with touch-optimized switcher.",
-    "Thin-client remote attach (herdr --remote) with clipboard bridging."
-   ],
-   "context_memory": [
-    "Session/layout persistence and native agent session resume via installed hooks.",
-    "No durable project/task state."
-   ],
-   "integrations": [
-    "Plugin marketplace (herdr-plugin.toml: actions, event hooks, TUI panes, link handlers) sharing the same control surface.",
-    "Hook-based integration into agent config files."
-   ]
+  "moat_hypotheses": [
+    "owned persistent PTY runtime with detach, SSH, direct-agent attach, and experimental live server handoff",
+    "broad explainable agent-state compatibility through foreground-process detection, lifecycle integrations, and hot-reloadable screen manifests",
+    "terminal-independent distribution as one Rust binary with a typed CLI/socket control surface",
+    "agent-operable workspace primitives spanning panes, waits, worktrees, terminal observe/control streams, and executable plugins",
+    "rapid open-source adoption and ecosystem momentum around a terminal-native agent runtime"
+  ],
+  "setup_notes": [
+    "Install via curl script or Homebrew; Windows install is beta (PowerShell script).",
+    "Dual-read tracked in intelligence: competitor today AND potential runtime backend (terminal session observe/control primitives could replace tmux-layer responsibilities); any backend spike is gated on AGPL/distribution decision, solo-maintainer bus factor, and the ungoverned same-user socket authority (no per-agent identity or capability scoping)."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-15",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://herdr.dev/",
+        "kind": "official-site",
+        "notes": "Positioning (one terminal, whole herd), install paths, comparison framing, no-account/no-telemetry claims."
+      },
+      {
+        "url": "https://github.com/ogulcancelik/herdr",
+        "kind": "source-repo",
+        "notes": "Full source read at post-v0.7.3 HEAD (2026-07-09): detection manifests, agent_resume, worktree ops, integration hook installers, SKILL.md. Refresh 2026-07-15: ~16.8k stars, default branch master, still AGPL-marked, active same-day pushes; raw main/README 404s because default branch is master."
+      },
+      {
+        "url": "https://herdr.dev/docs/socket-api/",
+        "kind": "official-docs",
+        "notes": "NDJSON request/response protocol, method families, events.subscribe, env injection, socket paths; no caller authentication beyond same-user file permissions."
+      },
+      {
+        "url": "https://herdr.dev/docs/agent-skill/",
+        "kind": "official-docs",
+        "notes": "Public SKILL.md teaching agents to inspect/control panes, spawn helper agents, and wait on state; HERDR_ENV=1 guard is agent-honor-system."
+      },
+      {
+        "url": "https://herdr.dev/compare/",
+        "kind": "official-site",
+        "notes": "Self-positioning against tmux/Zellij, cmux/Warp, Solo, Conductor/Emdash/Superset; claims unique combo of PTY runtime + semantic state + agent-shaped API."
+      },
+      {
+        "url": "https://formulae.brew.sh/formula/herdr",
+        "kind": "package-manifest",
+        "notes": "Homebrew formula confirms distribution channel and install count telemetry."
+      }
+    ],
+    "positioning": "Agent multiplexer that lives in your terminal: tmux-style persistent PTY runtime extended with semantic agent state for ~20 coding CLIs, SSH/mobile attach, and an agent-shaped socket API that lets agents and plugins drive the workspace.",
+    "stack": {
+      "runtime": [
+        "Rust single binary",
+        "tokio async runtime"
+      ],
+      "frontend": [
+        "ratatui TUI inside the user's existing terminal",
+        "mouse-first panes/tabs/workspaces with responsive mobile switcher"
+      ],
+      "backend": [
+        "server-client over Unix sockets / named pipes, NDJSON protocol",
+        "portable-pty process ownership (vendored patch)",
+        "per-agent TOML detection manifests with remote catalog updates"
+      ],
+      "packaging": [
+        "curl install script, Homebrew formula, Windows beta installer",
+        "no account, no telemetry, no Electron"
+      ],
+      "data": [
+        "session persistence and restore snapshots under ~/.config/herdr",
+        "in-memory 512-event ring for client sync (no durable audit log)"
+      ],
+      "unknowns": [
+        "Remote manifest catalog signing/provenance not evidenced in source at review time.",
+        "Commercial licensing terms and long-term funding model are not public."
+      ]
+    },
+    "infrastructure": [
+      "Local-first single binary; server keeps PTYs alive across client detach, SSH reattach, and thin-client (herdr --remote) access.",
+      "Lifecycle hooks installed into agent configs provide session identity and native resume across ~20 runtime CLIs.",
+      "Terminal session observe/control streams expose read-only frames and single-owner input authority for third-party products."
+    ],
+    "features": {
+      "agent_support": [
+        "~20 runtimes detected via manifests (claude, codex, gemini, cursor, devin, antigravity, cline, opencode, copilot, kimi, kiro, droid, amp, grok, hermes, kilo, qodercli, pi, omp, mastracode).",
+        "Any terminal agent runs unrecognized as a plain pane."
+      ],
+      "orchestration": [
+        "Read/send/wait/split/spawn primitives via CLI+socket and a public agent skill.",
+        "No delegation contracts, caller identity, verification, or approval layer — coordination is ungoverned plumbing."
+      ],
+      "workspace_isolation": [
+        "Workspace/tab/pane hierarchy plus git worktree create/open/remove with dirty-checkout safety.",
+        "Worktrees are layout convenience, not authority containers."
+      ],
+      "review_shipping": [
+        "None provided — no tasks, review, verification evidence, or delivery pipeline; left to the guest agent and operator."
+      ],
+      "remote_mobile": [
+        "Detach/reattach with server-owned PTYs.",
+        "SSH from phone/tablet with touch-optimized switcher.",
+        "Thin-client remote attach (herdr --remote) with clipboard bridging."
+      ],
+      "context_memory": [
+        "Session/layout persistence and native agent session resume via installed hooks.",
+        "No durable project/task state."
+      ],
+      "integrations": [
+        "Plugin marketplace (herdr-plugin.toml: actions, event hooks, TUI panes, link handlers) sharing the same control surface.",
+        "Hook-based integration into agent config files."
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "curl -fsSL https://herdr.dev/install.sh | sh (or brew install herdr)",
+        "Start herdr, open run worktree in a pane",
+        "Launch guest agent CLI with prompt.md"
+      ],
+      "parity_risks": [
+        "Single-agent task runs measure the selected coding CLI inside Herdr more than Herdr itself; treat them as environment-compatibility runs.",
+        "Comparative Herdr claims need multi-agent scenarios: intervention burden, state-detection accuracy, isolation, persistence/recovery across detach/SSH, and coordination glue required.",
+        "No built-in verification/evidence/delivery — 'delivery completeness' scores as not-provided rather than zero-quality."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "PTY/terminal correctness across modern agent TUIs is expensive to reproduce and compounds as a moat.",
+        "The lifecycle-hook adapter matrix accumulates per-runtime compatibility knowledge faster than editor-bound competitors.",
+        "Remote-updatable detection manifests remove the release-per-CLI-change treadmill competitors suffer.",
+        "A cross-editor terminal runtime has a larger reachable surface than any editor-bound control plane.",
+        "Plugin/skill ecosystem on a single control surface may compound adoption."
+      ],
+      "evidence": [
+        "Source-read: 18 detection manifests with versioned rules, region semantics, and remote catalog fetch (256KB cap, engine versioning).",
+        "GitHub API 2026-07-09: 14.7k stars, 861 forks in ~3.5 months; near-daily releases (0.7.2 on 07-07, 0.7.3 on 07-08); issues past #1149.",
+        "Official downloads/stats page: ~112.6k GitHub asset downloads, ~11.1k Homebrew installs, 70 stable+preview releases.",
+        "HN launch thread (48714802): 165 points / 110 comments; praise for scroll/mouse/SSH-mobile; notably zero security questions about the ungoverned socket."
+      ],
+      "unknowns": [
+        "Whether the same-user socket gains per-agent identity/capability scoping (terminal observe/control split hints the team understands capability separation).",
+        "Whether it moves up-stack into durable tasks/MCP/verification — the watch signal for direct collision with governed-orchestration products.",
+        "Sustainability: founder-led direction with practical bus factor near one."
+      ]
+    }
   },
-  "benchmarking": {
-   "readiness": "manual-ready",
-   "install_surface": [
-    "curl -fsSL https://herdr.dev/install.sh | sh (or brew install herdr)",
-    "Start herdr, open run worktree in a pane",
-    "Launch guest agent CLI with prompt.md"
-   ],
-   "parity_risks": [
-    "Single-agent task runs measure the selected coding CLI inside Herdr more than Herdr itself; treat them as environment-compatibility runs.",
-    "Comparative Herdr claims need multi-agent scenarios: intervention burden, state-detection accuracy, isolation, persistence/recovery across detach/SSH, and coordination glue required.",
-    "No built-in verification/evidence/delivery — 'delivery completeness' scores as not-provided rather than zero-quality."
-   ],
-   "suggested_first_tasks": [
-    "T001-python-bugfix",
-    "T002-python-discount-feature"
-   ]
-  },
-  "moat": {
-   "hypotheses": [
-    "PTY/terminal correctness across modern agent TUIs is expensive to reproduce and compounds as a moat.",
-    "The lifecycle-hook adapter matrix accumulates per-runtime compatibility knowledge faster than editor-bound competitors.",
-    "Remote-updatable detection manifests remove the release-per-CLI-change treadmill competitors suffer.",
-    "A cross-editor terminal runtime has a larger reachable surface than any editor-bound control plane.",
-    "Plugin/skill ecosystem on a single control surface may compound adoption."
-   ],
-   "evidence": [
-    "Source-read: 18 detection manifests with versioned rules, region semantics, and remote catalog fetch (256KB cap, engine versioning).",
-    "GitHub API 2026-07-09: 14.7k stars, 861 forks in ~3.5 months; near-daily releases (0.7.2 on 07-07, 0.7.3 on 07-08); issues past #1149.",
-    "Official downloads/stats page: ~112.6k GitHub asset downloads, ~11.1k Homebrew installs, 70 stable+preview releases.",
-    "HN launch thread (48714802): 165 points / 110 comments; praise for scroll/mouse/SSH-mobile; notably zero security questions about the ungoverned socket."
-   ],
-   "unknowns": [
-    "Whether the same-user socket gains per-agent identity/capability scoping (terminal observe/control split hints the team understands capability separation).",
-    "Whether it moves up-stack into durable tasks/MCP/verification — the watch signal for direct collision with governed-orchestration products.",
-    "Sustainability: founder-led direction with practical bus factor near one."
-   ]
-  }
- },
- "research_status": "researched-official-v0.1",
- "updated_at": "2026-07-09"
+  "research_status": "researched-official-v0.1",
+  "updated_at": "2026-07-15"
 }

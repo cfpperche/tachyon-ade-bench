@@ -35,13 +35,13 @@
     "Benchmark with a local/self-hosted install and document executor choice."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://github.com/kdlbs/kandev",
         "kind": "source-repo",
-        "notes": "Repository description, license, topics, installation docs, and implementation signals."
+        "notes": "Repository description, license, topics, installation docs, and implementation signals. Refresh 2026-07-15: AGPL-3.0, Go primary, ~440 stars, pushed same day."
       },
       {
         "url": "https://raw.githubusercontent.com/kdlbs/kandev/main/README.md",
@@ -51,7 +51,7 @@
       {
         "url": "https://raw.githubusercontent.com/kdlbs/kandev/main/docs/features.md",
         "kind": "source-repo",
-        "notes": "Feature list covering kanban, ACP agents, executors, worktrees, integrations, and app surfaces."
+        "notes": "Feature docs describe Go backend, Next.js frontend, CLI, Tauri desktop, workflows, ACP agents, executors, and integrations. Refresh 2026-07-15: confirms workflow import/export, subtasks, multi-branch, expanded ACP agent list (incl. Grok/Pi/Cursor), voice mode, and in-progress Office Mode."
       }
     ],
     "positioning": "Open-source AI kanban and development environment for orchestrating multiple agents, reviewing changes, and opening PRs.",
@@ -82,7 +82,8 @@
       ],
       "unknowns": [
         "Exact production database/storage choices should be verified from source or install docs before comparing infrastructure cost.",
-        "Maturity of desktop packaging needs hands-on install."
+        "Maturity of desktop packaging needs hands-on install.",
+        "Office Mode is documented as in progress in features.md; treat as non-stable for benchmarking claims."
       ]
     },
     "infrastructure": [
@@ -96,17 +97,26 @@
         "Agent Control Protocol agents",
         "Claude Code",
         "Codex",
+        "GitHub Copilot",
         "Gemini CLI",
         "OpenCode",
+        "Cursor",
         "Amp",
+        "Auggie",
         "Qwen Code",
-        "CLI passthrough"
+        "Factory Droid",
+        "Pi",
+        "Grok",
+        "CLI passthrough / BYO TUI agents"
       ],
       "orchestration": [
         "kanban and pipeline workflows",
         "parallel task execution",
+        "workflow import/export (YAML)",
+        "subtasks inheriting workspace/workflow/agent/executor",
         "multi-repo and multi-branch tasks",
-        "task-scoped plans/docs/history"
+        "task documents with revision history",
+        "task labels"
       ],
       "workspace_isolation": [
         "git worktrees",
@@ -127,7 +137,8 @@
         "task docs",
         "task history",
         "external/session MCP",
-        "task-scoped MCP"
+        "task-scoped MCP",
+        "voice mode for chat prompts (Web Speech / Whisper options)"
       ],
       "integrations": [
         "GitHub",
@@ -174,5 +185,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

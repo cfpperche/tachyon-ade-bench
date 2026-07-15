@@ -1,0 +1,123 @@
+{
+  "schema_version": "0.1",
+  "product_id": "tachyon",
+  "updated_at": "2026-07-15",
+  "confidence": "owned",
+  "notes": "Seeded from the existing owned competitor profile. Expand only with real product claims. claimed items are eligible for sync into competitors/tachyon.json.",
+  "positioning": "Owned reference ADE for audited multi-agent development, reproducible task worktrees, evidence capture, and verification-first handoff.",
+  "capabilities": {
+    "agent_support": [
+      {
+        "name": "configured local agent runtimes",
+        "status": "claimed",
+        "summary": "Product runs against operator-configured local agent runtimes."
+      },
+      {
+        "name": "sub-agent workflows",
+        "status": "claimed",
+        "summary": "Work can be delegated to sub-agents within the owned product flow."
+      }
+    ],
+    "orchestration": [
+      {
+        "name": "multi-agent delegation",
+        "status": "claimed",
+        "summary": "Tasks can be split across more than one agent role or step."
+      },
+      {
+        "name": "review handoff",
+        "status": "claimed",
+        "summary": "Work returns through an explicit handoff/review path."
+      },
+      {
+        "name": "task-specific verification",
+        "status": "claimed",
+        "summary": "Completion can require a task- or project-specific verification gate."
+      }
+    ],
+    "workspace_isolation": [
+      {
+        "name": "git worktree isolation",
+        "status": "claimed",
+        "summary": "Delegated work can run in isolated git worktrees."
+      },
+      {
+        "name": "explicit owned path boundaries for delegated work",
+        "status": "claimed",
+        "summary": "Agents are expected to stay within owned paths for a task."
+      }
+    ],
+    "review_shipping": [
+      {
+        "name": "evidence records",
+        "status": "claimed",
+        "summary": "Durable evidence is part of accepting agent work."
+      },
+      {
+        "name": "verification logs",
+        "status": "claimed",
+        "summary": "Verification output is retained as part of the delivery trail."
+      },
+      {
+        "name": "human-readable handoff and review flow",
+        "status": "claimed",
+        "summary": "Handoff is reviewable by a human operator."
+      }
+    ],
+    "remote_mobile": [
+      {
+        "name": "not claimed in public competitor profile",
+        "status": "not-claimed",
+        "summary": "No remote/mobile product claim is exported to the public roster yet."
+      }
+    ],
+    "context_memory": [
+      {
+        "name": "handoff context",
+        "status": "claimed",
+        "summary": "Context needed for handoff persists across steps."
+      },
+      {
+        "name": "task evidence",
+        "status": "claimed",
+        "summary": "Task-level evidence remains available after agent turns."
+      },
+      {
+        "name": "spec-driven development records when used",
+        "status": "claimed",
+        "summary": "When SDD records are used, they can inform agent work."
+      }
+    ],
+    "integrations": [
+      {
+        "name": "plugins",
+        "status": "claimed",
+        "summary": "Extensibility via a plugin surface (owned product)."
+      },
+      {
+        "name": "host action governance",
+        "status": "claimed",
+        "summary": "Host actions are treated as governed capabilities, not free-for-all."
+      },
+      {
+        "name": "repository-local verification commands",
+        "status": "claimed",
+        "summary": "Project or bench verifiers can gate acceptance."
+      }
+    ]
+  },
+  "placeholders": [
+    {
+      "axis": "remote_mobile",
+      "name": "remote operator surface",
+      "status": "placeholder",
+      "summary": "TBD if/when product documents remote control."
+    },
+    {
+      "axis": "agent_support",
+      "name": "named third-party CLI matrix",
+      "status": "placeholder",
+      "summary": "Public list of supported vendor CLIs when product docs allow."
+    }
+  ]
+}

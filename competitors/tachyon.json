@@ -28,16 +28,22 @@
     "plugin and host-action governance"
   ],
   "setup_notes": [
-    "Fill homepage and source_url when the public product surface is ready."
+    "Fill homepage and source_url when the public product surface is ready.",
+    "Edit docs/product/capabilities.json first, then run scripts/product/sync-tachyon-profile.py."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "owned",
     "sources": [
       {
+        "url": "https://github.com/cfpperche/tachyon-ade-bench/tree/main/docs/product",
+        "kind": "owned",
+        "notes": "Owned canonical product surface (docs/product): overview, capabilities, architecture, workflows, limits, and capabilities.json SSOT."
+      },
+      {
         "url": "https://github.com/cfpperche/tachyon-ade-bench",
         "kind": "owned",
-        "notes": "Benchmark-owned reference profile placeholder; public Tachyon product docs/source are not asserted here."
+        "notes": "Benchmark repository holding the owned reference profile and harness; public Tachyon product homepage/source are not asserted here."
       }
     ],
     "positioning": "Owned reference ADE for audited multi-agent development, reproducible task worktrees, evidence capture, and verification-first handoff.",
@@ -137,5 +143,5 @@
     }
   },
   "research_status": "owned-reference-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }

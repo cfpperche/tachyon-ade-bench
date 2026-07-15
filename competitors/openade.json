@@ -34,7 +34,7 @@
     "Retain ade-app.dev as a legacy roster URL, but use openade.ai and GitHub OpenADE as current official sources."
   ],
   "research": {
-    "last_reviewed": "2026-07-07",
+    "last_reviewed": "2026-07-15",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -50,7 +50,7 @@
       {
         "url": "https://github.com/bearlyai/OpenADE",
         "kind": "source-repo",
-        "notes": "README, license badge, feature list, platform downloads, and implementation signals."
+        "notes": "Repository README, feature claims, TypeScript monorepo layout under projects/. Refresh 2026-07-15: ~327 stars; last push 2026-07-09; still positions free/open-source Claude Code & Codex ADE."
       }
     ],
     "positioning": "Open-source local ADE that makes agents plan, revise, and then execute, with comments and snapshots around the workflow.",
@@ -83,7 +83,8 @@
       ],
       "unknowns": [
         "Internal persistence format and extension/plugin boundary need source inspection beyond README.",
-        "Windows maturity is experimental according to README."
+        "Windows maturity is experimental according to README.",
+        "Root LICENSE file was not present in the GitHub contents listing at refresh; README still badges MIT — treat license packaging as needing re-check before legal claims."
       ]
     },
     "infrastructure": [
@@ -165,5 +166,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-07"
+  "updated_at": "2026-07-15"
 }
