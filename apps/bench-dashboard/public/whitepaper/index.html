@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Working paper WP-001: a working definition of the Agentic Development Environment (ADE), seven focus areas, and how the Tachyon ADE Bench measures them.">
+<title>The Agentic Development Environment — Working Paper WP-001</title>
+<style>
+  :root {
+    --paper: #fbfaf8;
+    --ink: #201d15;
+    --muted: #6f6857;
+    --accent: #8a6400;
+    --accent-bright: #b8860b;
+    --rule: #e6e0d2;
+    --panel: #f3f0e8;
+    --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+    --mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #16140e;
+      --ink: #e9e4d6;
+      --muted: #a49b85;
+      --accent: #f5c518;
+      --accent-bright: #f5c518;
+      --rule: #35301f;
+      --panel: #1f1c12;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #16140e;
+    --ink: #e9e4d6;
+    --muted: #a49b85;
+    --accent: #f5c518;
+    --accent-bright: #f5c518;
+    --rule: #35301f;
+    --panel: #1f1c12;
+  }
+  :root[data-theme="light"] {
+    --paper: #fbfaf8;
+    --ink: #201d15;
+    --muted: #6f6857;
+    --accent: #8a6400;
+    --accent-bright: #b8860b;
+    --rule: #e6e0d2;
+    --panel: #f3f0e8;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    margin: 0;
+  }
+  .sheet {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    font-size: 2.4rem;
+    line-height: 1.15;
+    font-weight: 700;
+    margin: 0.5rem 0 0.75rem;
+    text-wrap: balance;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin: 0 0 2rem;
+    text-wrap: balance;
+  }
+
+  .frontmatter {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    border: 1px solid var(--rule);
+    background: var(--panel);
+    border-radius: 4px;
+    padding: 0.9rem 1.1rem;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.3rem 1.4rem;
+    margin-bottom: 3rem;
+  }
+  .frontmatter dt { color: var(--muted); margin: 0; }
+  .frontmatter dd { margin: 0; }
+
+  h2 {
+    font-size: 1.45rem;
+    font-weight: 700;
+    margin: 3rem 0 0.9rem;
+    text-wrap: balance;
+  }
+  h2 .no, h3 .no {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 0.85em;
+    color: var(--accent);
+    margin-right: 0.6em;
+  }
+  h3 {
+    font-size: 1.12rem;
+    font-weight: 700;
+    margin: 2.1rem 0 0.5rem;
+    text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  li { margin-bottom: 0.35rem; }
+  strong { font-weight: 700; }
+
+  .abstract {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+    padding: 1.4rem 0 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .abstract p { font-size: 0.98rem; }
+  .abstract .label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  nav.toc {
+    font-size: 0.95rem;
+    margin: 1.5rem 0 0;
+    columns: 2;
+    column-gap: 2.5rem;
+  }
+  nav.toc ol { list-style: none; padding: 0; margin: 0; }
+  nav.toc li { break-inside: avoid; margin-bottom: 0.3rem; }
+  nav.toc .no { font-family: var(--mono); font-size: 0.8em; color: var(--accent); margin-right: 0.55em; }
+  nav.toc a { text-decoration: none; color: var(--ink); }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 560px) { nav.toc { columns: 1; } }
+
+  .tablewrap { overflow-x: auto; margin: 1.4rem 0 1.8rem; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+  th {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    text-align: left;
+    color: var(--muted);
+    font-weight: 500;
+    border-bottom: 2px solid var(--ink);
+    padding: 0.45rem 1rem 0.45rem 0;
+  }
+  td {
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 1rem 0.55rem 0;
+    vertical-align: top;
+  }
+  td.f, th.f { white-space: nowrap; font-family: var(--mono); font-size: 0.85em; color: var(--accent); }
+
+  .pull {
+    border-left: 3px solid var(--accent);
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    margin: 1.6rem 0;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--panel);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    padding: 0.08em 0.35em;
+  }
+
+  .refs { font-size: 0.92rem; }
+  .refs ol { padding-left: 1.6rem; }
+  .refs li { margin-bottom: 0.55rem; }
+
+  .draftnote {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    border-top: 1px solid var(--rule);
+    margin-top: 4rem;
+    padding-top: 1rem;
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .sheet { max-width: none; padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <span class="eyebrow">Tachyon ADE Bench · Working Paper WP-001</span>
+  <h1>The Agentic Development Environment</h1>
+  <p class="subtitle">A working definition, seven focus areas, and how to measure them — for a category that exists without a foundational document.</p>
+
+  <dl class="frontmatter">
+    <dt>status</dt><dd>draft v0.2 — open for discussion, not ratified</dd>
+    <dt>date</dt><dd>2026-07-15</dd>
+    <dt>repo</dt><dd><a href="https://github.com/cfpperche/tachyon-ade-bench">cfpperche/tachyon-ade-bench</a></dd>
+    <dt>scope</dt><dd>category definition &amp; measurement protocol — publishes no scored claims</dd>
+  </dl>
+
+  <div class="abstract">
+    <span class="label">Abstract</span>
+    <p>Since mid-2025, "Agentic Development Environment" (ADE) has become the accepted name for
+    tools that let one developer direct a fleet of AI coding agents. The term has commercial
+    momentum — a TIME Best Invention, an InfoWorld obituary for the IDE, at least four products
+    carrying the name — but no foundational document: every existing definition is a vendor blog
+    post, and the closest academic work uses different vocabulary. This paper proposes a working
+    definition and seven focus areas that separate an ADE from an AI-assisted editor or a single
+    CLI agent. It argues that the axis current definitions miss is <em>trust</em>: parallelism and
+    lifecycle coverage are table stakes, while verifiable delegation and non-imposing governance
+    are what make an agent fleet usable unattended. Each focus area is mapped to reproducible
+    metrics in the Tachyon ADE Bench protocol, so claims about the category can be evidence-backed
+    rather than rhetorical.</p>
+  </div>
+
+  <nav class="toc" aria-label="Contents">
+    <ol>
+      <li><span class="no">1</span><a href="#s1">A category without a foundation</a></li>
+      <li><span class="no">2</span><a href="#s2">Working definition</a></li>
+      <li><span class="no">3</span><a href="#s3">Seven focus areas</a></li>
+      <li><span class="no">4</span><a href="#s4">What an ADE is not</a></li>
+      <li><span class="no">5</span><a href="#s5">Measuring the category</a></li>
+      <li><span class="no">6</span><a href="#s6">Landscape</a></li>
+      <li><span class="no">7</span><a href="#s7">Status and evolution</a></li>
+      <li><span class="no">R</span><a href="#refs">References</a></li>
+    </ol>
+  </nav>
+
+  <h2 id="s1"><span class="no">1</span>A category without a foundation</h2>
+
+  <p>The term entered developer vocabulary in June 2025, when Warp launched version 2.0 as "the
+  first Agentic Development Environment" [1]. It stuck: TIME listed Warp's ADE among the Best
+  Inventions of 2025 [2], InfoWorld declared "the IDE is dead, long live the ADE" [3], and by
+  2026 the name is carried by multiple independent products — Warp, Orca [6], a desktop app
+  literally named ADE [7] — while Augment Code maintains the most-cited definitional guides [4,5].</p>
+
+  <p>What the category does <em>not</em> have is a foundational document. The Augment guides — the
+  closest thing to a vendor whitepaper — cite no formal specification for the category itself.
+  Academic work comes near but uses different vocabulary: the "Agentic Software Engineering"
+  roadmap [8] proposes an <strong>Agent Command Environment</strong> (where humans direct and
+  mentor agent teams) and an <strong>Agent Execution Environment</strong> (where agents work and
+  escalate) — conceptually an ADE split in two, under other names.</p>
+
+  <p>The existing definitions converge on a shape: purpose-built orchestration, multi-agent
+  parallelism as a first-class primitive, full lifecycle coverage, the developer shifting from
+  operator to manager, and isolated workspaces [4]. They diverge on almost nothing — which is
+  itself the problem. A definition assembled from launch blogs optimizes for what demos well
+  (parallelism, speed) and is silent on what determines whether a fleet is usable for real work:
+  whether its results can be trusted without re-doing them, and what it costs the human to find
+  out.</p>
+
+  <h2 id="s2"><span class="no">2</span>Working definition</h2>
+
+  <p class="pull">An Agentic Development Environment is the control plane where a human directs a
+  fleet of heterogeneous AI coding agents — and can trust what comes back without redoing the
+  work.</p>
+
+  <p>Three words in that sentence carry the weight:</p>
+
+  <ul>
+    <li><strong>Fleet.</strong> The unit is many agents, not one. The expensive unit of work is
+    not a session but <code>N agents × turns × payloads × cross-agent reads × retries</code>.</li>
+    <li><strong>Heterogeneous.</strong> Agent runtimes (Claude Code, Codex, Gemini, and whatever
+    ships next quarter) evolve faster than any environment that wraps them. An ADE that assumes
+    one runtime is a feature of that runtime, not an environment.</li>
+    <li><strong>Trust.</strong> Delegation without verification is just optimistic concurrency on
+    your codebase. The manager role the category promises [4] is only real if the environment
+    answers, mechanically, "can I accept this result?"</li>
+  </ul>
+
+  <h2 id="s3"><span class="no">3</span>Seven focus areas</h2>
+
+  <p>The following taxonomy separates what an ADE must own from what it must not. F1–F3 are
+  table stakes — every credible product has a version of them. F4–F5 are where current
+  definitions are thinnest. F6 is deliberately framed as a consequence, not a mission. F7 is
+  different in kind: not core at all, but a differentiator — and the mechanism that keeps the
+  core small.</p>
+
+  <div class="tablewrap">
+    <table>
+      <tr><th class="f">#</th><th>Focus</th><th>One-line test</th></tr>
+      <tr><td class="f">F1</td><td>Orchestration &amp; lifecycle</td><td>Can one human run spawn → delegate → verify → land → prune, and survive a restart mid-flight?</td></tr>
+      <tr><td class="f">F2</td><td>Runtime neutrality</td><td>Does every primitive degrade gracefully on a runtime the vendor never tested?</td></tr>
+      <tr><td class="f">F3</td><td>Observability &amp; attention routing</td><td>Does the human find the one agent that needs them without polling all of them?</td></tr>
+      <tr><td class="f">F4</td><td>Verifiable delegation &amp; opt-in governance</td><td>Can a result be accepted on evidence, under policy the project chose — not policy the tool imposed?</td></tr>
+      <tr><td class="f">F5</td><td>Execution isolation</td><td>Can two agents work the same repo without contaminating each other or the human's tree?</td></tr>
+      <tr><td class="f">F6</td><td>Context economy</td><td>Does fleet state live outside any one context window, so nothing is paid for twice?</td></tr>
+      <tr><td class="f">F7</td><td>Extensibility (plugin surface)</td><td>Can the fleet gain a domain capability by declaration — consent-gated, without forking the environment or bloating its core?</td></tr>
+    </table>
+  </div>
+
+  <h3><span class="no">F1</span>Orchestration and lifecycle</h3>
+  <p>The core loop: spawn agents, delegate scoped work, collect results, retire the agent, and
+  reclaim its residue. Lifecycle is the half that launch demos skip — a fleet that cannot kill,
+  prune, and resume its members accumulates dead branches, orphaned worktrees, and zombie
+  sessions. Session persistence belongs here: agents that survive an editor restart or a machine
+  reboot with their conversation intact turn the fleet from a demo into infrastructure.</p>
+
+  <h3><span class="no">F2</span>Runtime neutrality</h3>
+  <p>The invariant is <em>no lock-in</em>: any CLI agent is a first-class fleet member.
+  Feature parity across runtimes is the engineering consequence, pursued as far as each runtime
+  allows — not the promise. Promising parity puts the environment on a treadmill of matching
+  every release of every runtime; promising neutrality means primitives (spawn, observe, verify,
+  isolate) work everywhere and degrade gracefully where a runtime lacks hooks. Neutrality also
+  enables the fleet-level economics of §F6: routing each task to the runtime and quota that fit
+  it.</p>
+
+  <h3><span class="no">F3</span>Observability and attention routing</h3>
+  <p>The scarce resource in a fleet is not compute or tokens — it is the human's attention. With
+  ten agents running, the expensive event is noticing which one stopped to ask something.
+  "General observability" (logs, dashboards) is the weak form; the strong form routes attention:
+  who needs input, who crashed, who finished, who is burning quota — pushed to the human, not
+  pulled by them. This is what makes the developer-as-manager role [4] physically possible.</p>
+
+  <h3><span class="no">F4</span>Verifiable delegation and opt-in governance</h3>
+  <p>The trust boundary, and the axis no market definition currently names. A delegated result is
+  a claim until verified; an ADE must make acceptance mechanical — verification gates owned by the
+  task, evidence attached to the run, approval points for irreversible actions. The academic
+  literature reaches the same place: merge-readiness as a first-class artifact [8].</p>
+  <p>The qualifier matters as much as the noun: governance must be <strong>opt-in</strong>. The
+  environment provides the mechanisms — gates, policies, approval flows — and the <em>project</em>
+  decides which apply. An ADE that imposes its own workflow on every repository it touches has
+  crossed from environment to framework, and will be rejected by exactly the teams that need
+  governance most. Product policy and project policy are different layers; the boundary between
+  them deserves enforcement, not convention.</p>
+
+  <h3><span class="no">F5</span>Execution isolation</h3>
+  <p>Parallelism without isolation is chaos with extra steps. Every fleet member needs its own
+  blast radius — a worktree, a branch, a sandbox — so concurrent work cannot contaminate the
+  human's tree or another agent's. Isolation is the precondition of F1, not an optional
+  hardening: it is what makes "land" and "prune" well-defined operations, and it is the one
+  characteristic every existing product definition already agrees on [4,6].</p>
+
+  <h3><span class="no">F6</span>Context economy</h3>
+  <p>Deliberately framed as a consequence, not a mission. The levers, in descending order
+  of magnitude:</p>
+  <ol>
+    <li><strong>Don't redo work.</strong> Durable state — shared notes, handoffs, artifacts on
+    disk — lives outside any single context window, so a compaction or restart never costs a
+    re-exploration.</li>
+    <li><strong>Do the work on the right quota.</strong> Task-to-runtime routing: mechanical work
+    to the cheap runtime, adversarial review to a second model. Only a neutral (F2) fleet can
+    express this at all.</li>
+    <li><strong>Shrink what crosses the wire.</strong> Payload discipline: targeted reads,
+    structured command results with short tails, event-driven waits instead of polling.</li>
+  </ol>
+  <p>"Token reduction" is the readout of these levers, not a mission. Chasing it directly leads
+  to single-agent compression tooling — a different product category — and, at the extreme, to
+  lossy filters on the evidence path, which quietly destroy F4: a compressor that drops the
+  failing line turns a red run into a green-looking one.</p>
+
+  <h3><span class="no">F7</span>Extensibility — the plugin surface</h3>
+  <p>Not core, by design: the environment must be complete without a single plugin installed.
+  But fleets in different domains need different capabilities — browser QA, desktop automation,
+  media generation, domain-specific verifiers — and no core can (or should) ship them all. The
+  differentiator is a governed plugin surface: capabilities added by declaration, consent-gated,
+  version-pinned, and never on the activation path, so a missing or broken plugin can never take
+  the fleet down.</p>
+  <p>F7 is also what keeps the rest of the taxonomy honest. It inherits the governance posture of
+  F4 (the project opts in; the tool never imposes), and it is the enforcement mechanism for §4's
+  anti-goals: edge tooling — output compressors, cost dashboards, single-runtime conveniences —
+  gets a legitimate place to live <em>as an option</em>, which is precisely what stops it from
+  creeping into the core's identity. An ADE without an extension surface eventually bloats its
+  core or forks its community; one with an ungoverned surface becomes a marketplace with a
+  control plane attached. The differentiator is the narrow path between.</p>
+
+  <h2 id="s4"><span class="no">4</span>What an ADE is not</h2>
+
+  <ul>
+    <li><strong>Not a token proxy.</strong> An ADE that intermediates provider traffic inherits
+    every trust, privacy, and pricing problem of a middleman. Agents spend their own provider
+    subscriptions; the environment economizes by architecture (F6), not by interception.</li>
+    <li><strong>Not a single-runtime plugin pack.</strong> Extensions to one vendor's agent are
+    features of that agent. The category begins where runtime heterogeneity does.</li>
+    <li><strong>Not a compression toolchain.</strong> Output filters and context compressors are
+    per-agent hygiene — useful at the edge, fatal as identity (§F6).</li>
+    <li><strong>Not a replacement workflow.</strong> An ADE hosts the project's process; it does
+    not impose its own (§F4).</li>
+  </ul>
+
+  <h2 id="s5"><span class="no">5</span>Measuring the category</h2>
+
+  <p>A definition assembled from vendor blogs cannot arbitrate between vendors. The Tachyon ADE
+  Bench protocol [9] exists to make the focus areas falsifiable: identical task worktrees,
+  identical prompts and constraints, verification owned by the task rather than the product, and
+  replayable evidence for every run. No scored claims are published until every competitor run
+  has that evidence.</p>
+
+  <p>Each focus area maps to metrics already defined in the bench's run-report contract:</p>
+
+  <div class="tablewrap">
+    <table>
+      <tr><th class="f">Focus</th><th>Bench signal</th></tr>
+      <tr><td class="f">F1</td><td>Timing; failure recovery (can a run resume after interruption)</td></tr>
+      <tr><td class="f">F2</td><td>The protocol itself — the same tasks and verifier run unchanged across products and runtimes</td></tr>
+      <tr><td class="f">F3</td><td>Intervention burden (how often, and how expensively, the human is pulled in)</td></tr>
+      <tr><td class="f">F4</td><td>Review burden; artifact completeness (is there evidence to accept, or only a diff to re-read)</td></tr>
+      <tr><td class="f">F5</td><td>Isolation (did the run stay inside its declared blast radius)</td></tr>
+      <tr><td class="f">F6</td><td>Cost slots (comparable resource-consumption classes per run)</td></tr>
+      <tr><td class="f">F7</td><td>No bench signal yet — a candidate: a task requiring an out-of-core capability, completable only via a declared, consent-gated extension. Until then, extensibility claims stay unscored.</td></tr>
+    </table>
+  </div>
+
+  <p>The mapping is the point: any product claim about "focus" that cannot be attached to one of
+  these signals is marketing, including ours.</p>
+
+  <h2 id="s6"><span class="no">6</span>Landscape</h2>
+
+  <p>The bench roster currently tracks two classes [9]. Class A — direct local / multi-agent ADE
+  competitors: Tachyon, Orca, HiveTerm, T3 Code, Hive, AgentsRoom, OpenADE / ADE App, Kandev.
+  Class B — enterprise agentic platforms measurable with the same artifacts but reported
+  separately: Augment Code. (LandingAI's "ADE" is Agentic Document Extraction — a name collision,
+  not a competitor.)</p>
+
+  <p>This paper deliberately publishes no comparative scores. The landscape section will grow
+  claims exactly as fast as the bench grows replayable evidence, and no faster.</p>
+
+  <h2 id="s7"><span class="no">7</span>Status and evolution</h2>
+
+  <p>This is a draft working paper, not a ratified position. It synthesizes the public record on
+  the ADE category (§1), a taxonomy developed in the Tachyon architecture discussions (§3–§4),
+  and the measurement protocol of this repository (§5). The intended lifecycle: discuss, revise
+  the taxonomy against bench evidence, and ratify per section — the same discipline the bench
+  applies to scores. Disagreement with any focus area is most useful in the form of a task the
+  bench could run.</p>
+
+  <h2 id="refs"><span class="no">R</span>References</h2>
+
+  <div class="refs">
+    <ol>
+      <li>Warp — <a href="https://www.warp.dev/blog/reimagining-coding-agentic-development-environment">Introducing Warp 2.0: the Agentic Development Environment</a> (June 2025).</li>
+      <li>TIME — <a href="https://time.com/collections/best-inventions-2025/7318249/warp-agentic-development-environment/">Best Inventions of 2025: Warp Agentic Development Environment</a>.</li>
+      <li>InfoWorld — <a href="https://www.infoworld.com/article/4193975/the-ide-is-dead-long-live-the-ade.html">The IDE is dead, long live the ADE</a>.</li>
+      <li>Augment Code — <a href="https://www.augmentcode.com/guides/what-is-an-agentic-development-environment">What Is an Agentic Development Environment?</a></li>
+      <li>Augment Code — <a href="https://www.augmentcode.com/guides/agentic-ide-vs-agentic-development-environment">Agentic IDE vs Agentic Development Environment</a>.</li>
+      <li>Orca — <a href="https://www.onorca.dev/">The Agent Development Environment</a>.</li>
+      <li>ADE — <a href="https://www.ade-app.dev/">Agentic Development Environment (desktop app)</a>.</li>
+      <li>Hassan, A. E. et al. — <a href="https://arxiv.org/abs/2509.06216">Agentic Software Engineering: Foundational Pillars and a Research Roadmap</a>, arXiv:2509.06216 (2025).</li>
+      <li>Tachyon ADE Bench — <a href="https://github.com/cfpperche/tachyon-ade-bench">benchmark protocol (SPEC.md) and run-report metrics</a>, this repository.</li>
+    </ol>
+  </div>
+
+  <p class="draftnote">WP-001 · draft v0.2 · 2026-07-15 · served from tachyon-ade-bench
+  (apps/bench-dashboard/public/whitepaper/) · publishes no scored claims — evidence before
+  rhetoric.</p>
+
+</div>
+
+</body>
+</html>
