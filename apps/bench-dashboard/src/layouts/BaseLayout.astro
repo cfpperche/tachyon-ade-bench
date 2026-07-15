@@ -55,6 +55,7 @@ const navItems = [
           {navItems.map(([label, href]) => (
             <a href={url(href, locale)}>{label}</a>
           ))}
+          <a href={url("/whitepaper/", "en")}>{t.nav.whitepaper}</a>
         </nav>
         <div class="language-switch" aria-label={t.common.language}>
           <a class={locale === "en" ? "is-active" : ""} href={url(localizedPath(currentPath, "en"), "en")}>

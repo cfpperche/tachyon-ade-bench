@@ -22,6 +22,7 @@ export const ui = {
       strategy: "Strategy",
       protocol: "Protocol",
       sources: "Sources",
+      whitepaper: "Whitepaper",
     },
     common: {
       language: "Language",
@@ -421,6 +422,7 @@ export const ui = {
       strategy: "Estratégia",
       protocol: "Protocolo",
       sources: "Fontes",
+      whitepaper: "Whitepaper",
     },
     common: {
       language: "Idioma",
