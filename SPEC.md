@@ -25,6 +25,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - AgentsRoom
 - OpenADE / ADE App
 - Kandev
+- Fusion (Runfusion)
 
 Class B products are enterprise agentic platforms:
 

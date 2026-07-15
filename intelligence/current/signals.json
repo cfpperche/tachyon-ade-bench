@@ -321,7 +321,54 @@
         "open-source",
         "self-hosted"
       ]
+    },
+    {
+      "category": "battlecard",
+      "confidence": "high",
+      "details": "Official site and GitHub position Fusion as a software factory where agents plan, build, review, and ship code across isolated worktrees, with multi-node mesh, agent companies, and Command Center observability. Treat as direct local ADE pressure similar to Orca/Hive/Kandev.",
+      "evidence_path": "competitors/fusion.json",
+      "freshness": "current",
+      "id": "fusion-battlecard-fusion-runfusion-is-a-class-a-open-source-multi-agent-software-factory-a",
+      "impact": "sales",
+      "next_action": "Install Fusion, run T001/T003/T005 manual protocol, and capture version plus auto-merge policy before any public comparison.",
+      "objection": "Fusion may look more complete as an autonomous software factory with quality gates, missions, and multi-device control.",
+      "observed_at": "2026-07-15",
+      "product_id": "fusion",
+      "source_type": "official-site",
+      "source_url": "https://runfusion.ai/",
+      "summary": "Fusion (Runfusion) is a Class A open-source multi-agent software factory ADE with worktree isolation and plan/review gates.",
+      "tachyon_response": "Lead with verification-first evidence: identical tasks, intervention burden, preserved diffs, and task-owned verifiers rather than feature-surface breadth.",
+      "tags": [
+        "battlecard",
+        "class-a",
+        "open-source",
+        "orchestration",
+        "worktree"
+      ]
+    },
+    {
+      "category": "packaging",
+      "confidence": "high",
+      "details": "Distribution is open-source and multi-surface: npx/npm CLI, desktop Electron app, mobile Capacitor apps, and local daemon dashboard. Pricing pressure is BYO model rather than SaaS seat packaging.",
+      "evidence_path": "competitors/fusion.json",
+      "freshness": "current",
+      "id": "fusion-packaging-fusion-ships-mit-self-hosted-packaging-via-npm-homebrew-electron-capacit",
+      "impact": "moat",
+      "next_action": "Track npm/GitHub release cadence and keep packaging claims refreshed after each minor train.",
+      "objection": "Teams may prefer Fusion's free MIT install path and multi-device control plane over less packaged local ADEs.",
+      "observed_at": "2026-07-15",
+      "product_id": "fusion",
+      "source_type": "source-repo",
+      "source_url": "https://github.com/Runfusion/Fusion",
+      "summary": "Fusion ships MIT self-hosted packaging via npm, Homebrew, Electron, Capacitor, and Docker with BYO models.",
+      "tachyon_response": "Compete on reproducibility and trust of agent output, not install friction alone; publish install-to-verified-change evidence.",
+      "tags": [
+        "mit",
+        "open-source",
+        "packaging",
+        "self-hosted"
+      ]
     }
   ],
-  "updated_at": "2026-07-08T23:36:00Z"
+  "updated_at": "2026-07-15T18:33:58Z"
 }

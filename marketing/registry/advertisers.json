@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-07-07",
+  "updated_at": "2026-07-15",
   "advertisers": [
     {
       "product_id": "tachyon",
@@ -109,6 +109,18 @@
         "github_orgs": ["pingdotgg"]
       },
       "notes": "Search exact product and domain; T3 is otherwise ambiguous."
+    },
+    {
+      "product_id": "fusion",
+      "display_name": "Fusion (Runfusion)",
+      "included": true,
+      "aliases": {
+        "names": ["Fusion", "Runfusion", "RunFusion", "runfusion.ai", "@runfusion/fusion"],
+        "domains": ["runfusion.ai"],
+        "handles": [],
+        "github_orgs": ["Runfusion"]
+      },
+      "notes": "Name Fusion is generic; always qualify with Runfusion or runfusion.ai. Do not confuse with RunDiffusion or NVIDIA Run:ai."
     }
   ]
 }

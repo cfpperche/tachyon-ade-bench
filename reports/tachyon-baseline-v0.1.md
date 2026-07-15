@@ -55,6 +55,9 @@ The next comparable product runs should start with:
 
 1. Orca
 2. Kandev
+3. Fusion (Runfusion) — T001 smoke artifacts live at
+   `runs/fusion-v0.1-T001-python-bugfix` (pass with 1 merge intervention;
+   not a full five-task scored set)
 
 They should use the same five task IDs and preserve their run artifacts before
 any scored report is published.

@@ -1,0 +1,247 @@
+{
+  "id": "fusion",
+  "name": "Fusion (Runfusion)",
+  "class": "A-local-ade",
+  "homepage": "https://runfusion.ai/",
+  "source_url": "https://github.com/Runfusion/Fusion",
+  "license": "MIT",
+  "runner": {
+    "kind": "cli",
+    "notes": "Install @runfusion/fusion (npm prefix or global). From the prepared worktree: fn init / fn project add, configure defaultProvider+defaultModelId in ~/.fusion/settings.json, start fn serve --project <name>, then fn task create \"$(cat prompt.md)\" --no-dedup. Wait until the task reaches done with the fix on main (not only a nested fusion worktree), then harness verify. Auto-merge can stick in status=merging; record any manual merge as intervention."
+  },
+  "inclusion": "Direct open-source multi-agent ADE competitor positioned as a software factory with worktree isolation, plan/review gates, multi-node mesh, and agent-company import.",
+  "pricing_model": "Open-source MIT app plus bring-your-own model/provider subscriptions; early preview shipping weekly.",
+  "public_stack_signals": [
+    "TypeScript pnpm monorepo (packages for cli, core, dashboard, desktop, engine, mobile, plugin-sdk); primary language TypeScript on GitHub.",
+    "npm package @runfusion/fusion (CLI alias runfusion.ai / fn); Node >= 22.5 for desktop; pnpm workspace; MIT license.",
+    "Desktop is Electron (electron-builder) wrapping the dashboard; mobile is Capacitor iOS/Android around the same dashboard; web dashboard via local daemon.",
+    "Dashboard stack includes React 19, Vite 6, xterm, CodeMirror, XYFlow; core uses embedded-postgres, drizzle-orm, dockerode, bonjour-service.",
+    "Built on Pi coding agent (@earendil-works/pi-coding-agent); experimental plugins for Hermes, Paperclip, OpenClaw; ACP agent interop; Paperclip companies.sh agent-company import."
+  ],
+  "capabilities_to_probe": [
+    "plain-language triage to PROMPT.md acceptance criteria",
+    "plan review execute review workflow gates",
+    "git worktree isolation and parallel tasks",
+    "auto-merge vs human approval gates",
+    "multi-provider and per-lane model routing",
+    "inter-agent mailbox and agent companies",
+    "Command Center cost and autonomy telemetry",
+    "CLI or daemon automation path"
+  ],
+  "moat_hypotheses": [
+    "software-factory narrative with hierarchical missions and quality gates",
+    "worktree-isolated multi-agent shipping with auto-merge when green",
+    "open-source multi-node mesh plus desktop/mobile/web control surface",
+    "Paperclip/Pi ecosystem compatibility and agent-company import"
+  ],
+  "setup_notes": [
+    "Prefer a temp npm --prefix install for smoke runs so cleanup is trivial; version observed 0.60.0.",
+    "Register only the prepared harness worktree as the active project for scored runs.",
+    "Anthropic models can run via Fusion's Pi runtime when Claude/Anthropic auth is available to the process home.",
+    "Fusion executes in nested .worktrees/<name> and branch fusion/fn-###; harness verify must see the fix on the prepared worktree main after merge.",
+    "Record model/provider, Fusion version, workflow id (default builtin:coding observed), auto-merge outcome, and intervention count."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-15",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://runfusion.ai/",
+        "kind": "official-site",
+        "notes": "Product positioning as multi-node agent orchestrator / software factory; install commands; feature surface; Pi/Hermes/Paperclip ecosystem claims."
+      },
+      {
+        "url": "https://github.com/Runfusion/Fusion",
+        "kind": "source-repo",
+        "notes": "README, MIT license, early-preview status, architecture packages, install paths, workflow docs links, multi-platform packaging."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/package.json",
+        "kind": "package-manifest",
+        "notes": "Workspace version 0.60.0, MIT license, pnpm package manager, monorepo scripts."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/cli/package.json",
+        "kind": "package-manifest",
+        "notes": "Published package name @runfusion/fusion; Pi AI/coding-agent deps; express, electron, ink, node-pty, react signals."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/dashboard/package.json",
+        "kind": "package-manifest",
+        "notes": "React/Vite dashboard with xterm, CodeMirror, XYFlow, Pi coding agent, and plugin examples."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/desktop/package.json",
+        "kind": "package-manifest",
+        "notes": "Electron desktop wrapper; Node >= 22.5; electron-builder packaging for macOS/Windows/Linux."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/mobile/package.json",
+        "kind": "package-manifest",
+        "notes": "Capacitor mobile wrapper description and Capacitor 7 dependencies for iOS/Android."
+      },
+      {
+        "url": "https://www.npmjs.com/package/@runfusion/fusion",
+        "kind": "package-manifest",
+        "notes": "Public npm distribution surface for the CLI/runtime package."
+      }
+    ],
+    "positioning": "Open-source multi-agent software factory: turn rough ideas into planned, reviewed, worktree-isolated code shipped through a kanban board with multi-node and mobile control.",
+    "stack": {
+      "runtime": [
+        "TypeScript",
+        "Node.js (>= 22.5 on desktop package)",
+        "pnpm monorepo",
+        "Pi coding agent (@earendil-works/pi-coding-agent)"
+      ],
+      "frontend": [
+        "React 19",
+        "Vite 6",
+        "xterm.js",
+        "CodeMirror",
+        "XYFlow",
+        "i18next"
+      ],
+      "backend": [
+        "Fusion engine package",
+        "Express dashboard/daemon server",
+        "embedded-postgres + drizzle-orm",
+        "dockerode",
+        "node-pty",
+        "bonjour-service mesh discovery"
+      ],
+      "packaging": [
+        "npm @runfusion/fusion and runfusion.ai launcher",
+        "Homebrew formula runfusion/fusion/fusion",
+        "Electron desktop (macOS, Windows, Linux)",
+        "Capacitor iOS/Android + PWA",
+        "Docker documented in upstream docs"
+      ],
+      "data": [
+        "git worktrees and fusion/* task branches",
+        "PROMPT.md task specs",
+        "project/global settings including auth tokens",
+        "agent mailbox and mission hierarchy state",
+        "Command Center token/cost telemetry"
+      ],
+      "unknowns": [
+        "Default database schema and multi-node sync protocol details beyond public docs.",
+        "Stability of experimental Hermes/Paperclip/OpenClaw runtime plugins across minor releases.",
+        "Whether a fully non-interactive CLI run path is mature enough for harness automation."
+      ]
+    },
+    "infrastructure": [
+      "Local daemon/dashboard owns projects, tasks, agents, git worktrees, and provider auth.",
+      "Each task can run in an isolated git worktree/branch so parallel tasks do not collide.",
+      "Multi-node mesh can connect laptop, server, cloud VM, and phone peers with shared board state according to official site/README.",
+      "Agents use user-provided cloud or local models; Fusion itself is MIT and self-hosted."
+    ],
+    "features": {
+      "agent_support": [
+        "Anthropic",
+        "OpenAI",
+        "Gemini / Google Generative AI",
+        "Z.ai",
+        "Ollama / local runtimes",
+        "Pi coding agent",
+        "Hermes plugin (experimental)",
+        "Paperclip plugin (experimental)",
+        "OpenClaw plugin (experimental)",
+        "ACP agents including Cursor/Claude/Gemini CLI paths",
+        "Droid / Factory AI optional auth path",
+        "Custom OpenAI/Anthropic/Google-compatible providers"
+      ],
+      "orchestration": [
+        "Kanban board: Planning/Triage → Todo → In Progress → In Review → Done",
+        "Selectable workflows (coding, quick fix, review-heavy, stepwise, PR lifecycle, compound engineering)",
+        "Plan → review → execute → review step loop",
+        "Missions hierarchy: Mission → Milestone → Slice → Feature → Task",
+        "Agent companies import via companies.sh / Paperclip format",
+        "Inter-agent mailbox and multi-agent chat rooms",
+        "Model lanes for executor/planner/validator and per-task overrides",
+        "Cron automations and routines"
+      ],
+      "workspace_isolation": [
+        "Per-task git worktree and fusion/{task-id} branch",
+        "Parallel tasks with dependency-aware rebase/merge",
+        "Multi-project registry",
+        "Docker and headless deployment options"
+      ],
+      "review_shipping": [
+        "Planner/spec approval gates",
+        "Pre-merge and post-merge quality gates (docs, QA, security, perf, accessibility)",
+        "In-app git UI, diffs, and PR/issue sync",
+        "Auto squash-merge when gates pass; optional manual approval",
+        "Agent conflict resolution before main sees conflicts"
+      ],
+      "remote_mobile": [
+        "Native iOS and Android Capacitor apps",
+        "Installable PWA",
+        "Multi-node mesh across devices",
+        "Remote dashboard access docs (Tailscale/Cloudflare mentioned upstream)"
+      ],
+      "context_memory": [
+        "PROMPT.md task specs with acceptance criteria",
+        "Queryable markdown memory (qmd) shared across agents",
+        "Agent self-review updates to AGENTS.md",
+        "Auto-generated docs/changelogs/runbooks claims",
+        "Command Center analytics and OpenTelemetry export"
+      ],
+      "integrations": [
+        "GitHub issues and PRs",
+        "Pi extensions/plugins",
+        "Paperclip agent companies",
+        "MCP/ACP interop",
+        "OpenTelemetry metrics export",
+        "Docker"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "manual-ready",
+      "install_surface": [
+        "npx runfusion.ai",
+        "npm install @runfusion/fusion (global or --prefix)",
+        "brew install runfusion/fusion/fusion",
+        "curl install.sh from runfusion.ai",
+        "fn serve / fn task create CLI path",
+        "Electron desktop builds",
+        "clone + pnpm dev dashboard"
+      ],
+      "parity_risks": [
+        "Early preview with a very large feature surface; marketing claims may outpace robustness on dirty or multi-step tasks.",
+        "Execution lands in nested .worktrees and fusion/* branches; harness verify on the prepared main path only passes after merge.",
+        "Auto-merge can stick at status=merging (observed on T001 smoke), forcing a human merge intervention.",
+        "Product writes .fusion/, fusion.db, nested worktrees, and .gitignore changes inside the project tree — isolation noise for dirty-worktree tasks.",
+        "Completion summaries may misstate the actual code change even when the diff is correct.",
+        "Multi-node mesh, mobile, missions, and agent-company autonomy are outside the current v0.1 local task suite.",
+        "Token/cost accounting is multi-agent (plan/execute/summary/merge) and can inflate cached-token totals versus single-agent CLIs."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Software-factory + quality-gate story is a strong alternative to pure terminal cockpits.",
+        "Worktree isolation plus auto-merge when green maps cleanly onto ADE benchmark isolation and shipping metrics.",
+        "Open-source multi-surface control (desktop/web/mobile/mesh) increases distribution and steering convenience.",
+        "Pi/Paperclip ecosystem compatibility can accelerate agent-team content without rebuilding role packs."
+      ],
+      "evidence": [
+        "Official site and GitHub README describe plan/review/execute loops, worktree isolation, Command Center, missions, and multi-node mesh.",
+        "Package manifests show Electron desktop, Capacitor mobile, React/Vite dashboard, embedded Postgres, and Pi agent dependencies.",
+        "npm package @runfusion/fusion and runfusion.ai launcher provide a low-friction install path for manual benchmark runs.",
+        "2026-07-15 T001 smoke: fn serve 0.60.0 + anthropic/claude-sonnet-4-5 planned and implemented product=0→1 correctly; auto-merge stuck in merging and required one manual git merge; harness verifier then passed. Local artifacts: runs/fusion-v0.1-T001-python-bugfix (gitignored like other runs/)."
+      ],
+      "unknowns": [
+        "Whether auto-merge reliability improves with full PATH/shell and non-isolated HOME still needs retest.",
+        "Cost efficiency in USD under multi-agent plan/review loops needs measured totals on identical tasks.",
+        "Dirty-worktree and UI tasks remain unrun."
+      ]
+    }
+  },
+  "research_status": "researched-official-smoke-v0.1",
+  "updated_at": "2026-07-15"
+}
