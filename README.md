@@ -77,9 +77,17 @@ https://cfpperche.github.io/tachyon-ade-bench/
 https://cfpperche.github.io/tachyon-ade-bench/pt/
 ```
 
+## Agent context
+
+- `AGENTS.md` — durable instructions for coding agents (product repo read-only,
+  bench write scope, competitor/SSOT workflows).
+- `CLAUDE.md` — Claude Code entrypoint; defers to `AGENTS.md`.
+
 ## Repository layout
 
 ```text
+AGENTS.md      Agent instructions (read ~/tachyon, write only here)
+CLAUDE.md      Claude Code context entrypoint
 competitors/   Seed profiles for products under test
 apps/          Static dashboard and presentation surfaces
 docs/product/  Owned canonical Tachyon product surface (SSOT)

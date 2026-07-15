@@ -12,16 +12,21 @@ It is intentionally separate from:
 
 ## Rules
 
-1. **Canonical first.** New product claims start here (Markdown +
-   `capabilities.json`), then optionally mirror into `competitors/tachyon.json`.
+1. **Canonical first (inside the bench).** New product claims for the roster
+   start here (Markdown + `capabilities.json`), then mirror into
+   `competitors/tachyon.json`. Prefer grounding claims by **reading** the
+   product repo at `~/tachyon` (and its GitHub remote) — **never write** there.
+   See root `AGENTS.md` / `CLAUDE.md`.
 2. **No invention.** If a capability is not implemented or not ready to claim,
-   mark it `status: not-claimed` or `placeholder` in YAML. Do not pad lists to
-   look better on the Capability Radar.
+   mark it `status: not-claimed` or `placeholder`. Do not pad lists to look
+   better on the Capability Radar.
 3. **Public vs owned.** Do not put private implementation detail here if this
    repo is public and the product is not yet documented elsewhere. Prefer
-   benchmark-visible behavior and high-level product intent.
-4. **Radar axes map 1:1** to YAML groups under `capabilities:` (same keys as
-   `research.features` in competitor profiles).
+   benchmark-visible behavior and high-level product intent. Prefer citing
+   public product docs/README when they already say it.
+4. **Radar axes map 1:1** to groups under `capabilities` in
+   `capabilities.json` (same keys as `research.features` in competitor
+   profiles).
 5. **Dates.** When you change claims, bump `updated_at` in `capabilities.json`
    and, if you re-export to the profile, `research.last_reviewed` /
    `updated_at` on `competitors/tachyon.json`.

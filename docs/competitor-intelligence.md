@@ -79,7 +79,11 @@ inside `research`.
 
 ### Tachyon special case
 
-Tachyon claims start in the owned product surface:
+Agents may **read** the product monorepo at `~/tachyon` (or `cfpperche/tachyon`
+on GitHub) for grounding. They must **not write** to that repository. Durable
+rules live in root `AGENTS.md` and `CLAUDE.md`.
+
+For bench-visible claims, write the owned product surface in this repo:
 
 - `docs/product/` (Markdown)
 - `docs/product/capabilities.json` (SSOT for radar axes)
@@ -87,14 +91,15 @@ Tachyon claims start in the owned product surface:
 Do not invent Tachyon features only inside `competitors/tachyon.json`. Prefer:
 
 ```sh
-# edit docs/product/capabilities.json and docs
+# optional: read ~/tachyon for real capabilities (read only)
+# then edit docs/product/capabilities.json and docs
 python3 scripts/product/check-capabilities.py
 python3 scripts/product/sync-tachyon-profile.py
 python3 harness/bench.py check
 ```
 
-The competitor profile remains the dashboard input; the product docs remain the
-canonical source.
+Hierarchy: product repo (read) → `docs/product/` (write) →
+`competitors/tachyon.json` (derived) → dashboard.
 
 ## Benchmark Readiness
 
