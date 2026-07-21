@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-07-15 (full roster source refresh)
+Reviewed: 2026-07-21 (JetBrains Air inclusion and roster consistency refresh)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -13,6 +13,7 @@ later. Unknown closed-source internals remain unknown by design.
 | Tachyon | A-local-ade | Owned reference profile; public stack intentionally not asserted yet. Benchmark-visible model is worktrees, evidence, handoff, and verification gates. | Multi-agent delegation, worktree isolation, evidence records, verification-first handoff, plugin/host-action governance. | Trust through auditable operations and verification-first delivery. | `owned-reference`; run as baseline/reference, avoid private public claims. |
 | Orca | A-local-ade | TypeScript/Electron/React/Vite desktop, node-pty/xterm, CLI/server (~1.4.x rc), git worktrees, remote server/SSH; high GH activity. | Fleet of parallel CLI agents, worktrees, diff annotations, browser/design mode, GitHub/Linear, mobile companion, remote server. | Open-source visibility plus worktree-first fleet UX across desktop/mobile/remote. | `manual-ready`; start with T001, T003, T005. |
 | Herdr | A-local-ade | Rust single binary, ratatui/PTY runtime, Unix socket NDJSON API, AGPL; no Electron. | Terminal multiplexer for coding agents, semantic agent state, worktrees, plugins, SSH/mobile attach, agent skill API. | Terminal-native PTY + agent-shaped control surface with broad CLI detection. | `manual-ready`; record guest agent/model separately from Herdr runtime. |
+| JetBrains Air | A-local-ade | Proprietary desktop preview for macOS/Windows/Linux; local agent harnesses, Git worktrees, Docker on macOS/Windows, ACP; closed-source internals remain unknown. | Concurrent Codex/Claude/Gemini/Junie/ACP tasks, plan files, code-aware context, diff comments, permissions, cross-agent review, JetBrains IDE handoff. | JetBrains distribution and code intelligence around an agent-agnostic isolated task/review control plane. | `needs-install`; Linux via Toolbox; start with T001, T003, T005 and record guest agent/model separately. |
 | HiveTerm | A-local-ade | Rust + Tauri desktop, local Queen MCP server, `hive.yml`, local-first project/process management. | Split terminals, MCP sub-agents, live tree, pins/notes, config-as-code, inline diff/commit/PR, voice. | MCP-native nested agent teamwork and terminal-first low-footprint UX. | `manual-ready`; start with T001, T002, T004. |
 | T3 Code | A-local-ade | TypeScript monorepo; npx/desktop/winget/brew install; provider CLI orchestration. | Control plane for Claude Code, Codex, OpenCode, Cursor; session/provider management. | T3 distribution plus simple BYO-subscription control plane. | `needs-install`; path `npx t3@latest` confirmed in upstream README. |
 | Hive | A-local-ade | Node >= 22 npm package, local browser app on 127.0.0.1, real CLI processes, `.hive/tasks.md`; BSL. | Orchestrator/worker protocol, `team send/report`, auto-staff, team memory, role templates, remote phone access. | Repo-native task graph and explicit team protocol make orchestration observable. | `needs-install`; start with T002 and T004; note slower GH push cadence vs peers. |
@@ -30,6 +31,7 @@ Use Class A for the first direct comparison:
 - Tachyon
 - Orca
 - Herdr
+- JetBrains Air
 - HiveTerm
 - T3 Code
 - Hive
@@ -47,6 +49,7 @@ normalized and the caveats are visible.
 - Tachyon: owned reference profile in this repository.
 - Orca: https://github.com/stablyai/orca, https://raw.githubusercontent.com/stablyai/orca/main/package.json, https://www.onorca.dev/docs/remote-servers, https://www.onorca.dev/docs/agents/custom-cli
 - Herdr: https://herdr.dev/, https://github.com/ogulcancelik/herdr, https://herdr.dev/docs/socket-api/, https://herdr.dev/docs/agent-skill/, https://formulae.brew.sh/formula/herdr
+- JetBrains Air: https://air.dev/, https://air.dev/download, https://air.dev/changelog, https://blog.jetbrains.com/air/2026/03/air-launches-as-public-preview-a-new-wave-of-dev-tooling-built-on-26-years-of-experience/, https://blog.jetbrains.com/air/2026/06/jetbrains-air-lands-on-windows/, https://blog.jetbrains.com/air/2026/07/what-s-new-air-gets-more-agents-local-models-and-java-kotlin-code-intelligence/
 - HiveTerm: https://hiveterm.com/, https://hiveterm.com/agents/, https://hiveterm.com/docs/, https://hiveterm.com/compare/t3/
 - T3 Code: https://t3.codes/, https://github.com/pingdotgg/t3code, https://raw.githubusercontent.com/pingdotgg/t3code/main/package.json, https://pingdotgg-t3code.mintlify.app/installation
 - Hive: https://hivehq.dev/en/, https://github.com/tt-a1i/hive

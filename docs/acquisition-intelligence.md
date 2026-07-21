@@ -15,6 +15,7 @@ Track acquisition evidence for the same software ADE roster used by
 
 - Tachyon
 - Orca
+- Herdr
 - HiveTerm
 - T3 Code
 - Hive
@@ -24,6 +25,7 @@ Track acquisition evidence for the same software ADE roster used by
 - Kandev
 - Fusion (Runfusion)
 - Maestri
+- JetBrains Air
 
 LandingAI remains out of the software ADE benchmark roster. If it appears in
 marketing research, keep it in an excluded or adjacent-products section.

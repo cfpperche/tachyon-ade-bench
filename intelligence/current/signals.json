@@ -392,7 +392,80 @@
         "macos",
         "orchestration"
       ]
+    },
+    {
+      "category": "battlecard",
+      "confidence": "high",
+      "details": "Official site and source repository position Herdr as a Rust terminal multiplexer for coding agents with semantic state, worktrees, plugins, socket API, SSH/mobile attachment, and an agent skill API.",
+      "evidence_path": "competitors/herdr.json",
+      "freshness": "current",
+      "id": "herdr-battlecard-terminal-native-agent-multiplexer",
+      "impact": "sales",
+      "next_action": "Run T001 with a fixed guest agent/model and capture the difference between Herdr orchestration and guest-agent correctness.",
+      "objection": "Herdr may appeal more to terminal-first developers who want a lightweight open-source agent multiplexer.",
+      "observed_at": "2026-07-21",
+      "product_id": "herdr",
+      "source_type": "official-site",
+      "source_url": "https://herdr.dev/",
+      "summary": "Herdr is a Class A terminal-native, worktree-aware multiplexer for heterogeneous coding agents.",
+      "tachyon_response": "Compare terminal density separately from delivery trust: publish identical-task verifier evidence, preserved diffs, and intervention burden.",
+      "tags": [
+        "battlecard",
+        "class-a",
+        "open-source",
+        "terminal",
+        "worktree"
+      ]
+    },
+    {
+      "category": "battlecard",
+      "confidence": "high",
+      "details": "Official Air sources describe a standalone desktop ADE for concurrent Codex, Claude Agent, Gemini CLI, Junie, and ACP tasks, with code-aware task context, local/worktree/Docker execution choices, diff comments, permissions, and cross-agent review. Cloud and team surfaces remain future direction.",
+      "evidence_path": "competitors/jetbrains-air.json",
+      "freshness": "current",
+      "id": "jetbrains-air-battlecard-agent-agnostic-isolated-review-workflow",
+      "impact": "sales",
+      "next_action": "Install the Linux preview through Toolbox and run T001 in Local Workspace mode with the guest agent/model recorded separately.",
+      "objection": "JetBrains Air may look like the most polished agent-agnostic task and review environment because it combines JetBrains distribution, code intelligence, isolation, and multiple leading agents.",
+      "observed_at": "2026-07-21",
+      "product_id": "jetbrains-air",
+      "source_type": "official-site",
+      "source_url": "https://air.dev/",
+      "summary": "JetBrains Air is a Class A proprietary desktop ADE for concurrent heterogeneous agents, isolated task execution, and code-aware review.",
+      "tachyon_response": "Answer with verification-first operational evidence: identical tasks, explicit agent/model metadata, controlled worktrees, task-owned verifiers, and auditable handoff rather than feature-count claims.",
+      "tags": [
+        "agent-agnostic",
+        "battlecard",
+        "class-a",
+        "orchestration",
+        "review",
+        "worktree"
+      ]
+    },
+    {
+      "category": "packaging",
+      "confidence": "high",
+      "details": "The current preview is distributed for macOS and Windows and through JetBrains Toolbox on Linux. JetBrains AI Pro/Ultimate can supply supported agents; BYOK and supported Codex/Gemini subscriptions are alternatives. AI Free and Enterprise are not supported by the current Air preview.",
+      "evidence_path": "competitors/jetbrains-air.json",
+      "freshness": "current",
+      "id": "jetbrains-air-packaging-preview-toolbox-subscription-byok",
+      "impact": "pricing",
+      "next_action": "Capture the installed version and actual authentication path during the first run; refresh preview packaging before buyer-facing pricing comparisons.",
+      "objection": "Existing JetBrains customers may adopt Air with less procurement and setup friction than a separate ADE subscription.",
+      "observed_at": "2026-07-21",
+      "product_id": "jetbrains-air",
+      "source_type": "official-site",
+      "source_url": "https://air.dev/download",
+      "summary": "JetBrains Air is a cross-platform desktop preview with JetBrains AI subscription and BYOK or supported personal-subscription access paths.",
+      "tachyon_response": "Keep packaging convenience separate from benchmark quality and make Tachyon's install-to-verified-change evidence explicit.",
+      "tags": [
+        "byok",
+        "cross-platform",
+        "packaging",
+        "preview",
+        "subscription"
+      ]
     }
   ],
-  "updated_at": "2026-07-15T19:55:09Z"
+  "updated_at": "2026-07-21T19:40:00Z"
 }

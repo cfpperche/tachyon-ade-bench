@@ -19,6 +19,7 @@ Class A products are direct local or multi-agent ADE competitors:
 
 - Tachyon
 - Orca
+- Herdr
 - HiveTerm
 - T3 Code
 - Hive
@@ -27,6 +28,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Kandev
 - Fusion (Runfusion)
 - Maestri
+- JetBrains Air
 
 Class B products are enterprise agentic platforms:
 
