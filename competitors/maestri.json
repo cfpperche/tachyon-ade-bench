@@ -42,7 +42,7 @@
     "Guest agent CLIs must already be installed and authenticated."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "partial-official",
     "sources": [
       {
@@ -225,5 +225,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

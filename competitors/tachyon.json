@@ -32,7 +32,7 @@
     "Edit docs/product/capabilities.json first, then run scripts/product/sync-tachyon-profile.py."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "owned",
     "sources": [
       {
@@ -143,5 +143,5 @@
     }
   },
   "research_status": "owned-reference-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

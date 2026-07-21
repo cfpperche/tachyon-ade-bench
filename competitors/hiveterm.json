@@ -33,13 +33,13 @@
   ],
   "setup_notes": [],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://hiveterm.com/",
         "kind": "official-site",
-        "notes": "Product positioning as multi-agent terminal workspace with MCP/Queen model. Refresh 2026-07-15: site live; agents page still frames multi-agent terminal orchestration."
+        "notes": "Product positioning as multi-agent terminal workspace with MCP/Queen model. Refresh 2026-07-21: official site lists v0.37.0 and current macOS, Windows, and Linux downloads; agents page still frames multi-agent terminal orchestration."
       },
       {
         "url": "https://hiveterm.com/agents/",
@@ -159,5 +159,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

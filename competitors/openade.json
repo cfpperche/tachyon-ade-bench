@@ -34,7 +34,7 @@
     "Retain ade-app.dev as a legacy roster URL, but use openade.ai and GitHub OpenADE as current official sources."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -166,5 +166,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

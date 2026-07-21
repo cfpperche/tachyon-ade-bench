@@ -35,13 +35,13 @@
     "Benchmark with a local/self-hosted install and document executor choice."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://github.com/kdlbs/kandev",
         "kind": "source-repo",
-        "notes": "Repository description, license, topics, installation docs, and implementation signals. Refresh 2026-07-15: AGPL-3.0, Go primary, ~440 stars, pushed same day."
+        "notes": "Repository description, license, topics, installation docs, and implementation signals. Refresh 2026-07-21: AGPL-3.0, Go/TypeScript, 470 stars, and v0.81.0 release on Jul 21."
       },
       {
         "url": "https://raw.githubusercontent.com/kdlbs/kandev/main/README.md",
@@ -185,5 +185,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

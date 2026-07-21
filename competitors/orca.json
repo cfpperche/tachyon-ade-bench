@@ -36,18 +36,18 @@
     "Start with manual desktop run. For remote parity, use a machine where target agent CLIs and credentials are installed."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
         "url": "https://github.com/stablyai/orca",
         "kind": "source-repo",
-        "notes": "README, feature list, license, supported agents, and repository language signals. Refresh 2026-07-15: still MIT TypeScript; pushed same day; ~19.7k stars."
+        "notes": "README, feature list, license, supported agents, and repository language signals. Refresh 2026-07-21: still MIT TypeScript; 3.8k stars; latest GitHub release v1.4.35 (May 29)."
       },
       {
         "url": "https://raw.githubusercontent.com/stablyai/orca/main/package.json",
         "kind": "package-manifest",
-        "notes": "Runtime/package signals: Node 24, Electron, React, Vite, TypeScript, node-pty, xterm, ssh2, ws, pnpm, Monaco, and Tailwind. Refresh 2026-07-15 version field: 1.4.142-rc.7."
+        "notes": "Runtime/package signals: Node 24, Electron, React, Vite, TypeScript, node-pty, xterm, ssh2, ws, pnpm, Monaco, and Tailwind. Package metadata still exposes 1.4.142-rc.7; public release listing currently shows v1.4.35."
       },
       {
         "url": "https://www.onorca.dev/docs/remote-servers",
@@ -174,7 +174,7 @@
       "evidence": [
         "Official README lists parallel worktrees, mobile companion, terminal splits, design mode, native GitHub/Linear, SSH worktrees, diff annotation, and CLI.",
         "Official docs describe remote server mode and custom CLI agent support.",
-        "Refresh 2026-07-15: GitHub remains highly active with large star count; landing still positions Orca as an ADE for agent fleets."
+        "Refresh 2026-07-21: GitHub lists 3.8k stars and the landing still positions Orca as an ADE for agent fleets."
       ],
       "unknowns": [
         "Quality of verification gates and evidence capture compared with Tachyon remains unbenchmarked."
@@ -182,5 +182,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

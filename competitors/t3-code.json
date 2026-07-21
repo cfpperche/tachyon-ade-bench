@@ -33,7 +33,7 @@
     "Confirm current desktop/web install path before benchmark; docs mention provider CLI auth prerequisites."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -148,5 +148,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

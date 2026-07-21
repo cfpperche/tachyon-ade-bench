@@ -15,7 +15,7 @@
     "Official site positions AgentsRoom as a desktop app for macOS and Linux with an online demo using simulated data.",
     "Runs multiple project folders and multiple CLI agent sessions in parallel.",
     "Remote fleet and mobile companion features are presented as product features, including E2E relay for remote machines.",
-    "Refresh 2026-07-15: marketing site live (EN + PT); version badge area referenced v1.110.0 enhanced agent management on homepage copy."
+    "Refresh 2026-07-21: official download page reports v1.109.0; macOS, Linux, and Windows packages plus supported CLI agents remain available."
   ],
   "capabilities_to_probe": [
     "multi-agent orchestration",
@@ -36,7 +36,7 @@
     "Use the desktop app, not the simulated browser demo, for any scored benchmark run."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "partial-official",
     "sources": [
       {
@@ -161,5 +161,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

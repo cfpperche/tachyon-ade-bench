@@ -42,7 +42,7 @@
     "Record model/provider, Fusion version, workflow id (default builtin:coding observed), auto-merge outcome, and intervention count."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -243,5 +243,5 @@
     }
   },
   "research_status": "researched-official-smoke-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }

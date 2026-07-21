@@ -41,7 +41,7 @@
     "Dual-read tracked in intelligence: competitor today AND potential runtime backend (terminal session observe/control primitives could replace tmux-layer responsibilities); any backend spike is gated on AGPL/distribution decision, solo-maintainer bus factor, and the ungoverned same-user socket authority (no per-agent identity or capability scoping)."
   ],
   "research": {
-    "last_reviewed": "2026-07-15",
+    "last_reviewed": "2026-07-21",
     "confidence": "official-sourced",
     "sources": [
       {
@@ -177,5 +177,5 @@
     }
   },
   "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-15"
+  "updated_at": "2026-07-21"
 }
