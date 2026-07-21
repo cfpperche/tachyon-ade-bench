@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-07-15",
+  "updated_at": "2026-07-21",
   "advertisers": [
     {
       "product_id": "tachyon",
@@ -39,6 +39,18 @@
       "notes": "Enterprise B2B channel; LinkedIn and Google are likely high-signal."
     },
     {
+      "product_id": "herdr",
+      "display_name": "Herdr",
+      "included": true,
+      "aliases": {
+        "names": ["Herdr", "Herdr ADE", "Herdr coding agents"],
+        "domains": ["herdr.dev"],
+        "handles": [],
+        "github_orgs": ["ogulcancelik"]
+      },
+      "notes": "Name can overlap with unrelated herd products; prefer the exact herdr.dev domain or repository owner."
+    },
+    {
       "product_id": "hive",
       "display_name": "Hive",
       "included": true,
@@ -61,6 +73,18 @@
         "github_orgs": []
       },
       "notes": "Search exact product name first to avoid Hive-related false positives."
+    },
+    {
+      "product_id": "jetbrains-air",
+      "display_name": "JetBrains Air",
+      "included": true,
+      "aliases": {
+        "names": ["JetBrains Air", "Air ADE"],
+        "domains": ["air.dev"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Air is highly generic; use JetBrains Air or air.dev and do not attribute unqualified Air results."
     },
     {
       "product_id": "kandev",

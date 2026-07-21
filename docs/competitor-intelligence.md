@@ -10,6 +10,7 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 
 - Tachyon
 - Orca
+- Herdr
 - HiveTerm
 - T3 Code
 - Hive
@@ -19,6 +20,7 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 - Kandev
 - Fusion (Runfusion)
 - Maestri
+- JetBrains Air
 
 LandingAI is intentionally excluded from this roster. Its ADE product is
 Agentic Document Extraction, not an agentic software development environment.

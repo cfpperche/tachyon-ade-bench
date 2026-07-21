@@ -1,0 +1,207 @@
+{
+  "id": "jetbrains-air",
+  "name": "JetBrains Air",
+  "class": "A-local-ade",
+  "homepage": "https://air.dev/",
+  "source_url": null,
+  "license": "proprietary",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the desktop preview, prepare a benchmark run, open only runs/<run-id>/worktree as a Local Workspace, provide prompt.md exactly, then run harness verification. Record the selected guest agent, model, effort, authentication path, and permission mode separately from Air."
+  },
+  "inclusion": "Direct Class A ADE competitor: a standalone JetBrains environment for running heterogeneous coding agents concurrently, isolating their work, and reviewing changes with code intelligence.",
+  "pricing_model": "Preview desktop product. JetBrains AI Pro or Ultimate can provide supported agents; users can also bring provider API keys or supported Codex/Gemini subscriptions. JetBrains AI Free and Enterprise are not supported by the current Air preview.",
+  "public_stack_signals": [
+    "Standalone proprietary desktop application for macOS, Windows, and Linux; Linux distribution uses JetBrains Toolbox.",
+    "Built-in support for Codex, Claude Agent, Gemini CLI, and Junie, plus configurable ACP-compatible agents and local-model harnesses.",
+    "Tasks can run in the local workspace or isolated Git worktrees; Docker task execution is documented for macOS and Windows but not Linux.",
+    "Official workflow covers plan authoring, concurrent agent tasks, code-aware context, diff review, inline comments, and cross-agent review."
+  ],
+  "capabilities_to_probe": [
+    "agent and model selection",
+    "parallel task orchestration",
+    "local-workspace benchmark compatibility",
+    "Git worktree isolation",
+    "Docker isolation on supported hosts",
+    "diff and inline-comment review",
+    "cross-agent review",
+    "ACP agent configuration",
+    "permission modes and proposed-change review"
+  ],
+  "moat_hypotheses": [
+    "JetBrains distribution and developer-tool brand",
+    "code-aware task definition and review",
+    "agent-agnostic control plane with built-in and ACP agents",
+    "integrated worktree and Docker execution choices"
+  ],
+  "setup_notes": [
+    "Linux installation currently goes through JetBrains Toolbox.",
+    "Use Local Workspace for the first v0.1 benchmark so all edits remain inside the harness-owned worktree.",
+    "Do not count announced cloud execution, automation, or Air Team capabilities as current benchmark features.",
+    "Guest-agent quality can dominate single-task correctness; keep Air, agent, model, and subscription metadata separate."
+  ],
+  "research": {
+    "last_reviewed": "2026-07-21",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://air.dev/",
+        "kind": "official-site",
+        "notes": "Current positioning, built-in agents, concurrent task loops, workspaces, isolation choices, review workflow, subscription/BYOK options, and Linux distribution link."
+      },
+      {
+        "url": "https://air.dev/download",
+        "kind": "official-site",
+        "notes": "Current preview status and downloads for macOS, Windows, and Linux via JetBrains Toolbox."
+      },
+      {
+        "url": "https://air.dev/changelog",
+        "kind": "official-docs",
+        "notes": "Release history for Linux/Windows support, ACP agents, local models, worktrees, Docker host support, planning, permissions, comments, agent review, and configuration files. Reviewed at version 262.132.21 dated 2026-07-15."
+      },
+      {
+        "url": "https://blog.jetbrains.com/air/2026/03/air-launches-as-public-preview-a-new-wave-of-dev-tooling-built-on-26-years-of-experience/",
+        "kind": "official-site",
+        "notes": "JetBrains launch article covering the ADE category, concurrent agents, code-aware context, local/worktree/Docker execution, review workflow, subscriptions, BYOK, and future-only cloud/team direction."
+      },
+      {
+        "url": "https://blog.jetbrains.com/air/2026/06/jetbrains-air-lands-on-windows/",
+        "kind": "official-site",
+        "notes": "Official workflows for plan files, local or worktree tasks, parallel worktrees, diff review, and one-agent-reviews-another behavior."
+      },
+      {
+        "url": "https://blog.jetbrains.com/air/2026/07/what-s-new-air-gets-more-agents-local-models-and-java-kotlin-code-intelligence/",
+        "kind": "official-site",
+        "notes": "Official ACP expansion, local-model support, Java/Kotlin code intelligence, proposed-change review, and Docker availability on Windows and macOS."
+      }
+    ],
+    "positioning": "Standalone JetBrains agentic development environment for defining coding tasks with code-aware context, running heterogeneous agents concurrently in isolated workspaces, and reviewing their changes before they reach the main working copy.",
+    "stack": {
+      "runtime": [
+        "proprietary desktop application",
+        "local coding-agent and ACP processes"
+      ],
+      "frontend": [
+        "agent-first task workspace",
+        "code navigation and diff review surface",
+        "Java/Kotlin intelligence powered by the IntelliJ IDEA code engine in beta"
+      ],
+      "backend": [
+        "local agent harness execution",
+        "optional JetBrains AI subscription service",
+        "ACP connections to configured agents"
+      ],
+      "packaging": [
+        "macOS desktop download",
+        "Windows x64 and ARM64 desktop downloads",
+        "Linux installation through JetBrains Toolbox"
+      ],
+      "data": [
+        "project-scoped workspaces with agent sessions and Git state",
+        "Markdown execution plans",
+        ".air/worktree.json and .air/docker.json environment configuration"
+      ],
+      "unknowns": [
+        "The proprietary implementation languages, desktop framework, persistence format, and telemetry details are not established by the official sources reviewed.",
+        "Cloud execution and Air Team are announced future surfaces and are not counted as current capabilities.",
+        "Exact support depth varies by agent harness and must be recorded in hands-on runs."
+      ]
+    },
+    "infrastructure": [
+      "Runs coding agents locally by default.",
+      "Can isolate concurrent tasks in separate Git worktrees.",
+      "Can execute Docker tasks on macOS and Windows when Docker Desktop is available; Docker tasks are unavailable on Linux in the reviewed release.",
+      "Supports ACP-compatible agents, including harnesses connected to local models through Ollama or similar runners.",
+      "Workspaces scope sessions, Git state, navigation, and tools to a project."
+    ],
+    "features": {
+      "agent_support": [
+        "Codex",
+        "Claude Agent",
+        "Gemini CLI",
+        "Junie",
+        "GitHub Copilot CLI through ACP",
+        "OpenCode, Pi, Cline, and other configurable ACP agents",
+        "local models through an ACP-compatible harness"
+      ],
+      "orchestration": [
+        "concurrent independent agent tasks",
+        "agent and model switching",
+        "Plan mode with an editable Markdown execution plan",
+        "queued follow-up prompts",
+        "one agent can review another agent's changes"
+      ],
+      "workspace_isolation": [
+        "Local Workspace execution",
+        "parallel Git worktree tasks",
+        "Docker tasks on macOS and Windows",
+        "worktree and Docker setup configuration",
+        "worktree cleanup scripts"
+      ],
+      "review_shipping": [
+        "unified diff review",
+        "inline comments and add-to-task feedback",
+        "proposed-change inspection before file permission approval",
+        "cross-agent review comments",
+        "Git client and generated commit-message assistance",
+        "apply reviewed worktree or container changes to the main copy"
+      ],
+      "remote_mobile": [],
+      "context_memory": [
+        "task context from files, lines, symbols, classes, methods, commits, and images",
+        "project-scoped session history",
+        "agent-specific context usage indicators",
+        "workspace and global agent/model preferences",
+        "project and global agent skills"
+      ],
+      "integrations": [
+        "Agent Client Protocol",
+        "Model Context Protocol configuration",
+        "JetBrains IDE Open In workflow",
+        "JetBrains AI Pro and Ultimate",
+        "provider API keys and supported personal subscriptions"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "JetBrains Toolbox plus Air preview on Linux",
+        "JetBrains Account or supported provider authentication",
+        "selected guest agent and model",
+        "prepared harness worktree opened as a Local Workspace"
+      ],
+      "parity_risks": [
+        "Guest-agent and model quality can dominate single-task correctness; record both separately from Air.",
+        "The Linux host cannot exercise Air's Docker task path in the reviewed release.",
+        "Air-created worktrees may live outside the harness-owned run directory; use Local Workspace for v0.1 scored tasks unless artifact capture is extended.",
+        "Current tasks mostly measure coding outcomes, not Air's parallel delegation and cross-agent review differentiators.",
+        "The product is moving quickly in public preview; record the exact Air version for every run."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "JetBrains distribution and code-intelligence experience can reduce friction in task definition and review.",
+        "Built-in plus ACP agent breadth can make Air a neutral control plane rather than a single-provider environment.",
+        "Integrated local, worktree, and Docker choices can make concurrent task isolation accessible to desktop users.",
+        "Cross-agent review can turn heterogeneous agent choice into a quality-control workflow."
+      ],
+      "evidence": [
+        "The official site and launch article position Air as a standalone ADE centered on multiple concurrent coding agents.",
+        "Official release notes document worktrees, Docker tasks, ACP agents, local models, plan files, permissions, diff comments, and agent review.",
+        "Official Windows workflow documentation shows plan-to-worktree-to-review and cross-agent review flows."
+      ],
+      "unknowns": [
+        "Hands-on evidence is still required for install friction, worktree behavior, review ergonomics, and verifier-compatible delivery.",
+        "No public source repository establishes internal architecture or allows source-level security review.",
+        "The value of code intelligence outside Java/Kotlin needs hands-on verification rather than inference."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
+  "updated_at": "2026-07-21"
+}

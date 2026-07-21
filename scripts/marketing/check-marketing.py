@@ -94,6 +94,9 @@ def validate_advertisers(path: Path, products: set[str]) -> list[str]:
         errors.extend(reject_extra(path, aliases, alias_keys))
         for key in alias_keys:
             errors.extend(expect_string_list(path, f"{label}.aliases.{key}", aliases.get(key), allow_empty=key != "names"))
+    missing = sorted(products - seen)
+    for product_id in missing:
+        errors.append(f"{path}: missing advertiser for competitor {product_id}")
     return errors
 
 
