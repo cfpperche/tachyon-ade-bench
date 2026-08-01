@@ -1,0 +1,208 @@
+{
+  "id": "conductor",
+  "name": "Conductor",
+  "class": "A-local-ade",
+  "homepage": "https://www.conductor.build/",
+  "source_url": null,
+  "license": "Proprietary",
+  "runner": {
+    "kind": "manual",
+    "notes": "Prepare the benchmark fixture as a Git repository, import it into the macOS app, create one Conductor workspace per run, select the guest agent/model, provide prompt.md, and verify the resulting workspace. Record local versus Cloud execution, Conductor version, guest agent/model, subscription, and every human intervention as separate run dimensions."
+  },
+  "inclusion": "Direct multi-agent ADE competitor combining parallel agent sessions, Git-worktree isolation, review and pull-request workflow, and optional cloud orchestration.",
+  "pricing_model": "The local macOS app is described as free in the official FAQ; Conductor Pro gates the Cloud API and early-access multiplayer, while public plan prices were not verified in this review.",
+  "public_stack_signals": [
+    "Proprietary macOS desktop application; Windows and Linux are not available according to the installation docs.",
+    "Local workspaces use Git worktrees and one branch per workspace under ~/conductor/workspaces.",
+    "Conductor Cloud runs isolated microVM sandboxes with repositories and dependencies pre-installed.",
+    "Cloud automation is exposed through a bearer-authenticated HTTP API under https://api.conductor.build/v0.",
+    "Repository configuration can be shared through .conductor/settings.toml; machine-local overrides use .conductor/settings.local.toml."
+  ],
+  "capabilities_to_probe": [
+    "parallel Claude Code, Codex, Cursor, and OpenCode sessions",
+    "one-workspace-per-task Git worktree and branch isolation",
+    "multiple agents sharing one workspace and branch",
+    "setup/run scripts, copied ignored files, and per-workspace ports",
+    "diff comments sent back to agents, agent review, checks, PR creation, merge, archive, and restore",
+    "Cloud microVM startup, persistence, API supervision, and recovery",
+    "multiplayer shared workspaces and real-time collaborative prompting",
+    "background tasks and agent-to-agent orchestration through the Conductor API"
+  ],
+  "moat_hypotheses": [
+    "polished worktree-first desktop workflow spanning agent execution, live app testing, review, checks, and pull requests",
+    "hybrid local and cloud workspace model with the same agent-facing product surface",
+    "first-party support for several leading coding-agent CLIs while preserving users' existing subscriptions and keys",
+    "programmable cloud fleet API plus multiplayer collaboration can extend the product from individual ADE to team control plane"
+  ],
+  "setup_notes": [
+    "Local benchmarking currently requires macOS, GitHub CLI authentication, and login for at least one supported agent provider.",
+    "Use a separate run for Conductor Cloud because microVM isolation, provisioning, billing, latency, and API supervision are not parity-equivalent to the local worktree mode.",
+    "Do not treat Git worktrees as a security boundary: the official docs state that local agents retain the macOS user's filesystem and command permissions."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-01",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://www.conductor.build/",
+        "kind": "official-site",
+        "notes": "Current positioning, Cloud microVM claims, multiplayer, supported first-party agents, desktop/mobile/API surfaces, and current release links."
+      },
+      {
+        "url": "https://www.conductor.build/docs",
+        "kind": "official-docs",
+        "notes": "Supported agents and the workspace/branch/files/terminal/diff/review workflow."
+      },
+      {
+        "url": "https://www.conductor.build/docs/installation",
+        "kind": "official-docs",
+        "notes": "macOS-only availability, installation flow, GitHub CLI requirement, and provider authentication setup."
+      },
+      {
+        "url": "https://www.conductor.build/docs/concepts/git-worktrees",
+        "kind": "official-docs",
+        "notes": "Worktree layout, branch isolation, copied ignored files, workspace lifecycle, and explicit statement that local isolation is not a security boundary."
+      },
+      {
+        "url": "https://www.conductor.build/docs/concepts/parallel-agents",
+        "kind": "official-docs",
+        "notes": "Parallel-workspace and shared-workspace multi-agent patterns."
+      },
+      {
+        "url": "https://www.conductor.build/docs/guides/review-and-merge",
+        "kind": "official-docs",
+        "notes": "Diff review, inline comments, agent review, checks, GitHub review threads, PR creation, merge, archive, and restore flow."
+      },
+      {
+        "url": "https://www.conductor.build/docs/api",
+        "kind": "official-docs",
+        "notes": "Beta Cloud API authentication, workspace/session/message/status endpoints, external supervision, and workspace-scoped API access."
+      },
+      {
+        "url": "https://www.conductor.build/docs/reference/security-and-permissions",
+        "kind": "official-docs",
+        "notes": "Local execution permissions, provider network traffic, approvals, and enterprise privacy controls."
+      },
+      {
+        "url": "https://www.conductor.build/changelog",
+        "kind": "official-site",
+        "notes": "Release history and current Cloud, multiplayer, API, background-task, agent, and performance claims."
+      },
+      {
+        "url": "https://www.conductor.build/docs/faq",
+        "kind": "official-docs",
+        "notes": "Local data/auth model, use of existing provider subscriptions or keys, and the vendor's current free-tool monetization statement."
+      }
+    ],
+    "positioning": "A macOS and cloud control plane for running teams of first-party coding agents in isolated workspaces, then reviewing, testing, and shipping each branch through an integrated diff, checks, and pull-request workflow.",
+    "stack": {
+      "runtime": [
+        "First-party Claude Code, Codex, Cursor, and OpenCode processes",
+        "Local macOS execution under the user's permissions",
+        "Cloud agents in isolated microVM sandboxes"
+      ],
+      "frontend": [
+        "Proprietary macOS desktop application",
+        "Cloud workspace surface with real-time multiplayer",
+        "Conductor API for custom clients and integrations"
+      ],
+      "backend": [
+        "Local Git worktree and process orchestration",
+        "Cloud workspace/session service exposed through a beta HTTP API"
+      ],
+      "packaging": [
+        "Downloadable macOS application",
+        "Cloud service and Pro-gated API/multiplayer features"
+      ],
+      "data": [
+        "Local workspaces, chats, and repository files remain on the Mac unless sent to a connected provider or integration",
+        "Workspace notes and handoffs can live in a gitignored .context directory",
+        "Cloud API exposes projects, workspaces, sessions, messages, status, and read-only transcript search"
+      ],
+      "unknowns": [
+        "Desktop implementation language and UI framework are not published.",
+        "Cloud control-plane implementation, microVM provider, tenancy details, retention, and regional availability were not verified.",
+        "Public plan prices, quotas, and Cloud compute limits were not verified."
+      ]
+    },
+    "infrastructure": [
+      "Local mode creates a Git worktree and branch per workspace; setup scripts, run scripts, terminals, app processes, chat, diff, PR state, and archive actions stay attached to that workspace.",
+      "Multiple independent tasks run in separate workspaces, while multiple agents can share one workspace when they need the same branch and latest filesystem state.",
+      "Cloud mode provisions isolated microVMs from repository snapshots and can be driven from the desktop product, shared workspace links, or the HTTP API."
+    ],
+    "features": {
+      "agent_support": [
+        "First-party Claude Code, Codex, Cursor, and OpenCode agents.",
+        "Uses existing local provider authentication, subscriptions, or API keys in local mode."
+      ],
+      "orchestration": [
+        "Parallel agents across independent workspaces and multiple agents sharing one workspace.",
+        "Cloud API can create workspaces and sessions, send prompts, read replies, inspect status, cancel turns, archive workspaces, and supervise multi-PR work.",
+        "Background tasks and agents inside Cloud workspaces can invoke the workspace-scoped Conductor API."
+      ],
+      "workspace_isolation": [
+        "One Git worktree, branch, files, terminal, processes, context, and review path per local workspace.",
+        "Cloud workspaces run in isolated microVM sandboxes.",
+        "Local worktree separation is development isolation, not a security or authority boundary."
+      ],
+      "review_shipping": [
+        "Diff viewer with inline comments, file reverts, agent review, and GitHub review-thread resolution.",
+        "Checks surface for Git status, PR metadata, CI, deployments, comments, and todos.",
+        "Integrated PR creation, merge, archive, history, and restore workflow."
+      ],
+      "remote_mobile": [
+        "Cloud workspaces can be accessed from desktop and shared through workspace links.",
+        "Official site advertises mobile and custom API integrations; native iOS is marked as forthcoming."
+      ],
+      "context_memory": [
+        "Chat, diff, PR state, terminal state, archive actions, and task context remain attached to the workspace.",
+        "Repository guidance can be checked into .conductor/settings.toml; task notes and handoffs can use .context."
+      ],
+      "integrations": [
+        "GitHub repositories, issues, pull requests, checks, deployments, and review comments.",
+        "Linear issue intake.",
+        "MCP servers, custom providers, deep links, and beta HTTP API."
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "Download and install the macOS application from conductor.build.",
+        "Authenticate GitHub CLI and at least one supported guest agent.",
+        "Import the prepared fixture repository and configure setup/run scripts without changing the benchmark prompt.",
+        "For Cloud measurement, provision a Pro account/API key and record Cloud configuration and cost separately."
+      ],
+      "parity_risks": [
+        "Single-agent correctness primarily measures the selected guest agent/model; Conductor-specific value needs parallelism, isolation, intervention, review, recovery, and shipping metrics.",
+        "Local mode is macOS-only and uses host-user permissions, while Cloud mode changes compute, security boundary, network, provisioning, and billing.",
+        "Existing provider subscriptions and keys can produce materially different cost and rate-limit conditions.",
+        "Cloud API and multiplayer are beta/early-access surfaces and may change during a benchmark cycle."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "A cohesive path from isolated agent workspace through live app testing, review, checks, PR, merge, and archive reduces coordination overhead beyond a terminal multiplexer.",
+        "Supporting local worktrees and cloud microVMs under one workspace abstraction can serve both individual developers and collaborative teams.",
+        "A programmable fleet API and real-time multiplayer workspace model may compound through internal tooling and team workflows.",
+        "Broad first-party agent support lets Conductor benefit from model/runtime competition without owning a coding model."
+      ],
+      "evidence": [
+        "Official docs describe the workspace as the durable unit connecting branch, working tree, agent chats, terminals, diff, checks, PR state, and archive/restore lifecycle.",
+        "Official API docs expose programmatic workspace/session creation, prompting, transcript reads, status polling, cancellation, archival, and read-only transcript search.",
+        "The July 2026 changelog and homepage document Cloud microVMs, multiplayer, API access, background tasks, and agent-driven child workspace creation."
+      ],
+      "unknowns": [
+        "Adoption and retention attributable specifically to Cloud, API, or multiplayer are not publicly verified.",
+        "Whether the beta orchestration API gains durable task contracts, verification attestations, scoped agent authority, or approval governance is unknown.",
+        "Cloud unit economics, reliability, security certifications, and enterprise controls beyond the published privacy setting remain unverified."
+      ]
+    }
+  },
+  "research_status": "researched-official-v0.1",
+  "updated_at": "2026-08-01"
+}

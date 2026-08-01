@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-07-21",
+  "updated_at": "2026-08-01",
   "advertisers": [
     {
       "product_id": "tachyon",
@@ -157,6 +157,18 @@
         "github_orgs": []
       },
       "notes": "macOS canvas orchestrator; search EN and PT-BR landings. Name can collide with unrelated Maestro products."
+    },
+    {
+      "product_id": "conductor",
+      "display_name": "Conductor",
+      "included": true,
+      "aliases": {
+        "names": ["Conductor", "Conductor Build", "Melty Labs Conductor"],
+        "domains": ["conductor.build", "www.conductor.build", "app.conductor.build"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Name is highly generic; always qualify acquisition searches with conductor.build, Melty Labs, or coding agents."
     }
   ]
 }

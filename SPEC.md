@@ -29,6 +29,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Fusion (Runfusion)
 - Maestri
 - JetBrains Air
+- Conductor
 
 Class B products are enterprise agentic platforms:
 

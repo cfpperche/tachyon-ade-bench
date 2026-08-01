@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-07-21 (JetBrains Air inclusion and roster consistency refresh)
+Reviewed: 2026-08-01 (Conductor inclusion and roster consistency refresh)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -23,6 +23,7 @@ later. Unknown closed-source internals remain unknown by design.
 | Kandev | A-local-ade | Go backend, Next.js frontend, CLI, Tauri desktop, self-hostable, worktrees, executor model. | Kanban/pipeline + workflow import/export, subtasks, multi-repo/branch, broad ACP agent list, voice mode, PRs, MCP/integrations. | Workflow-first self-hosted control plane with kanban-native operations and executor breadth. | `needs-install`; record executor choice. |
 | Fusion (Runfusion) | A-local-ade | TypeScript pnpm monorepo; React/Vite dashboard; Electron desktop; Capacitor mobile; Pi coding agent; embedded-postgres; MIT npm CLI. | Software factory board, plan/review/execute gates, worktree isolation, multi-node mesh, missions, agent companies, Command Center cost telemetry. | Open-source multi-agent factory with quality gates, worktree shipping, and multi-surface control. | `manual-ready`; T001 smoke passed after 1 merge intervention; nested worktrees + stuck auto-merge are parity risks. |
 | Maestri | A-local-ade | Native macOS Swift/SwiftUI canvas app; PTY terminals; APFS floors; optional SSH; Ombro on-device companion; proprietary. | Infinite canvas multi-agent orchestration, inter-agent connections, roles, routines, portals, notes, workspaces. | Spatial native canvas + agent-agnostic PTY links + local-first privacy on macOS. | `manual-ready` on Mac only; floors ≠ git worktree semantics; guest agent dominates single-task correctness. |
+| Conductor | A-local-ade | Proprietary macOS app with local Git worktrees; optional Cloud microVM sandboxes, multiplayer, and beta HTTP API. | Parallel Claude Code/Codex/Cursor/OpenCode sessions, shared-workspace agents, setup/run tooling, diff review, checks, PR/merge/archive flow. | Hybrid local/cloud workspace control plane with polished shipping workflow and programmable collaborative fleet surface. | `needs-install`; measure local and Cloud separately and record guest agent/model/subscription. |
 
 ## Direct Benchmark Set
 
@@ -40,6 +41,7 @@ Use Class A for the first direct comparison:
 - Kandev
 - Fusion (Runfusion)
 - Maestri
+- Conductor
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -59,6 +61,7 @@ normalized and the caveats are visible.
 - Kandev: https://github.com/kdlbs/kandev, https://raw.githubusercontent.com/kdlbs/kandev/main/README.md, https://raw.githubusercontent.com/kdlbs/kandev/main/docs/features.md
 - Fusion (Runfusion): https://runfusion.ai/, https://github.com/Runfusion/Fusion, https://www.npmjs.com/package/@runfusion/fusion, https://raw.githubusercontent.com/Runfusion/Fusion/main/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/cli/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/dashboard/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/desktop/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/mobile/package.json
 - Maestri: https://www.themaestri.app/en, https://www.themaestri.app/pt-br, https://www.themaestri.app/en/docs/intro, https://www.themaestri.app/en/docs/terminals, https://www.themaestri.app/en/docs/connections, https://www.themaestri.app/en/docs/floors, https://www.themaestri.app/en/docs/workspaces, https://www.themaestri.app/en/docs/routines, https://www.themaestri.app/en/docs/portals, https://www.themaestri.app/en/docs/ombro, https://www.themaestri.app/en/docs/ssh
+- Conductor: https://www.conductor.build/, https://www.conductor.build/docs, https://www.conductor.build/docs/installation, https://www.conductor.build/docs/concepts/git-worktrees, https://www.conductor.build/docs/concepts/parallel-agents, https://www.conductor.build/docs/guides/review-and-merge, https://www.conductor.build/docs/api, https://www.conductor.build/docs/reference/security-and-permissions, https://www.conductor.build/changelog
 
 ## Caveats Before Scoring
 

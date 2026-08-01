@@ -26,6 +26,7 @@ Track acquisition evidence for the same software ADE roster used by
 - Fusion (Runfusion)
 - Maestri
 - JetBrains Air
+- Conductor
 
 LandingAI remains out of the software ADE benchmark roster. If it appears in
 marketing research, keep it in an excluded or adjacent-products section.
