@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-01 (Conductor inclusion and roster consistency refresh)
+Reviewed: 2026-08-10 (Warp, Kiro, Overclock, Synara catalog; Falou exclusion)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -24,6 +24,10 @@ later. Unknown closed-source internals remain unknown by design.
 | Fusion (Runfusion) | A-local-ade | TypeScript pnpm monorepo; React/Vite dashboard; Electron desktop; Capacitor mobile; Pi coding agent; embedded-postgres; MIT npm CLI. | Software factory board, plan/review/execute gates, worktree isolation, multi-node mesh, missions, agent companies, Command Center cost telemetry. | Open-source multi-agent factory with quality gates, worktree shipping, and multi-surface control. | `manual-ready`; T001 smoke passed after 1 merge intervention; nested worktrees + stuck auto-merge are parity risks. |
 | Maestri | A-local-ade | Native macOS Swift/SwiftUI canvas app; PTY terminals; APFS floors; optional SSH; Ombro on-device companion; proprietary. | Infinite canvas multi-agent orchestration, inter-agent connections, roles, routines, portals, notes, workspaces. | Spatial native canvas + agent-agnostic PTY links + local-first privacy on macOS. | `manual-ready` on Mac only; floors ≠ git worktree semantics; guest agent dominates single-task correctness. |
 | Conductor | A-local-ade | Proprietary macOS app with local Git worktrees; optional Cloud microVM sandboxes, multiplayer, and beta HTTP API. | Parallel Claude Code/Codex/Cursor/OpenCode sessions, shared-workspace agents, setup/run tooling, diff review, checks, PR/merge/archive flow. | Hybrid local/cloud workspace control plane with polished shipping workflow and programmable collaborative fleet surface. | `needs-install`; measure local and Cloud separately and record guest agent/model/subscription. |
+| Warp | A-local-ade | Open-source AGPL client (Rust terminal ADE); Oz local/cloud orchestration; multi-OS installers; third-party CLI harnesses. | Warp Agent + Claude Code/Codex/OpenCode/Gemini, terminal/agent modes, code review, cloud handoff, Warp Drive/MCP/rules, enterprise SSO/BYOLLM. | Terminal-native ADE install base plus open client and commercial Oz/enterprise orchestration. | `needs-install`; record harness, credits plan, and local vs cloud. |
+| Kiro | A-local-ade | AWS-operated proprietary IDE (Code OSS), CLI, web sandboxes, mobile, Crew; shared `.kiro/` harness. | Spec-driven development, parallel sub-agents, hooks/steering/MCP/skills, checkpoints, headless CLI, PR/web automation, enterprise IAM/SSO. | AWS identity/compliance plus structured specs across every surface. | `needs-install`; prefer local IDE/CLI over web sandboxes for Class A parity; record credit tier. |
+| Overclock | A-local-ade | Proprietary desktop cockpit (macOS/Windows/Linux); BYO coding CLIs; closed-source internals unknown. | Multi-pane concurrent agents, mission worktrees, Squad maestro, skills marketplace, 52 MCP tools, OverMemory, plan-gated voice/Jarvis. | Orchestration UX subscription while models ride existing CLI accounts. | `needs-install`; plan tier gates multi-agent features; merge worktrees before verify. |
+| Synara | A-local-ade | MIT Bun/Turbo TypeScript monorepo; Electron desktop packaging; local-first; no Synara model plan. | Parallel tasks, Git worktrees, provider handoffs, terminals, browser verification, diff/PR delivery, bidirectional MCP. | Free open-source multi-provider control plane without product account lock-in. | `needs-install`; guest CLI must be authenticated outside Synara first. |
 
 ## Direct Benchmark Set
 
@@ -42,9 +46,16 @@ Use Class A for the first direct comparison:
 - Fusion (Runfusion)
 - Maestri
 - Conductor
+- Warp
+- Kiro
+- Overclock
+- Synara
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
+
+**Excluded (not software ADE peers):** LandingAI (document ADE); Falou
+(`https://falou.opusbr.com/` — Portuguese Mac voice dictation).
 
 ## Source Index
 
@@ -62,6 +73,11 @@ normalized and the caveats are visible.
 - Fusion (Runfusion): https://runfusion.ai/, https://github.com/Runfusion/Fusion, https://www.npmjs.com/package/@runfusion/fusion, https://raw.githubusercontent.com/Runfusion/Fusion/main/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/cli/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/dashboard/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/desktop/package.json, https://raw.githubusercontent.com/Runfusion/Fusion/main/packages/mobile/package.json
 - Maestri: https://www.themaestri.app/en, https://www.themaestri.app/pt-br, https://www.themaestri.app/en/docs/intro, https://www.themaestri.app/en/docs/terminals, https://www.themaestri.app/en/docs/connections, https://www.themaestri.app/en/docs/floors, https://www.themaestri.app/en/docs/workspaces, https://www.themaestri.app/en/docs/routines, https://www.themaestri.app/en/docs/portals, https://www.themaestri.app/en/docs/ombro, https://www.themaestri.app/en/docs/ssh
 - Conductor: https://www.conductor.build/, https://www.conductor.build/docs, https://www.conductor.build/docs/installation, https://www.conductor.build/docs/concepts/git-worktrees, https://www.conductor.build/docs/concepts/parallel-agents, https://www.conductor.build/docs/guides/review-and-merge, https://www.conductor.build/docs/api, https://www.conductor.build/docs/reference/security-and-permissions, https://www.conductor.build/changelog
+- Warp: https://www.warp.dev/, https://www.warp.dev/terminal, https://docs.warp.dev/, https://www.warp.dev/pricing, https://github.com/warpdotdev/warp, https://www.warp.dev/blog/warp-is-now-open-source
+- Kiro: https://kiro.dev/, https://kiro.dev/docs/, https://kiro.dev/pricing/, https://kiro.dev/docs/specs/, https://kiro.dev/docs/cli/acp/, https://kiro.dev/enterprise/
+- Overclock: https://overclock.sh/, https://overclock.sh/en/features, https://overclock.sh/en/planos, https://overclock.sh/en/integracoes, https://overclock.sh/en/como-funciona
+- Synara: https://www.trysynara.com/, https://github.com/Emanuele-web04/synara, https://raw.githubusercontent.com/Emanuele-web04/synara/main/package.json, https://raw.githubusercontent.com/Emanuele-web04/synara/main/LICENSE, https://www.trysynara.com/install, https://www.trysynara.com/privacy
+- Falou (excluded): https://falou.opusbr.com/ — voice dictation for Mac, not a software ADE
 
 ## Caveats Before Scoring
 

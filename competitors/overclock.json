@@ -1,0 +1,190 @@
+{
+  "id": "overclock",
+  "name": "Overclock",
+  "class": "A-local-ade",
+  "homepage": "https://overclock.sh/",
+  "source_url": null,
+  "license": "Proprietary commercial desktop app",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the Overclock desktop app (macOS/Windows/Linux), connect existing CLI agent subscriptions (Claude Code, Codex, Gemini, Antigravity, etc.), open only runs/<run-id>/worktree as a mission workspace, run Free/Squad/Agentic mission with prompt.md, then harness-verify after merge to the prepared tree. Record plan tier, mission mode, guest agents/models, pane costs, and interventions."
+  },
+  "inclusion": "Direct Class A multi-agent ADE cockpit: pane grid for concurrent coding CLIs, missions with worktrees, maestro/squad orchestration, skills marketplace, and 52 native MCP tools.",
+  "pricing_model": "Subscription cockpit only (models use the user's existing CLI subscriptions): Boost $19/month, Boost Pro $39/month, Ultra $79/month; 7-day refund guarantee stated on site. No separate model fee charged by Overclock.",
+  "public_stack_signals": [
+    "Official site brands Overclock as an ADE for vibe coding with AI agents.",
+    "Desktop app on Mac, Windows, and Linux with automatic updates.",
+    "Connects user-owned CLIs (Claude Code, Codex, Gemini, Antigravity, OpenRouter, DeepSeek, Ollama, LM Studio, and more) without re-billing models.",
+    "Missions in Free, Squad, or Agentic modes; each mission has panes, status, and worktree.",
+    "Claims 16 product surfaces and 52 native MCP tools for maestro spawn/delegate/sync."
+  ],
+  "capabilities_to_probe": [
+    "multi-pane concurrent Claude/Codex/Gemini sessions with live cost",
+    "mission worktree isolation and status tracking",
+    "Squad maestro split/merge accountability",
+    "skills marketplace one-click install",
+    "OverMemory shared session memory",
+    "ClockVoice / Jarvis voice command surfaces",
+    "Harness recipes assigning agent+model+effort",
+    "workspace terminal+editor+browser+files in one screen"
+  ],
+  "moat_hypotheses": [
+    "cockpit that monetizes orchestration UX while BYO agent subscriptions",
+    "ready-made squads/recipes reduce multi-agent setup friction",
+    "Portuguese-market community and voice features (ClockVoice/Jarvis)",
+    "dense MCP tool surface for maestro coordination without user YAML"
+  ],
+  "setup_notes": [
+    "Requires authenticated guest CLIs on the machine; Overclock does not supply model tokens.",
+    "Plan tier gates Squad/recipes/voice/Jarvis/agentic mission features — record tier.",
+    "Mission worktrees may nest outside harness main; verify merge path before scoring."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-10",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://overclock.sh/",
+        "kind": "official-site",
+        "notes": "English landing: ADE positioning, CLI compatibility, squads, 16 surfaces/52 MCP tools, pricing tiers, OS support, FAQ on BYO model cost."
+      },
+      {
+        "url": "https://overclock.sh/en/features",
+        "kind": "official-site",
+        "notes": "Feature catalog: panes, missions, agents, skills, marketplace, MCP, providers, workspace, media, OverMemory, Squad, recipes, voice, harness, Jarvis, Redline, Shot."
+      },
+      {
+        "url": "https://overclock.sh/en/planos",
+        "kind": "official-site",
+        "notes": "Plans linked from homepage (Boost / Boost Pro / Ultra pricing and feature gates)."
+      },
+      {
+        "url": "https://overclock.sh/en/integracoes",
+        "kind": "official-site",
+        "notes": "Integration list for supported agent CLIs and providers."
+      },
+      {
+        "url": "https://overclock.sh/en/como-funciona",
+        "kind": "official-site",
+        "notes": "How-it-works: briefing, squad, delivery modes."
+      }
+    ],
+    "positioning": "A commercial multi-agent ADE cockpit that runs the coding CLIs you already pay for in parallel panes, with maestro/squad orchestration, mission worktrees, skills, and voice control.",
+    "stack": {
+      "runtime": [
+        "proprietary desktop application (macOS, Windows, Linux)",
+        "guest coding CLI processes (Claude Code, Codex, Gemini CLI, Antigravity, and others)",
+        "local and remote model providers via user accounts (OpenRouter, Ollama, LM Studio, etc.)"
+      ],
+      "frontend": [
+        "multi-pane agent grid",
+        "mission board / status",
+        "workspace combining terminal, editor, browser, files",
+        "real-time per-pane cost display"
+      ],
+      "backend": [
+        "maestro orchestration with 52 native MCP tools (vendor claim)",
+        "skills/recipes marketplace",
+        "OverMemory shared memory store",
+        "subscription/licensing backend for plan tiers"
+      ],
+      "packaging": [
+        "desktop app with automatic updates",
+        "plan checkout via web (Boost/Pro/Ultra)"
+      ],
+      "data": [
+        "mission state, panes, and worktrees",
+        "shared OverMemory across agents",
+        "local project workspace continuity (`overclock .`)"
+      ],
+      "unknowns": [
+        "Desktop framework, implementation language, and telemetry details are not published in reviewed official pages.",
+        "Exact worktree path layout and merge automation behavior need hands-on confirmation.",
+        "No public source repository reviewed; treat stack internals as unknown."
+      ]
+    },
+    "infrastructure": [
+      "Local-first desktop cockpit; agents execute via CLIs already installed and authenticated on the host.",
+      "Model traffic goes to the selected provider/CLI subscription; Overclock subscription is the cockpit only per FAQ.",
+      "Missions can use git worktrees per official feature copy.",
+      "Optional voice apps (Overclock Voice free window; ClockVoice/Jarvis plan-gated) for push-to-talk control."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "Gemini CLI",
+        "Antigravity",
+        "OpenRouter / DeepSeek / Ollama / LM Studio providers",
+        "Overclock Originals specialist agents combining CLI+model+skills+effort"
+      ],
+      "orchestration": [
+        "multi-pane concurrent agents",
+        "Free / Squad / Agentic mission modes",
+        "maestro split, accountability, and merge (Squad)",
+        "recipes for agent+model+effort harness",
+        "52 native MCP coordination tools"
+      ],
+      "workspace_isolation": [
+        "per-mission worktree (official missions feature)",
+        "per-pane provider selection",
+        "mission-gated skills"
+      ],
+      "review_shipping": [
+        "live pane cost and delivery tracking",
+        "workspace browser/editor for inspection",
+        "media capture tools (Shot on Ultra) for agent evidence"
+      ],
+      "remote_mobile": [
+        "no first-party mobile ADE app claimed in reviewed English marketing pages"
+      ],
+      "context_memory": [
+        "OverMemory shared across agents and surviving the session",
+        "skills installed team-wide per mission gates",
+        "recipes as reusable harness templates"
+      ],
+      "integrations": [
+        "guest coding CLIs and local model providers",
+        "MCP tool surface",
+        "marketplace one-click installs",
+        "voice control (ClockVoice, Jarvis, Overclock Voice)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "desktop download from overclock.sh",
+        "authenticated guest CLIs (Claude Code, Codex, etc.)",
+        "paid subscription for full multi-agent/squad features"
+      ],
+      "parity_risks": [
+        "Plan tier gates Squad/Agentic/Jarvis features needed for multi-agent claims.",
+        "Guest CLI and model choice dominate single-task correctness.",
+        "Mission worktree layout may not match harness-prepared main without merge intervention.",
+        "Closed-source internals prevent stack-parity analysis beyond marketing claims."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature",
+        "T003-dirty-worktree-safety"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "BYO-subscription multi-pane cockpit is sticky once squads/skills are configured.",
+        "Maestro MCP tool depth is hard for thin terminal multiplexers to copy quickly.",
+        "Community and PT-BR voice UX create regional distribution advantage."
+      ],
+      "evidence": [
+        "Official site lists concurrent CLI support, mission worktrees, squads, and pricing without model re-billing.",
+        "Features page enumerates 16+ surfaces including MCP, OverMemory, and voice."
+      ],
+      "unknowns": [
+        "Retention, reliability, and real multi-agent merge quality are unmeasured in this bench.",
+        "Competitive overlap with Orca/AgentsRoom/HiveTerm cockpits needs scored runs."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-10 from official English site, features, plans, integrations, and how-it-works pages. Closed-source stack details left unknown.",
+  "updated_at": "2026-08-10"
+}

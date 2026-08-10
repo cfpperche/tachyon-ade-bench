@@ -1,0 +1,203 @@
+{
+  "id": "warp",
+  "name": "Warp",
+  "class": "A-local-ade",
+  "homepage": "https://www.warp.dev/",
+  "source_url": "https://github.com/warpdotdev/warp",
+  "license": "AGPL-3.0 (client); commercial cloud/orchestration features under Warp product terms",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install Warp Terminal, open only runs/<run-id>/worktree, run the task via Warp Agent and/or a third-party CLI agent (Claude Code, Codex, OpenCode, Gemini CLI) inside Warp, then harness-verify. Record Warp version, agent harness, model/credits plan, local vs Oz cloud execution, and human interventions separately."
+  },
+  "inclusion": "Direct Class A ADE: vendor-positioned open-source agentic development environment combining a modern terminal, built-in Warp Agent, third-party CLI agent harnesses, code review, and Oz local/cloud orchestration.",
+  "pricing_model": "Free terminal tier with limited AI/cloud; paid Build (from ~$20/month with included credits), Max, Business (per-seat), and custom Enterprise. Bring-your-own inference available; agent credits reload pay-as-you-go.",
+  "public_stack_signals": [
+    "Vendor positions Warp as an open-source Agentic Development Environment born out of the terminal.",
+    "Client source at warpdotdev/warp; official docs state the client is AGPL v3.",
+    "Official docs describe a Rust high-performance terminal with block-based UX, code editor/LSP, and agent modes.",
+    "Oz is the orchestration platform for local and cloud agents, multi-model inference, triggers, schedules, and handoff between local and cloud.",
+    "Third-party CLI agents officially supported: Claude Code, Codex, OpenCode, Gemini CLI, plus built-in Warp Agent and Warp Agent CLI."
+  ],
+  "capabilities_to_probe": [
+    "Warp Agent multi-model coding and multi-step task execution",
+    "third-party CLI agents inside Warp with shared review/notifications",
+    "terminal vs agent modes and multi-session vertical tabs",
+    "native code editing, file tree, LSP, and interactive code review comments to agents",
+    "worktree/git branch metadata in session UI",
+    "Oz cloud agents, local-to-cloud handoff, and concurrent cloud runs",
+    "Warp Drive / rules / MCP shared context across local and cloud",
+    "enterprise SSO, permission controls, BYOLLM, and self-hosted cloud agents"
+  ],
+  "moat_hypotheses": [
+    "terminal-native ADE brand with large existing developer install base",
+    "open-source client plus commercial Oz cloud orchestration platform",
+    "unified surface for first-party Warp Agent and leading third-party coding CLIs",
+    "enterprise governance (SOC2, ZDR, SSO, spend caps) around agent fleets"
+  ],
+  "setup_notes": [
+    "macOS (brew cask), Linux (deb/rpm/AppImage/pacman), and Windows (exe/winget) installers are published on the official site.",
+    "Single-task correctness often reflects the selected agent/model more than Warp chrome; record harness dimensions separately.",
+    "Do not treat limited free-tier cloud agents as parity with paid Build/Enterprise Oz capacity."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-10",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://www.warp.dev/",
+        "kind": "official-site",
+        "notes": "Positioning as open platform for automating development; Warp Terminal ADE claim; Oz platform; Warp Agent; open-source announcement; multi-OS downloads."
+      },
+      {
+        "url": "https://www.warp.dev/terminal",
+        "kind": "official-site",
+        "notes": "Terminal product surface: any-agent workflows, Warp Agent/Claude/Codex/OpenCode/Gemini, multithreaded tabs, native code editing/review, cloud and local agents, enterprise controls."
+      },
+      {
+        "url": "https://docs.warp.dev/",
+        "kind": "official-docs",
+        "notes": "Getting started: Warp ADE definition, Oz local/cloud agents, multi-model support, AGPL client, SOC2/ZDR privacy claims."
+      },
+      {
+        "url": "https://www.warp.dev/pricing",
+        "kind": "official-site",
+        "notes": "Free/Build/Max/Business/Enterprise credit-based pricing and feature gates."
+      },
+      {
+        "url": "https://github.com/warpdotdev/warp",
+        "kind": "source-repo",
+        "notes": "Open-source client repository linked from official docs and open-source announcement."
+      },
+      {
+        "url": "https://www.warp.dev/blog/warp-is-now-open-source",
+        "kind": "official-site",
+        "notes": "Open-source announcement: client open-sourced, community agent-first workflow via Oz, customizable pure-terminal to full ADE modes."
+      }
+    ],
+    "positioning": "An open-source, terminal-native Agentic Development Environment for running first-party and third-party coding agents locally or in the cloud via Oz, with integrated review, collaboration, and team governance.",
+    "stack": {
+      "runtime": [
+        "native desktop terminal application (Rust per official docs)",
+        "local and cloud coding agents via Oz",
+        "third-party CLI agent processes (Claude Code, Codex, OpenCode, Gemini CLI)"
+      ],
+      "frontend": [
+        "block-based modern terminal UX",
+        "agent conversation mode",
+        "file tree and code editor with LSP",
+        "interactive code review surface"
+      ],
+      "backend": [
+        "Oz orchestration platform (local + cloud)",
+        "multi-model inference and optional BYOLLM",
+        "Warp Drive knowledge/collaboration service",
+        "optional self-hosted cloud agents (Enterprise)"
+      ],
+      "packaging": [
+        "macOS dmg / Homebrew cask",
+        "Linux deb, rpm, AppImage, pacman",
+        "Windows exe / winget",
+        "open-source client repository warpdotdev/warp"
+      ],
+      "data": [
+        "local terminal/session state",
+        "optional cloud conversation storage (plan-gated)",
+        "Warp Drive objects",
+        "codebase indexing (plan-gated limits)"
+      ],
+      "unknowns": [
+        "Exact closed portions of Oz cloud infrastructure and server-side agent sandbox implementation are not fully published.",
+        "Per-agent worktree isolation semantics vs UI git/worktree metadata need hands-on confirmation before parity claims."
+      ]
+    },
+    "infrastructure": [
+      "Primary surface is a local native terminal ADE on macOS, Linux, and Windows.",
+      "Agents run interactively in the local app or as Oz cloud agents on Warp infrastructure or customer self-hosted infrastructure.",
+      "Local-to-cloud session handoff is a documented product capability.",
+      "Integrations include Slack, Linear, and GitHub triggers for cloud automation."
+    ],
+    "features": {
+      "agent_support": [
+        "Warp Agent (built-in multi-model)",
+        "Warp Agent CLI (standalone)",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI"
+      ],
+      "orchestration": [
+        "multi-session agent workflows in terminal tabs",
+        "Oz local agents for interactive multi-step tasks",
+        "Oz cloud agents with triggers, schedules, and parallelism",
+        "team session share, review, and steer"
+      ],
+      "workspace_isolation": [
+        "git branch and worktree metadata in session UI (official terminal marketing)",
+        "cloud agents run off-local-machine; isolation model is platform-managed",
+        "exact per-task local git worktree policy not fully specified in reviewed docs"
+      ],
+      "review_shipping": [
+        "native code editing and interactive code review",
+        "comments sent back to agents for refinement",
+        "cloud agent observability and shareable runs"
+      ],
+      "remote_mobile": [
+        "cloud agents accessible via Oz platform/dashboard",
+        "no first-party mobile ADE app claimed in the reviewed sources"
+      ],
+      "context_memory": [
+        "Warp Drive shared knowledge",
+        "Rules for agents",
+        "MCP servers shared across local and cloud",
+        "codebase indexing (plan limits)",
+        "cross-harness agent memory (Enterprise research preview)"
+      ],
+      "integrations": [
+        "Slack",
+        "Linear",
+        "GitHub",
+        "custom webhooks",
+        "password managers (1Password, LastPass)",
+        "BYOLLM / custom inference endpoints"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "brew install --cask warp",
+        "winget install Warp.Warp",
+        "Linux packages from app.warp.dev",
+        "Warp Agent CLI for non-Warp terminals"
+      ],
+      "parity_risks": [
+        "Free vs paid credit limits change agent capacity mid-run.",
+        "Cloud Oz runs are not parity-equivalent to local terminal agent sessions.",
+        "Guest third-party CLI quality can dominate single-task correctness.",
+        "Worktree isolation must be verified hands-on before claiming parity with worktree-first peers."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Large installed base from terminal product history reduces ADE adoption friction.",
+        "Open-source client plus paid Oz/enterprise layer creates a dual open/commercial moat.",
+        "First-party agent harness plus third-party CLI toolbelt covers more developer preferences than single-runtime peers."
+      ],
+      "evidence": [
+        "Official site and docs explicitly brand Warp as an Agentic Development Environment.",
+        "Open-source client and AGPL license are documented on docs.warp.dev and GitHub.",
+        "Pricing and enterprise pages list SSO, SOC2, ZDR, BYOLLM, and self-hosted cloud agents."
+      ],
+      "unknowns": [
+        "Relative quality of Warp Agent vs Claude Code/Codex on identical tasks is unmeasured in this bench.",
+        "Long-term license/commercial boundary between AGPL client and Oz services is only partially described."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-10 from official site, docs, pricing, open-source announcement, and GitHub client repo.",
+  "updated_at": "2026-08-10"
+}
