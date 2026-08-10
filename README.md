@@ -84,6 +84,10 @@ https://cfpperche.github.io/tachyon-ade-bench/
 https://cfpperche.github.io/tachyon-ade-bench/pt/
 ```
 
+To add or refresh competitors and get them on the live site, follow
+`docs/competitor-runbook.md` (profile JSON, advertiser registry, roster docs,
+CI gates, Pages verification).
+
 ## Agent context
 
 - `AGENTS.md` — durable instructions for coding agents (product repo read-only,

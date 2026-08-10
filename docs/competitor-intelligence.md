@@ -4,6 +4,9 @@ This repository keeps competitor research as structured data first. The JSON
 profiles in `competitors/` are the source of truth; reports should summarize
 that data instead of becoming the only place where claims live.
 
+**Operational playbook** (add / update / exclude / publish site):
+[`docs/competitor-runbook.md`](./competitor-runbook.md).
+
 ## Scope
 
 The v0.1 roster covers software Agentic Development Environment competitors:
@@ -80,12 +83,16 @@ inside `research`.
 
 ## Update Workflow
 
+Short form (research edit). For the full path including advertisers, roster
+lists, and GitHub Pages publish, use `docs/competitor-runbook.md`.
+
 1. Open the official sources and verify they still say what the profile claims.
 2. Edit the profile JSON and keep factual claims separate from hypotheses.
 3. Move unverifiable details to `unknowns`; do not infer private architecture.
 4. Update `research.last_reviewed`, `research.confidence`, `research_status`,
    and `updated_at`.
-5. Run `python3 harness/bench.py check`.
+5. Run `python3 harness/bench.py check` (and marketing/dashboard checks if
+   adding a product or before expecting the public site to update).
 6. If the change affects comparison language, update
    `reports/competitor-map-v0.1.md`.
 

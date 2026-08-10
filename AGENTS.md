@@ -114,12 +114,13 @@ python3 harness/bench.py check
 | Path | Content |
 | --- | --- |
 | `docs/product/` | Owned Tachyon surface for the bench |
-| `docs/competitor-intelligence.md` | How to update competitor JSON |
+| `docs/competitor-runbook.md` | **Playbook:** add/update/exclude competitors + publish Pages |
+| `docs/competitor-intelligence.md` | Scope, source rules, research field meaning |
 | `docs/competitive-intelligence.md` | Battlecards / signals |
 | `docs/acquisition-intelligence.md` | Marketing/acquisition |
 | `docs/run-report-metrics.md` | Run metrics contract |
 | `intelligence/current/signals.json` | Competitive signals |
-| `marketing/registry/advertisers.json` | Acquisition advertiser aliases |
+| `marketing/registry/advertisers.json` | Acquisition advertiser aliases (1:1 with competitors) |
 
 ## Git / publish discipline (this repo)
 
