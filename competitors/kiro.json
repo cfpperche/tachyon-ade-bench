@@ -1,0 +1,206 @@
+{
+  "id": "kiro",
+  "name": "Kiro",
+  "class": "A-local-ade",
+  "homepage": "https://kiro.dev/",
+  "source_url": null,
+  "license": "Proprietary (AWS-operated product surfaces; IDE based on Code OSS with Open VSX extensions)",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install Kiro IDE and/or CLI, authenticate (GitHub/Google/AWS Builder ID or IAM Identity Center), open only runs/<run-id>/worktree, provide prompt.md via chat or CLI, optionally use specs/sub-agents, then harness-verify. Record surface (IDE/CLI/web), plan tier, model, and interventions. Prefer local IDE/CLI over web sandboxes for Class A parity."
+  },
+  "inclusion": "Direct Class A agentic software development environment: AWS-built IDE, CLI, web, mobile, and Crew surfaces sharing one agent harness for specs, parallel sub-agents, hooks, MCP, and PR delivery.",
+  "pricing_model": "Credit-based: Free (50 credits), Pro $20, Pro+ $40, Pro Max $100, Power $200 per user/month; team plans with SSO via IAM Identity Center; add-on credits at $0.04/credit. Enterprise sales available.",
+  "public_stack_signals": [
+    "Official site: agentic IDE, CLI, and web interface for prototype-to-production engineering.",
+    "IDE is Code OSS-based with Open VSX extensions and VS Code settings import.",
+    "Unified agent harness across IDE, CLI, Web, Mobile, and Crew with shared .kiro/ configuration.",
+    "Spec-driven development: requirements, design, sequenced tasks, property-based tests, parallel agents.",
+    "Built and operated by AWS with IAM/SSO, governance, and enterprise admin controls."
+  ],
+  "capabilities_to_probe": [
+    "spec-driven requirements → design → tasks implementation",
+    "parallel sub-agents / Crew multi-session work",
+    "CLI headless mode and CI/CD automation",
+    "checkpoints, rewind, and kiroignore boundaries",
+    "hooks, steering, skills, powers, and MCP tools",
+    "web sandboxed multi-repo sessions and PR flow",
+    "ACP compatibility for bringing Kiro agent into other tools",
+    "property-based / correctness checking on specs"
+  ],
+  "moat_hypotheses": [
+    "AWS distribution, compliance, and enterprise identity stack",
+    "spec-driven agent harness as a structured alternative to pure vibe coding",
+    "one harness spanning IDE, CLI, web sandboxes, mobile, and Crew",
+    "credit packaging with predictable overage vs opaque rate limits"
+  ],
+  "setup_notes": [
+    "Download IDE/CLI from kiro.dev/downloads; CLI install via curl https://cli.kiro.dev/install.",
+    "AWS account is not required for individual social/Builder ID login.",
+    "Web autonomous mode and cloud sandboxes are not parity-equivalent to local IDE/CLI runs.",
+    "Credit exhaustion mid-task is a major parity risk; record plan tier and remaining credits."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-10",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://kiro.dev/",
+        "kind": "official-site",
+        "notes": "Product positioning, specs, parallel agents, property-based tests, models, open standards (ACP, AGENTS.md, Skills, MCP), enterprise claims, install paths."
+      },
+      {
+        "url": "https://kiro.dev/docs/",
+        "kind": "official-docs",
+        "notes": "Surface map (IDE/CLI/Web/Mobile/Crew), unified harness, specs, steering, hooks, MCP, permissions, custom agents, sub-agents, checkpoints."
+      },
+      {
+        "url": "https://kiro.dev/pricing/",
+        "kind": "official-site",
+        "notes": "Free and paid individual/team credit plans, overage pricing, enterprise contact."
+      },
+      {
+        "url": "https://kiro.dev/docs/specs/",
+        "kind": "official-docs",
+        "notes": "Spec-driven development docs linked from homepage feature section."
+      },
+      {
+        "url": "https://kiro.dev/docs/cli/acp/",
+        "kind": "official-docs",
+        "notes": "Agent Client Protocol compatibility for using Kiro agent outside the IDE."
+      },
+      {
+        "url": "https://kiro.dev/enterprise/",
+        "kind": "official-site",
+        "notes": "Enterprise packaging, IAM/SSO, governance (linked from homepage enterprise section)."
+      }
+    ],
+    "positioning": "An AWS-operated agentic development environment that turns prompts into specs and shipping code across IDE, CLI, web sandboxes, mobile, and Crew, with enterprise identity and credit-based packaging.",
+    "stack": {
+      "runtime": [
+        "Kiro IDE (Code OSS-based desktop editor)",
+        "Kiro CLI (terminal and headless)",
+        "web agent sessions in cloud sandboxes",
+        "Crew long-running personal agent runtime"
+      ],
+      "frontend": [
+        "desktop IDE chat and editor",
+        "CLI terminal UI",
+        "web app for delegated multi-repo work",
+        "mobile companion (preview)"
+      ],
+      "backend": [
+        "unified agent harness shared across surfaces",
+        "AWS-operated model inference and account services",
+        "cloud sandboxes for web sessions",
+        "enterprise IAM Identity Center / governance plane"
+      ],
+      "packaging": [
+        "desktop installers per OS via downloads page",
+        "CLI curl install script",
+        "Crew releases on GitHub (kirodotdev/KiroCrew)",
+        "web app at app.kiro.dev"
+      ],
+      "data": [
+        ".kiro/ project configuration (steering, hooks, agents)",
+        "specs (requirements, design, tasks)",
+        "checkpoints for rewind",
+        "cloud sandbox workspace state for web mode"
+      ],
+      "unknowns": [
+        "Closed-source implementation details of the harness and sandbox runtime are not published as a full source tree.",
+        "Git worktree isolation semantics for parallel local agents need hands-on confirmation before parity claims with worktree-first peers."
+      ]
+    },
+    "infrastructure": [
+      "Local IDE and CLI run on the developer's machine against the project checkout.",
+      "Web mode runs agent sessions in isolated cloud sandboxes and can coordinate GitHub/GitLab changes.",
+      "Enterprise deployments use AWS identity, governance, and regional controls documented under enterprise docs.",
+      "Model traffic uses Kiro-hosted or plan-available models; BYO third-party harnesses like OpenClaw are prohibited per pricing FAQ."
+    ],
+    "features": {
+      "agent_support": [
+        "built-in Kiro agent across IDE/CLI/Web/Mobile",
+        "custom agents and sub-agents",
+        "Crew autonomous scheduled agent",
+        "ACP-compatible embedding of the Kiro agent"
+      ],
+      "orchestration": [
+        "spec task sequencing",
+        "parallel sub-agents",
+        "hooks on file save / tool use / task completion",
+        "web automations and autonomous mode",
+        "Crew 24/7 scheduled tasks"
+      ],
+      "workspace_isolation": [
+        "web sandboxes for isolated cloud sessions",
+        "project-scoped .kiro/ configuration",
+        "kiroignore for secret/file boundaries",
+        "local multi-agent isolation model not fully specified in reviewed docs"
+      ],
+      "review_shipping": [
+        "PR-oriented web and Crew workflows",
+        "CLI headless PR review/fix paths",
+        "checkpoints and rewind for agent changes",
+        "property-based tests for correctness against specs"
+      ],
+      "remote_mobile": [
+        "Kiro on the web for remote delegated work",
+        "mobile preview for monitor/review/chat",
+        "Crew multi-channel access"
+      ],
+      "context_memory": [
+        "steering files",
+        "specs and learnings across surfaces",
+        "compaction for long sessions",
+        "Crew memory for autonomous tasks",
+        "MCP and Powers for external context"
+      ],
+      "integrations": [
+        "MCP servers",
+        "GitHub and GitLab (web)",
+        "Open VSX extensions",
+        "Figma, Terraform, and other Powers catalog entries",
+        "AWS IAM Identity Center / SSO"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "IDE installer from kiro.dev/downloads",
+        "curl -fsSL https://cli.kiro.dev/install | bash",
+        "web sign-in at app.kiro.dev",
+        "Crew download from GitHub releases"
+      ],
+      "parity_risks": [
+        "Credit limits and model multipliers change capacity mid-run.",
+        "Web sandbox runs are not parity-equivalent to local IDE/CLI.",
+        "Spec mode vs vibe chat mode changes intervention and planning cost.",
+        "Enterprise SSO tenants may see different model/region availability."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature",
+        "T004-ci-status-normalizer"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "AWS trust, identity, and enterprise procurement accelerate team adoption.",
+        "Spec-driven workflow differentiates from pure multi-CLI cockpits.",
+        "Surface breadth (IDE+CLI+web+mobile+Crew) reduces tool-switching."
+      ],
+      "evidence": [
+        "Official docs describe one harness powering every surface via .kiro/.",
+        "Homepage and enterprise pages state AWS operation, IAM/SSO, and governance.",
+        "Published credit pricing with free tier and team plans."
+      ],
+      "unknowns": [
+        "Comparative single-task code quality vs Claude Code/Codex alone is unmeasured here.",
+        "Depth of local multi-agent isolation relative to worktree-first ADE peers needs hands-on runs."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-10 from official site, docs hub, pricing, specs/ACP/enterprise-linked pages.",
+  "updated_at": "2026-08-10"
+}

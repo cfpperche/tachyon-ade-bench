@@ -27,10 +27,14 @@ agentic software development environment:
 - Maestri
 - JetBrains Air
 - Conductor
+- Warp
+- Kiro
+- Overclock
+- Synara
 
 LandingAI is intentionally excluded from the first benchmark roster because its
 ADE product is Agentic Document Extraction, not an agentic software development
-environment.
+environment. Falou is excluded as Mac voice dictation, not a software ADE.
 
 ## Quickstart
 

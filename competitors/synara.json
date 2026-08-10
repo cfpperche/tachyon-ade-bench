@@ -1,0 +1,199 @@
+{
+  "id": "synara",
+  "name": "Synara",
+  "class": "A-local-ade",
+  "homepage": "https://www.trysynara.com/",
+  "source_url": "https://github.com/Emanuele-web04/synara",
+  "license": "MIT",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the Synara desktop app (or bun run dev from source), authenticate at least one guest coding CLI outside Synara, open only runs/<run-id>/worktree as a project, create a task with prompt.md, run the guest agent, review diff/checks, then harness-verify. Record Synara version, guest provider/runtime, and interventions. Use isolated worktrees when testing parallel agents."
+  },
+  "inclusion": "Direct Class A local-first multi-agent ADE workspace: open-source desktop control plane for parallel coding agents, Git worktrees, browser verification, provider handoffs, and PR delivery.",
+  "pricing_model": "Free and open source; no Synara model plan. Users bring existing coding-agent runtimes and provider accounts/subscriptions.",
+  "public_stack_signals": [
+    "Official site: local-first command center for parallel coding agents with terminals, previews, diffs, and Git worktrees.",
+    "MIT-licensed monorepo at Emanuele-web04/synara; Bun/Turbo TypeScript workspace with desktop/CLI/web packages.",
+    "Origins note: began as a T3 Code fork and diverged substantially (README).",
+    "Desktop packaging scripts for macOS dmg, Linux AppImage, and Windows nsis.",
+    "MCP-native in both directions: agents inside Synara get coordination tools; external MCP clients can launch/follow Synara tasks."
+  ],
+  "capabilities_to_probe": [
+    "parallel tasks with separate Git worktrees",
+    "provider portability across Claude Code, Codex, OpenCode, Cursor, Antigravity, Grok, Kilo, Pi, Droid",
+    "mid-task provider handoff with preserved task environment",
+    "terminals, browser verification, and diff review in one task",
+    "commit/push/PR delivery from the same task",
+    "external MCP integration to create/follow Synara tasks",
+    "local workspace state privacy (no required Synara account)"
+  ],
+  "moat_hypotheses": [
+    "local-first open-source multi-provider control plane without product account lock-in",
+    "task ownership model binding objective, runtime, terminal, browser, and delivery state",
+    "provider handoff as a first-class workflow",
+    "T3 Code lineage plus rapid UI polish for adoption"
+  ],
+  "setup_notes": [
+    "Download from trysynara.com/install or GitHub Releases; source dev uses bun install && bun run dev.",
+    "Guest CLIs must be installed and authenticated outside Synara before detection.",
+    "Early product: expect bugs and fast-moving internals per README.",
+    "Single-task correctness is mostly guest-agent quality; treat Synara as orchestration/environment."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-10",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://www.trysynara.com/",
+        "kind": "official-site",
+        "notes": "Positioning, supported providers, worktrees, handoffs, browser verification, local-first privacy boundary, free/open-source claims, download counts."
+      },
+      {
+        "url": "https://github.com/Emanuele-web04/synara",
+        "kind": "source-repo",
+        "notes": "README capabilities, install, privacy, T3 Code origin, MCP-native harness notes, monorepo layout."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Emanuele-web04/synara/main/package.json",
+        "kind": "package-manifest",
+        "notes": "Bun monorepo workspaces, turbo scripts, desktop/cli packaging scripts, engine versions."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/Emanuele-web04/synara/main/LICENSE",
+        "kind": "source-repo",
+        "notes": "MIT license with T3 Tools Inc. and Emanuele Di Pietro copyrights."
+      },
+      {
+        "url": "https://www.trysynara.com/install",
+        "kind": "official-site",
+        "notes": "Install/download entry linked from homepage."
+      },
+      {
+        "url": "https://www.trysynara.com/privacy",
+        "kind": "official-site",
+        "notes": "Privacy approach linked from local-first boundary section."
+      }
+    ],
+    "positioning": "A free, open-source, local-first desktop workspace and control plane for running multiple coding-agent runtimes in parallel with task ownership, worktree isolation, verification, and PR delivery—without replacing provider accounts.",
+    "stack": {
+      "runtime": [
+        "desktop app (Electron packaging scripts in monorepo)",
+        "guest coding-agent CLIs and ACP sessions",
+        "Bun/Node monorepo toolchains for development builds"
+      ],
+      "frontend": [
+        "task/thread UI with split parallel sessions",
+        "terminals",
+        "browser preview/verification",
+        "diff and git action surfaces"
+      ],
+      "backend": [
+        "local application server/state on the machine",
+        "direct provider runtime connections (no Synara model proxy for normal traffic)",
+        "optional local server / remote self-hosted access (product docs)",
+        "MCP server for external task create/follow"
+      ],
+      "packaging": [
+        "desktop installers (macOS dmg, Linux AppImage, Windows nsis via monorepo scripts)",
+        "GitHub Releases and trysynara.com download",
+        "source install via Bun"
+      ],
+      "data": [
+        "projects, tasks, provider sessions, and history stored locally by the desktop app",
+        "git worktrees and branches per parallel task",
+        "opt-in anonymous analytics disabled by default (site claim)"
+      ],
+      "unknowns": [
+        "Production binary release cadence and platform support matrix should be re-checked on Releases before scoring.",
+        "Exact ACP/session protocol depth per provider varies and needs hands-on detection notes."
+      ]
+    },
+    "infrastructure": [
+      "Runs as a local desktop workspace layer; no Synara-hosted workspace account is required.",
+      "Provider sessions receive prompts/files/tool results needed for that provider; traffic goes to the selected provider, not a Synara model service (official privacy claim).",
+      "Parallel tasks can use isolated Git worktrees and visible ownership.",
+      "Remote access is described as explicit/self-hosted rather than a mandatory cloud account."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Cursor Agent CLI",
+        "Antigravity",
+        "Grok Build",
+        "Kilo Code",
+        "Pi",
+        "Factory Droid"
+      ],
+      "orchestration": [
+        "one task owns objective, provider session, cwd, terminal, browser, diff, delivery state",
+        "parallel tasks with explicit ownership",
+        "provider handoff mid-task",
+        "MCP-native coordination tools for agents and external MCP clients"
+      ],
+      "workspace_isolation": [
+        "separate Git worktrees for concurrent agents",
+        "per-task working directory and branch ownership",
+        "project-scoped task/history state"
+      ],
+      "review_shipping": [
+        "diff inspection",
+        "built-in browser verification and console evidence",
+        "checks, commit, push, create PR from the same task",
+        "git actions UI (commit/pull/push/PR/branch)"
+      ],
+      "remote_mobile": [
+        "self-hosted remote access capability (docs/REMOTE); not a first-party mobile companion ADE in reviewed marketing"
+      ],
+      "context_memory": [
+        "local task/conversation history on machine",
+        "context passed forward on provider handoff",
+        "project-level resume of tasks and provider sessions"
+      ],
+      "integrations": [
+        "guest coding-agent runtimes",
+        "GitHub PR flow",
+        "external MCP clients (docs/external-mcp.md)",
+        "local browser verification"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "desktop download from trysynara.com or GitHub Releases",
+        "bun install && bun run dev from source",
+        "at least one authenticated guest coding CLI"
+      ],
+      "parity_risks": [
+        "Early-stage product; stability and provider detection may change quickly.",
+        "Guest agent/model dominates single-task correctness.",
+        "Provider handoff semantics differ by runtime tools/session model.",
+        "Ensure harness worktree is the task cwd; avoid nested worktrees escaping verify root."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Free MIT local-first packaging undercuts paid cockpit subscriptions for multi-provider users.",
+        "Task-centric ownership plus handoffs is a clearer control plane than pure terminal multiplexers.",
+        "Open source enables fork/extension velocity similar to T3 Code/Orca class peers."
+      ],
+      "evidence": [
+        "Official site and README assert free, open-source, local-first multi-provider workspace.",
+        "package.json and LICENSE confirm Bun monorepo and MIT licensing.",
+        "Site documents worktrees, browser verification, handoffs, and PR delivery."
+      ],
+      "unknowns": [
+        "Sustained maintenance/bus factor beyond the primary maintainer is not established.",
+        "Head-to-head orchestration quality vs Orca/T3 Code/Conductor is unscored here."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-10 from official site, GitHub README, package.json, LICENSE, install and privacy pages.",
+  "updated_at": "2026-08-10"
+}
