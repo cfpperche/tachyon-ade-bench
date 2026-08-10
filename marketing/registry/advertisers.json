@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-08-01",
+  "updated_at": "2026-08-10",
   "advertisers": [
     {
       "product_id": "tachyon",
@@ -169,6 +169,66 @@
         "github_orgs": []
       },
       "notes": "Name is highly generic; always qualify acquisition searches with conductor.build, Melty Labs, or coding agents."
+    },
+    {
+      "product_id": "warp",
+      "display_name": "Warp",
+      "included": true,
+      "aliases": {
+        "names": ["Warp", "Warp Terminal", "Warp ADE", "Warp Agent", "Oz Warp"],
+        "domains": ["warp.dev", "www.warp.dev", "docs.warp.dev", "app.warp.dev"],
+        "handles": [],
+        "github_orgs": ["warpdotdev"]
+      },
+      "notes": "Warp is generic; prefer warp.dev / Warp Terminal / Warp Agent. Oz may refer to Warp cloud orchestration."
+    },
+    {
+      "product_id": "kiro",
+      "display_name": "Kiro",
+      "included": true,
+      "aliases": {
+        "names": ["Kiro", "Kiro IDE", "Kiro CLI", "Kiro Crew", "AWS Kiro"],
+        "domains": ["kiro.dev", "app.kiro.dev", "cli.kiro.dev"],
+        "handles": [],
+        "github_orgs": ["kirodotdev"]
+      },
+      "notes": "AWS-operated agentic IDE/CLI; search Kiro and kiro.dev. Avoid unrelated Japanese 'kiro' term collisions."
+    },
+    {
+      "product_id": "overclock",
+      "display_name": "Overclock",
+      "included": true,
+      "aliases": {
+        "names": ["Overclock", "Overclock ADE", "Overclock.sh", "Overclock Squad"],
+        "domains": ["overclock.sh"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Overclock is a common PC-hardware term; always qualify with overclock.sh or ADE/agent cockpit context."
+    },
+    {
+      "product_id": "synara",
+      "display_name": "Synara",
+      "included": true,
+      "aliases": {
+        "names": ["Synara", "trySynara", "DPCode Synara"],
+        "domains": ["trysynara.com", "www.trysynara.com"],
+        "handles": ["trySynara"],
+        "github_orgs": ["Emanuele-web04"]
+      },
+      "notes": "Open-source multi-provider ADE; former DPCode lineage may appear in older posts."
+    },
+    {
+      "product_id": "falou",
+      "display_name": "Falou (OpusBR)",
+      "included": true,
+      "aliases": {
+        "names": ["Falou", "Falou OpusBR", "Falou Mac", "OpusBR Falou"],
+        "domains": ["falou.opusbr.com", "opusbr.com"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "PT-BR Mac voice+agent product under OpusBR. Do not attribute Opus Hub commercial/ops ads to Falou ADE without domain/product match."
     }
   ]
 }
