@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-10 (Warp, Kiro, Overclock, Synara catalog; Falou exclusion)
+Reviewed: 2026-08-10 (Warp, Kiro, Overclock, Synara, Falou catalog; Falou re-included as Class A)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -28,6 +28,7 @@ later. Unknown closed-source internals remain unknown by design.
 | Kiro | A-local-ade | AWS-operated proprietary IDE (Code OSS), CLI, web sandboxes, mobile, Crew; shared `.kiro/` harness. | Spec-driven development, parallel sub-agents, hooks/steering/MCP/skills, checkpoints, headless CLI, PR/web automation, enterprise IAM/SSO. | AWS identity/compliance plus structured specs across every surface. | `needs-install`; prefer local IDE/CLI over web sandboxes for Class A parity; record credit tier. |
 | Overclock | A-local-ade | Proprietary desktop cockpit (macOS/Windows/Linux); BYO coding CLIs; closed-source internals unknown. | Multi-pane concurrent agents, mission worktrees, Squad maestro, skills marketplace, 52 MCP tools, OverMemory, plan-gated voice/Jarvis. | Orchestration UX subscription while models ride existing CLI accounts. | `needs-install`; plan tier gates multi-agent features; merge worktrees before verify. |
 | Synara | A-local-ade | MIT Bun/Turbo TypeScript monorepo; Electron desktop packaging; local-first; no Synara model plan. | Parallel tasks, Git worktrees, provider handoffs, terminals, browser verification, diff/PR delivery, bidirectional MCP. | Free open-source multi-provider control plane without product account lock-in. | `needs-install`; guest CLI must be authenticated outside Synara first. |
+| Falou (OpusBR) | A-local-ade | Proprietary macOS notch app under falou.opusbr.com; closed-source; voice-first; Windows waitlist. | Claude Code/Codex (+ Cursor/OpenCode/Grok/Antigravity/Verboo), Agent Board kanban, Squads isolated project copies, task delegation, Context Engine. | Voice-native Mac multi-agent control plus PT-BR/OpusBR distribution; dictation is a second mode. | `needs-install`; macOS only; re-check SPA/changelog (meta title still says dictation). |
 
 ## Direct Benchmark Set
 
@@ -50,12 +51,12 @@ Use Class A for the first direct comparison:
 - Kiro
 - Overclock
 - Synara
+- Falou (OpusBR)
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
 
-**Excluded (not software ADE peers):** LandingAI (document ADE); Falou
-(`https://falou.opusbr.com/` — Portuguese Mac voice dictation).
+**Excluded (not software ADE peers):** LandingAI (document ADE).
 
 ## Source Index
 
@@ -77,7 +78,7 @@ normalized and the caveats are visible.
 - Kiro: https://kiro.dev/, https://kiro.dev/docs/, https://kiro.dev/pricing/, https://kiro.dev/docs/specs/, https://kiro.dev/docs/cli/acp/, https://kiro.dev/enterprise/
 - Overclock: https://overclock.sh/, https://overclock.sh/en/features, https://overclock.sh/en/planos, https://overclock.sh/en/integracoes, https://overclock.sh/en/como-funciona
 - Synara: https://www.trysynara.com/, https://github.com/Emanuele-web04/synara, https://raw.githubusercontent.com/Emanuele-web04/synara/main/package.json, https://raw.githubusercontent.com/Emanuele-web04/synara/main/LICENSE, https://www.trysynara.com/install, https://www.trysynara.com/privacy
-- Falou (excluded): https://falou.opusbr.com/ — voice dictation for Mac, not a software ADE
+- Falou (OpusBR): https://falou.opusbr.com/, https://falou.opusbr.com/changelog
 
 ## Caveats Before Scoring
 

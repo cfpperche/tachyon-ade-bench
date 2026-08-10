@@ -31,10 +31,11 @@ agentic software development environment:
 - Kiro
 - Overclock
 - Synara
+- Falou (OpusBR)
 
 LandingAI is intentionally excluded from the first benchmark roster because its
 ADE product is Agentic Document Extraction, not an agentic software development
-environment. Falou is excluded as Mac voice dictation, not a software ADE.
+environment.
 
 ## Quickstart
 

@@ -26,13 +26,14 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 - Kiro
 - Overclock
 - Synara
+- Falou (OpusBR)
 
 LandingAI is intentionally excluded from this roster. Its ADE product is
 Agentic Document Extraction, not an agentic software development environment.
 
-Falou (`https://falou.opusbr.com/`) is intentionally excluded: the official site
-describes Portuguese voice dictation for Mac (“Ditado por voz para Mac”), not a
-software agentic development environment.
+Note: Falou’s HTML meta still emphasizes Mac voice dictation, but the official
+SPA product body (Agent Board, Squads, Claude Code/Codex from the notch) is a
+software multi-agent ADE control plane—cataloged as Class A, not excluded.
 
 ## Source Rules
 

@@ -1,0 +1,185 @@
+{
+  "id": "falou",
+  "name": "Falou (OpusBR)",
+  "class": "A-local-ade",
+  "homepage": "https://falou.opusbr.com/",
+  "source_url": null,
+  "license": "Proprietary (OpusBR macOS app)",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install Falou for Mac, authenticate, connect or use built-in access to coding CLIs (Claude Code, Codex, and others listed in product copy), open only runs/<run-id>/worktree as the project, delegate prompt.md via voice/text or Agent Board / Squads mission, then harness-verify after work lands on the prepared tree. Record Falou version, guest agent/model, mission mode, and interventions. macOS only for the current download surface."
+  },
+  "inclusion": "Direct Class A multi-agent ADE-adjacent control plane: Mac notch assistant that runs coding agents (Claude Code, Codex, Cursor, OpenCode, Grok CLI, Antigravity, Verboo), Agent Board kanban, Squads with isolated project copies, and task-first delegation—beyond pure voice dictation.",
+  "pricing_model": "Official marketing describes local offline dictation as free/unlimited; cloud agent and plan packaging beyond free BYOK (Claude Code/Codex on the user's own accounts) were not fully price-tabled in the reviewed SPA copy—record plan/limits at install time.",
+  "public_stack_signals": [
+    "Hosted under OpusBR domain falou.opusbr.com as a macOS product (Windows waitlist mentioned in SPA).",
+    "Voice-first notch UI plus Modo Agente and Modo Ditado.",
+    "Native coding-agent sessions for Claude Code and Codex from the notch; @ selects agent and local project.",
+    "Agent Board kanban (Backlog → Review → Active → Done) where dragging a card is the action.",
+    "Squads/missions: parallel agents on isolated project copies with verification and merge to one branch."
+  ],
+  "capabilities_to_probe": [
+    "Claude Code / Codex (and other listed CLIs) sessions driven from Falou",
+    "Agent Board task lifecycle and plan approval in the notch",
+    "Squads multi-agent missions with isolated project copies",
+    "task-first background delegation and session grouping by project",
+    "screen/context engine (point, speak, attach screenshots to coding agents)",
+    "real-time CLI account usage display",
+    "skills/routines/MCP requested via agent chat",
+    "dictation modes as non-scored side surface"
+  ],
+  "moat_hypotheses": [
+    "voice-native Mac control surface for coding agents reduces context-switch vs pure desktop ADE cockpits",
+    "Agent Board + Squads package multi-agent work for non-terminal-first users",
+    "OpusBR distribution and PT-BR voice quality for Brazilian market",
+    "BYOK free path on existing Claude/Codex subscriptions lowers entry friction"
+  ],
+  "setup_notes": [
+    "macOS download only at review time; Windows is waitlist.",
+    "Single-task correctness largely reflects guest coding CLI/model; Falou is the orchestration/voice shell.",
+    "Earlier bench pass incorrectly treated Falou as dictation-only from HTML meta tags; product body (SPA) claims coding agents and boards—use those for inclusion.",
+    "Opus Hub at opusbr.com is a separate commercial/ops AI product; do not conflate with Falou ADE claims."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-10",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://falou.opusbr.com/",
+        "kind": "official-site",
+        "notes": "Official SPA: Modo Agente (apps + coding agents + routines), Agentes de código (Claude Code/Codex from notch), integrations, Mac download, FAQ (skills/MCP by asking the agent). Meta title still emphasizes dictation; product sections claim agent control."
+      },
+      {
+        "url": "https://falou.opusbr.com/changelog",
+        "kind": "official-site",
+        "notes": "Changelog route on official domain; SPA embeds release notes including Agent Board (0.5.13), more coding agents (0.5.12), Squads (0.5.0), task-first delegation, Context Engine, notch session fleet."
+      }
+    ],
+    "positioning": "A Portuguese-first macOS voice agent that also operates coding CLIs: notch-native sessions, Agent Board, and multi-agent Squads on local repositories, with dictation as a second mode rather than the whole product.",
+    "stack": {
+      "runtime": [
+        "proprietary macOS desktop app (notch UI)",
+        "guest coding CLI processes (Claude Code, Codex, Cursor, OpenCode, Grok CLI, Antigravity, Verboo per changelog)",
+        "optional Falou cloud agent for non-code tasks"
+      ],
+      "frontend": [
+        "macOS notch compact UI and expanded agent/chat surfaces",
+        "Agent Board kanban",
+        "session/project grouping UI",
+        "dictation overlay into any text field"
+      ],
+      "backend": [
+        "local app state for sessions and boards",
+        "cloud model/provider path for Falou agent (names change over releases)",
+        "OAuth/integrations for Gmail, Notion, Linear, etc.",
+        "BYOK path using user Claude Code/Codex accounts"
+      ],
+      "packaging": [
+        "macOS download from falou.opusbr.com",
+        "email login code onboarding",
+        "Windows waitlist (not shipped at review)"
+      ],
+      "data": [
+        "local session/task history on Mac",
+        "isolated project copies for Squads missions",
+        "long-term voice/agent memory claims",
+        "optional usage telemetry"
+      ],
+      "unknowns": [
+        "Implementation language, sandboxing, and exact git isolation path layout are not published as open source.",
+        "Full paid plan matrix beyond free dictation / BYOK free agent notes was not fully visible without account.",
+        "Depth of MCP/skills runtime vs chat-created config needs hands-on confirmation."
+      ]
+    },
+    "infrastructure": [
+      "Primary product is a local macOS app under the OpusBR Falou subdomain.",
+      "Coding agents run against local repositories selected in the notch (@ agent + project).",
+      "Squads claim parallel agents on isolated project copies with merge onto one branch.",
+      "Cloud Falou agent can search the web, use connected apps, and analyze plans; coding path can use local CLIs.",
+      "Opus Hub (opusbr.com) markets ops/commercial AI teams and is a different product surface."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "Cursor",
+        "OpenCode",
+        "Grok CLI",
+        "Antigravity",
+        "Verboo",
+        "Falou cloud agent (non-CLI personal agent)"
+      ],
+      "orchestration": [
+        "Modo Agente voice/text delegation",
+        "Agent Board kanban with drag-as-action",
+        "Squads multi-agent missions",
+        "task-first background delegation and auto-propose for code work",
+        "plan approval flow in the notch"
+      ],
+      "workspace_isolation": [
+        "Squads isolated project copies per parallel agent (vendor claim)",
+        "sessions grouped by Project → Task",
+        "local repository selection per coding session"
+      ],
+      "review_shipping": [
+        "plan detail and review columns on Agent Board",
+        "session status and active-agent fleet in minimized notch",
+        "context/screenshots attached as technical briefs to coding agents"
+      ],
+      "remote_mobile": [
+        "mobile remote control listed as upcoming, not current shipping claim",
+        "VPS 24/7 agents listed as upcoming"
+      ],
+      "context_memory": [
+        "long-term memory claims for the personal agent",
+        "Context Engine: point at screen, speak, attach crops",
+        "vocabulary and style personalization for dictation and prompts"
+      ],
+      "integrations": [
+        "Gmail",
+        "Notion",
+        "Linear (issue creation from conversation)",
+        "coding CLIs listed above",
+        "skills and MCP via agent conversation (FAQ)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "macOS download from falou.opusbr.com",
+        "email login code",
+        "authenticated guest coding CLIs for BYOK path"
+      ],
+      "parity_risks": [
+        "macOS-only at review; no Linux/Windows install for Class A host parity.",
+        "Voice-first UX may change intervention counting vs keyboard ADE peers.",
+        "Squads isolation path may nest outside harness worktree; verify merge root.",
+        "Guest CLI quality dominates single-task correctness.",
+        "HTML meta still markets dictation; always re-check SPA sections/changelog before public claims."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T002-python-discount-feature",
+        "T003-dirty-worktree-safety"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Notch-native multi-agent control is rare among ADE peers and sticky for Mac-heavy teams.",
+        "PT-BR voice quality plus OpusBR channel reaches builders underserved by EN-only ADE marketing.",
+        "Combining dictation and coding-agent fleet in one app increases daily open rate vs pure ADE tools."
+      ],
+      "evidence": [
+        "Official SPA copy explicitly markets coding agents, Agent Board, and Squads—not only dictation.",
+        "Changelog entries document progressive multi-agent ADE features through July 2026.",
+        "Domain falou.opusbr.com ties the product to OpusBR branding."
+      ],
+      "unknowns": [
+        "Whether Squads isolation is git worktrees vs full copies changes dirty-tree and verify semantics.",
+        "Competitive quality vs Overclock/HiveTerm voice+agent cockpits is unscored."
+      ]
+    }
+  },
+  "research_status": "Re-cataloged 2026-08-10 after correcting dictation-only exclusion; claims from official SPA homepage sections and embedded changelog. Stack internals remain closed-source unknowns.",
+  "updated_at": "2026-08-10"
+}

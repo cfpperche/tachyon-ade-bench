@@ -34,6 +34,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Kiro
 - Overclock
 - Synara
+- Falou (OpusBR)
 
 Class B products are enterprise agentic platforms:
 
@@ -47,9 +48,6 @@ mixing its score with Class A without explaining the setup difference.
 LandingAI is excluded from this roster because its ADE is Agentic Document
 Extraction, which is a document AI product category rather than a software
 development environment.
-
-Falou is excluded because its official product is Portuguese voice dictation
-for Mac, not a software agentic development environment.
 
 ## Run invariants
 
