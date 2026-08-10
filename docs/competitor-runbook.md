@@ -285,19 +285,41 @@ Job steps (must all pass):
 
 1. Open Actions → **Deploy dashboard to GitHub Pages** for your commit SHA.
 2. Wait for **success** (failure = live site unchanged).
-3. Verify live (cache-bust if needed):
+3. Verify the **whole site**, not one route (cache-bust with `?v=$SHA`):
 
 ```sh
 SHA=$(git rev-parse --short HEAD)
-curl -sL "https://cfpperche.github.io/tachyon-ade-bench/competitors/?v=$SHA" \
-  | grep -E '<Name|other expected>'
-# profile pages
-curl -sL -o /dev/null -w "%{http_code}\n" \
-  "https://cfpperche.github.io/tachyon-ade-bench/competitors/<id>/"
-# expect 200
+BASE="https://cfpperche.github.io/tachyon-ade-bench"
+NAME="<Name>"   # e.g. Warp
+ID="<id>"       # e.g. warp
+
+for path in \
+  "/" \
+  "/matrix/" \
+  "/competitors/" \
+  "/competitors/${ID}/" \
+  "/sources/" \
+  "/strategy/" \
+  "/battlecards/" \
+  "/pt/" \
+  "/pt/matrix/" \
+  "/pt/competitors/" \
+  "/pt/competitors/${ID}/"
+do
+  code=$(curl -sL -o /tmp/page.html -w "%{http_code}" "${BASE}${path}?v=${SHA}")
+  hit=$(grep -c "$NAME\|$ID" /tmp/page.html || true)
+  echo "$code  hits=$hit  $path"
+done
+# expect HTTP 200 everywhere; hits>=1 on list routes; profile routes 200
 ```
 
-4. Portuguese mirror: `/pt/competitors/` and `/pt/competitors/<id>/`.
+One green Pages build regenerates **all** Astro routes from `competitors/*.json`
+(home charts, matrix, sources, strategy, battlecards, EN + PT). There is no
+per-route publish. If `/competitors/` is new but `/matrix/` looks old, that is
+almost always **browser/CDN cache** or a **failed** deploy — not a partial publish.
+
+4. Optional: seed `intelligence/current/signals.json` rows for new product_ids so
+   battlecards are not empty “no signals mapped” stubs. Still not benchmark scores.
 
 ### 4.3 If the site still shows old roster
 

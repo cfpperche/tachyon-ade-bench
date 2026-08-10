@@ -62,7 +62,19 @@ const SERIES_COLORS = [
   "#0f766e",
 ];
 
-const DEFAULT_IDS = ["tachyon", "orca", "fusion"];
+/** Default radar compare set — always include Tachyon plus high-pressure Class A peers when present. */
+const DEFAULT_IDS = [
+  "tachyon",
+  "orca",
+  "warp",
+  "synara",
+  "overclock",
+  "kiro",
+  "falou",
+  "fusion",
+];
+
+const DEFAULT_SELECTION_LIMIT = 6;
 
 function readinessColor(value: string): string {
   const colors: Record<string, string> = {
@@ -79,18 +91,22 @@ function colorForId(id: string, index: number): string {
   if (id === "tachyon") return "#05746f";
   if (id === "orca") return "#9a6500";
   if (id === "fusion") return "#c45c26";
-  if (id === "augment-code") return "#2457c5";
+  if (id === "warp") return "#0f766e";
+  if (id === "synara") return "#6b4c9a";
+  if (id === "overclock") return "#b45309";
+  if (id === "kiro") return "#2457c5";
+  if (id === "falou") return "#8b3a62";
+  if (id === "augment-code") return "#3d5a80";
   return SERIES_COLORS[index % SERIES_COLORS.length];
 }
 
 function defaultSelection(competitors: CompetitorSummary[]): string[] {
   const available = new Set(competitors.map((c) => c.id));
   const preferred = DEFAULT_IDS.filter((id) => available.has(id));
-  if (preferred.length >= 2) return preferred.slice(0, 3);
   const fillers = competitors
     .filter((c) => c.class === "A-local-ade" && !preferred.includes(c.id))
     .map((c) => c.id);
-  return [...preferred, ...fillers].slice(0, 3);
+  return [...preferred, ...fillers].slice(0, DEFAULT_SELECTION_LIMIT);
 }
 
 export default function DashboardCharts({ competitors, labels }: Props) {
@@ -182,7 +198,7 @@ export default function DashboardCharts({ competitors, labels }: Props) {
         {
           type: "scatter",
           symbolSize: (value: number[]) => Math.max(16, Math.min(46, value[2] * 1.4)),
-          data: competitors.map((competitor) => ({
+          data: competitors.map((competitor, index) => ({
             name: competitor.name,
             value: [
               competitor.localScore,
@@ -190,12 +206,7 @@ export default function DashboardCharts({ competitors, labels }: Props) {
               competitor.featureCount,
             ],
             itemStyle: {
-              color:
-                competitor.class === "B-enterprise-agentic-platform"
-                  ? "#2457c5"
-                  : competitor.id === "tachyon"
-                    ? "#05746f"
-                    : "#9a6500",
+              color: colorForId(competitor.id, index),
               opacity: 0.86,
             },
           })),
