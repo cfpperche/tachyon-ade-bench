@@ -203,3 +203,4 @@ Record answers here when refined:
 | Date | Note |
 | --- | --- |
 | 2026-08-11 | Initial roadmap written from research/catalog session (Xirp, Emdash, Copilot app, Macro exclude; runtime-model gap; agent-pane proposal to `claude-fork-2`). |
+| 2026-08-11 | Cataloged **Compozy (CompozyOS)** as Class A (`competitors/compozy.json`); guest-cli agent OS peer. |

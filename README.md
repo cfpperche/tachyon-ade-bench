@@ -35,6 +35,7 @@ agentic software development environment:
 - Xirp
 - Emdash
 - GitHub Copilot app
+- Compozy (CompozyOS)
 
 LandingAI is intentionally excluded from the first benchmark roster because its
 ADE product is Agentic Document Extraction, not an agentic software development

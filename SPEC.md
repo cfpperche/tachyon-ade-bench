@@ -38,6 +38,7 @@ Class A products are direct local or multi-agent ADE competitors:
 - Xirp
 - Emdash
 - GitHub Copilot app
+- Compozy (CompozyOS)
 
 Class B products are enterprise agentic platforms:
 

@@ -270,6 +270,18 @@
         "github_orgs": ["github"]
       },
       "notes": "Desktop agent-native Copilot app — distinct from Copilot in VS Code/IDE and from generic GitHub marketing. Prefer github.com/features/ai/github-app or github/app."
+    },
+    {
+      "product_id": "compozy",
+      "display_name": "Compozy (CompozyOS)",
+      "included": true,
+      "aliases": {
+        "names": ["Compozy", "CompozyOS", "Compozy OS", "AGH"],
+        "domains": ["compozy.com", "www.compozy.com"],
+        "handles": [],
+        "github_orgs": ["compozy"]
+      },
+      "notes": "Agent OS (formerly AGH in some materials). Prefer compozy.com / github.com/compozy/compozy. Not related to Composio (different product)."
     }
   ]
 }

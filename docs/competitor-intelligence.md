@@ -36,6 +36,7 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 - Xirp
 - Emdash
 - GitHub Copilot app
+- Compozy (CompozyOS)
 
 LandingAI is intentionally excluded from this roster. Its ADE product is
 Agentic Document Extraction, not an agentic software development environment.

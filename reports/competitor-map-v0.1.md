@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app catalog; Macro excluded as office OS)
+Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app, Compozy catalog; Macro excluded as office OS)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -32,6 +32,7 @@ later. Unknown closed-source internals remain unknown by design.
 | Xirp | A-local-ade | Spotify proprietary macOS beta desktop; Claude Code/Codex/Gemini harness; worktrees; optional Portal/Backstage context via MCP. | Parallel coding sessions, Git worktrees, PR monitoring, skills/rules, Portal catalog/Workspace memory, living docs claim. | Vendor-neutral multi-CLI ADE plus institutional memory from Spotify Portal/catalog graph. | `needs-install`; macOS beta only; measure Portal-on vs Portal-off separately. |
 | Emdash | A-local-ade | Apache-2.0 pnpm/Nx/Electron monorepo; local SQLite; multi-OS installers; BYO coding CLIs. | Parallel agents on worktrees, issue intake, in-app browser, diff/PR/CI, automations, SSH remote, skills/MCP library. | Free OSS multi-provider worktree shipping loop without product account lock-in. | `needs-install`; good Linux host candidate; record guest CLI. |
 | GitHub Copilot app | A-local-ade | Proprietary multi-OS desktop on GitHub; local worktrees + optional cloud sessions; Copilot plan gates. | My Work, parallel worktree sessions, issue→PR, browser/terminal validation, Agent Merge, skills/MCP, automations/canvases. | GitHub-native SDLC graph and distribution as the agent control plane. | `needs-install`; record plan tier and local vs cloud; Copilot entitlement required. |
+| Compozy (CompozyOS) | A-local-ade | MIT Go daemon + SQLite; web/CLI/HTTP; ACP guest CLIs; beta v0.3 local-first agent OS. | Durable sessions, task claim/lease kernel, loops, Markdown memory+dream, permissions, automation, Compozy Network, bridges. | Autonomy kernel + daemon-owned state around guest coding CLIs without owning a model. | `needs-install`; pin beta tag; guest CLI dominates single-task score. |
 
 ## Direct Benchmark Set
 
@@ -58,6 +59,7 @@ Use Class A for the first direct comparison:
 - Xirp
 - Emdash
 - GitHub Copilot app
+- Compozy (CompozyOS)
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -91,6 +93,7 @@ coding multi-agent ADE control plane).
 - Emdash: https://emdash.com/, https://github.com/generalaction/emdash, https://raw.githubusercontent.com/generalaction/emdash/main/package.json, https://raw.githubusercontent.com/generalaction/emdash/main/LICENSE.md, https://www.ycombinator.com/companies/emdash
 - GitHub Copilot app: https://github.com/features/ai/github-app, https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/, https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/, https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started, https://github.com/github/app
 - Macro (excluded): https://macro.com/, https://docs.macro.com/, https://github.com/macro-inc/macro
+- Compozy (CompozyOS): https://www.compozy.com/, https://github.com/compozy/compozy, https://raw.githubusercontent.com/compozy/compozy/main/README.md, https://raw.githubusercontent.com/compozy/compozy/main/LICENSE, https://raw.githubusercontent.com/compozy/compozy/main/PRODUCT.md, https://raw.githubusercontent.com/compozy/compozy/main/go.mod, https://www.compozy.com/docs/
 
 ## Caveats Before Scoring
 

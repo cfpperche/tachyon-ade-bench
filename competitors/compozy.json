@@ -1,0 +1,210 @@
+{
+  "id": "compozy",
+  "name": "Compozy (CompozyOS)",
+  "class": "A-local-ade",
+  "homepage": "https://www.compozy.com/",
+  "source_url": "https://github.com/compozy/compozy",
+  "license": "MIT",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install CompozyOS beta (install.sh, npm @compozy/cli@beta, or pinned go install), start the local daemon, open or register the prepared runs/<run-id>/worktree as the workspace (session from that cwd), launch a session with an authenticated guest ACP CLI (e.g. Claude Code), provide prompt.md as the session task, then harness-verify on the worktree. Record Compozy version (beta tag), guest agent/provider, and interventions. Do not treat chat bridges or multi-peer network jobs as parity with a single local coding task."
+  },
+  "inclusion": "Direct Class A local-first agent operating system: Go daemon with durable sessions, tasks, loops, memory, permissions, automation, and Compozy Network around guest ACP coding CLIs (Claude Code, OpenClaw, Hermes, and others).",
+  "pricing_model": "Open-source MIT; free local install. Bring-your-own guest agent CLI subscriptions and keys. Beta v0.3 line; no separate Compozy model plan on reviewed pages.",
+  "public_stack_signals": [
+    "Official site brands CompozyOS as an operating system for AI agents: create, automate, and supervise agent work without assembling scripts/orchestration frameworks.",
+    "MIT Go monorepo at github.com/compozy/compozy; local-first daemon with SQLite-backed state; web UI, CLI, HTTP/SSE, UDS, MCP surfaces.",
+    "Runs ACP-compatible guest agent CLIs (README: Claude Code, OpenClaw, Hermes; org blurb also names Codex, Gemini CLI, Cursor).",
+    "Core objects: sessions, tasks/autonomy kernel (claim/lease/heartbeat), loops, Markdown memory with dream consolidation, permissions/approvals, automation (cron/webhooks), Compozy Network peer protocol.",
+    "Install beta via verified install.sh (macOS/Linux), npm @compozy/cli@beta, or pinned go install; v0.3 is beta and breaks from deprecated v0.2."
+  ],
+  "capabilities_to_probe": [
+    "durable sessions that outlive a terminal client",
+    "task queue claim/lease recovery with guest agent execution",
+    "ACP guest CLI sessions (Claude Code / Hermes / peers)",
+    "Loops with typed guardrails and durable runs",
+    "scoped Markdown memory and dream consolidation",
+    "permissions and approvals enforced in the runtime",
+    "automation via cron/webhooks into sessions",
+    "Compozy Network peer discovery and receipts",
+    "optional sandbox profiles away from host filesystem"
+  ],
+  "moat_hypotheses": [
+    "autonomy kernel and daemon-owned state make continuous multi-agent work a product, not glue scripts",
+    "guest-CLI / ACP integration avoids owning a coding model while still providing OS-level supervision",
+    "Compozy Network + bridges (Slack/Discord/etc.) extend agent work beyond the IDE",
+    "open-source MIT local-first distribution undercuts closed agent OS platforms"
+  ],
+  "setup_notes": [
+    "Prefer beta install: curl -fsSL https://compozy.com/install.sh | sh or npm install -g @compozy/cli@beta.",
+    "Start with: compozy daemon start; create session from the harness worktree directory.",
+    "Guest CLIs must be installed and authenticated outside Compozy.",
+    "v0.3 beta moves quickly; pin a release tag for scored runs and record it.",
+    "Single-task correctness still largely measures the guest agent; treat Compozy as orchestration/OS layer."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-11",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://www.compozy.com/",
+        "kind": "official-site",
+        "notes": "Product positioning as agent OS; loops/tasks/memory/automation/network/bridges; guest providers claim; beta install CTAs; autonomy kernel storyboard."
+      },
+      {
+        "url": "https://github.com/compozy/compozy",
+        "kind": "source-repo",
+        "notes": "README: local-first OS, daemon model, ACP-compatible CLIs, install channels, MIT, beta v0.3 warning vs legacy v0.2."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compozy/compozy/main/README.md",
+        "kind": "source-repo",
+        "notes": "Highlights, install, how-it-works daemon flow, ACP agent coordination claims."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compozy/compozy/main/LICENSE",
+        "kind": "source-repo",
+        "notes": "MIT License; Copyright 2026 NauckGroup LTDA."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compozy/compozy/main/PRODUCT.md",
+        "kind": "source-repo",
+        "notes": "Primary users (developers/technical operators), purpose, agent-manageable surfaces, anti-cockpit design stance."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/compozy/compozy/main/go.mod",
+        "kind": "package-manifest",
+        "notes": "Go module github.com/compozy/compozy; includes coder/acp-go-sdk among dependencies."
+      },
+      {
+        "url": "https://www.compozy.com/docs/",
+        "kind": "official-docs",
+        "notes": "Documentation entry linked from homepage (SPA; structure referenced from site navigation)."
+      }
+    ],
+    "positioning": "A local-first open-source operating system for AI agent work: one Go daemon owns durable sessions, tasks, loops, memory, permissions, automation, and peer networking while running the ACP-compatible coding CLIs developers already use.",
+    "stack": {
+      "runtime": [
+        "local Go daemon (CompozyOS)",
+        "guest ACP-compatible coding agent CLIs",
+        "optional sandbox providers for isolated workspaces"
+      ],
+      "frontend": [
+        "web shell / runtime UI",
+        "CLI and structured -o json surfaces",
+        "HTTP/SSE and UDS clients"
+      ],
+      "backend": [
+        "daemon-owned state (SQLite-backed stores per README local-first claims)",
+        "autonomy kernel task_runs with claim tokens and leases",
+        "Compozy Network in-process protocol",
+        "bridge adapters for chat/forge platforms (built and installed from trusted checkout)"
+      ],
+      "packaging": [
+        "verified install.sh for macOS/Linux beta",
+        "npm package @compozy/cli@beta",
+        "go install with pinned beta tag",
+        "source build via go build"
+      ],
+      "data": [
+        "daemon-local session, task, loop, and event state",
+        "scoped Markdown memory files (user/feedback/project/reference)",
+        "workspace registration from repository directories"
+      ],
+      "unknowns": [
+        "Full published provider matrix beyond README/homepage examples needs the live providers docs page checked at install time.",
+        "Windows support is not claimed on the beta installer path reviewed (macOS/Linux).",
+        "Git worktree isolation is not a primary product claim; workspace/sandbox semantics need hands-on notes for Class A parity with worktree-first peers."
+      ]
+    },
+    "infrastructure": [
+      "Default path is a single local daemon on the operator machine with workspace roots resolved from the project directory.",
+      "Agent CLIs run as daemon-coordinated sessions; work and history are daemon-owned so closing a terminal does not erase state.",
+      "Remote access is explicit via Gateway configuration rather than a mandatory cloud account.",
+      "Automation and bridges can start sessions from external events while keeping the same local state model.",
+      "v0.3 beta is a breaking OS boundary versus the deprecated v0.2 line."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code (ACP-compatible)",
+        "OpenClaw",
+        "Hermes",
+        "other ACP-compatible CLI adapters (catalog claimed; Codex/Gemini CLI/Cursor named in org description)"
+      ],
+      "orchestration": [
+        "durable sessions and multi-session supervision",
+        "task queue with atomic claim, heartbeat lease, and crash recovery",
+        "Loops as core objects with guardrails",
+        "automation: cron, webhooks, event triggers",
+        "Compozy Network peer coordination with receipts and traces",
+        "permissions, approvals, and lineage-scoped spawn contracts"
+      ],
+      "workspace_isolation": [
+        "workspace registration and active workspace resolution from project roots",
+        "optional sandbox profiles binding work away from the host filesystem",
+        "permission narrowing so children cannot widen parent scopes"
+      ],
+      "review_shipping": [
+        "run history, traces, and tool-usage observability from daemon records",
+        "approvals surface for supervised work",
+        "session timeline of edits and runs (product UI claims)"
+      ],
+      "remote_mobile": [
+        "Gateway for paired devices / explicit remote surfaces",
+        "bridges into Slack, Discord, Telegram, Teams, Google Chat, GitHub, Linear (in-tree adapters; install from trusted checkout)",
+        "no first-party mobile ADE companion emphasized as the primary surface in reviewed PRODUCT.md"
+      ],
+      "context_memory": [
+        "scoped Markdown memory tiers (global/workspace/agent)",
+        "dream consolidation cascade into durable facts",
+        "compozy memory CLI/HTTP/UDS surfaces shared with agents"
+      ],
+      "integrations": [
+        "guest ACP coding CLIs",
+        "MCP and native tool registry",
+        "hooks, skills (SKILL.md), extensions marketplace/zip",
+        "chat and forge bridges",
+        "optional sandbox providers (e.g. Daytona mentioned on site)"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "compozy beta install (install.sh / npm / pinned go install)",
+        "compozy daemon start",
+        "at least one authenticated ACP guest coding CLI"
+      ],
+      "parity_risks": [
+        "v0.3 beta APIs and UX may change between tags; pin and record version.",
+        "Guest agent/model quality dominates single-task correctness.",
+        "Not worktree-first by default; isolation model differs from Orca/Conductor-class peers.",
+        "Network, bridges, and long-running loops are out of scope for the current five-task local suite.",
+        "Ensure harness verify root matches the registered workspace / session cwd."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Owning the autonomy kernel and durable state is a deeper lock-in than a multi-pane terminal chrome.",
+        "ACP guest-CLI strategy rides model competition without reselling tokens.",
+        "Open MIT + local-first appeals to operators who reject cloud agent OS lock-in."
+      ],
+      "evidence": [
+        "Official site and README define CompozyOS as a complete agent environment with daemon-owned loops/tasks/memory.",
+        "go.mod and LICENSE confirm Go implementation and MIT licensing.",
+        "PRODUCT.md states primary users are developers/technical operators running ACP CLIs through a local daemon."
+      ],
+      "unknowns": [
+        "Head-to-head orchestration quality vs Hive/Fusion/Tachyon is unscored.",
+        "Stable v0.3 GA timing and long-term maintainer bandwidth are unknown.",
+        "Depth of each named guest provider integration needs install-time verification."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-11 from compozy.com, GitHub README/LICENSE/PRODUCT.md/go.mod, and release channel notes for v0.3 beta.",
+  "updated_at": "2026-08-11"
+}
