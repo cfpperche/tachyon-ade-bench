@@ -1,0 +1,196 @@
+{
+  "id": "xirp",
+  "name": "Xirp",
+  "class": "A-local-ade",
+  "homepage": "https://xirp.spotify.com/",
+  "source_url": null,
+  "license": "Proprietary (Spotify beta / Preview Terms; closed-source desktop app)",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the macOS Xirp beta (curl install script or download), authenticate guest coding CLIs (Claude Code, Codex, and/or Gemini) outside Xirp, open only runs/<run-id>/worktree as a project, create a session with prompt.md, then harness-verify. Record Xirp version, guest agent/model, Portal connected or not, and interventions. Do not treat Portal-catalog launches as parity with plain local project sessions."
+  },
+  "inclusion": "Direct Class A multi-agent ADE: Spotify-built macOS desktop control plane for parallel Claude Code, Codex, and Gemini sessions with Git worktrees, PR monitoring, skills/rules, and optional Spotify Portal institutional context.",
+  "pricing_model": "Public beta download for macOS; Portal instance access offered with beta (free Portal trial messaging on site). Commercial pricing for Xirp alone was not published on reviewed pages. Non-Mac platforms waitlisted.",
+  "public_stack_signals": [
+    "Official site brands Xirp as an agentic development environment with institutional memory, powered by Spotify Portal.",
+    "macOS desktop app with optional Spotify Portal plugin (Workspace) for shared sessions and org context.",
+    "Vendor-neutral harness for Claude Code, Gemini CLI, and OpenAI Codex; BYO agent authentication.",
+    "Official docs: Git worktrees, pull-request monitoring, skills, rules, local and remote session modes.",
+    "Portal is optional: terminals, agents, worktrees, PR monitoring, skills, and rules work without Portal."
+  ],
+  "capabilities_to_probe": [
+    "parallel Claude Code, Codex, and Gemini terminal sessions",
+    "per-task Git worktree isolation",
+    "pull-request monitoring for supported remotes",
+    "local skills, rules, and repository instructions",
+    "session resume/fork without losing state",
+    "Portal Software Catalog launch and Workspace MCP context",
+    "upload of Workspace session transcripts for shared continuity",
+    "living documentation generated from coding sessions (product claim)"
+  ],
+  "moat_hypotheses": [
+    "Spotify engineering distribution and Backstage/Portal catalog graph as organizational memory for agents",
+    "vendor-neutral multi-CLI ADE without replacing provider subscriptions",
+    "session continuity that compounds across engineers and agents via Workspace transcripts",
+    "enterprise developer-portal adjacency (Portal) versus pure local cockpits"
+  ],
+  "setup_notes": [
+    "Beta is macOS-only per join-beta and docs; Linux/Windows join waitlist.",
+    "Install: curl -fsSL https://xirp.spotify.com/install.sh | sh or Mac download on join-beta.",
+    "Guest agents authenticate through their native CLIs; Xirp does not replace them.",
+    "Measure Portal-on and Portal-off separately; catalog launches change context and clone flows.",
+    "Subject to Xirp Preview Terms linked from the beta page."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-11",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://xirp.spotify.com/",
+        "kind": "official-site",
+        "notes": "Positioning as ADE with institutional memory; Agent, Workspace, Documentation, Flexibility (Claude/Gemini/Codex); beta CTA; Portal pairing."
+      },
+      {
+        "url": "https://xirp.spotify.com/join-beta",
+        "kind": "official-site",
+        "notes": "Mac download and install script; non-Mac waitlist; Preview Terms; free Portal trial messaging."
+      },
+      {
+        "url": "https://backstage.spotify.com/docs/xirp/",
+        "kind": "official-docs",
+        "notes": "Product overview: parallel coding sessions, worktrees, control surface, macOS beta scope, Claude/Codex/Gemini, optional Portal."
+      },
+      {
+        "url": "https://backstage.spotify.com/docs/xirp/xirp-and-portal",
+        "kind": "official-docs",
+        "notes": "Portal optional comparison table: worktrees, PR monitoring, skills, catalog launch, Workspace wiki/MCP, shared transcripts."
+      },
+      {
+        "url": "https://portal.spotify.com/",
+        "kind": "official-site",
+        "notes": "Spotify Portal product surface linking Xirp and org context / Backstage plugins."
+      }
+    ],
+    "positioning": "A vendor-neutral macOS agentic development environment for running and managing local coding-agent sessions (Claude Code, Codex, Gemini) with worktree isolation, with optional Spotify Portal context so agents start grounded in services, ownership, and prior session knowledge.",
+    "stack": {
+      "runtime": [
+        "macOS desktop application (beta)",
+        "guest coding-agent CLIs: Claude Code, Codex, Gemini",
+        "optional Spotify Portal connection for catalog/Workspace MCP"
+      ],
+      "frontend": [
+        "desktop session/grid control surface",
+        "terminals for coding agents",
+        "project/worktree and PR monitoring UI",
+        "Portal Workspace plugin surface (when connected)"
+      ],
+      "backend": [
+        "local project and session state on the Mac",
+        "direct guest-agent processes (BYO auth)",
+        "optional Portal OAuth + Workspace MCP tools",
+        "optional remote session execution (product flexibility claim)"
+      ],
+      "packaging": [
+        "macOS install via download or install.sh",
+        "non-Mac waitlist only in reviewed beta scope"
+      ],
+      "data": [
+        "local session history without Portal",
+        "Portal Workspace wiki, catalog entities, records, members when connected",
+        "optional upload of session transcripts to Workspace for team reuse"
+      ],
+      "unknowns": [
+        "Desktop UI framework and native stack (Electron vs native) not asserted on reviewed pages.",
+        "Exact PR remote support matrix and remote-session hosting model need hands-on confirmation.",
+        "Public commercial pricing for Xirp standalone vs Portal bundling not published on reviewed pages."
+      ]
+    },
+    "infrastructure": [
+      "Runs as a local macOS desktop workspace for coding-agent sessions against folders on the machine.",
+      "Git worktrees isolate parallel tasks without sharing one dirty checkout.",
+      "Portal is optional organizational context (catalog, wiki, shared transcripts) via MCP when connected.",
+      "Coding agents remain external CLIs the user configures and authenticates.",
+      "Beta features and screens may change quickly per official docs warning."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "OpenAI Codex",
+        "Google Gemini CLI"
+      ],
+      "orchestration": [
+        "parallel persistent coding-agent terminal sessions",
+        "one control surface for terminals, git, files, rules, skills, layouts",
+        "general sessions and project sessions",
+        "session resume and fork (docs; Portal context sticks to Portal-launched sessions)"
+      ],
+      "workspace_isolation": [
+        "separate Git worktree per task",
+        "local project folders or clone-from-URL projects",
+        "Portal catalog-resolved repositories when launching from Portal"
+      ],
+      "review_shipping": [
+        "pull-request monitoring for supported Git remotes",
+        "git change management in the app",
+        "living documentation from sessions (product claim on homepage)"
+      ],
+      "remote_mobile": [
+        "local or remote session execution claimed on homepage flexibility section",
+        "no first-party mobile ADE companion documented in reviewed Xirp docs",
+        "non-Mac desktop waitlist"
+      ],
+      "context_memory": [
+        "local session history",
+        "skills, rules, repository instructions",
+        "Portal Workspace wiki, resources, records, catalog metadata",
+        "shared Workspace session transcript history when uploaded",
+        "institutional memory framing (services, ownership, architectural decisions)"
+      ],
+      "integrations": [
+        "Spotify Portal / Backstage Software Catalog and Workspaces",
+        "Portal Workspace MCP tools",
+        "additional MCP servers independent of Portal",
+        "guest coding-agent CLIs"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "macOS Xirp beta install (install.sh or download)",
+        "authenticated Claude Code and/or Codex and/or Gemini CLI",
+        "optional Spotify Portal instance for context features"
+      ],
+      "parity_risks": [
+        "macOS-only beta excludes Linux harness hosts without a Mac runner.",
+        "Portal-connected launches inject org context not present in bare Class A local peers.",
+        "Guest agent/model quality dominates single-task correctness.",
+        "Beta instability and changing UX per docs warning.",
+        "Do not nest harness worktrees incorrectly when Xirp creates its own worktrees."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Portal/Backstage organizational graph is a harder-to-copy context layer than pure multi-pane CLI cockpits.",
+        "Spotify internal scale and engineering brand accelerate enterprise adoption of a neutral multi-CLI ADE.",
+        "Session transcript compounding turns ADE usage into shared org knowledge over time."
+      ],
+      "evidence": [
+        "Official site and docs explicitly brand Xirp as an ADE with institutional memory and optional Portal context.",
+        "Docs state worktrees, multi-agent CLI support, and Portal optional comparison table.",
+        "Beta packaging and Preview Terms are published on xirp.spotify.com."
+      ],
+      "unknowns": [
+        "Public availability timeline beyond macOS beta and pricing model are unknown.",
+        "Head-to-head orchestration quality vs Conductor/Orca/Emdash is unscored.",
+        "How much of internal Spotify Honk/Fleetshift stack is productized inside Xirp remains unpublished."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-11 from xirp.spotify.com, join-beta, Backstage Xirp docs, Xirp+Portal comparison, and portal.spotify.com. Stack framework internals left unknown.",
+  "updated_at": "2026-08-11"
+}

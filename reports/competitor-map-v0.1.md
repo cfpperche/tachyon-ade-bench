@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-10 (Warp, Kiro, Overclock, Synara, Falou catalog; Falou re-included as Class A)
+Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app catalog; Macro excluded as office OS)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -29,6 +29,9 @@ later. Unknown closed-source internals remain unknown by design.
 | Overclock | A-local-ade | Proprietary desktop cockpit (macOS/Windows/Linux); BYO coding CLIs; closed-source internals unknown. | Multi-pane concurrent agents, mission worktrees, Squad maestro, skills marketplace, 52 MCP tools, OverMemory, plan-gated voice/Jarvis. | Orchestration UX subscription while models ride existing CLI accounts. | `needs-install`; plan tier gates multi-agent features; merge worktrees before verify. |
 | Synara | A-local-ade | MIT Bun/Turbo TypeScript monorepo; Electron desktop packaging; local-first; no Synara model plan. | Parallel tasks, Git worktrees, provider handoffs, terminals, browser verification, diff/PR delivery, bidirectional MCP. | Free open-source multi-provider control plane without product account lock-in. | `needs-install`; guest CLI must be authenticated outside Synara first. |
 | Falou (OpusBR) | A-local-ade | Proprietary macOS notch app under falou.opusbr.com; closed-source; voice-first; Windows waitlist. | Claude Code/Codex (+ Cursor/OpenCode/Grok/Antigravity/Verboo), Agent Board kanban, Squads isolated project copies, task delegation, Context Engine. | Voice-native Mac multi-agent control plus PT-BR/OpusBR distribution; dictation is a second mode. | `needs-install`; macOS only; re-check SPA/changelog (meta title still says dictation). |
+| Xirp | A-local-ade | Spotify proprietary macOS beta desktop; Claude Code/Codex/Gemini harness; worktrees; optional Portal/Backstage context via MCP. | Parallel coding sessions, Git worktrees, PR monitoring, skills/rules, Portal catalog/Workspace memory, living docs claim. | Vendor-neutral multi-CLI ADE plus institutional memory from Spotify Portal/catalog graph. | `needs-install`; macOS beta only; measure Portal-on vs Portal-off separately. |
+| Emdash | A-local-ade | Apache-2.0 pnpm/Nx/Electron monorepo; local SQLite; multi-OS installers; BYO coding CLIs. | Parallel agents on worktrees, issue intake, in-app browser, diff/PR/CI, automations, SSH remote, skills/MCP library. | Free OSS multi-provider worktree shipping loop without product account lock-in. | `needs-install`; good Linux host candidate; record guest CLI. |
+| GitHub Copilot app | A-local-ade | Proprietary multi-OS desktop on GitHub; local worktrees + optional cloud sessions; Copilot plan gates. | My Work, parallel worktree sessions, issue→PR, browser/terminal validation, Agent Merge, skills/MCP, automations/canvases. | GitHub-native SDLC graph and distribution as the agent control plane. | `needs-install`; record plan tier and local vs cloud; Copilot entitlement required. |
 
 ## Direct Benchmark Set
 
@@ -52,11 +55,16 @@ Use Class A for the first direct comparison:
 - Overclock
 - Synara
 - Falou (OpusBR)
+- Xirp
+- Emdash
+- GitHub Copilot app
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
 
-**Excluded (not software ADE peers):** LandingAI (document ADE).
+**Excluded (not software ADE peers):** LandingAI (document ADE); Macro
+(agentic office suite / company OS — email, chat, docs, tasks, CRM — not a
+coding multi-agent ADE control plane).
 
 ## Source Index
 
@@ -79,6 +87,10 @@ normalized and the caveats are visible.
 - Overclock: https://overclock.sh/, https://overclock.sh/en/features, https://overclock.sh/en/planos, https://overclock.sh/en/integracoes, https://overclock.sh/en/como-funciona
 - Synara: https://www.trysynara.com/, https://github.com/Emanuele-web04/synara, https://raw.githubusercontent.com/Emanuele-web04/synara/main/package.json, https://raw.githubusercontent.com/Emanuele-web04/synara/main/LICENSE, https://www.trysynara.com/install, https://www.trysynara.com/privacy
 - Falou (OpusBR): https://falou.opusbr.com/, https://falou.opusbr.com/changelog
+- Xirp: https://xirp.spotify.com/, https://xirp.spotify.com/join-beta, https://backstage.spotify.com/docs/xirp/, https://backstage.spotify.com/docs/xirp/xirp-and-portal, https://portal.spotify.com/
+- Emdash: https://emdash.com/, https://github.com/generalaction/emdash, https://raw.githubusercontent.com/generalaction/emdash/main/package.json, https://raw.githubusercontent.com/generalaction/emdash/main/LICENSE.md, https://www.ycombinator.com/companies/emdash
+- GitHub Copilot app: https://github.com/features/ai/github-app, https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/, https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/, https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started, https://github.com/github/app
+- Macro (excluded): https://macro.com/, https://docs.macro.com/, https://github.com/macro-inc/macro
 
 ## Caveats Before Scoring
 

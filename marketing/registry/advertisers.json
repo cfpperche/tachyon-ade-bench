@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-08-10",
+  "updated_at": "2026-08-11",
   "advertisers": [
     {
       "product_id": "tachyon",
@@ -229,6 +229,47 @@
         "github_orgs": []
       },
       "notes": "PT-BR Mac voice+agent product under OpusBR. Do not attribute Opus Hub commercial/ops ads to Falou ADE without domain/product match."
+    },
+    {
+      "product_id": "xirp",
+      "display_name": "Xirp",
+      "included": true,
+      "aliases": {
+        "names": ["Xirp", "Spotify Xirp", "Xirp Portal"],
+        "domains": ["xirp.spotify.com", "portal.spotify.com", "backstage.spotify.com"],
+        "handles": [],
+        "github_orgs": []
+      },
+      "notes": "Spotify-built ADE; prefer xirp.spotify.com. Do not attribute general Spotify or Backstage ads to Xirp without product match."
+    },
+    {
+      "product_id": "emdash",
+      "display_name": "Emdash",
+      "included": true,
+      "aliases": {
+        "names": ["Emdash", "emdash.sh", "General Action Emdash"],
+        "domains": ["emdash.com", "emdash.sh"],
+        "handles": ["emdashsh"],
+        "github_orgs": ["generalaction"]
+      },
+      "notes": "Open-source ADE (YC W26). Name collides with the em dash punctuation mark; qualify with emdash.com or generalaction/emdash."
+    },
+    {
+      "product_id": "github-copilot-app",
+      "display_name": "GitHub Copilot app",
+      "included": true,
+      "aliases": {
+        "names": [
+          "GitHub Copilot app",
+          "Copilot app",
+          "GitHub Copilot desktop",
+          "Copilot agent app"
+        ],
+        "domains": ["github.com", "github.blog"],
+        "handles": [],
+        "github_orgs": ["github"]
+      },
+      "notes": "Desktop agent-native Copilot app — distinct from Copilot in VS Code/IDE and from generic GitHub marketing. Prefer github.com/features/ai/github-app or github/app."
     }
   ]
 }

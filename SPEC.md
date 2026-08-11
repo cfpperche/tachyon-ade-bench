@@ -35,6 +35,9 @@ Class A products are direct local or multi-agent ADE competitors:
 - Overclock
 - Synara
 - Falou (OpusBR)
+- Xirp
+- Emdash
+- GitHub Copilot app
 
 Class B products are enterprise agentic platforms:
 
@@ -48,6 +51,10 @@ mixing its score with Class A without explaining the setup difference.
 LandingAI is excluded from this roster because its ADE is Agentic Document
 Extraction, which is a document AI product category rather than a software
 development environment.
+
+Macro (https://macro.com/) is excluded because it is an agentic office suite /
+company OS (email, chat, docs, tasks, CRM, workspace agents), not a software
+multi-agent ADE control plane for coding CLIs and worktree-isolated delivery.
 
 ## Run invariants
 

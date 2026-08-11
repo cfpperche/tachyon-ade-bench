@@ -1,0 +1,196 @@
+{
+  "id": "github-copilot-app",
+  "name": "GitHub Copilot app",
+  "class": "A-local-ade",
+  "homepage": "https://github.com/features/ai/github-app",
+  "source_url": "https://github.com/github/app",
+  "license": "Proprietary (GitHub Copilot product; technical preview terms apply)",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the GitHub Copilot desktop app (macOS/Windows/Linux), sign in with a Copilot-eligible GitHub account (or BYO key if available), connect the fixture repo, open only runs/<run-id>/worktree (or start a session on that folder with New worktree), provide prompt.md as the session prompt or from an issue, review plan/diff/browser/terminal, open PR if in scope, then harness-verify. Record app version, Copilot plan, model, local vs cloud session, and interventions. Do not mix cloud sessions with local worktree runs in one score."
+  },
+  "inclusion": "Direct Class A agent-native desktop ADE built on GitHub: parallel agent sessions with Git worktrees, issue-to-PR shipping, integrated review/browser/terminal, skills, MCP, and automations.",
+  "pricing_model": "Works with GitHub Copilot plans (Free/Pro/Pro+/Max and business tiers per product page) or bring-your-own key messaging. Technical preview access historically gated to existing Copilot subscribers; re-check plan entitlements at install time. Cloud agent/Actions usage may incur separate billable usage.",
+  "public_stack_signals": [
+    "Official product page: desktop experience for agent-driven development built natively on GitHub for macOS, Windows, and Linux.",
+    "My Work view for sessions, issues, pull requests, and automations across connected repositories.",
+    "Every session can run in its own git worktree with isolated files, conversation, and task state.",
+    "Native GitHub context: issues, PRs, search, checks, Agent Merge for review comments and failing checks.",
+    "Skills, MCP servers, scheduled workflows, canvases, optional cloud sessions and automations."
+  ],
+  "capabilities_to_probe": [
+    "parallel isolated agent sessions with worktree per session",
+    "start from issue, prompt, PR, or prior session",
+    "diff review, integrated terminal, in-app browser validation",
+    "open PR and Agent Merge through GitHub checks/reviews",
+    "model selection and third-party agents where plan allows",
+    "MCP server connection and repo skills sync",
+    "scheduled automations / workflows",
+    "local vs cloud session parity and cost dimensions"
+  ],
+  "moat_hypotheses": [
+    "GitHub distribution and native SDLC graph (issues/PRs/checks) as default agent context",
+    "Agent Merge and org policies already living in GitHub reduce tool-switching",
+    "multi-OS desktop plus CLI session continuity into one My Work surface",
+    "enterprise Copilot identity, audit, and policy stack around agent fleets"
+  ],
+  "setup_notes": [
+    "Download paths linked from github.com/features/ai/github-app and GitHub changelog/docs.",
+    "Requires a GitHub account with Copilot plan entitlement (or waitlist/BYO key path as currently offered).",
+    "Local worktree sessions are the Class A parity default; cloud sessions are a separate dimension.",
+    "Guest/third-party agent availability depends on plan (e.g. Claude Code/Codex access on Pro per pricing page).",
+    "Public repo github.com/github/app is the product/README feedback surface, not a full open-source ADE reimplementation claim."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-11",
+    "confidence": "partial-official",
+    "sources": [
+      {
+        "url": "https://github.com/features/ai/github-app",
+        "kind": "official-site",
+        "notes": "Product positioning, multi-OS downloads, parallel workflows, worktrees, validation loop, automations, native GitHub context, skills, MCP, pricing plan matrix."
+      },
+      {
+        "url": "https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/",
+        "kind": "official-site",
+        "notes": "Build 2026 announcement: agent-native desktop, My Work, worktree isolation, technical preview audience."
+      },
+      {
+        "url": "https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/",
+        "kind": "official-site",
+        "notes": "Changelog: technical preview framing; agent-native workflow from work in front of user through PR review."
+      },
+      {
+        "url": "https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started",
+        "kind": "official-docs",
+        "notes": "Getting started docs path referenced from product marketing (gh.io/github-app-docs)."
+      },
+      {
+        "url": "https://github.com/github/app",
+        "kind": "source-repo",
+        "notes": "Official product repository surface for the Copilot desktop app (README/feedback)."
+      }
+    ],
+    "positioning": "The GitHub-native desktop control center for agent-driven development: start from issues or prompts, run parallel worktree-isolated agent sessions, validate with terminal/browser, and land changes through GitHub pull requests and policies.",
+    "stack": {
+      "runtime": [
+        "proprietary multi-OS desktop application",
+        "GitHub Copilot agent runtime and optional third-party agents per plan",
+        "optional cloud agent sessions"
+      ],
+      "frontend": [
+        "My Work / sessions control surface",
+        "canvases for inspectable agent work objects",
+        "diff, terminal, and in-app browser validation",
+        "issue and PR management UI"
+      ],
+      "backend": [
+        "GitHub platform APIs for repos, issues, PRs, checks, search",
+        "local worktree session execution on the machine",
+        "optional cloud session and cloud automation runners",
+        "MCP server connections"
+      ],
+      "packaging": [
+        "macOS desktop download",
+        "Windows desktop download",
+        "Linux desktop download",
+        "GitHub product distribution and docs"
+      ],
+      "data": [
+        "session state and worktrees on the local machine for local sessions",
+        "GitHub-hosted issues, PRs, checks, and org policy state",
+        "skills and MCP configuration synced across sessions (product claims)"
+      ],
+      "unknowns": [
+        "Desktop framework and local storage implementation details are not asserted here.",
+        "Exact Free-tier app entitlement vs Pro technical-preview history should be re-checked at install time.",
+        "Agent Merge and cloud session billing boundaries need plan-specific measurement notes."
+      ]
+    },
+    "infrastructure": [
+      "Desktop app coordinates agent sessions against local folders/repos with optional New worktree isolation.",
+      "Native connection to GitHub repositories, issues, PRs, and search for context without separate portal product.",
+      "Cloud sessions and cloud automations can run off-machine; treat as non-parity with local Class A runs.",
+      "MCP and skills extend tools and recurring workflows across sessions."
+    ],
+    "features": {
+      "agent_support": [
+        "GitHub Copilot agents",
+        "model selection within Copilot plans",
+        "third-party agents such as Claude Code and Codex where plan allows",
+        "Copilot CLI sessions appearing in My Work (changelog capability)"
+      ],
+      "orchestration": [
+        "parallel agent sessions with per-session workspace state",
+        "start from issue, prompt, PR, or prior session",
+        "scheduled automations/workflows",
+        "skills packaging for reusable work",
+        "canvases for human+agent shared work surfaces"
+      ],
+      "workspace_isolation": [
+        "git worktree per session (New worktree option)",
+        "local repository session option",
+        "sessions from non-git local folders as context"
+      ],
+      "review_shipping": [
+        "plan and diff inspection",
+        "integrated terminal checks",
+        "in-app browser verification and agentic browsing",
+        "open pull requests with team checks/reviews",
+        "Agent Merge for review comments and failing checks"
+      ],
+      "remote_mobile": [
+        "cloud sessions from the app",
+        "no separate mobile ADE companion required for core desktop claims in reviewed pages"
+      ],
+      "context_memory": [
+        "GitHub issues, PRs, and search as native session context",
+        "prior sessions and /chronicle-style cross-session query (changelog)",
+        "repo and custom skills carried across sessions"
+      ],
+      "integrations": [
+        "GitHub repositories, issues, PRs, checks, Actions usage for some features",
+        "MCP servers (repo MCPs and custom local/HTTP)",
+        "optional third-party coding agents per plan"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "GitHub Copilot desktop app installer (macOS/Windows/Linux)",
+        "GitHub account with Copilot plan entitlement or BYO key path",
+        "repository access for the fixture remote if PR shipping is tested"
+      ],
+      "parity_risks": [
+        "Plan/credit gates and model access differ across Free/Pro/Pro+/Max/Business.",
+        "Cloud sessions and Agent Merge are not parity-equivalent to pure local worktree runs.",
+        "GitHub-native context advantages do not transfer to non-GitHub forges without setup.",
+        "Technical preview cadence may change UI and capabilities quickly."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Owning the issue/PR/check graph makes GitHub the default control plane for agent-native shipping.",
+        "Multi-OS distribution plus Copilot subscription base creates an adoption lead over indie ADE cockpits.",
+        "Agent Merge and org policies convert agent output into governed merges faster than generic PR buttons."
+      ],
+      "evidence": [
+        "Official product page and blog describe worktree-isolated parallel sessions and GitHub-native issue-to-merge flow.",
+        "Pricing page ties app access to Copilot plans and third-party agent access on paid tiers.",
+        "Changelog documents technical preview expansion and canvases/cloud/session features."
+      ],
+      "unknowns": [
+        "Long-term open development model of github/app vs fully closed product code is not a full OSS ADE claim.",
+        "Head-to-head quality vs Emdash/Conductor/Xirp is unscored.",
+        "Enterprise policy interactions with harness network constraints need hands-on notes."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-11 from GitHub product page, Build 2026 blog, changelog, docs getting-started path, and github/app repo surface. Plan entitlement details marked for re-check at install.",
+  "updated_at": "2026-08-11"
+}

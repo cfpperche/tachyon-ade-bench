@@ -1,0 +1,201 @@
+{
+  "id": "emdash",
+  "name": "Emdash",
+  "class": "A-local-ade",
+  "homepage": "https://emdash.com/",
+  "source_url": "https://github.com/generalaction/emdash",
+  "license": "Apache-2.0",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install the Emdash desktop app (macOS brew cask / dmg, Windows msi/exe, Linux AppImage/deb) or build from source, authenticate at least one guest coding CLI outside Emdash, open only runs/<run-id>/worktree as a project, create a task with prompt.md on an isolated Git worktree, review diff/PR, then harness-verify. Record Emdash version, guest provider, local vs SSH remote, and interventions."
+  },
+  "inclusion": "Direct Class A open-source multi-agent ADE: YC W26 desktop control plane for parallel coding agents in Git worktrees, issue-to-agent intake, in-app browser, diff/PR/CI review, automations, and SSH remote projects.",
+  "pricing_model": "Free and open source (Apache-2.0). Users bring existing coding-agent CLI subscriptions and keys. No Emdash model plan on reviewed pages.",
+  "public_stack_signals": [
+    "Official site: open-source agentic development environment; multi-OS desktop; parallel agents; YC W26.",
+    "Public monorepo generalaction/emdash; Apache-2.0; pnpm/Nx TypeScript monorepo with Electron in build deps (package.json).",
+    "Local-first: app state in local SQLite; code/chats not sent to Emdash servers (README privacy claim).",
+    "Git worktree isolation per task; review diffs, open PRs, inspect CI from one place.",
+    "Supports many provider CLIs (Claude Code, Codex, Cursor, OpenCode, Amp, and more) with auto-detection and lifecycle hooks."
+  ],
+  "capabilities_to_probe": [
+    "parallel agents each on its own Git worktree and branch",
+    "provider breadth and auto-detection of installed CLIs",
+    "issue/ticket intake from Linear, GitHub, Jira, GitLab, Asana, and others",
+    "diff review, commit, push, PR creation, CI check monitoring",
+    "in-app browser preview and verification",
+    "scheduled automations for recurring agent runs",
+    "SSH/SFTP remote projects with same parallel workflow",
+    "BYO infrastructure provisioning scripts for task environments"
+  ],
+  "moat_hypotheses": [
+    "free Apache open-source multi-provider ADE without product account lock-in",
+    "polished worktree-first shipping loop from issues through PR/CI",
+    "local-first privacy plus optional remote SSH/BYO infra scale",
+    "YC distribution and rapid multi-OS installer coverage"
+  ],
+  "setup_notes": [
+    "Installers: brew install --cask emdash; GitHub Releases for dmg/msi/AppImage/deb.",
+    "Guest CLIs must be installed and authenticated outside Emdash before detection.",
+    "Telemetry is optional and can be disabled (TELEMETRY_ENABLED=false or Settings).",
+    "Single-task correctness is mostly guest-agent quality; treat Emdash as orchestration/environment.",
+    "Source monorepo requires Node >= 24 and pnpm >= 10.28 per package.json engines."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-11",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://emdash.com/",
+        "kind": "official-site",
+        "notes": "Positioning as open-source ADE; parallel agents; worktrees; issue intake; browser; review/ship; automations; remote SSH; multi-OS; free; agent list marketing."
+      },
+      {
+        "url": "https://github.com/generalaction/emdash",
+        "kind": "source-repo",
+        "notes": "README: worktree isolation, provider list, remote SSH, privacy/SQLite, install matrix, Apache-2.0, YC W26, hooks for agent lifecycle."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/generalaction/emdash/main/package.json",
+        "kind": "package-manifest",
+        "notes": "pnpm/Nx monorepo, Node>=24, electron in onlyBuiltDependencies, desktop doctor script."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/generalaction/emdash/main/LICENSE.md",
+        "kind": "source-repo",
+        "notes": "Apache License 2.0; Copyright 2026 General Action, Inc."
+      },
+      {
+        "url": "https://www.ycombinator.com/companies/emdash",
+        "kind": "official-site",
+        "notes": "YC company page: open-source ADE for parallel coding agents."
+      }
+    ],
+    "positioning": "A free, open-source, local-first desktop Agentic Development Environment for running multiple coding agents in parallel on isolated Git worktrees, reviewing and shipping changes, and optionally targeting remote machines—without replacing provider accounts.",
+    "stack": {
+      "runtime": [
+        "desktop application (Electron packaging dependency in monorepo)",
+        "guest coding-agent CLIs (Claude Code, Codex, Cursor, OpenCode, Amp, and others)",
+        "Node/pnpm/Nx monorepo toolchain for development builds"
+      ],
+      "frontend": [
+        "task/session UI for parallel agents",
+        "terminals and conversation surfaces",
+        "diff/review and PR surfaces",
+        "in-app browser preview"
+      ],
+      "backend": [
+        "local application state (SQLite per README)",
+        "direct guest-agent process orchestration with optional lifecycle hooks",
+        "SSH/SFTP for remote projects",
+        "optional scheduled automation runners"
+      ],
+      "packaging": [
+        "macOS dmg / Homebrew cask",
+        "Windows msi and portable exe",
+        "Linux AppImage and Debian package",
+        "GitHub Releases and emdash.com/download"
+      ],
+      "data": [
+        "local SQLite app state",
+        "git worktrees and branches per task",
+        "OS keychain for SSH credentials (README)",
+        "optional telemetry (disabled by default path documented)"
+      ],
+      "unknowns": [
+        "Exact production binary version matrix and provider hook depth per CLI need hands-on notes.",
+        "Cloud BYO infra provisioning depth vs marketing examples should be verified before scoring cloud parity."
+      ]
+    },
+    "infrastructure": [
+      "Runs as a local desktop ADE; local-first privacy claim that Emdash servers do not receive code/chats.",
+      "Each parallel task uses its own Git worktree and branch.",
+      "Remote projects reuse the same workflow over SSH/SFTP on user-owned machines.",
+      "Guest agents may still send code to their own providers under those providers' policies.",
+      "Optional telemetry can be disabled in settings or via environment variable."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "Cursor",
+        "OpenCode",
+        "Amp",
+        "Devin",
+        "Qwen Code",
+        "Factory Droid",
+        "GitHub Copilot",
+        "additional auto-detected provider CLIs (site claims 25+)"
+      ],
+      "orchestration": [
+        "parallel multi-agent tasks with shared review surface",
+        "issue/ticket → agent handoff from multiple trackers",
+        "scheduled automations for recurring runs",
+        "provider lifecycle hooks for status/notifications/resume when supported"
+      ],
+      "workspace_isolation": [
+        "separate Git worktree and branch per agent/task",
+        "local project and remote project isolation",
+        "optional provisioned environments via setup scripts"
+      ],
+      "review_shipping": [
+        "diff inspection",
+        "commit/push/open PR from the app",
+        "CI check monitoring",
+        "in-app browser verification"
+      ],
+      "remote_mobile": [
+        "SSH/SFTP remote projects (agent, key, or password auth)",
+        "no first-party mobile companion ADE documented in reviewed pages"
+      ],
+      "context_memory": [
+        "per-task conversation and review state in the app",
+        "prompts, skills, and MCP library for reusable agent resources",
+        "issue/ticket body as task context when launched from trackers"
+      ],
+      "integrations": [
+        "Linear, GitHub, Jira, GitLab, Asana, Featurebase, Monday.com, Forgejo, Plain (issue intake per README)",
+        "MCP servers synced to supported agents",
+        "guest coding-agent CLIs",
+        "GitHub/Git remotes for PR/CI"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "desktop installer (macOS/Windows/Linux)",
+        "optional source build with Node 24+ and pnpm",
+        "at least one authenticated guest coding CLI"
+      ],
+      "parity_risks": [
+        "Guest agent/model dominates single-task correctness.",
+        "Provider detection and hook support vary by CLI.",
+        "Nested worktrees: ensure harness verify root is the task worktree Emdash used.",
+        "Remote SSH runs are not parity-equivalent to local desktop runs."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T005-ui-responsive-cards"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Apache-2.0 free packaging undercuts paid multi-agent cockpit subscriptions.",
+        "Issue-tracker intake plus worktree shipping loop is a complete ADE workflow without cloud lock-in.",
+        "Multi-OS installers plus large agent catalog widen adoption versus Mac-only peers."
+      ],
+      "evidence": [
+        "Official site and README assert open-source ADE, worktrees, multi-provider, privacy, multi-OS installers.",
+        "package.json and LICENSE.md confirm monorepo packaging and Apache-2.0.",
+        "YC company page positions Emdash as open-source ADE for parallel coding agents."
+      ],
+      "unknowns": [
+        "Sustained quality vs Orca/Conductor/Synara is unscored.",
+        "Commercial cloud offering beyond BYO infra is not established from reviewed pages."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-11 from emdash.com, GitHub README, package.json, LICENSE.md, and YC company page.",
+  "updated_at": "2026-08-11"
+}

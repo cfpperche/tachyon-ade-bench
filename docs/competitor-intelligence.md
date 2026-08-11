@@ -30,9 +30,17 @@ The v0.1 roster covers software Agentic Development Environment competitors:
 - Overclock
 - Synara
 - Falou (OpusBR)
+- Xirp
+- Emdash
+- GitHub Copilot app
 
 LandingAI is intentionally excluded from this roster. Its ADE product is
 Agentic Document Extraction, not an agentic software development environment.
+
+Macro (https://macro.com/) is intentionally excluded. It is an open-source
+agentic office suite / company OS (email, chat, docs, tasks, CRM, agents) with
+GitHub task/PR linking and MCP for coding agents—not a software multi-agent ADE
+control plane with worktree/coding-CLI orchestration as the core product.
 
 Note: Falou’s HTML meta still emphasizes Mac voice dictation, but the official
 SPA product body (Agent Board, Squads, Claude Code/Codex from the notch) is a
