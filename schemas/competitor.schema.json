@@ -12,6 +12,7 @@
     "license",
     "runner",
     "inclusion",
+    "runtime_model",
     "research",
     "research_status",
     "updated_at"
@@ -38,6 +39,25 @@
       }
     },
     "inclusion": { "type": "string" },
+    "runtime_model": {
+      "type": "string",
+      "enum": ["guest-cli", "hybrid", "first-party", "unknown"],
+      "description": "Who owns the coding agent loop: guest third-party CLIs, product-owned agent, both (hybrid), or unknown."
+    },
+    "guest_runtimes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._+-]*$" },
+      "description": "Short stable ids for third-party coding agent CLIs/harnesses the product orchestrates (e.g. claude-code, codex)."
+    },
+    "own_runtimes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._+-]*$" },
+      "description": "Short stable ids for product-owned coding agent runtimes (e.g. warp-agent, kiro-agent)."
+    },
+    "runtime_model_notes": {
+      "type": "string",
+      "description": "Optional one-line nuance for hybrid edges or caveats (not a place for feature marketing)."
+    },
     "pricing_model": { "type": "string" },
     "public_stack_signals": { "type": "array", "items": { "type": "string" } },
     "capabilities_to_probe": { "type": "array", "items": { "type": "string" } },

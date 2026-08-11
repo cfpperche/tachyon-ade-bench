@@ -10,6 +10,21 @@
     "notes": "Benchmark separately from Class A unless setup parity is documented."
   },
   "inclusion": "Enterprise agentic coding platform with context and governance emphasis.",
+  "runtime_model": "first-party",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "copilot",
+    "opencode",
+    "kiro",
+    "gemini-cli"
+  ],
+  "own_runtimes": [
+    "auggie",
+    "cosmos"
+  ],
+  "runtime_model_notes": "Primary coding path is Auggie/Cosmos; external CLIs often consume Context Engine as clients.",
   "pricing_model": "Commercial enterprise platform; Auggie CLI and Context Engine usage require Augment account/billing.",
   "public_stack_signals": [
     "Official docs expose Cosmos, Auggie CLI, IDE clients, Context Engine MCP, and SDLC automations.",

@@ -10,6 +10,20 @@
     "notes": "Install the desktop preview, prepare a benchmark run, open only runs/<run-id>/worktree as a Local Workspace, provide prompt.md exactly, then run harness verification. Record the selected guest agent, model, effort, authentication path, and permission mode separately from Air."
   },
   "inclusion": "Direct Class A ADE competitor: a standalone JetBrains environment for running heterogeneous coding agents concurrently, isolating their work, and reviewing changes with code intelligence.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "codex",
+    "claude-agent",
+    "gemini-cli",
+    "copilot-cli",
+    "opencode",
+    "pi",
+    "cline"
+  ],
+  "own_runtimes": [
+    "junie"
+  ],
+  "runtime_model_notes": "Junie is JetBrains-owned; many sessions run via ACP guest harnesses.",
   "pricing_model": "Preview desktop product. JetBrains AI Pro or Ultimate can provide supported agents; users can also bring provider API keys or supported Codex/Gemini subscriptions. JetBrains AI Free and Enterprise are not supported by the current Air preview.",
   "public_stack_signals": [
     "Standalone proprietary desktop application for macOS, Windows, and Linux; Linux distribution uses JetBrains Toolbox.",

@@ -55,15 +55,15 @@ This roadmap is **working intuition**, not a scored plan and not a substitute fo
 
 ## Phase 1 — Runtime model (guest vs own)
 
-**Status:** planned.  
+**Status:** shipped 2026-08-11 (enum + lists + dashboard filter/badge; map table column still optional polish).  
 **Goal:** machine-readable answer to “who orchestrates third-party coding CLIs vs who owns a coding agent loop?”
 
 | ID | Item | Done when |
 | --- | --- | --- |
-| **1.1 P0** | Spec the field (short doc section or schema comments) | Stable enum: `guest-cli` · `hybrid` · `first-party` (optional `unknown`) |
-| **1.2 P0** | Add field to schema + fill every `competitors/*.json` | `python3 harness/bench.py check` green; no guessed facts |
-| **1.3 P1** | Optional `guest_runtimes[]` / `own_runtimes[]` | Filled only where already supported by profile sources |
-| **1.4 P1** | Map and/or dashboard badge/filter | Visible on competitor map and/or dashboard |
+| **1.1 P0** | Spec the field (short doc section or schema comments) | Stable enum: `guest-cli` · `hybrid` · `first-party` (optional `unknown`) — **done** (`docs/competitor-intelligence.md`) |
+| **1.2 P0** | Add field to schema + fill every `competitors/*.json` | `python3 harness/bench.py check` green — **done** |
+| **1.3 P1** | Optional `guest_runtimes[]` / `own_runtimes[]` | Filled on all profiles — **done** |
+| **1.4 P1** | Map and/or dashboard badge/filter | Matrix filter + profile badge — **done**; map markdown column optional |
 | **1.5 P2** | Method note: single-task correctness often measures guest agent | Caveat in `SPEC.md` and/or competitor map |
 
 ### Initial classification heuristic (validate when filling)
@@ -204,3 +204,4 @@ Record answers here when refined:
 | --- | --- |
 | 2026-08-11 | Initial roadmap written from research/catalog session (Xirp, Emdash, Copilot app, Macro exclude; runtime-model gap; agent-pane proposal to `claude-fork-2`). |
 | 2026-08-11 | Cataloged **Compozy (CompozyOS)** as Class A (`competitors/compozy.json`); guest-cli agent OS peer. |
+| 2026-08-11 | Phase 1: required `runtime_model` (+ optional guest/own runtime lists) on all profiles; schema/bench validation; dashboard matrix filter + profile badges. |

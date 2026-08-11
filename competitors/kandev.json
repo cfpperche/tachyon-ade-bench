@@ -10,6 +10,23 @@
     "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct open-source ADE competitor with kanban, agents, worktrees, and self-hosting emphasis.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "copilot",
+    "gemini-cli",
+    "opencode",
+    "cursor",
+    "amp",
+    "auggie",
+    "qwen-code",
+    "droid",
+    "pi",
+    "grok-build"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "ACP/executor matrix and BYO TUI agents; no first-party coding loop claimed.",
   "pricing_model": "Open-source/self-hostable; bring-your-own agent/model credentials.",
   "public_stack_signals": [
     "GitHub repository is AGPL-3.0 and describes no telemetry, self-hosting, multi-provider agents, code review, PRs, and worktrees.",

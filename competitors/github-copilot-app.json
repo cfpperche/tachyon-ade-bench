@@ -10,6 +10,16 @@
     "notes": "Install the GitHub Copilot desktop app (macOS/Windows/Linux), sign in with a Copilot-eligible GitHub account (or BYO key if available), connect the fixture repo, open only runs/<run-id>/worktree (or start a session on that folder with New worktree), provide prompt.md as the session prompt or from an issue, review plan/diff/browser/terminal, open PR if in scope, then harness-verify. Record app version, Copilot plan, model, local vs cloud session, and interventions. Do not mix cloud sessions with local worktree runs in one score."
   },
   "inclusion": "Direct Class A agent-native desktop ADE built on GitHub: parallel agent sessions with Git worktrees, issue-to-PR shipping, integrated review/browser/terminal, skills, MCP, and automations.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "own_runtimes": [
+    "copilot-agent",
+    "copilot-cli"
+  ],
+  "runtime_model_notes": "Default path is GitHub Copilot agents; third-party CLIs where plan allows.",
   "pricing_model": "Works with GitHub Copilot plans (Free/Pro/Pro+/Max and business tiers per product page) or bring-your-own key messaging. Technical preview access historically gated to existing Copilot subscribers; re-check plan entitlements at install time. Cloud agent/Actions usage may incur separate billable usage.",
   "public_stack_signals": [
     "Official product page: desktop experience for agent-driven development built natively on GitHub for macOS, Windows, and Linux.",

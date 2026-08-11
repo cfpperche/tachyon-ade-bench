@@ -10,6 +10,17 @@
     "notes": "Install Warp Terminal, open only runs/<run-id>/worktree, run the task via Warp Agent and/or a third-party CLI agent (Claude Code, Codex, OpenCode, Gemini CLI) inside Warp, then harness-verify. Record Warp version, agent harness, model/credits plan, local vs Oz cloud execution, and human interventions separately."
   },
   "inclusion": "Direct Class A ADE: vendor-positioned open-source agentic development environment combining a modern terminal, built-in Warp Agent, third-party CLI agent harnesses, code review, and Oz local/cloud orchestration.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "opencode",
+    "gemini-cli"
+  ],
+  "own_runtimes": [
+    "warp-agent",
+    "warp-agent-cli"
+  ],
   "pricing_model": "Free terminal tier with limited AI/cloud; paid Build (from ~$20/month with included credits), Max, Business (per-seat), and custom Enterprise. Bring-your-own inference available; agent credits reload pay-as-you-go.",
   "public_stack_signals": [
     "Vendor positions Warp as an open-source Agentic Development Environment born out of the terminal.",

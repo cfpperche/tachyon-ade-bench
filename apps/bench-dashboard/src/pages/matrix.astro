@@ -12,6 +12,7 @@ const labels = {
   product: t.common.product,
   class: t.common.class,
   readiness: t.common.readiness,
+  runtimeModel: t.common.runtimeModel,
   stack: t.common.stack,
   integrations: t.common.integrations,
   evidence: t.common.evidence,
@@ -27,6 +28,12 @@ const labels = {
     "enterprise-gated": t.labels["enterprise-gated"],
     "owned-reference": t.labels["owned-reference"],
     "research-only": t.labels["research-only"],
+  },
+  runtimeModelLabels: {
+    "guest-cli": t.labels["guest-cli"],
+    hybrid: t.labels.hybrid,
+    "first-party": t.labels["first-party"],
+    unknown: t.labels.unknown,
   },
 };
 ---

@@ -10,6 +10,20 @@
     "notes": "Prepare a run worktree, open it in AgentsRoom, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct ADE competitor focused on teams of coding agents.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "antigravity",
+    "grok-build",
+    "mistral-vibe",
+    "opencode",
+    "aider",
+    "copilot-cli",
+    "kimi-code"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Own composer over xterm.js PTY; coding loop remains guest CLIs.",
   "pricing_model": "Commercial desktop product; bring-your-own provider credentials where the underlying CLI requires them.",
   "public_stack_signals": [
     "Official site positions AgentsRoom as a desktop app for macOS and Linux with an online demo using simulated data.",

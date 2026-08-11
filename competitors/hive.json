@@ -10,6 +10,20 @@
     "notes": "Install Hive, prepare a run worktree, open it in Hive's local browser UI, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct ADE competitor centered on local browser-based orchestration of CLI agent teams.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "opencode",
+    "antigravity",
+    "cursor",
+    "grok-build",
+    "hermes",
+    "qwen-code"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Orchestrator protocol is product-owned; coding workers are guest CLIs.",
   "pricing_model": "Source-available/local install; bring-your-own agent CLIs and subscriptions.",
   "public_stack_signals": [
     "Official site says npm global install, local 127.0.0.1 browser app, Node >= 22, BSL 1.1.",

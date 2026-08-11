@@ -65,6 +65,28 @@ Do not use community posts, launch comments, social posts, or search snippets as
 facts. They can be leads, but the recorded claim must point to an official
 source. If an implementation detail is not published, record it as unknown.
 
+## Runtime model
+
+Every competitor profile must declare top-level `runtime_model`: who owns the
+**coding agent loop** (tools/edits/shell), not the ADE chrome.
+
+| Value | Meaning |
+| --- | --- |
+| `guest-cli` | Product is a control plane / OS / cockpit; coding runs in third-party CLIs (Claude Code, Codex, Grok Build, …). |
+| `hybrid` | Product ships a first-party coding agent **and** supports third-party CLIs. |
+| `first-party` | Primary coding path is the product's own agent runtime (plan/account). |
+| `unknown` | Insufficient official evidence (avoid for roster peers). |
+
+Optional companion fields:
+
+- `guest_runtimes[]` — short stable ids (`claude-code`, `codex`, …)
+- `own_runtimes[]` — short stable ids (`warp-agent`, `kiro-agent`, …)
+- `runtime_model_notes` — one-line nuance (e.g. Conductor “first-party support” is still `guest-cli`)
+
+Do **not** confuse with `class` (A/B) or benchmark readiness. Single-task
+correctness often measures the guest agent more than the ADE when
+`runtime_model` is `guest-cli`.
+
 ## Confidence Levels
 
 - `owned`: Tachyon-owned reference data. Public reports should still avoid

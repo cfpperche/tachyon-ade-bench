@@ -10,6 +10,17 @@
     "notes": "Install the Overclock desktop app (macOS/Windows/Linux), connect existing CLI agent subscriptions (Claude Code, Codex, Gemini, Antigravity, etc.), open only runs/<run-id>/worktree as a mission workspace, run Free/Squad/Agentic mission with prompt.md, then harness-verify after merge to the prepared tree. Record plan tier, mission mode, guest agents/models, pane costs, and interventions."
   },
   "inclusion": "Direct Class A multi-agent ADE cockpit: pane grid for concurrent coding CLIs, missions with worktrees, maestro/squad orchestration, skills marketplace, and 52 native MCP tools.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "antigravity",
+    "openrouter",
+    "ollama"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Overclock Originals are CLI+model+skills recipes, not a separate product agent loop.",
   "pricing_model": "Subscription cockpit only (models use the user's existing CLI subscriptions): Boost $19/month, Boost Pro $39/month, Ultra $79/month; 7-day refund guarantee stated on site. No separate model fee charged by Overclock.",
   "public_stack_signals": [
     "Official site brands Overclock as an ADE for vibe coding with AI agents.",

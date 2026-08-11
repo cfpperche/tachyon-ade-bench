@@ -18,3 +18,7 @@ export function readinessLabel(value: string, locale: Locale = "en"): string {
 export function classLabel(value: string, locale: Locale = "en"): string {
   return label(value, locale);
 }
+
+export function runtimeModelLabel(value: string, locale: Locale = "en"): string {
+  return label(value, locale);
+}

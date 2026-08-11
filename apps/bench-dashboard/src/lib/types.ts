@@ -13,6 +13,9 @@ export type ResearchConfidence =
   | "partial-official"
   | "seed";
 
+/** Who owns the coding agent loop (not ADE chrome). See docs/competitor-intelligence.md. */
+export type RuntimeModel = "guest-cli" | "hybrid" | "first-party" | "unknown";
+
 export interface ResearchSource {
   url: string;
   kind: string;
@@ -67,6 +70,10 @@ export interface Competitor {
     notes: string;
   };
   inclusion: string;
+  runtime_model: RuntimeModel;
+  guest_runtimes?: string[];
+  own_runtimes?: string[];
+  runtime_model_notes?: string;
   pricing_model?: string;
   public_stack_signals?: string[];
   capabilities_to_probe?: string[];
@@ -113,6 +120,9 @@ export interface CompetitorSummary {
   positioning: string;
   readiness: BenchmarkReadiness;
   confidence: ResearchConfidence;
+  runtimeModel: RuntimeModel;
+  guestRuntimes: string[];
+  ownRuntimes: string[];
   sourceCount: number;
   featureCount: number;
   taskCount: number;

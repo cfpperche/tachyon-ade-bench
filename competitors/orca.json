@@ -10,6 +10,24 @@
     "notes": "Install Orca, open the prepared worktree, provide prompt.md exactly, then run harness verification. Later adapter candidate: Orca CLI/server if a stable non-interactive run path is documented."
   },
   "inclusion": "Direct open-source ADE competitor for running multiple coding agents across isolated worktrees.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "opencode",
+    "cursor",
+    "copilot",
+    "grok-build",
+    "auggie",
+    "gemini-cli",
+    "antigravity",
+    "kiro",
+    "qwen-code",
+    "devin",
+    "pi",
+    "openclaude"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Open-source app plus bring-your-own agent/model subscriptions.",
   "public_stack_signals": [
     "Electron desktop app with TypeScript, React, Vite/electron-vite, node-pty, xterm, ssh2, ws, and mobile-related repo folders.",

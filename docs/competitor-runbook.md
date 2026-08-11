@@ -99,8 +99,13 @@ Copy shape from a solid peer profile (e.g. `conductor.json`, `herdr.json`,
 ### 1.2 Create `competitors/<id>.json`
 
 Required top-level keys (schema): `id`, `name`, `class`, `homepage`,
-`source_url`, `license`, `runner`, `inclusion`, `research`, `research_status`,
-`updated_at`.
+`source_url`, `license`, `runner`, `inclusion`, `runtime_model`, `research`,
+`research_status`, `updated_at`.
+
+`runtime_model` must be one of `guest-cli` | `hybrid` | `first-party` |
+`unknown` (who owns the coding agent loop). Prefer also `guest_runtimes` /
+`own_runtimes` short ids and optional `runtime_model_notes`. See
+`docs/competitor-intelligence.md` § Runtime model.
 
 Inside `research` required: `last_reviewed`, `confidence`, `sources`,
 `positioning`, `stack`, `infrastructure`, `features`, `benchmarking`, `moat`.

@@ -10,6 +10,20 @@
     "notes": "Install Falou for Mac, authenticate, connect or use built-in access to coding CLIs (Claude Code, Codex, and others listed in product copy), open only runs/<run-id>/worktree as the project, delegate prompt.md via voice/text or Agent Board / Squads mission, then harness-verify after work lands on the prepared tree. Record Falou version, guest agent/model, mission mode, and interventions. macOS only for the current download surface."
   },
   "inclusion": "Direct Class A multi-agent ADE-adjacent control plane: Mac notch assistant that runs coding agents (Claude Code, Codex, Cursor, OpenCode, Grok CLI, Antigravity, Verboo), Agent Board kanban, Squads with isolated project copies, and task-first delegation—beyond pure voice dictation.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "opencode",
+    "grok-build",
+    "antigravity",
+    "verboo"
+  ],
+  "own_runtimes": [
+    "falou-cloud-agent"
+  ],
+  "runtime_model_notes": "Coding is guest CLIs; Falou cloud agent is a non-CLI personal agent mode.",
   "pricing_model": "Official marketing describes local offline dictation as free/unlimited; cloud agent and plan packaging beyond free BYOK (Claude Code/Codex on the user's own accounts) were not fully price-tabled in the reviewed SPA copy—record plan/limits at install time.",
   "public_stack_signals": [
     "Hosted under OpusBR domain falou.opusbr.com as a macOS product (Windows waitlist mentioned in SPA).",

@@ -380,6 +380,26 @@ h3 {
   color: var(--red);
 }
 
+.badge--runtime-guest-cli {
+  background: color-mix(in srgb, var(--accent, #5b8def) 18%, transparent);
+  border-color: color-mix(in srgb, var(--accent, #5b8def) 40%, transparent);
+}
+
+.badge--runtime-hybrid {
+  background: color-mix(in srgb, #c9a227 18%, transparent);
+  border-color: color-mix(in srgb, #c9a227 40%, transparent);
+}
+
+.badge--runtime-first-party {
+  background: color-mix(in srgb, #3d9a6a 18%, transparent);
+  border-color: color-mix(in srgb, #3d9a6a 40%, transparent);
+}
+
+.badge--runtime-unknown {
+  background: color-mix(in srgb, #888 14%, transparent);
+  border-color: color-mix(in srgb, #888 35%, transparent);
+}
+
 .badge--official-sourced,
 .badge--owned {
   background: var(--teal-soft);

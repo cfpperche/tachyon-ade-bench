@@ -47,6 +47,11 @@ Class B products are enterprise agentic platforms:
 Class B can be measured with the same artifacts, but reports should avoid
 mixing its score with Class A without explaining the setup difference.
 
+Profiles also declare `runtime_model` (`guest-cli` | `hybrid` | `first-party` |
+`unknown`): who owns the coding agent loop. When comparing `guest-cli` products,
+record the guest agent/model as a separate run dimension — single-task
+correctness often measures the guest more than the ADE.
+
 ## Exclusions
 
 LandingAI is excluded from this roster because its ADE is Agentic Document

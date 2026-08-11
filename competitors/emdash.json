@@ -10,6 +10,19 @@
     "notes": "Install the Emdash desktop app (macOS brew cask / dmg, Windows msi/exe, Linux AppImage/deb) or build from source, authenticate at least one guest coding CLI outside Emdash, open only runs/<run-id>/worktree as a project, create a task with prompt.md on an isolated Git worktree, review diff/PR, then harness-verify. Record Emdash version, guest provider, local vs SSH remote, and interventions."
   },
   "inclusion": "Direct Class A open-source multi-agent ADE: YC W26 desktop control plane for parallel coding agents in Git worktrees, issue-to-agent intake, in-app browser, diff/PR/CI review, automations, and SSH remote projects.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "opencode",
+    "amp",
+    "devin",
+    "qwen-code",
+    "droid",
+    "copilot"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Free and open source (Apache-2.0). Users bring existing coding-agent CLI subscriptions and keys. No Emdash model plan on reviewed pages.",
   "public_stack_signals": [
     "Official site: open-source agentic development environment; multi-OS desktop; parallel agents; YC W26.",

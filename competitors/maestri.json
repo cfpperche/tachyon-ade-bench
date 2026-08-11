@@ -10,6 +10,14 @@
     "notes": "macOS-only desktop app. Install agents (Claude Code, Codex, OpenCode, etc.) first, open the prepared harness worktree as a Maestri workspace working directory, create terminals for the agent(s), provide prompt.md, then run harness verification. Record guest agent/model separately from Maestri. Floors use APFS copy-on-write clones, not the same semantics as git worktree isolation in Orca/Tachyon."
   },
   "inclusion": "Direct Class A ADE competitor: native macOS orchestration canvas around BYO coding-agent CLIs with inter-agent PTY connections, workspace floors, and local-first privacy posture.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "opencode"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Orchestration canvas explicitly not an AI agent; BYO CLI terminals.",
   "pricing_model": "Free tier (1 workspace, unlimited agents); Pro lifetime license for unlimited workspaces (site shows free trial then one-time pay; regional pricing varies).",
   "public_stack_signals": [
     "Official positioning: infinite spatial canvas for terminals, agents, notes, files, and sketches — not an AI agent itself.",

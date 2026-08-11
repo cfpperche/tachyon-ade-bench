@@ -10,6 +10,12 @@
     "notes": "Install Kiro IDE and/or CLI, authenticate (GitHub/Google/AWS Builder ID or IAM Identity Center), open only runs/<run-id>/worktree, provide prompt.md via chat or CLI, optionally use specs/sub-agents, then harness-verify. Record surface (IDE/CLI/web), plan tier, model, and interventions. Prefer local IDE/CLI over web sandboxes for Class A parity."
   },
   "inclusion": "Direct Class A agentic software development environment: AWS-built IDE, CLI, web, mobile, and Crew surfaces sharing one agent harness for specs, parallel sub-agents, hooks, MCP, and PR delivery.",
+  "runtime_model": "first-party",
+  "guest_runtimes": [],
+  "own_runtimes": [
+    "kiro-agent"
+  ],
+  "runtime_model_notes": "Unified Kiro agent across IDE/CLI/web/mobile/Crew; ACP embeds Kiro outward.",
   "pricing_model": "Credit-based: Free (50 credits), Pro $20, Pro+ $40, Pro Max $100, Power $200 per user/month; team plans with SSO via IAM Identity Center; add-on credits at $0.04/credit. Enterprise sales available.",
   "public_stack_signals": [
     "Official site: agentic IDE, CLI, and web interface for prototype-to-production engineering.",

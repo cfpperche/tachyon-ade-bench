@@ -10,6 +10,17 @@
     "notes": "Prepare a run worktree, open it in HiveTerm, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct terminal-oriented multi-agent ADE competitor.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "antigravity",
+    "grok-build",
+    "kimi",
+    "aider"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Queen MCP orchestration; coding agents remain guest CLIs in terminal panes.",
   "pricing_model": "Commercial desktop product with free/pro tiers; model/agent subscriptions are bring-your-own where applicable.",
   "public_stack_signals": [
     "Official site states Rust + Tauri desktop app around 20MB.",

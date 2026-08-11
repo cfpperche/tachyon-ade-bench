@@ -10,6 +10,13 @@
     "notes": "Install the macOS Xirp beta (curl install script or download), authenticate guest coding CLIs (Claude Code, Codex, and/or Gemini) outside Xirp, open only runs/<run-id>/worktree as a project, create a session with prompt.md, then harness-verify. Record Xirp version, guest agent/model, Portal connected or not, and interventions. Do not treat Portal-catalog launches as parity with plain local project sessions."
   },
   "inclusion": "Direct Class A multi-agent ADE: Spotify-built macOS desktop control plane for parallel Claude Code, Codex, and Gemini sessions with Git worktrees, PR monitoring, skills/rules, and optional Spotify Portal institutional context.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "gemini-cli"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Public beta download for macOS; Portal instance access offered with beta (free Portal trial messaging on site). Commercial pricing for Xirp alone was not published on reviewed pages. Non-Mac platforms waitlisted.",
   "public_stack_signals": [
     "Official site brands Xirp as an agentic development environment with institutional memory, powered by Spotify Portal.",

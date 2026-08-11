@@ -10,6 +10,15 @@
     "notes": "Prepare the benchmark fixture as a Git repository, import it into the macOS app, create one Conductor workspace per run, select the guest agent/model, provide prompt.md, and verify the resulting workspace. Record local versus Cloud execution, Conductor version, guest agent/model, subscription, and every human intervention as separate run dimensions."
   },
   "inclusion": "Direct multi-agent ADE competitor combining parallel agent sessions, Git-worktree isolation, review and pull-request workflow, and optional cloud orchestration.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "cursor",
+    "opencode"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "First-party integration of guest CLIs; does not own a coding model/loop.",
   "pricing_model": "The local macOS app is described as free in the official FAQ; Conductor Pro gates the Cloud API and early-access multiplayer, while public plan prices were not verified in this review.",
   "public_stack_signals": [
     "Proprietary macOS desktop application; Windows and Linux are not available according to the installation docs.",

@@ -10,6 +10,18 @@
     "notes": "Install @runfusion/fusion (npm prefix or global). From the prepared worktree: fn init / fn project add, configure defaultProvider+defaultModelId in ~/.fusion/settings.json, start fn serve --project <name>, then fn task create \"$(cat prompt.md)\" --no-dedup. Wait until the task reaches done with the fix on main (not only a nested fusion worktree), then harness verify. Auto-merge can stick in status=merging; record any manual merge as intervention."
   },
   "inclusion": "Direct open-source multi-agent ADE competitor positioned as a software factory with worktree isolation, plan/review gates, multi-node mesh, and agent-company import.",
+  "runtime_model": "hybrid",
+  "guest_runtimes": [
+    "claude-code",
+    "gemini-cli",
+    "cursor",
+    "droid"
+  ],
+  "own_runtimes": [
+    "pi",
+    "fusion-provider-lanes"
+  ],
+  "runtime_model_notes": "Factory/Pi and multi-provider lanes plus ACP CLI paths.",
   "pricing_model": "Open-source MIT app plus bring-your-own model/provider subscriptions; early preview shipping weekly.",
   "public_stack_signals": [
     "TypeScript pnpm monorepo (packages for cli, core, dashboard, desktop, engine, mobile, plugin-sdk); primary language TypeScript on GitHub.",

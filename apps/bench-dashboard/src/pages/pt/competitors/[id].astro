@@ -3,7 +3,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 import ReadinessBadge from "../../../components/ReadinessBadge.astro";
 import ConfidenceBadge from "../../../components/ConfidenceBadge.astro";
 import { getCompetitors } from "../../../lib/data";
-import { classLabel, label } from "../../../lib/format";
+import { classLabel, label, runtimeModelLabel } from "../../../lib/format";
 import { getUi, type Locale } from "../../../lib/i18n";
 
 export function getStaticPaths() {
@@ -32,9 +32,23 @@ const sourceCountLabel = sourceCount === 1 ? t.common.sourceLink : t.common.trac
         <div class="badge-row">
           <ReadinessBadge value={competitor.research.benchmarking.readiness} locale={locale} />
           <ConfidenceBadge value={competitor.research.confidence} locale={locale} />
+          <span class={`badge badge--runtime-${competitor.runtime_model}`}>
+            {runtimeModelLabel(competitor.runtime_model, locale)}
+          </span>
           <span class="badge">{competitor.license}</span>
           <span class="badge">{t.common.reviewed} {competitor.research.last_reviewed}</span>
         </div>
+        {(competitor.guest_runtimes?.length || competitor.own_runtimes?.length || competitor.runtime_model_notes) && (
+          <p class="table-note" style="margin-top: 0.75rem;">
+            {competitor.guest_runtimes?.length
+              ? `${t.common.guestRuntimes}: ${competitor.guest_runtimes.join(", ")}. `
+              : ""}
+            {competitor.own_runtimes?.length
+              ? `${t.common.ownRuntimes}: ${competitor.own_runtimes.join(", ")}. `
+              : ""}
+            {competitor.runtime_model_notes ?? ""}
+          </p>
+        )}
       </div>
       <div class="badge-row">
         {competitor.homepage && <a class="badge" href={competitor.homepage}>{t.common.homepage}</a>}

@@ -9,6 +9,7 @@ interface MatrixLabels {
   searchPlaceholder: string;
   allClasses: string;
   allReadiness: string;
+  allRuntimeModels: string;
   openSourceVisible: string;
   resetFilters: string;
   showing: string;
@@ -17,6 +18,7 @@ interface MatrixLabels {
   product: string;
   class: string;
   readiness: string;
+  runtimeModel: string;
   stackSignals: string;
   stack: string;
   integrations: string;
@@ -28,6 +30,7 @@ interface MatrixLabels {
   classA: string;
   classB: string;
   readinessLabels: Record<string, string>;
+  runtimeModelLabels: Record<string, string>;
 }
 
 interface Props {
@@ -50,6 +53,7 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
   const [query, setQuery] = useState("");
   const [klass, setKlass] = useState("all");
   const [readiness, setReadiness] = useState("all");
+  const [runtimeModel, setRuntimeModel] = useState("all");
   const [opensourceOnly, setOpenSourceOnly] = useState(false);
 
   const filtered = useMemo(() => {
@@ -60,7 +64,10 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
         competitor.positioning,
         competitor.license,
         competitor.readiness,
+        competitor.runtimeModel,
         competitor.class,
+        ...competitor.guestRuntimes,
+        ...competitor.ownRuntimes,
         ...competitor.stack,
         ...competitor.integrations,
       ]
@@ -69,18 +76,20 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
       const matchesQuery = needle.length === 0 || searchable.includes(needle);
       const matchesClass = klass === "all" || competitor.class === klass;
       const matchesReadiness = readiness === "all" || competitor.readiness === readiness;
+      const matchesRuntime = runtimeModel === "all" || competitor.runtimeModel === runtimeModel;
       const matchesSource =
         !opensourceOnly ||
         /mit|agpl|busl|open|source/i.test(competitor.license) ||
         competitor.sourceUrl !== null;
-      return matchesQuery && matchesClass && matchesReadiness && matchesSource;
+      return matchesQuery && matchesClass && matchesReadiness && matchesRuntime && matchesSource;
     });
-  }, [competitors, klass, opensourceOnly, query, readiness]);
+  }, [competitors, klass, opensourceOnly, query, readiness, runtimeModel]);
 
   const reset = () => {
     setQuery("");
     setKlass("all");
     setReadiness("all");
+    setRuntimeModel("all");
     setOpenSourceOnly(false);
   };
 
@@ -126,6 +135,22 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
             ))}
           </select>
         </label>
+        <label>
+          <span>{labels.runtimeModel}</span>
+          <select value={runtimeModel} onChange={(event) => setRuntimeModel(event.target.value)}>
+            {[
+              ["all", labels.allRuntimeModels],
+              ["guest-cli", labels.runtimeModelLabels["guest-cli"]],
+              ["hybrid", labels.runtimeModelLabels.hybrid],
+              ["first-party", labels.runtimeModelLabels["first-party"]],
+              ["unknown", labels.runtimeModelLabels.unknown],
+            ].map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
         <label className="toggle">
           <input
             type="checkbox"
@@ -152,6 +177,7 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
               <th>{labels.product}</th>
               <th>{labels.class}</th>
               <th>{labels.readiness}</th>
+              <th>{labels.runtimeModel}</th>
               <th>{labels.stackSignals}</th>
               <th>{labels.integrations}</th>
               <th>{labels.evidence}</th>
@@ -170,6 +196,11 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
                 <td>
                   <span className={`badge badge--${competitor.readiness}`}>
                     {labels.readinessLabels[competitor.readiness]}
+                  </span>
+                </td>
+                <td>
+                  <span className={`badge badge--runtime-${competitor.runtimeModel}`}>
+                    {labels.runtimeModelLabels[competitor.runtimeModel] ?? competitor.runtimeModel}
                   </span>
                 </td>
                 <td>{competitor.stack.slice(0, 5).join(", ")}</td>
@@ -199,6 +230,9 @@ export default function CompetitorMatrix({ competitors, baseUrl, locale, labels 
               </span>
               <span className={`badge badge--${competitor.readiness}`}>
                 {labels.readinessLabels[competitor.readiness]}
+              </span>
+              <span className={`badge badge--runtime-${competitor.runtimeModel}`}>
+                {labels.runtimeModelLabels[competitor.runtimeModel] ?? competitor.runtimeModel}
               </span>
             </div>
             <dl>

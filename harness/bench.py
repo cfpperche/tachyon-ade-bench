@@ -173,6 +173,7 @@ def validate_competitor(path: Path, task_ids: set[str] | None = None) -> list[st
         "license",
         "runner",
         "inclusion",
+        "runtime_model",
         "research",
         "research_status",
         "updated_at",
@@ -184,17 +185,30 @@ def validate_competitor(path: Path, task_ids: set[str] | None = None) -> list[st
         "capabilities_to_probe",
         "moat_hypotheses",
         "setup_notes",
+        "guest_runtimes",
+        "own_runtimes",
+        "runtime_model_notes",
     }
     errors = [f"{path}: missing {key}" for key in required if key not in data]
     for key in sorted(set(data) - set(required) - optional):
         errors.append(f"{path}: {key} is not allowed")
-    for key in ["public_stack_signals", "capabilities_to_probe", "moat_hypotheses", "setup_notes"]:
+    for key in ["public_stack_signals", "capabilities_to_probe", "moat_hypotheses", "setup_notes", "guest_runtimes", "own_runtimes"]:
         if key in data and not isinstance(data[key], list):
             errors.append(f"{path}: {key} must be a list")
     if data.get("id") and path.stem != data["id"]:
         errors.append(f"{path}: id must match filename")
     if data.get("class") not in {"A-local-ade", "B-enterprise-agentic-platform"}:
         errors.append(f"{path}: class must be a known benchmark class")
+    if data.get("runtime_model") not in {"guest-cli", "hybrid", "first-party", "unknown"}:
+        errors.append(f"{path}: runtime_model must be guest-cli, hybrid, first-party, or unknown")
+    if "runtime_model_notes" in data and not isinstance(data["runtime_model_notes"], str):
+        errors.append(f"{path}: runtime_model_notes must be a string")
+    for list_key in ("guest_runtimes", "own_runtimes"):
+        values = data.get(list_key)
+        if isinstance(values, list):
+            for index, item in enumerate(values):
+                if not isinstance(item, str) or not item:
+                    errors.append(f"{path}: {list_key}[{index}] must be a non-empty string")
     if "runner" in data and "kind" not in data["runner"]:
         errors.append(f"{path}: runner.kind is required")
     elif "runner" in data and data["runner"].get("kind") not in {"manual", "cli", "api"}:

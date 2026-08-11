@@ -10,6 +10,12 @@
     "notes": "Install from upstream docs, prepare a run worktree, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct open-source ADE competitor focused on local agentic planning and execution.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Free/open-source app; bring-your-own Claude Code or Codex/API access.",
   "public_stack_signals": [
     "README states free/open-source, local/offline, powered by Claude Code and Codex.",

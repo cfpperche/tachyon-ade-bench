@@ -10,6 +10,21 @@
     "notes": "Prepare a run worktree, start herdr, open the worktree in a pane, launch the guest agent CLI with prompt.md, then run harness verification. Single-task runs measure the guest CLI more than Herdr itself; record environment=herdr plus the guest agent/model as separate run dimensions."
   },
   "inclusion": "Direct terminal-native agent runtime and multi-agent ADE competitor.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "cursor",
+    "opencode",
+    "copilot",
+    "grok-build",
+    "pi",
+    "amp",
+    "hermes"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Terminal multiplexer/detector for ~20 guest CLIs; unrecognized agents run as plain panes.",
   "pricing_model": "Open source (AGPL) single binary, no account or telemetry; sponsorship-funded with negotiable commercial licensing.",
   "public_stack_signals": [
     "Rust single binary using ratatui, portable-pty (vendored patch), tokio, and interprocess; no Electron.",

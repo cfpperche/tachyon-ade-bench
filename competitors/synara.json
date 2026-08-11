@@ -10,6 +10,19 @@
     "notes": "Install the Synara desktop app (or bun run dev from source), authenticate at least one guest coding CLI outside Synara, open only runs/<run-id>/worktree as a project, create a task with prompt.md, run the guest agent, review diff/checks, then harness-verify. Record Synara version, guest provider/runtime, and interventions. Use isolated worktrees when testing parallel agents."
   },
   "inclusion": "Direct Class A local-first multi-agent ADE workspace: open-source desktop control plane for parallel coding agents, Git worktrees, browser verification, provider handoffs, and PR delivery.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "opencode",
+    "cursor",
+    "antigravity",
+    "grok-build",
+    "kilo",
+    "pi",
+    "droid"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Free and open source; no Synara model plan. Users bring existing coding-agent runtimes and provider accounts/subscriptions.",
   "public_stack_signals": [
     "Official site: local-first command center for parallel coding agents with terminals, previews, diffs, and Git worktrees.",

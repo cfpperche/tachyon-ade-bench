@@ -10,6 +10,17 @@
     "notes": "Install CompozyOS beta (install.sh, npm @compozy/cli@beta, or pinned go install), start the local daemon, open or register the prepared runs/<run-id>/worktree as the workspace (session from that cwd), launch a session with an authenticated guest ACP CLI (e.g. Claude Code), provide prompt.md as the session task, then harness-verify on the worktree. Record Compozy version (beta tag), guest agent/provider, and interventions. Do not treat chat bridges or multi-peer network jobs as parity with a single local coding task."
   },
   "inclusion": "Direct Class A local-first agent operating system: Go daemon with durable sessions, tasks, loops, memory, permissions, automation, and Compozy Network around guest ACP coding CLIs (Claude Code, OpenClaw, Hermes, and others).",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "openclaw",
+    "hermes",
+    "codex",
+    "gemini-cli",
+    "cursor"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Daemon/OS owns sessions and tasks; coding agents are ACP-compatible guest CLIs.",
   "pricing_model": "Open-source MIT; free local install. Bring-your-own guest agent CLI subscriptions and keys. Beta v0.3 line; no separate Compozy model plan on reviewed pages.",
   "public_stack_signals": [
     "Official site brands CompozyOS as an operating system for AI agents: create, automate, and supervise agent work without assembling scripts/orchestration frameworks.",

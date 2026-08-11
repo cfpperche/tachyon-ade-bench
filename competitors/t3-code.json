@@ -10,6 +10,14 @@
     "notes": "Prepare a run worktree, open it in T3 Code, provide prompt.md exactly, then run harness verification."
   },
   "inclusion": "Direct ADE competitor for operating coding agents from a desktop or web control plane.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "opencode",
+    "cursor"
+  ],
+  "own_runtimes": [],
   "pricing_model": "Open-source control plane with bring-your-own subscriptions.",
   "public_stack_signals": [
     "Open-source control plane for Claude Code, Codex, OpenCode, and Cursor (README 2026-07-15).",
