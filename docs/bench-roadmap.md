@@ -90,7 +90,7 @@ Notes:
 
 | ID | Item | Priority | Notes |
 | --- | --- | --- | --- |
-| **2.1** | Enrich **AgentsRoom** profile: own composer over xterm.js PTY; not an agent harness | P1 | Official `llms.txt` / site only |
+| **2.1** | Enrich **AgentsRoom** profile: own composer over xterm.js PTY; not an agent harness | P1 | **Done 2026-08-11** (`competitors/agentsroom.json`, map sources) |
 | **2.2** | Re-review **Xirp** when beta leaves macOS-only | P2 | OS matrix / readiness |
 | **2.3** | Watchlist only: HumanLayer; Macro adjacency (MCP workspace) | P2 | Macro already excluded |
 | **2.4** | Periodic `last_reviewed` for hot Class A (Warp, Kiro, Copilot app, Emdash, Xirp) | P2 | Follow competitor runbook |
@@ -205,3 +205,4 @@ Record answers here when refined:
 | 2026-08-11 | Initial roadmap written from research/catalog session (Xirp, Emdash, Copilot app, Macro exclude; runtime-model gap; agent-pane proposal to `claude-fork-2`). |
 | 2026-08-11 | Cataloged **Compozy (CompozyOS)** as Class A (`competitors/compozy.json`); guest-cli agent OS peer. |
 | 2026-08-11 | Phase 1: required `runtime_model` (+ optional guest/own runtime lists) on all profiles; schema/bench validation; dashboard matrix filter + profile badges. |
+| 2026-08-11 | Phase 2.1: AgentsRoom profile enrichment (guest-cli harness-agnostic, xterm.js PTY, app composer, BYOK, multi-OS) from official site + llms.txt. |

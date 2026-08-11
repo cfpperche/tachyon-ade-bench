@@ -2,156 +2,205 @@
   "id": "agentsroom",
   "name": "AgentsRoom",
   "class": "A-local-ade",
-  "homepage": "https://agentsroom.dev/pt",
+  "homepage": "https://agentsroom.dev/",
   "source_url": null,
   "license": "proprietary",
   "runner": {
     "kind": "manual",
-    "notes": "Prepare a run worktree, open it in AgentsRoom, provide prompt.md exactly, then run harness verification."
+    "notes": "Install the AgentsRoom desktop app (not the simulated browser demo), authenticate at least one guest coding CLI outside AgentsRoom, open only runs/<run-id>/worktree as a project folder, create an agent session, deliver prompt.md via the AgentsRoom composer (or into the guest CLI), then harness-verify. Record AgentsRoom version, guest harness/model, and interventions. Demo replies are simulated and must not be scored."
   },
-  "inclusion": "Direct ADE competitor focused on teams of coding agents.",
+  "inclusion": "Direct Class A multi-agent ADE cockpit: desktop control plane that spawns real guest coding CLIs in xterm.js PTY sessions with an app-owned composer, roles, backlog, review, and remote/mobile control—without replacing the guest agent loop.",
   "runtime_model": "guest-cli",
   "guest_runtimes": [
     "claude-code",
     "codex",
+    "copilot-cli",
     "antigravity",
-    "grok-build",
-    "mistral-vibe",
     "opencode",
     "aider",
-    "copilot-cli",
+    "grok-build",
+    "mistral-vibe",
     "kimi-code"
   ],
   "own_runtimes": [],
-  "runtime_model_notes": "Own composer over xterm.js PTY; coding loop remains guest CLIs.",
-  "pricing_model": "Commercial desktop product; bring-your-own provider credentials where the underlying CLI requires them.",
+  "runtime_model_notes": "Official: AgentsRoom is not an agent harness; it spawns official guest CLIs and never replaces their agent loop. App-owned composer/stage injects into xterm.js PTY sessions (e.g. scratchpad bracketed paste).",
+  "pricing_model": "Free tier for a limited number of projects with unlimited agents; Pro plan for unlimited projects (site states Free to start / Pro pricing; re-check download/account pages for current EUR amounts). BYOK: tokens billed by the guest provider, not resold by AgentsRoom.",
   "public_stack_signals": [
-    "Official site positions AgentsRoom as a desktop app for macOS and Linux with an online demo using simulated data.",
-    "Runs multiple project folders and multiple CLI agent sessions in parallel.",
-    "Remote fleet and mobile companion features are presented as product features, including E2E relay for remote machines.",
-    "Refresh 2026-07-21: official download page reports v1.109.0; macOS, Linux, and Windows packages plus supported CLI agents remain available."
+    "Official site: multi-project multi-agent desktop IDE for Claude Code, Codex, Antigravity CLI, OpenCode, Aider, Grok Build, Mistral Vibe, Kimi Code, and GitHub Copilot CLI.",
+    "llms.txt: harness-agnostic layer that spawns real local CLI processes; not itself a coding agent harness; no API proxy / no token resale (BYOK).",
+    "Each agent runs in an isolated xterm.js PTY session with full scrollback; optional git worktree isolation per agent.",
+    "App-owned input surfaces (composer, scratchpad with bracketed paste, message queue, voice, screenshots) feed the guest CLI PTY.",
+    "macOS, Windows, and Linux desktop packages; mobile companion with E2E-encrypted relay; download page reported v1.132.0 on 2026-08-11 review."
   ],
   "capabilities_to_probe": [
-    "multi-agent orchestration",
-    "local CLI integration",
-    "review workflow",
-    "remote or mobile control",
-    "role-labeled agent workflows",
-    "backlog-to-agent flow",
-    "scheduled tasks"
+    "parallel multi-project multi-agent cockpit with live status",
+    "guest CLI spawn in xterm.js PTY without replacing agent loop",
+    "AgentsRoom composer / scratchpad / message queue injection into focused PTY",
+    "optional per-agent git worktree isolation",
+    "role library, agent teams, backlog-to-agent, scheduled tasks",
+    "side-by-side and per-agent diff review plus commit context",
+    "project memory MCP and AgentsRoom MCP surfaces",
+    "remote fleet, SSH remote agents, mobile companion steering"
   ],
   "moat_hypotheses": [
-    "visual multi-agent cockpit",
-    "remote fleet and mobile companion",
-    "role-based workflows",
-    "rich communication modes for steering agents"
+    "visual multi-agent cockpit reduces operator overload vs bare tmux/iTerm fleets",
+    "own composer + notifications while keeping guest harness quality and BYO subscriptions",
+    "remote fleet and mobile companion extend control beyond a single desktop",
+    "role library, teams, and backlog make the product feel like a managed agent team"
   ],
   "setup_notes": [
-    "Use the desktop app, not the simulated browser demo, for any scored benchmark run."
+    "Use the desktop download, not the interactive browser demo (demo can simulate replies).",
+    "Install and authenticate guest CLIs (claude, codex, etc.) outside AgentsRoom first.",
+    "Point a project at the prepared harness worktree only.",
+    "Record which guest harness/account is on each agent card when multi-account is used."
   ],
   "research": {
-    "last_reviewed": "2026-07-21",
-    "confidence": "partial-official",
+    "last_reviewed": "2026-08-11",
+    "confidence": "official-sourced",
     "sources": [
+      {
+        "url": "https://agentsroom.dev/",
+        "kind": "official-site",
+        "notes": "Homepage positioning, multi-provider list, FAQ: spawns real CLI processes locally, no API proxy; Free/Pro CTA; feature index."
+      },
+      {
+        "url": "https://agentsroom.dev/llms.txt",
+        "kind": "official-docs",
+        "notes": "Canonical product text: not a harness; xterm.js PTY; worktrees; BYOK; providers; scratchpad bracketed paste; composer-oriented features; MCP surfaces."
+      },
+      {
+        "url": "https://agentsroom.dev/download",
+        "kind": "official-site",
+        "notes": "Desktop installers for macOS 14+, Linux, Windows; version string observed at review (v1.132.0)."
+      },
+      {
+        "url": "https://agentsroom.dev/features/multi-project-multi-agent",
+        "kind": "official-docs",
+        "notes": "Cockpit feature page linked from site/llms for multi-project multi-agent orchestration."
+      },
+      {
+        "url": "https://agentsroom.dev/features/scratchpad",
+        "kind": "official-docs",
+        "notes": "Scratchpad/composer staging; llms.txt documents atomic bracketed paste into focused terminal."
+      },
       {
         "url": "https://agentsroom.dev/pt",
         "kind": "official-site",
-        "notes": "Product positioning, supported agents, feature surface, role agents, remote fleet, review, and mobile companion claims. Refresh 2026-07-15: EN homepage title multi-project/multi-agent orchestration; still closed-source (no public source_url)."
+        "notes": "Portuguese landing variant of the product site."
       }
     ],
-    "positioning": "Visual desktop cockpit for coordinating many coding agents across projects, providers, roles, and machines.",
+    "positioning": "A visual multi-project, multi-agent desktop ADE that orchestrates the coding CLIs you already pay for—spawning each as a real local process in an xterm.js PTY—while an AgentsRoom-owned composer, status board, backlog, review, and mobile/remote surfaces steer the fleet without replacing the guest agent loop.",
     "stack": {
       "runtime": [
-        "desktop application"
+        "proprietary multi-OS desktop application",
+        "guest coding-agent CLI processes (Claude Code, Codex, Copilot CLI, Antigravity, OpenCode, Aider, Grok Build, Mistral Vibe, Kimi Code)",
+        "per-agent xterm.js PTY sessions"
       ],
       "frontend": [
-        "visual multi-agent desktop cockpit",
-        "browser demo with simulated data"
+        "multi-project sidebar with zones and role-colored agent cards",
+        "embedded terminals (xterm.js) with split view",
+        "app-owned composer, scratchpad, message queue, voice, and attachment chrome",
+        "diff/review and backlog boards",
+        "browser demo with simulated data (not for scoring)"
       ],
       "backend": [
-        "local CLI agent sessions",
-        "remote fleet relay according to official site"
+        "local process spawn of official CLIs (no product API proxy for model tokens per FAQ/llms)",
+        "end-to-end encrypted relay for remote fleet and mobile companion",
+        "optional AgentsRoom backend services for dictation/voice credits (product feature docs)",
+        "loopback MCP bridges exposing app surfaces to guest agents"
       ],
       "packaging": [
-        "desktop app for macOS and Linux identified on official site"
+        "desktop installers for macOS, Windows, and Linux",
+        "mobile companion apps (iOS/Android) via official feature claims",
+        "Chrome extension for backlog/ticket capture (site links)"
       ],
       "data": [
-        "real local project folders",
-        "agent status/state visible in UI",
-        "backlog and scheduled task surfaces"
+        "real local project folders on the operator machine",
+        "per-agent session state, prompts library (.agentsroom/), skills, commands",
+        "project memory notes written via MCP tools",
+        "optional unlisted gist upload for commit conversation context"
       ],
       "unknowns": [
-        "Internal desktop framework is not published in official sources reviewed.",
-        "Windows support and mobile app internals need direct install verification.",
-        "Persistence, sync protocol, and relay implementation are not public in official sources reviewed."
+        "Desktop framework internals beyond xterm.js/Electron mentions in feature docs are not fully published.",
+        "Exact free vs Pro numeric limits and prices should be re-checked on account/pricing UI at install time.",
+        "How completely each guest TUI input bar is occluded vs dual-input is UX detail, not fully specified as a contract."
       ]
     },
     "infrastructure": [
-      "Desktop app opens real project folders on the user's computer.",
-      "Agents run as provider CLI sessions in terminals managed by the app.",
-      "Remote fleet feature connects multiple machines through an E2E relay according to the official site.",
-      "Mobile companion can send prompts and screenshots to the active desktop agent according to the official site."
+      "Desktop app opens real folders on the local machine and spawns guest CLIs in the project directory like a normal terminal.",
+      "Each agent is an isolated xterm.js PTY session that can persist across project switches with scrollback.",
+      "Optional git worktree isolation per agent for parallel work on one repo.",
+      "Remote fleet links multiple machines over an E2E-encrypted relay; SSH/SSM can host agents on remote boxes.",
+      "Model traffic goes to the guest provider under the user's existing subscription/key (BYOK); AgentsRoom markets itself as not reselling tokens."
     ],
     "features": {
       "agent_support": [
-        "Claude",
-        "Codex",
+        "Claude Code",
+        "Codex CLI",
+        "GitHub Copilot CLI (standalone copilot agent, not gh copilot shell helper)",
         "Antigravity CLI",
+        "OpenCode",
+        "Aider",
         "Grok Build",
         "Mistral Vibe",
-        "OpenCode",
-        "Aider"
+        "Kimi Code"
       ],
       "orchestration": [
-        "multi-project/multi-agent cockpit",
-        "role-labeled agents such as DevOps, Frontend, Backend, Architect, QA, Fullstack, Mobile, Security, PM, Marketing, Git Expert, SEO, localization, and brainstorming",
-        "backlog tasks that become agents",
-        "agent teams that hand work between roles",
-        "scheduled recurring agent tasks"
+        "multi-project multi-agent visual cockpit with live status and notifications",
+        "14+ built-in roles plus custom/community agents and system prompts",
+        "backlog board that spawns agents from tickets",
+        "agent teams / handoff workflows and agent morphing (role switch mid-session)",
+        "scheduled recurring agent runs",
+        "message queue and prompt library with linked prompts",
+        "mid-conversation provider switch with handoff summary (product claim)"
       ],
       "workspace_isolation": [
-        "project folders are real local folders",
-        "agents are attached to projects and roles",
-        "diff review can be filtered by agent"
+        "real local project folders",
+        "per-agent PTY session isolation",
+        "optional git worktree isolation per agent",
+        "multi-account support for Claude/Codex with per-project or per-agent pins"
       ],
       "review_shipping": [
-        "side-by-side diff review",
-        "review by agent",
-        "commit context carrying agent conversation/rationale"
+        "side-by-side vibe coding review",
+        "per-agent filtered review",
+        "commit context (conversation gist trailer)",
+        "AI commit messages from real diffs"
       ],
       "remote_mobile": [
-        "remote fleet",
-        "mobile companion",
-        "public remote backlog",
-        "voice dictation and voice mode",
-        "drawing, screenshot sharing, browser pointer, prompt library, message queue"
+        "remote fleet across machines",
+        "mobile companion (dictation, attachments, share extension)",
+        "SSH and AWS SSM remote agent hosting",
+        "localhost preview tunnel",
+        "public remote backlog / feedback portal"
       ],
       "context_memory": [
-        "agent status/state",
-        "context canary",
-        "adaptive mode for model choice",
-        "prompt library",
-        "commit context"
+        "project memory via MCP (memory_save/list/get) shared across harnesses",
+        "prompt library and skills library",
+        "context canary / drift warning",
+        "adaptive mode model suggestion",
+        "commit conversation provenance"
       ],
       "integrations": [
-        "provider CLIs",
-        "real terminals",
-        "public preview tunnel",
-        "skills",
-        "SSH"
+        "guest coding CLIs (spawned natively)",
+        "AgentsRoom MCP servers (backlog, terminal commands, prompt library, browser)",
+        "embedded browser automation MCP",
+        "SSH connection manager",
+        "skills export formats for other tools (product claim)"
       ]
     },
     "benchmarking": {
       "readiness": "manual-ready",
       "install_surface": [
-        "desktop app download",
-        "provider CLI setup and authentication",
-        "open prepared benchmark worktree as a project folder"
+        "AgentsRoom desktop download (macOS/Windows/Linux)",
+        "authenticated guest coding CLI for the chosen harness",
+        "project folder = prepared harness worktree"
       ],
       "parity_risks": [
-        "The online demo is simulated and must not be used for scoring.",
-        "Broad remote/mobile feature set is outside the current v0.1 local task suite.",
-        "Closed-source internals limit stack comparison to public claims and hands-on behavior."
+        "Browser demo may simulate agent replies; never use for scoring.",
+        "Guest harness/model dominates single-task correctness (runtime_model guest-cli).",
+        "Composer-first UX may hide or compete with native CLI TUI input—record how prompts were delivered.",
+        "Remote/mobile/fleet features are outside the v0.1 five-task local suite.",
+        "Optional worktrees and multi-account layouts can confuse harness verify roots if mis-pointed."
       ],
       "suggested_first_tasks": [
         "T001-python-bugfix",
@@ -161,19 +210,22 @@
     },
     "moat": {
       "hypotheses": [
-        "Strong visual cockpit may reduce operator overload when many agents run at once.",
-        "Remote fleet plus mobile companion creates a broader control surface than local-only ADEs.",
-        "Role library and scheduled tasks make the product feel like a managed agent team rather than a terminal wrapper."
+        "Composer + status + notifications on top of real guest harnesses is stickier than pure terminal multiplexers.",
+        "Mobile/remote control differentiates from Mac-only or local-only ADE peers.",
+        "Role/backlog/teams packaging lowers the coordination tax of multi-agent fleets."
       ],
       "evidence": [
-        "Official site describes one screen for multiple projects, agents, providers, and statuses.",
-        "Official site describes backlog, agent teams, scheduled tasks, remote fleet, mobile companion, review by agent, and commit context."
+        "llms.txt explicitly defines AgentsRoom as not a harness and documents xterm.js PTY spawn of official CLIs.",
+        "Official site FAQ states real local CLI processes with live terminal stream and no API proxy.",
+        "Feature docs describe app-owned composer surfaces (scratchpad paste, voice, screenshots, queue) targeting the focused agent."
       ],
       "unknowns": [
-        "Quality of local isolation, reproducibility, and verifier-proof evidence needs a hands-on run."
+        "Head-to-head orchestration quality vs Orca/Emdash/Conductor is unscored.",
+        "Closed-source internals limit independent stack verification.",
+        "Sustained pricing and free-tier limits should be re-checked before commercial claims."
       ]
     }
   },
-  "research_status": "researched-official-v0.1",
-  "updated_at": "2026-07-21"
+  "research_status": "Enriched 2026-08-11 from agentsroom.dev, llms.txt, download page, and feature docs: harness-agnostic guest CLIs, xterm.js PTY, app-owned composer injection, BYOK, multi-OS.",
+  "updated_at": "2026-08-11"
 }

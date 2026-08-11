@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app, Compozy catalog; Macro excluded as office OS)
+Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app, Compozy catalog; AgentsRoom enrichment; Macro excluded as office OS)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -22,7 +22,7 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 | HiveTerm | A-local-ade | `guest-cli` | Rust + Tauri desktop, local Queen MCP server, `hive.yml`, local-first project/process management. | Split terminals, MCP sub-agents, live tree, pins/notes, config-as-code, inline diff/commit/PR, voice. | MCP-native nested agent teamwork and terminal-first low-footprint UX. | `manual-ready`; start with T001, T002, T004. |
 | T3 Code | A-local-ade | `guest-cli` | TypeScript monorepo; npx/desktop/winget/brew install; provider CLI orchestration. | Control plane for Claude Code, Codex, OpenCode, Cursor; session/provider management. | T3 distribution plus simple BYO-subscription control plane. | `needs-install`; path `npx t3@latest` confirmed in upstream README. |
 | Hive | A-local-ade | `guest-cli` | Node >= 22 npm package, local browser app on 127.0.0.1, real CLI processes, `.hive/tasks.md`; BSL. | Orchestrator/worker protocol, `team send/report`, auto-staff, team memory, role templates, remote phone access. | Repo-native task graph and explicit team protocol make orchestration observable. | `needs-install`; start with T002 and T004; note slower GH push cadence vs peers. |
-| AgentsRoom | A-local-ade | `guest-cli` | Closed-source desktop app; official site shows local project folders, CLI agent sessions, remote fleet, mobile companion. | Multi-project cockpit, role agents, backlog, agent teams, scheduled tasks, review by agent, voice/drawing/screenshot/browser pointer. | Visual cockpit plus remote/mobile/fleet control for many agents. | `manual-ready`; use desktop app, not simulated browser demo. |
+| AgentsRoom | A-local-ade | `guest-cli` | Proprietary multi-OS desktop; guest CLIs in xterm.js PTY; app-owned composer; BYOK; remote fleet + mobile E2E relay (llms.txt 2026-08-11). | Multi-project cockpit, roles/teams/backlog, worktrees optional, review/commit context, MCP, SSH/remote, voice/composer superpowers. | Visual cockpit + own composer while keeping guest harness loops and subscriptions. | `manual-ready`; desktop only for scores; record guest harness; ignore simulated demo. |
 | Augment Code | B-enterprise-agentic-platform | `first-party` | Enterprise SaaS plus Auggie CLI, IDE clients, local/remote Context Engine MCP, GitHub App indexing. | Cosmos, Auggie CLI, code review, ticket-to-PR, security remediation, Context Engine retrieval, MCP. | Organizational Context Engine plus enterprise governance and SDLC integrations. | `enterprise-gated`; report separately from Class A. |
 | OpenADE / ADE App | A-local-ade | `guest-cli` | TypeScript, Electron/web app, local/offline, Claude Code/Codex harnesses, git snapshots/worktrees. | Plan -> Revise -> Do, HyperPlan multi-agent planning, comments on files/diffs/messages, MCP integrations, diff/file/terminal/process manager. | Plan-first local workflow with snapshots/rollback and free open-source distribution. | `needs-install`; start with T001, T002, T005; re-check LICENSE packaging before legal claims. |
 | Kandev | A-local-ade | `guest-cli` | Go backend, Next.js frontend, CLI, Tauri desktop, self-hostable, worktrees, executor model. | Kanban/pipeline + workflow import/export, subtasks, multi-repo/branch, broad ACP agent list, voice mode, PRs, MCP/integrations. | Workflow-first self-hosted control plane with kanban-native operations and executor breadth. | `needs-install`; record executor choice. |
@@ -82,7 +82,7 @@ coding multi-agent ADE control plane).
 - HiveTerm: https://hiveterm.com/, https://hiveterm.com/agents/, https://hiveterm.com/docs/, https://hiveterm.com/compare/t3/
 - T3 Code: https://t3.codes/, https://github.com/pingdotgg/t3code, https://raw.githubusercontent.com/pingdotgg/t3code/main/package.json, https://pingdotgg-t3code.mintlify.app/installation
 - Hive: https://hivehq.dev/en/, https://github.com/tt-a1i/hive
-- AgentsRoom: https://agentsroom.dev/, https://agentsroom.dev/pt
+- AgentsRoom: https://agentsroom.dev/, https://agentsroom.dev/llms.txt, https://agentsroom.dev/download, https://agentsroom.dev/features/multi-project-multi-agent, https://agentsroom.dev/features/scratchpad, https://agentsroom.dev/pt
 - Augment Code: https://www.augmentcode.com/, https://docs.augmentcode.com/introduction, https://docs.augmentcode.com/cli/overview, https://www.augmentcode.com/context-engine, https://docs.augmentcode.com/context-services/mcp/overview
 - OpenADE / ADE App: https://openade.ai/, https://www.ade-app.dev/, https://github.com/bearlyai/OpenADE
 - Kandev: https://github.com/kdlbs/kandev, https://raw.githubusercontent.com/kdlbs/kandev/main/README.md, https://raw.githubusercontent.com/kdlbs/kandev/main/docs/features.md
