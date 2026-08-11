@@ -7,6 +7,9 @@ that data instead of becoming the only place where claims live.
 **Operational playbook** (add / update / exclude / publish site):
 [`docs/competitor-runbook.md`](./competitor-runbook.md).
 
+**Near-term roadmap** (catalog closeout, runtime model, harness evidence):
+[`docs/bench-roadmap.md`](./bench-roadmap.md).
+
 ## Scope
 
 The v0.1 roster covers software Agentic Development Environment competitors:

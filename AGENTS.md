@@ -117,6 +117,7 @@ python3 harness/bench.py check
 | `docs/competitor-runbook.md` | **Playbook:** add/update/exclude competitors + publish Pages |
 | `docs/competitor-intelligence.md` | Scope, source rules, research field meaning |
 | `docs/competitive-intelligence.md` | Battlecards / signals |
+| `docs/bench-roadmap.md` | Near-term ADE Bench roadmap (catalog, runtime model, harness, product deps) |
 | `docs/acquisition-intelligence.md` | Marketing/acquisition |
 | `docs/run-report-metrics.md` | Run metrics contract |
 | `intelligence/current/signals.json` | Competitive signals |
