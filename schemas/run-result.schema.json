@@ -167,10 +167,27 @@
       "type": "object",
       "properties": {
         "product_version": { "type": ["string", "null"] },
+        "runtime_model": {
+          "type": ["string", "null"],
+          "enum": ["guest-cli", "hybrid", "first-party", "unknown", null],
+          "description": "Copied from the competitor profile at prepare; who owns the coding agent loop."
+        },
+        "guest_runtime": {
+          "type": ["string", "null"],
+          "description": "Guest coding CLI/harness id used for this run (e.g. claude-code, codex)."
+        },
+        "own_runtime": {
+          "type": ["string", "null"],
+          "description": "Product-owned agent runtime id when used (e.g. warp-agent, kiro-agent)."
+        },
         "model": { "type": ["string", "null"] },
         "network_policy": { "type": "string" },
         "time_budget_minutes": { "type": ["integer", "null"], "minimum": 1 },
         "cost_usd": { "type": ["number", "null"], "minimum": 0 },
+        "execution_surface": {
+          "type": ["string", "null"],
+          "description": "How the task was driven: product-gui | product-cli | guest-cli-direct | install-smoke-only | other."
+        },
         "notes": { "type": "string" }
       },
       "additionalProperties": true

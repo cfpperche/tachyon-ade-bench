@@ -52,6 +52,11 @@ Profiles also declare `runtime_model` (`guest-cli` | `hybrid` | `first-party` |
 record the guest agent/model as a separate run dimension — single-task
 correctness often measures the guest more than the ADE.
 
+Scored runs must fill `run_config` dimensions documented in
+`docs/run-report-metrics.md` (especially `guest_runtime`, `own_runtime`,
+`model`, and `execution_surface`). Do not publish install-only or
+guest-cli-direct fixture fixes as ADE orchestration scores.
+
 ## Exclusions
 
 LandingAI is excluded from this roster because its ADE is Agentic Document

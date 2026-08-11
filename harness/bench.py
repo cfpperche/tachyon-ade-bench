@@ -463,11 +463,20 @@ def prepare(args: argparse.Namespace) -> int:
         "metrics": initial_metrics(created),
         "run_config": {
             "product_version": None,
+            "runtime_model": product.get("runtime_model"),
+            "guest_runtime": None,
+            "own_runtime": None,
             "model": None,
             "network_policy": "unspecified",
             "time_budget_minutes": task.get("time_budget_minutes"),
             "cost_usd": None,
-            "notes": "Fill null fields before publishing scored reports.",
+            "execution_surface": None,
+            "notes": (
+                "Fill null fields before publishing scored reports. "
+                "For guest-cli/hybrid products, set guest_runtime + model; "
+                "for hybrid/first-party, set own_runtime when the product agent ran the task. "
+                "execution_surface: e.g. product-gui | product-cli | guest-cli-direct | install-smoke-only."
+            ),
         },
         "paths": {
             "worktree": "worktree",

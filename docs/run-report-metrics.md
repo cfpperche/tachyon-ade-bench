@@ -90,6 +90,47 @@ be interpreted alongside pass/fail, task type, and intervention burden.
 `metrics.failure_recovery` reserves slots for retry, rollback, and recovery
 signals. They default to zero or null until runners record them explicitly.
 
+## Run configuration dimensions (fairness)
+
+`run_config` must make comparable runs distinguishable. `harness/bench.py prepare`
+initializes these fields (null means "not filled yet"):
+
+| Field | Meaning |
+| --- | --- |
+| `product_version` | ADE / product version under test |
+| `runtime_model` | From competitor profile: `guest-cli` \| `hybrid` \| `first-party` \| `unknown` |
+| `guest_runtime` | Guest coding CLI/harness id (e.g. `claude-code`, `codex`) when used |
+| `own_runtime` | Product-owned agent id when used (e.g. `warp-agent`, `kiro-agent`) |
+| `model` | Model/subscription tier behind the agent loop |
+| `execution_surface` | How the task was driven: `product-gui` \| `product-cli` \| `guest-cli-direct` \| `install-smoke-only` \| `other` |
+| `network_policy` | Network constraints for the run |
+| `time_budget_minutes` | Task budget |
+| `cost_usd` | Optional total cost |
+| `notes` | Free-form caveats |
+
+### Fairness rules
+
+1. **Separate ADE chrome from coding loop.** On `guest-cli` (and most `hybrid`)
+   products, single-task correctness largely measures `guest_runtime` + `model`.
+   Do not treat a green verifier as proof of ADE quality without recording those
+   dimensions.
+2. **Do not mix runtime models in one leaderboard row without labels.** A Kiro
+   (`first-party`) pass and an Orca+Claude (`guest-cli`) pass answer different
+   questions. Either fix guest/model across Class A rows or publish separate
+   slices.
+3. **`guest-cli-direct` is not a product orchestration score.** Fixing the
+   fixture with a CLI outside the ADE UI may be valid for fixture/verifier
+   debugging, but it must not be sold as an ADE-controlled run.
+4. **`install-smoke-only` is research evidence, not a scored pass.** Package
+   install, AppImage extract, and process start can update readiness notes; they
+   do not set `status: pass` for a task.
+5. **Hybrid runs must name which loop ran.** Set `own_runtime` and/or
+   `guest_runtime` so readers know whether Warp Agent vs Claude Code (etc.)
+   executed the task.
+
+Related: competitor `runtime_model` in `docs/competitor-intelligence.md` and
+`docs/bench-roadmap.md` Phase 1/3.
+
 ## Scoring guardrails
 
 Do not publish a product ranking from pass/fail alone. A defensible scorecard
@@ -103,6 +144,8 @@ needs at minimum:
 - review burden
 - cost when available
 - failure recovery when available
+- **run_config dimensions** above (especially `runtime_model`, guest/own runtime,
+  model, execution_surface)
 
 Until enough runs have complete metric coverage, dashboards should present these
 fields as evidence and confidence context, not as a single aggregate leaderboard.

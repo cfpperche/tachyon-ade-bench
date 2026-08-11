@@ -105,8 +105,8 @@ Notes:
 
 | ID | Item | Priority | Done when |
 | --- | --- | --- | --- |
-| **3.1** | Smoke **Emdash** on Linux (e.g. T001) | P1 | Local `runs/…` + parity note on profile (gitignored runs stay local unless asked) |
-| **3.2** | Explicit run dimensions: ADE product + guest runtime + plan/cloud | P0 if scoring | Align `docs/run-report-metrics.md` |
+| **3.1** | Smoke **Emdash** on Linux (e.g. T001) | P1 | **Partial 2026-08-11:** AppImage v1.1.40 install-surface smoke + harness prepare; product-gui T001 not completed |
+| **3.2** | Explicit run dimensions: ADE product + guest runtime + plan/cloud | P0 if scoring | **Done 2026-08-11:** `run_config` + `docs/run-report-metrics.md` fairness section |
 | **3.3** | Protocol fairness note for Class A leaderboards | P1 | Fixed guest/model **or** separate reports by harness |
 | **3.4** | Smoke Copilot app / Xirp | P2 | Needs Mac + accounts; schedule, do not block Linux work |
 | **3.5** | First multi-task scored set on one pure guest-cli peer | P2 | e.g. Emdash or Orca; full five-task suite later |
@@ -206,3 +206,4 @@ Record answers here when refined:
 | 2026-08-11 | Cataloged **Compozy (CompozyOS)** as Class A (`competitors/compozy.json`); guest-cli agent OS peer. |
 | 2026-08-11 | Phase 1: required `runtime_model` (+ optional guest/own runtime lists) on all profiles; schema/bench validation; dashboard matrix filter + profile badges. |
 | 2026-08-11 | Phase 2.1: AgentsRoom profile enrichment (guest-cli harness-agnostic, xterm.js PTY, app composer, BYOK, multi-OS) from official site + llms.txt. |
+| 2026-08-11 | Phase 3.1 partial: Emdash Linux AppImage install smoke (v1.1.40, FUSE extract path). Phase 3.2: run_config guest/own runtime + execution_surface fairness docs/schema/harness. |

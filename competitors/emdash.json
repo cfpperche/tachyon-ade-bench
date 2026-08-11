@@ -48,11 +48,14 @@
     "YC distribution and rapid multi-OS installer coverage"
   ],
   "setup_notes": [
-    "Installers: brew install --cask emdash; GitHub Releases for dmg/msi/AppImage/deb.",
+    "Installers: brew install --cask emdash; GitHub Releases for dmg/msi/AppImage/deb/rpm.",
+    "Linux hands-on 2026-08-11: GitHub release v1.1.40 AppImage downloads cleanly (sha256 f104f4cddcb240ecbaf44cf942711e3e11b54af207eac7d78979fe36ae0de763).",
+    "On hosts without libfuse.so.2, direct AppImage run fails; use --appimage-extract then squashfs-root/AppRun (desktop file: X-AppImage-Version=1.1.40).",
     "Guest CLIs must be installed and authenticated outside Emdash before detection.",
     "Telemetry is optional and can be disabled (TELEMETRY_ENABLED=false or Settings).",
     "Single-task correctness is mostly guest-agent quality; treat Emdash as orchestration/environment.",
-    "Source monorepo requires Node >= 24 and pnpm >= 10.28 per package.json engines."
+    "Source monorepo requires Node >= 24 and pnpm >= 10.28 per package.json engines.",
+    "Full T001 product-gui score still needs a human/GUI session inside Emdash; install-surface smoke alone is not a pass."
   ],
   "research": {
     "last_reviewed": "2026-08-11",
@@ -106,7 +109,7 @@
       "packaging": [
         "macOS dmg / Homebrew cask",
         "Windows msi and portable exe",
-        "Linux AppImage and Debian package",
+        "Linux AppImage, deb, and rpm on GitHub Releases (v1.1.40 AppImage exercised 2026-08-11)",
         "GitHub Releases and emdash.com/download"
       ],
       "data": [
@@ -116,8 +119,9 @@
         "optional telemetry (disabled by default path documented)"
       ],
       "unknowns": [
-        "Exact production binary version matrix and provider hook depth per CLI need hands-on notes.",
-        "Cloud BYO infra provisioning depth vs marketing examples should be verified before scoring cloud parity."
+        "Provider hook depth per CLI still needs a full product-gui task run.",
+        "Cloud BYO infra provisioning depth vs marketing examples should be verified before scoring cloud parity.",
+        "Headless/CI-friendly launch path for Emdash GUI was not established on the 2026-08-11 Linux smoke (extract works; durable GUI session not confirmed)."
       ]
     },
     "infrastructure": [
@@ -177,14 +181,17 @@
       "readiness": "needs-install",
       "install_surface": [
         "desktop installer (macOS/Windows/Linux)",
+        "Linux AppImage v1.1.40 verified downloadable; prefer --appimage-extract when FUSE is missing",
         "optional source build with Node 24+ and pnpm",
         "at least one authenticated guest coding CLI"
       ],
       "parity_risks": [
-        "Guest agent/model dominates single-task correctness.",
+        "Guest agent/model dominates single-task correctness (runtime_model guest-cli).",
         "Provider detection and hook support vary by CLI.",
         "Nested worktrees: ensure harness verify root is the task worktree Emdash used.",
-        "Remote SSH runs are not parity-equivalent to local desktop runs."
+        "Remote SSH runs are not parity-equivalent to local desktop runs.",
+        "Direct AppImage requires FUSE (libfuse.so.2); extract path is the fallback on stripped hosts.",
+        "Install-surface smoke is not a scored task pass; record execution_surface=product-gui for ADE-controlled runs only."
       ],
       "suggested_first_tasks": [
         "T001-python-bugfix",
@@ -201,14 +208,16 @@
       "evidence": [
         "Official site and README assert open-source ADE, worktrees, multi-provider, privacy, multi-OS installers.",
         "package.json and LICENSE.md confirm monorepo packaging and Apache-2.0.",
-        "YC company page positions Emdash as open-source ADE for parallel coding agents."
+        "YC company page positions Emdash as open-source ADE for parallel coding agents.",
+        "Hands-on Linux AppImage v1.1.40 extract showed Electron desktop packaging with node-pty and better-sqlite3."
       ],
       "unknowns": [
         "Sustained quality vs Orca/Conductor/Synara is unscored.",
-        "Commercial cloud offering beyond BYO infra is not established from reviewed pages."
+        "Commercial cloud offering beyond BYO infra is not established from reviewed pages.",
+        "End-to-end T001 via Emdash GUI + guest CLI not completed in the 2026-08-11 agent pass."
       ]
     }
   },
-  "research_status": "Cataloged 2026-08-11 from emdash.com, GitHub README, package.json, LICENSE.md, and YC company page.",
+  "research_status": "Cataloged 2026-08-11 from official sources; Linux AppImage v1.1.40 install-surface smoke recorded (download/extract/deps). Full product-gui T001 still open.",
   "updated_at": "2026-08-11"
 }
