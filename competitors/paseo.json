@@ -1,0 +1,243 @@
+{
+  "id": "paseo",
+  "name": "Paseo",
+  "class": "A-local-ade",
+  "homepage": "https://paseo.sh/",
+  "source_url": "https://github.com/getpaseo/paseo",
+  "license": "AGPL-3.0-or-later",
+  "runner": {
+    "kind": "manual",
+    "notes": "Install desktop app or `npm i -g @getpaseo/cli` and start the local daemon, authenticate at least one guest coding CLI outside Paseo, open only runs/<run-id>/worktree as the project (or create a worktree-isolated workspace from it), run prompt.md via `paseo run` / desktop / web, then harness-verify on the task worktree. Record Paseo version (e.g. 0.3.1), guest provider, isolation mode (worktree vs plain dir), and interventions. Headless CLI/daemon is preferred for automated smokes."
+  },
+  "inclusion": "Direct Class A self-hosted multi-agent ADE: open-source daemon plus desktop/web/mobile/CLI clients that run native guest coding CLIs (Claude Code, Codex, Copilot, OpenCode, Pi, and many more) with optional git worktrees, review/PR shipping, schedules, and remote access.",
+  "runtime_model": "guest-cli",
+  "guest_runtimes": [
+    "claude-code",
+    "codex",
+    "copilot",
+    "opencode",
+    "pi",
+    "cursor",
+    "gemini-cli",
+    "hermes",
+    "qwen-code",
+    "kimi-code",
+    "amp",
+    "auggie",
+    "grok-build",
+    "mistral-vibe",
+    "droid",
+    "junie"
+  ],
+  "own_runtimes": [],
+  "runtime_model_notes": "Official: uses each provider's native harness as a subprocess; does not modify or wrap agent loop; BYO credentials.",
+  "pricing_model": "Free and open source (AGPL-3.0-or-later). Bring-your-own guest agent subscriptions/keys. Optional hosted E2E relay and Paseo Hub features; re-check hub pricing if scoring hub-only flows.",
+  "public_stack_signals": [
+    "Official site: orchestrate coding agents from desk and phone; self-hosted, multi-provider, open source.",
+    "Monorepo getpaseo/paseo; package.json license AGPL-3.0-or-later; npm CLI @getpaseo/cli; daemon on port 6767 by default.",
+    "Native CLIs for many agents (site agents page: 39 / +ACP custom); FAQ: subprocess launch, no token extraction.",
+    "Git worktree workspaces under ~/.paseo/worktrees with paseo.json setup/teardown/scripts/services.",
+    "Clients: desktop, web (app.paseo.sh), iOS/Android, CLI; optional E2E encrypted relay or direct/Tailscale connect."
+  ],
+  "capabilities_to_probe": [
+    "parallel agents via CLI and UI (`paseo run`, attach, send)",
+    "optional git worktree isolation and workspace archive",
+    "native multi-provider guest CLI detection",
+    "inline diff review, commit, PR, merge flow",
+    "in-app browser preview of worktree services",
+    "schedules and scriptable automation",
+    "mobile/web remote control over relay or direct daemon",
+    "Paseo Hub triggers (GitHub/Slack/Discord) when enabled",
+    "voice dictation / voice mode (local-first default)"
+  ],
+  "moat_hypotheses": [
+    "true multi-surface control (desktop/web/mobile/CLI) on a self-hosted daemon",
+    "broadest advertised native guest-CLI catalog plus ACP custom providers",
+    "worktree + service proxy workflow for parallel ship loops",
+    "AGPL open source with no forced login/telemetry (product claim)"
+  ],
+  "setup_notes": [
+    "Desktop: download from paseo.sh/download or GitHub releases (v0.3.1 multi-OS packages).",
+    "Headless: npm install -g @getpaseo/cli && paseo (starts local daemon).",
+    "Docker image ghcr.io/getpaseo/paseo:latest published; extend with guest CLIs.",
+    "Guest CLIs must already be installed and authenticated; Paseo does not replace them.",
+    "For Class A parity prefer local daemon + worktree isolation; record relay/hub separately if used."
+  ],
+  "research": {
+    "last_reviewed": "2026-08-12",
+    "confidence": "official-sourced",
+    "sources": [
+      {
+        "url": "https://paseo.sh/",
+        "kind": "official-site",
+        "notes": "Positioning, multi-surface, native harness claim, worktree/review/ship, CLI examples, FAQ (free/OSS, privacy, providers, worktrees)."
+      },
+      {
+        "url": "https://paseo.sh/agents",
+        "kind": "official-site",
+        "notes": "Supported agent catalog (native CLIs) and ACP custom provider config path."
+      },
+      {
+        "url": "https://paseo.sh/docs/worktrees",
+        "kind": "official-docs",
+        "notes": "Worktree layout under ~/.paseo/worktrees, isolation modes, paseo.json setup/scripts/services/proxy."
+      },
+      {
+        "url": "https://github.com/getpaseo/paseo",
+        "kind": "source-repo",
+        "notes": "README: self-hosted daemon model, multi-provider, CLI/desktop/mobile/docker install, no telemetry claim."
+      },
+      {
+        "url": "https://raw.githubusercontent.com/getpaseo/paseo/main/package.json",
+        "kind": "package-manifest",
+        "notes": "version 0.3.1, AGPL-3.0-or-later, monorepo workspaces including server/desktop/cli/app/relay."
+      },
+      {
+        "url": "https://paseo.sh/docs/cli",
+        "kind": "official-docs",
+        "notes": "CLI reference linked from homepage for run/ls/attach/send and full scripting."
+      }
+    ],
+    "positioning": "A self-hosted, open-source control plane for running many native coding-agent CLIs in parallel—from desktop, web, mobile, or CLI—with optional git worktree isolation, review/PR shipping, and remote access without replacing provider harnesses or subscriptions.",
+    "stack": {
+      "runtime": [
+        "local Paseo daemon/server",
+        "guest native coding-agent CLI subprocesses",
+        "optional Docker daemon packaging"
+      ],
+      "frontend": [
+        "desktop app (bundles daemon + UI)",
+        "web app",
+        "iOS and Android mobile apps",
+        "CLI client"
+      ],
+      "backend": [
+        "self-hosted daemon (default listen; Docker exposes 6767)",
+        "optional end-to-end encrypted relay for remote pairing",
+        "optional Paseo Hub for team triggers and multi-daemon coordination",
+        "worktree reverse proxy for per-workspace services"
+      ],
+      "packaging": [
+        "macOS dmg/zip",
+        "Windows setup exe",
+        "Linux deb/rpm/tar.gz",
+        "npm CLI @getpaseo/cli",
+        "Docker ghcr.io/getpaseo/paseo"
+      ],
+      "data": [
+        "daemon-local state under PASEO_HOME (default ~/.paseo)",
+        "git worktrees under ~/.paseo/worktrees by default",
+        "repo-local paseo.json for setup/scripts",
+        "no product telemetry/forced login per README claim"
+      ],
+      "unknowns": [
+        "Exact desktop UI framework beyond monorepo packages not required for classification.",
+        "Hosted relay/Hub operational limits and any paid tiers should be re-checked before commercial claims.",
+        "Per-provider hook depth for the full 39-agent list needs install-time verification."
+      ]
+    },
+    "infrastructure": [
+      "Default path is a local daemon on the operator machine; agents run with the full local dev environment.",
+      "Clients (desktop, web, mobile, CLI) connect to the daemon directly, over VPN/Tailscale, or via optional E2E encrypted relay.",
+      "Optional worktree isolation creates separate directories/branches under ~/.paseo/worktrees with setup/teardown hooks.",
+      "Model/API traffic is handled by each guest CLI under the user's existing credentials; Paseo claims it does not proxy inference.",
+      "Docker and remote hosts (e.g. VPS) are supported for headless daemons."
+    ],
+    "features": {
+      "agent_support": [
+        "Claude Code",
+        "Codex",
+        "GitHub Copilot CLI",
+        "OpenCode",
+        "Pi",
+        "Cursor",
+        "Gemini CLI",
+        "Hermes",
+        "Qwen Code",
+        "Kimi Code",
+        "Amp",
+        "Auggie",
+        "Grok Build",
+        "Mistral Vibe",
+        "Factory Droid",
+        "Junie",
+        "many additional native CLIs plus ACP-compatible custom providers"
+      ],
+      "orchestration": [
+        "parallel multi-agent sessions from UI and CLI",
+        "paseo run / ls / attach / send scripting",
+        "schedules",
+        "workspace create/archive lifecycle",
+        "optional Hub workflows and chat triggers"
+      ],
+      "workspace_isolation": [
+        "optional git worktree isolation (branch-off, checkout-branch, checkout-pr)",
+        "plain directory workspaces without git",
+        "per-worktree setup/teardown and supervised services with reverse proxy"
+      ],
+      "review_shipping": [
+        "inline diff review",
+        "commit",
+        "open PR and merge flows (product claim)",
+        "browser preview of worktree apps"
+      ],
+      "remote_mobile": [
+        "iOS and Android apps with feature parity claim",
+        "web app",
+        "E2E encrypted relay or direct/VPN connection",
+        "headless daemon on remote servers"
+      ],
+      "context_memory": [
+        "provider-native skills/config/MCP preserved (product claim)",
+        "voice transcription into agent tasks",
+        "workspace/session history in the daemon UI"
+      ],
+      "integrations": [
+        "guest coding CLIs",
+        "GitHub/Slack/Discord via optional Hub",
+        "MCP (docs/mcp)",
+        "TypeScript SDK",
+        "Docker"
+      ]
+    },
+    "benchmarking": {
+      "readiness": "needs-install",
+      "install_surface": [
+        "npm install -g @getpaseo/cli && paseo",
+        "desktop installer from releases",
+        "Docker ghcr.io/getpaseo/paseo",
+        "at least one authenticated guest coding CLI"
+      ],
+      "parity_risks": [
+        "Guest agent/model dominates single-task correctness (runtime_model guest-cli).",
+        "Worktree-backed runs write under ~/.paseo/worktrees by default—point harness verify at the actual agent cwd.",
+        "Relay/Hub and multi-host fleets are not parity-equivalent to local-only daemon runs.",
+        "Very broad provider list: detection quality varies; record exact guest runtime.",
+        "AGPL licensing may constrain proprietary embedding; fine for personal/bench use."
+      ],
+      "suggested_first_tasks": [
+        "T001-python-bugfix",
+        "T003-dirty-worktree-safety",
+        "T002-python-discount-feature"
+      ]
+    },
+    "moat": {
+      "hypotheses": [
+        "Mobile/desktop/CLI parity on a self-hosted daemon is a stronger remote story than desktop-only cockpits.",
+        "Native multi-harness catalog without reselling tokens matches power-user multi-CLI workflows.",
+        "Worktree + service proxy packaging reduces glue scripts for parallel features."
+      ],
+      "evidence": [
+        "Official site and README document self-hosted daemon, multi-client surfaces, and native provider subprocesses.",
+        "Worktrees docs specify layout, isolation modes, and paseo.json automation.",
+        "package.json declares AGPL-3.0-or-later and multi-package monorepo including server/desktop/cli/mobile surfaces."
+      ],
+      "unknowns": [
+        "Head-to-head orchestration quality vs Emdash/AgentsRoom/Orca is unscored.",
+        "Long-term maintenance and Hub commercial boundary not fully mapped in this pass."
+      ]
+    }
+  },
+  "research_status": "Cataloged 2026-08-12 from paseo.sh, agents page, worktrees docs, GitHub README, and package.json (v0.3.1, AGPL).",
+  "updated_at": "2026-08-12"
+}

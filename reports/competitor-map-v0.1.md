@@ -1,6 +1,6 @@
 # Competitor Map v0.1
 
-Reviewed: 2026-08-11 (Xirp, Emdash, GitHub Copilot app, Compozy catalog; AgentsRoom enrichment; Macro excluded as office OS)
+Reviewed: 2026-08-12 (Paseo catalog; prior: Xirp/Emdash/Copilot app/Compozy; AgentsRoom enrichment; Macro excluded)
 
 This is a research map, not a scored benchmark. It summarizes official-source
 claims captured in `competitors/*.json` so we can choose fair benchmark runs
@@ -38,6 +38,7 @@ Single-task scores on `guest-cli` products largely measure the guest agent.
 | Emdash | A-local-ade | `guest-cli` | Apache-2.0 Electron desktop (node-pty, SQLite); multi-OS; Linux AppImage v1.1.40 download/extract smoke 2026-08-11 (FUSE may be required for direct run). | Parallel agents on worktrees, issue intake, in-app browser, diff/PR/CI, automations, SSH remote, skills/MCP library. | Free OSS multi-provider worktree shipping loop without product account lock-in. | `needs-install`; install surface OK on Linux; product-gui T001 still open; record guest CLI. |
 | GitHub Copilot app | A-local-ade | `hybrid` | Proprietary multi-OS desktop on GitHub; local worktrees + optional cloud sessions; Copilot plan gates. | My Work, parallel worktree sessions, issue→PR, browser/terminal validation, Agent Merge, skills/MCP, automations/canvases. | GitHub-native SDLC graph and distribution as the agent control plane. | `needs-install`; record plan tier and local vs cloud; Copilot entitlement required. |
 | Compozy (CompozyOS) | A-local-ade | `guest-cli` | MIT Go daemon + SQLite; web/CLI/HTTP; ACP guest CLIs; beta v0.3 local-first agent OS. | Durable sessions, task claim/lease kernel, loops, Markdown memory+dream, permissions, automation, Compozy Network, bridges. | Autonomy kernel + daemon-owned state around guest coding CLIs without owning a model. | `needs-install`; pin beta tag; guest CLI dominates single-task score. |
+| Paseo | A-local-ade | `guest-cli` | AGPL self-hosted daemon + desktop/web/mobile/CLI; native guest CLIs; optional worktrees under ~/.paseo; v0.3.1. | Parallel agents, worktree isolation, review/PR/ship, schedules, relay remote, Hub triggers, voice. | Multi-surface remote control + broad native multi-harness catalog without token resale. | `needs-install`; CLI/daemon good for headless smoke; record guest CLI and worktree cwd. |
 
 ## Direct Benchmark Set
 
@@ -65,6 +66,7 @@ Use Class A for the first direct comparison:
 - Emdash
 - GitHub Copilot app
 - Compozy (CompozyOS)
+- Paseo
 
 Keep Augment Code in a separate Class B report unless the setup is explicitly
 normalized and the caveats are visible.
@@ -99,6 +101,7 @@ coding multi-agent ADE control plane).
 - GitHub Copilot app: https://github.com/features/ai/github-app, https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/, https://github.blog/changelog/2026-05-14-github-copilot-app-is-now-available-in-technical-preview/, https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started, https://github.com/github/app
 - Macro (excluded): https://macro.com/, https://docs.macro.com/, https://github.com/macro-inc/macro
 - Compozy (CompozyOS): https://www.compozy.com/, https://github.com/compozy/compozy, https://raw.githubusercontent.com/compozy/compozy/main/README.md, https://raw.githubusercontent.com/compozy/compozy/main/LICENSE, https://raw.githubusercontent.com/compozy/compozy/main/PRODUCT.md, https://raw.githubusercontent.com/compozy/compozy/main/go.mod, https://www.compozy.com/docs/
+- Paseo: https://paseo.sh/, https://paseo.sh/agents, https://paseo.sh/docs/worktrees, https://paseo.sh/docs/cli, https://github.com/getpaseo/paseo, https://raw.githubusercontent.com/getpaseo/paseo/main/package.json
 
 ## Caveats Before Scoring
 

@@ -1,16 +1,24 @@
 {
   "schema_version": "0.1",
-  "updated_at": "2026-08-11",
+  "updated_at": "2026-08-12",
   "advertisers": [
     {
       "product_id": "tachyon",
       "display_name": "Tachyon",
       "included": true,
       "aliases": {
-        "names": ["Tachyon", "Tachyon ADE", "Tachyon ADE Bench"],
-        "domains": ["cfpperche.github.io"],
+        "names": [
+          "Tachyon",
+          "Tachyon ADE",
+          "Tachyon ADE Bench"
+        ],
+        "domains": [
+          "cfpperche.github.io"
+        ],
         "handles": [],
-        "github_orgs": ["cfpperche"]
+        "github_orgs": [
+          "cfpperche"
+        ]
       },
       "notes": "Owned reference product; acquisition scans should distinguish benchmark repo visibility from product marketing."
     },
@@ -19,8 +27,13 @@
       "display_name": "AgentsRoom",
       "included": true,
       "aliases": {
-        "names": ["AgentsRoom", "Agents Room"],
-        "domains": ["agentsroom.dev"],
+        "names": [
+          "AgentsRoom",
+          "Agents Room"
+        ],
+        "domains": [
+          "agentsroom.dev"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -31,8 +44,14 @@
       "display_name": "Augment Code",
       "included": true,
       "aliases": {
-        "names": ["Augment Code", "Augment", "Auggie"],
-        "domains": ["augmentcode.com"],
+        "names": [
+          "Augment Code",
+          "Augment",
+          "Auggie"
+        ],
+        "domains": [
+          "augmentcode.com"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -43,10 +62,18 @@
       "display_name": "Herdr",
       "included": true,
       "aliases": {
-        "names": ["Herdr", "Herdr ADE", "Herdr coding agents"],
-        "domains": ["herdr.dev"],
+        "names": [
+          "Herdr",
+          "Herdr ADE",
+          "Herdr coding agents"
+        ],
+        "domains": [
+          "herdr.dev"
+        ],
         "handles": [],
-        "github_orgs": ["ogulcancelik"]
+        "github_orgs": [
+          "ogulcancelik"
+        ]
       },
       "notes": "Name can overlap with unrelated herd products; prefer the exact herdr.dev domain or repository owner."
     },
@@ -55,10 +82,19 @@
       "display_name": "Hive",
       "included": true,
       "aliases": {
-        "names": ["Hive", "Hive HQ", "Hive ADE", "@tt-a1i/hive"],
-        "domains": ["hivehq.dev"],
+        "names": [
+          "Hive",
+          "Hive HQ",
+          "Hive ADE",
+          "@tt-a1i/hive"
+        ],
+        "domains": [
+          "hivehq.dev"
+        ],
         "handles": [],
-        "github_orgs": ["tt-a1i"]
+        "github_orgs": [
+          "tt-a1i"
+        ]
       },
       "notes": "Name is generic; include domain/package qualifiers in searches."
     },
@@ -67,8 +103,13 @@
       "display_name": "HiveTerm",
       "included": true,
       "aliases": {
-        "names": ["HiveTerm", "Hive Term"],
-        "domains": ["hiveterm.com"],
+        "names": [
+          "HiveTerm",
+          "Hive Term"
+        ],
+        "domains": [
+          "hiveterm.com"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -79,8 +120,13 @@
       "display_name": "JetBrains Air",
       "included": true,
       "aliases": {
-        "names": ["JetBrains Air", "Air ADE"],
-        "domains": ["air.dev"],
+        "names": [
+          "JetBrains Air",
+          "Air ADE"
+        ],
+        "domains": [
+          "air.dev"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -91,10 +137,17 @@
       "display_name": "Kandev",
       "included": true,
       "aliases": {
-        "names": ["Kandev", "KanDev"],
-        "domains": ["github.com/kdlbs/kandev"],
+        "names": [
+          "Kandev",
+          "KanDev"
+        ],
+        "domains": [
+          "github.com/kdlbs/kandev"
+        ],
         "handles": [],
-        "github_orgs": ["kdlbs"]
+        "github_orgs": [
+          "kdlbs"
+        ]
       },
       "notes": "Open-source project; GitHub and Product Hunt signals may matter more than paid ads."
     },
@@ -103,10 +156,19 @@
       "display_name": "OpenADE / ADE App",
       "included": true,
       "aliases": {
-        "names": ["OpenADE", "ADE App", "Bearly OpenADE"],
-        "domains": ["openade.ai", "ade-app.dev"],
+        "names": [
+          "OpenADE",
+          "ADE App",
+          "Bearly OpenADE"
+        ],
+        "domains": [
+          "openade.ai",
+          "ade-app.dev"
+        ],
         "handles": [],
-        "github_orgs": ["bearlyai"]
+        "github_orgs": [
+          "bearlyai"
+        ]
       },
       "notes": "Search both OpenADE and ADE App branding."
     },
@@ -115,10 +177,18 @@
       "display_name": "Orca",
       "included": true,
       "aliases": {
-        "names": ["Orca", "OnOrca", "Stably Orca"],
-        "domains": ["onorca.dev"],
+        "names": [
+          "Orca",
+          "OnOrca",
+          "Stably Orca"
+        ],
+        "domains": [
+          "onorca.dev"
+        ],
         "handles": [],
-        "github_orgs": ["stablyai"]
+        "github_orgs": [
+          "stablyai"
+        ]
       },
       "notes": "Name is generic; include domain/company qualifiers in searches."
     },
@@ -127,10 +197,18 @@
       "display_name": "T3 Code",
       "included": true,
       "aliases": {
-        "names": ["T3 Code", "T3Code", "ping.gg T3 Code"],
-        "domains": ["t3.codes"],
+        "names": [
+          "T3 Code",
+          "T3Code",
+          "ping.gg T3 Code"
+        ],
+        "domains": [
+          "t3.codes"
+        ],
         "handles": [],
-        "github_orgs": ["pingdotgg"]
+        "github_orgs": [
+          "pingdotgg"
+        ]
       },
       "notes": "Search exact product and domain; T3 is otherwise ambiguous."
     },
@@ -139,10 +217,20 @@
       "display_name": "Fusion (Runfusion)",
       "included": true,
       "aliases": {
-        "names": ["Fusion", "Runfusion", "RunFusion", "runfusion.ai", "@runfusion/fusion"],
-        "domains": ["runfusion.ai"],
+        "names": [
+          "Fusion",
+          "Runfusion",
+          "RunFusion",
+          "runfusion.ai",
+          "@runfusion/fusion"
+        ],
+        "domains": [
+          "runfusion.ai"
+        ],
         "handles": [],
-        "github_orgs": ["Runfusion"]
+        "github_orgs": [
+          "Runfusion"
+        ]
       },
       "notes": "Name Fusion is generic; always qualify with Runfusion or runfusion.ai. Do not confuse with RunDiffusion or NVIDIA Run:ai."
     },
@@ -151,8 +239,15 @@
       "display_name": "Maestri",
       "included": true,
       "aliases": {
-        "names": ["Maestri", "The Maestri", "themaestri"],
-        "domains": ["themaestri.app", "www.themaestri.app"],
+        "names": [
+          "Maestri",
+          "The Maestri",
+          "themaestri"
+        ],
+        "domains": [
+          "themaestri.app",
+          "www.themaestri.app"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -163,8 +258,16 @@
       "display_name": "Conductor",
       "included": true,
       "aliases": {
-        "names": ["Conductor", "Conductor Build", "Melty Labs Conductor"],
-        "domains": ["conductor.build", "www.conductor.build", "app.conductor.build"],
+        "names": [
+          "Conductor",
+          "Conductor Build",
+          "Melty Labs Conductor"
+        ],
+        "domains": [
+          "conductor.build",
+          "www.conductor.build",
+          "app.conductor.build"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -175,10 +278,23 @@
       "display_name": "Warp",
       "included": true,
       "aliases": {
-        "names": ["Warp", "Warp Terminal", "Warp ADE", "Warp Agent", "Oz Warp"],
-        "domains": ["warp.dev", "www.warp.dev", "docs.warp.dev", "app.warp.dev"],
+        "names": [
+          "Warp",
+          "Warp Terminal",
+          "Warp ADE",
+          "Warp Agent",
+          "Oz Warp"
+        ],
+        "domains": [
+          "warp.dev",
+          "www.warp.dev",
+          "docs.warp.dev",
+          "app.warp.dev"
+        ],
         "handles": [],
-        "github_orgs": ["warpdotdev"]
+        "github_orgs": [
+          "warpdotdev"
+        ]
       },
       "notes": "Warp is generic; prefer warp.dev / Warp Terminal / Warp Agent. Oz may refer to Warp cloud orchestration."
     },
@@ -187,10 +303,22 @@
       "display_name": "Kiro",
       "included": true,
       "aliases": {
-        "names": ["Kiro", "Kiro IDE", "Kiro CLI", "Kiro Crew", "AWS Kiro"],
-        "domains": ["kiro.dev", "app.kiro.dev", "cli.kiro.dev"],
+        "names": [
+          "Kiro",
+          "Kiro IDE",
+          "Kiro CLI",
+          "Kiro Crew",
+          "AWS Kiro"
+        ],
+        "domains": [
+          "kiro.dev",
+          "app.kiro.dev",
+          "cli.kiro.dev"
+        ],
         "handles": [],
-        "github_orgs": ["kirodotdev"]
+        "github_orgs": [
+          "kirodotdev"
+        ]
       },
       "notes": "AWS-operated agentic IDE/CLI; search Kiro and kiro.dev. Avoid unrelated Japanese 'kiro' term collisions."
     },
@@ -199,8 +327,15 @@
       "display_name": "Overclock",
       "included": true,
       "aliases": {
-        "names": ["Overclock", "Overclock ADE", "Overclock.sh", "Overclock Squad"],
-        "domains": ["overclock.sh"],
+        "names": [
+          "Overclock",
+          "Overclock ADE",
+          "Overclock.sh",
+          "Overclock Squad"
+        ],
+        "domains": [
+          "overclock.sh"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -211,10 +346,21 @@
       "display_name": "Synara",
       "included": true,
       "aliases": {
-        "names": ["Synara", "trySynara", "DPCode Synara"],
-        "domains": ["trysynara.com", "www.trysynara.com"],
-        "handles": ["trySynara"],
-        "github_orgs": ["Emanuele-web04"]
+        "names": [
+          "Synara",
+          "trySynara",
+          "DPCode Synara"
+        ],
+        "domains": [
+          "trysynara.com",
+          "www.trysynara.com"
+        ],
+        "handles": [
+          "trySynara"
+        ],
+        "github_orgs": [
+          "Emanuele-web04"
+        ]
       },
       "notes": "Open-source multi-provider ADE; former DPCode lineage may appear in older posts."
     },
@@ -223,8 +369,16 @@
       "display_name": "Falou (OpusBR)",
       "included": true,
       "aliases": {
-        "names": ["Falou", "Falou OpusBR", "Falou Mac", "OpusBR Falou"],
-        "domains": ["falou.opusbr.com", "opusbr.com"],
+        "names": [
+          "Falou",
+          "Falou OpusBR",
+          "Falou Mac",
+          "OpusBR Falou"
+        ],
+        "domains": [
+          "falou.opusbr.com",
+          "opusbr.com"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -235,8 +389,16 @@
       "display_name": "Xirp",
       "included": true,
       "aliases": {
-        "names": ["Xirp", "Spotify Xirp", "Xirp Portal"],
-        "domains": ["xirp.spotify.com", "portal.spotify.com", "backstage.spotify.com"],
+        "names": [
+          "Xirp",
+          "Spotify Xirp",
+          "Xirp Portal"
+        ],
+        "domains": [
+          "xirp.spotify.com",
+          "portal.spotify.com",
+          "backstage.spotify.com"
+        ],
         "handles": [],
         "github_orgs": []
       },
@@ -247,10 +409,21 @@
       "display_name": "Emdash",
       "included": true,
       "aliases": {
-        "names": ["Emdash", "emdash.sh", "General Action Emdash"],
-        "domains": ["emdash.com", "emdash.sh"],
-        "handles": ["emdashsh"],
-        "github_orgs": ["generalaction"]
+        "names": [
+          "Emdash",
+          "emdash.sh",
+          "General Action Emdash"
+        ],
+        "domains": [
+          "emdash.com",
+          "emdash.sh"
+        ],
+        "handles": [
+          "emdashsh"
+        ],
+        "github_orgs": [
+          "generalaction"
+        ]
       },
       "notes": "Open-source ADE (YC W26). Name collides with the em dash punctuation mark; qualify with emdash.com or generalaction/emdash."
     },
@@ -265,23 +438,62 @@
           "GitHub Copilot desktop",
           "Copilot agent app"
         ],
-        "domains": ["github.com", "github.blog"],
+        "domains": [
+          "github.com",
+          "github.blog"
+        ],
         "handles": [],
-        "github_orgs": ["github"]
+        "github_orgs": [
+          "github"
+        ]
       },
-      "notes": "Desktop agent-native Copilot app — distinct from Copilot in VS Code/IDE and from generic GitHub marketing. Prefer github.com/features/ai/github-app or github/app."
+      "notes": "Desktop agent-native Copilot app \u2014 distinct from Copilot in VS Code/IDE and from generic GitHub marketing. Prefer github.com/features/ai/github-app or github/app."
     },
     {
       "product_id": "compozy",
       "display_name": "Compozy (CompozyOS)",
       "included": true,
       "aliases": {
-        "names": ["Compozy", "CompozyOS", "Compozy OS", "AGH"],
-        "domains": ["compozy.com", "www.compozy.com"],
+        "names": [
+          "Compozy",
+          "CompozyOS",
+          "Compozy OS",
+          "AGH"
+        ],
+        "domains": [
+          "compozy.com",
+          "www.compozy.com"
+        ],
         "handles": [],
-        "github_orgs": ["compozy"]
+        "github_orgs": [
+          "compozy"
+        ]
       },
       "notes": "Agent OS (formerly AGH in some materials). Prefer compozy.com / github.com/compozy/compozy. Not related to Composio (different product)."
+    },
+    {
+      "product_id": "paseo",
+      "display_name": "Paseo",
+      "included": true,
+      "aliases": {
+        "names": [
+          "Paseo",
+          "Paseo AI",
+          "getpaseo",
+          "Paseo Pocket Engineer"
+        ],
+        "domains": [
+          "paseo.sh",
+          "app.paseo.sh"
+        ],
+        "handles": [
+          "moboudra"
+        ],
+        "github_orgs": [
+          "getpaseo"
+        ]
+      },
+      "notes": "Self-hosted multi-agent ADE (desktop/web/mobile/CLI). Prefer paseo.sh / getpaseo/paseo. Not related to unrelated 'paseo' brands."
     }
   ]
 }

@@ -207,3 +207,4 @@ Record answers here when refined:
 | 2026-08-11 | Phase 1: required `runtime_model` (+ optional guest/own runtime lists) on all profiles; schema/bench validation; dashboard matrix filter + profile badges. |
 | 2026-08-11 | Phase 2.1: AgentsRoom profile enrichment (guest-cli harness-agnostic, xterm.js PTY, app composer, BYOK, multi-OS) from official site + llms.txt. |
 | 2026-08-11 | Phase 3.1 partial: Emdash Linux AppImage install smoke (v1.1.40, FUSE extract path). Phase 3.2: run_config guest/own runtime + execution_surface fairness docs/schema/harness. |
+| 2026-08-12 | Cataloged **Paseo** as Class A guest-cli ADE (self-hosted daemon + multi-surface clients; AGPL). |
