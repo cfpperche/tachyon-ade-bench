@@ -52,6 +52,7 @@ Requirements: Python 3 and Git. The dashboard also requires Node.js 22+.
 ```sh
 python3 harness/bench.py check
 python3 harness/bench.py list-products
+python3 harness/bench.py list-inspectable
 python3 harness/bench.py list-tasks
 scripts/check-suite.sh
 
@@ -61,7 +62,15 @@ python3 harness/bench.py prepare --product tachyon --task T001-python-bugfix --r
 # runs/local-smoke/prompt.md.
 
 python3 harness/bench.py verify runs/local-smoke
+
+# Source inspection of OSI-licensed products (Claude/Codex/Grok-ready):
+python3 harness/bench.py inspect --fixture mini-ade --run-id local-inspect
+python3 harness/bench.py inspect --product kandev --run-id kandev-agent --mode agent
 ```
+
+Open-source roster products can also be inspected from source. See
+`docs/inspect-harness.md`. Static detectors plus a vendor-neutral prompt
+produce `inspection.json`; `inspect-verify` checks every citation.
 
 Every run writes a `result.json` plus collected artifacts under its run
 directory. The verifier is independent of the product under test. Run reports
@@ -112,6 +121,7 @@ apps/          Static dashboard and presentation surfaces
 docs/product/  Owned canonical Tachyon product surface (SSOT)
 docs/specs/    Spec-driven development records for benchmark changes
 harness/       Local reproducibility tooling
+inspect/       OSS source-inspection catalog, prompt, and fixtures
 marketing/     Acquisition-intelligence registries, scans, and summaries
 reports/       Human-readable benchmark summaries
 runs/          Ignored local run outputs

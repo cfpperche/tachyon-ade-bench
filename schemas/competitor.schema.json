@@ -58,6 +58,17 @@
       "type": "string",
       "description": "Optional one-line nuance for hybrid edges or caveats (not a place for feature marketing)."
     },
+    "inspect_source": {
+      "type": "object",
+      "description": "How the source-inspection harness materializes a checkout. owned-local is for private product trees (e.g. ~/tachyon) and is not a public source_url.",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["owned-local", "public-git"] },
+        "path": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
     "pricing_model": { "type": "string" },
     "public_stack_signals": { "type": "array", "items": { "type": "string" } },
     "capabilities_to_probe": { "type": "array", "items": { "type": "string" } },

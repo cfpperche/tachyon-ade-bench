@@ -1,0 +1,295 @@
+{
+  "schema_version": "0.1",
+  "updated_at": "2026-08-17",
+  "notes": "Source-inspection feature catalog. Verdicts require file:line evidence in a product checkout. Docs-only hits are partial, never present. Marketing claims in competitors/*.json are not evidence.",
+  "inspector_runtimes": [
+    "claude-code",
+    "codex",
+    "grok-build"
+  ],
+  "features": [
+    {
+      "id": "dag_orchestration",
+      "group": "orchestration",
+      "title": "DAG orchestration of agents or tasks",
+      "definition": "A directed acyclic graph of tasks or agents with dependency edges and topological (or equivalent) scheduling. Kanban columns or parallel worktrees alone are not a DAG.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "dag_token",
+          "regex": "\\b(DAG|directed[\\s_-]+acyclic[\\s_-]+graph)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "topological_schedule",
+          "regex": "\\btopolog(ical|y)[\\s_-]?(sort|order|schedule|execut)",
+          "weight": "strong"
+        },
+        {
+          "id": "depends_on_field",
+          "regex": "\\b(task|agent|job|subtask)s?.{0,40}depends[_-]?on\\b|\\bdepends[_-]?on.{0,40}\\b(task|agent|job|subtask)s?\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "task_dependencies",
+          "regex": "\\b(task|agent|job)[\\s_-]*dependenc(y|ies)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "graph_edges",
+          "regex": "\\b(taskGraph|dependencyGraph|graphEdges|adjacencyList)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "kahn_or_cycle",
+          "regex": "\\b(kahn(s)?[\\s_-]?algorithm|cycle[\\s_-]?detect)\\b",
+          "weight": "strong"
+        }
+      ]
+    },
+    {
+      "id": "task_graph",
+      "group": "orchestration",
+      "title": "Task graph (not necessarily a DAG)",
+      "definition": "An explicit graph or linked set of tasks (edges, parents, children, blocked-by) used to coordinate work, even if cycles are allowed or scheduling is informal.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "task_graph_token",
+          "regex": "\\btask[\\s_-]?graph\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "blocked_by",
+          "regex": "\\bblocked[_-]?by\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "parent_task",
+          "regex": "\\b(parentTaskId|childTaskIds|subtaskIds)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "workflow_graph",
+          "regex": "\\b(workflow|pipeline)[\\s_-]?graph\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "kanban_board",
+      "group": "orchestration",
+      "title": "Kanban or board workflow",
+      "definition": "A column/board workflow (todo/doing/done or equivalent) used to operate agent tasks.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "kanban_token",
+          "regex": "\\bkanban\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "board_columns",
+          "regex": "\\b(boardColumn|columnId|swimlane)\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "pipeline_gates",
+      "group": "orchestration",
+      "title": "Plan / review / execute gates",
+      "definition": "A staged pipeline that gates later agent work on plan or review acceptance.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "plan_review_execute",
+          "regex": "\\b(plan|revise).{0,40}(review|execute|do)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "quality_gate",
+          "regex": "\\b(quality[\\s_-]?gate|review[\\s_-]?gate|approval[\\s_-]?gate)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "status_merging",
+          "regex": "\\b(status\\s*[=:]\\s*['\\\"]?(planning|reviewing|merging)['\\\"]?)",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "parallel_agents",
+      "group": "orchestration",
+      "title": "Parallel multi-agent execution",
+      "definition": "The product can run more than one coding agent or task concurrently.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "parallel_agents",
+          "regex": "\\b(parallel[\\s_-]?(agents?|tasks?|sessions?)|concurrent[\\s_-]?agents?)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "multi_agent",
+          "regex": "\\bmulti[\\s_-]?agent\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "fan_out",
+          "regex": "\\b(fan[\\s_-]?out|fan[\\s_-]?in)\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "schedule_automation",
+      "group": "orchestration",
+      "title": "Schedules, cron, or webhook automation",
+      "definition": "First-class scheduled or event-triggered agent runs.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "cron",
+          "regex": "\\b(cron|crontab|schedule[d]?[\\s_-]?run)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "webhook_auto",
+          "regex": "\\b(webhook[\\s_-]?(trigger|automat)|onWebhook)\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "worktree_isolation",
+      "group": "workspace_isolation",
+      "title": "Git worktree isolation",
+      "definition": "Agent or task work is isolated using git worktrees (not only branches in one working tree).",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "git_worktree_cmd",
+          "regex": "git([\\s_-]|\\.)worktree",
+          "weight": "strong"
+        },
+        {
+          "id": "worktree_api",
+          "regex": "\\b(createWorktree|addWorktree|worktreePath|WorktreeManager)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "worktree_word",
+          "regex": "\\bworktrees?\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "guest_claude_code",
+      "group": "agent_support",
+      "title": "Guest runtime: Claude Code",
+      "definition": "Product integrates or launches Anthropic Claude Code as a coding harness.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "claude_code_id",
+          "regex": "\\bclaude[-_ ]?code\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "claude_pkg",
+          "regex": "@anthropic-ai/claude-code",
+          "weight": "strong"
+        }
+      ]
+    },
+    {
+      "id": "guest_codex",
+      "group": "agent_support",
+      "title": "Guest runtime: Codex",
+      "definition": "Product integrates or launches OpenAI Codex CLI / Codex as a coding harness.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "codex_cli",
+          "regex": "\\bcodex[-_ ]?(cli|agent)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "openai_codex",
+          "regex": "\\b(openai[/._-]?codex|@openai/codex)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "codex_token",
+          "regex": "\\bcodex\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "guest_grok",
+      "group": "agent_support",
+      "title": "Guest runtime: Grok / Grok Build",
+      "definition": "Product integrates or launches xAI Grok Build / Grok coding CLI as a coding harness.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "grok_build",
+          "regex": "\\bgrok[-_ ]?build\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "grok_cli",
+          "regex": "\\bgrok[-_ ]?(cli|code|agent)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "xai_grok",
+          "regex": "\\bxai[-_ ]?grok\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "pr_shipping",
+      "group": "review_shipping",
+      "title": "PR / diff shipping",
+      "definition": "Product can open or prepare pull requests and/or collect reviewable diffs from agent work.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "create_pr",
+          "regex": "\\b(createPullRequest|openPullRequest|gh pr create|create_pull_request)\\b",
+          "weight": "strong"
+        },
+        {
+          "id": "pull_request_word",
+          "regex": "\\b(pull[\\s_-]?request|pullRequest)\\b",
+          "weight": "medium"
+        }
+      ]
+    },
+    {
+      "id": "mcp_integrations",
+      "group": "integrations",
+      "title": "MCP integrations",
+      "definition": "Model Context Protocol servers or clients are wired into the product.",
+      "present_requires": "code",
+      "patterns": [
+        {
+          "id": "mcp_token",
+          "regex": "\\b(MCP|model[\\s_-]?context[\\s_-]?protocol)\\b",
+          "weight": "medium"
+        },
+        {
+          "id": "mcp_sdk",
+          "regex": "@modelcontextprotocol/|mcp[-_ ]?server|mcp[-_ ]?client",
+          "weight": "strong"
+        }
+      ]
+    }
+  ]
+}

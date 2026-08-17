@@ -4,6 +4,11 @@
   "class": "A-local-ade",
   "homepage": null,
   "source_url": null,
+  "inspect_source": {
+    "kind": "owned-local",
+    "path": "~/tachyon",
+    "notes": "Private product monorepo on this machine. Not a public source_url; bench inspect copies a read-only snapshot into runs/."
+  },
   "license": "unknown",
   "runner": {
     "kind": "manual",
@@ -156,5 +161,5 @@
     }
   },
   "research_status": "owned-reference-v0.1",
-  "updated_at": "2026-07-21"
+  "updated_at": "2026-08-17"
 }

@@ -66,6 +66,11 @@ Do not use community posts, launch comments, social posts, or search snippets as
 facts. They can be leads, but the recorded claim must point to an official
 source. If an implementation detail is not published, record it as unknown.
 
+Open-source peers can also be inspected from checkout. That path is
+`docs/inspect-harness.md` (`list-inspectable`, static detectors, then
+Claude Code / Codex / Grok Build on the same prompt). Detector hits are
+**not** copied into `research.features` without a human review.
+
 ## Runtime model
 
 Every competitor profile must declare top-level `runtime_model`: who owns the

@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/tachyon-ade-bench/inspection-result.schema.json",
+  "title": "Source Inspection Result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "product_id",
+    "inspector",
+    "features"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "inspect-0.1" },
+    "product_id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "inspector": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["static", "agent"] },
+        "runtime": {
+          "type": ["string", "null"],
+          "enum": ["static", "claude-code", "codex", "grok-build", null]
+        },
+        "model": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "checkout": {
+      "type": "object",
+      "properties": {
+        "source_url": { "type": ["string", "null"] },
+        "commit": { "type": ["string", "null"] },
+        "path": { "type": "string" }
+      }
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["verdict", "evidence"],
+        "properties": {
+          "verdict": {
+            "type": "string",
+            "enum": ["present", "partial", "absent", "unknown"]
+          },
+          "notes": { "type": "string" },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["path", "line", "snippet", "layer"],
+              "properties": {
+                "path": { "type": "string" },
+                "line": { "type": "integer", "minimum": 1 },
+                "snippet": { "type": "string", "minLength": 1 },
+                "layer": {
+                  "type": "string",
+                  "enum": ["code", "docs", "config"]
+                },
+                "pattern_id": { "type": "string" }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": true
+}

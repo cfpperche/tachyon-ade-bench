@@ -5,6 +5,8 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 python3 harness/bench.py check
+python3 harness/bench.py inspect-check
+python3 harness/test_inspect.py
 python3 scripts/intelligence/check-intelligence.py
 python3 scripts/marketing/check-marketing.py
 python3 scripts/marketing/summarize-history.py --check

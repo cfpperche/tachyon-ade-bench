@@ -127,6 +127,21 @@ When a score is introduced, use a weighted model like:
 The harness does not yet compute this score. It preserves the raw evidence
 needed to calculate it later.
 
+## Source inspection (open-source products)
+
+OSI-licensed roster products with a public `source_url` can be inspected from
+source. That path is separate from scored task runs:
+
+- Roster: `python3 harness/bench.py list-inspectable`
+- Protocol: `docs/inspect-harness.md`
+- Same prompt for Claude Code, Codex, and Grok Build (`--mode agent`)
+- Static detectors plus citation verification (`inspect-verify`)
+- Verdicts are `present` / `partial` / `absent` / `unknown` with file:line
+  evidence. Docs-only matches are never `present`.
+
+Future OSS competitors become inspectable automatically when their profile
+has an OSI license token and a cloneable `source_url`.
+
 ## Manual product protocol
 
 For a product without a scriptable CLI:

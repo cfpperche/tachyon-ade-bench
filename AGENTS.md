@@ -91,10 +91,14 @@ Tachyon can look “weaker” on the radar when `competitors/tachyon.json` is in
 ```sh
 python3 harness/bench.py check
 python3 harness/bench.py list-products
+python3 harness/bench.py list-inspectable
 python3 harness/bench.py list-tasks
 python3 harness/bench.py prepare --product <id> --task <task-id> --run-id <run-id>
 # product works only in runs/<run-id>/worktree with prompt.md
 python3 harness/bench.py verify runs/<run-id>
+python3 harness/bench.py inspect --fixture mini-ade --run-id local-inspect
+python3 harness/bench.py inspect --product <id> --run-id <id> --mode agent
+python3 harness/bench.py inspect-verify runs/<id>
 ```
 
 - Same prompt/fixture for comparable products
@@ -114,6 +118,8 @@ python3 harness/bench.py check
 | Path | Content |
 | --- | --- |
 | `docs/product/` | Owned Tachyon surface for the bench |
+| `docs/inspect-harness.md` | OSS source-inspection protocol (Claude / Codex / Grok) |
+| `inspect/` | Feature catalog, vendor-neutral prompt, hermetic fixtures |
 | `docs/competitor-runbook.md` | **Playbook:** add/update/exclude competitors + publish Pages |
 | `docs/competitor-intelligence.md` | Scope, source rules, research field meaning |
 | `docs/competitive-intelligence.md` | Battlecards / signals |

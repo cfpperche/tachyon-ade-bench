@@ -24,6 +24,11 @@ COMPETITORS = ROOT / "competitors"
 TASKS = ROOT / "tasks"
 RUNS = ROOT / "runs"
 
+if str(Path(__file__).resolve().parent) not in sys.path:
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import source_inspect as inspect_lib  # noqa: E402
+
 
 def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat()
@@ -188,6 +193,7 @@ def validate_competitor(path: Path, task_ids: set[str] | None = None) -> list[st
         "guest_runtimes",
         "own_runtimes",
         "runtime_model_notes",
+        "inspect_source",
     }
     errors = [f"{path}: missing {key}" for key in required if key not in data]
     for key in sorted(set(data) - set(required) - optional):
@@ -195,6 +201,19 @@ def validate_competitor(path: Path, task_ids: set[str] | None = None) -> list[st
     for key in ["public_stack_signals", "capabilities_to_probe", "moat_hypotheses", "setup_notes", "guest_runtimes", "own_runtimes"]:
         if key in data and not isinstance(data[key], list):
             errors.append(f"{path}: {key} must be a list")
+    inspect_source = data.get("inspect_source")
+    if inspect_source is not None:
+        if not isinstance(inspect_source, dict):
+            errors.append(f"{path}: inspect_source must be an object")
+        else:
+            allowed = {"kind", "path", "notes"}
+            for key in sorted(set(inspect_source) - allowed):
+                errors.append(f"{path}: inspect_source.{key} is not allowed")
+            if inspect_source.get("kind") not in {"owned-local", "public-git"}:
+                errors.append(f"{path}: inspect_source.kind must be owned-local or public-git")
+            if inspect_source.get("kind") == "owned-local":
+                if not isinstance(inspect_source.get("path"), str) or not inspect_source.get("path"):
+                    errors.append(f"{path}: inspect_source.path is required for owned-local")
     if data.get("id") and path.stem != data["id"]:
         errors.append(f"{path}: id must match filename")
     if data.get("class") not in {"A-local-ade", "B-enterprise-agentic-platform"}:
@@ -618,6 +637,165 @@ def verify(args: argparse.Namespace) -> int:
     return completed.returncode
 
 
+def _resolve_run_dir(value: str) -> Path:
+    run_dir = Path(value)
+    if not run_dir.is_absolute():
+        run_dir = ROOT / run_dir
+    return run_dir
+
+
+def _inspect_source_args(args: argparse.Namespace) -> tuple[dict, Path | None, str | None]:
+    if args.fixture:
+        fixture_product = {
+            "id": args.product or args.fixture.replace("_", "-"),
+            "name": f"Fixture {args.fixture}",
+            "class": "A-local-ade",
+            "license": "MIT",
+            "source_url": None,
+            "runtime_model": "guest-cli",
+        }
+        if args.product:
+            product_file = product_path(args.product)
+            if product_file.is_file():
+                fixture_product = read_json(product_file)
+        return fixture_product, inspect_lib.fixture_path(args.fixture), None
+    if not args.product:
+        raise ValueError("--product is required unless --fixture is set")
+    product_file = product_path(args.product)
+    if not product_file.is_file():
+        raise FileNotFoundError(f"Unknown product: {args.product}")
+    product = read_json(product_file)
+    if args.checkout:
+        return product, Path(args.checkout).expanduser(), None
+    local = inspect_lib.owned_local_checkout(product)
+    if local is not None:
+        return product, local, None
+    if not inspect_lib.is_inspectable(product):
+        raise ValueError(
+            f"{args.product} is not inspectable (need OSI+source_url or inspect_source.owned-local). "
+            "Use --checkout or --fixture."
+        )
+    return product, None, product.get("source_url")
+
+
+def list_inspectable(_: argparse.Namespace) -> int:
+    rows = inspect_lib.list_inspectable_products()
+    for row in rows:
+        origin = row.get("checkout") or row.get("source_url")
+        print(f"{row['id']}\t{row['name']}\t{row['source_kind']}\t{row['license_token']}\t{origin}")
+    print(f"# {len(rows)} inspectable products", file=sys.stderr)
+    return 0
+
+
+def inspect_check(_: argparse.Namespace) -> int:
+    errors = inspect_lib.validate_feature_catalog()
+    if not INSPECT_PROMPT_OK():
+        errors.append("inspect/prompts/inspect-features.md is missing")
+    for name in ("mini-ade", "empty-ade"):
+        if not (inspect_lib.FIXTURES / name).is_dir():
+            errors.append(f"missing inspect fixture: {name}")
+    rows = inspect_lib.list_inspectable_products()
+    if len(rows) < 1:
+        errors.append("no inspectable products in competitors/")
+    for row in rows:
+        if row.get("source_kind") == "public-git" and not row.get("source_url"):
+            errors.append(f"{row['id']}: public-git inspectable row missing source_url")
+        if row.get("source_kind") == "owned-local" and not row.get("checkout"):
+            errors.append(f"{row['id']}: owned-local inspectable row missing checkout")
+    if errors:
+        for error in errors:
+            print(error, file=sys.stderr)
+        return 1
+    print(
+        f"OK: inspection catalog valid; {len(rows)} inspectable products; "
+        "inspector runtimes: claude-code, codex, grok-build"
+    )
+    return 0
+
+
+def INSPECT_PROMPT_OK() -> bool:
+    return inspect_lib.INSPECT_PROMPT.is_file()
+
+
+def _prepare_inspect_dir(args: argparse.Namespace) -> Path:
+    product, checkout_src, source_url = _inspect_source_args(args)
+    timestamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    label = args.product or args.fixture or "inspect"
+    run_id = args.run_id or f"{timestamp}-{label}-inspect-{uuid.uuid4().hex[:8]}"
+    run_dir = RUNS / run_id
+    inspect_lib.prepare_inspect_run(
+        run_dir=run_dir,
+        product=product,
+        checkout_src=checkout_src,
+        source_url=source_url,
+        ref=getattr(args, "ref", None),
+    )
+    return run_dir
+
+
+def inspect_prepare(args: argparse.Namespace) -> int:
+    try:
+        run_dir = _prepare_inspect_dir(args)
+    except (ValueError, FileNotFoundError, FileExistsError, RuntimeError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(f"Prepared inspect run: {run_dir.relative_to(ROOT)}")
+    print(f"Checkout: {run_dir / 'checkout'}")
+    print(f"Prompt: {run_dir / 'prompt.md'}")
+    print("Detectors: detectors.json (hints). For Claude/Codex/Grok use --mode agent and write inspection.json")
+    return 0
+
+
+def inspect_scan(args: argparse.Namespace) -> int:
+    run_dir = _resolve_run_dir(args.run_dir)
+    try:
+        inspection = inspect_lib.write_static_inspection(run_dir)
+    except (FileNotFoundError, ValueError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(f"Wrote {run_dir / 'inspection.json'} ({inspection['inspector']['kind']})")
+    print(inspect_lib.format_matrix([{"id": inspection["product_id"], "features": inspection["features"]}]))
+    return 0
+
+
+def inspect_verify(args: argparse.Namespace) -> int:
+    run_dir = _resolve_run_dir(args.run_dir)
+    try:
+        result = inspect_lib.verify_inspect_run(run_dir)
+    except (FileNotFoundError, ValueError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    passed = result.get("verification", {}).get("passed")
+    errors = result.get("verification", {}).get("errors") or []
+    rel = run_dir.relative_to(ROOT) if run_dir.is_relative_to(ROOT) else run_dir
+    if passed:
+        print(f"Inspection verification passed for {rel}")
+        return 0
+    print(f"Inspection verification failed for {rel}", file=sys.stderr)
+    for error in errors:
+        print(error, file=sys.stderr)
+    return 1
+
+
+def inspect_run(args: argparse.Namespace) -> int:
+    try:
+        run_dir = _prepare_inspect_dir(args)
+    except (ValueError, FileNotFoundError, FileExistsError, RuntimeError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    print(f"Prepared inspect run: {run_dir.relative_to(ROOT)}")
+    if args.mode == "agent":
+        print("Agent mode: open this directory in Claude Code, Codex, or Grok Build.")
+        print("Provide prompt.md exactly. Write inspection.json only.")
+        print(f"Then: python3 harness/bench.py inspect-verify {run_dir.relative_to(ROOT)}")
+        return 0
+    scan_ns = argparse.Namespace(run_dir=str(run_dir))
+    scanned = inspect_scan(scan_ns)
+    if scanned != 0:
+        return scanned
+    return inspect_verify(scan_ns)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Tachyon ADE Bench harness")
     subcommands = parser.add_subparsers(dest="command", required=True)
@@ -635,6 +813,61 @@ def build_parser() -> argparse.ArgumentParser:
     verify_parser = subcommands.add_parser("verify", help="run a task verifier for a prepared run")
     verify_parser.add_argument("run_dir", help="run directory, for example runs/local-smoke")
     verify_parser.set_defaults(func=verify)
+
+    subcommands.add_parser(
+        "list-inspectable",
+        help="list OSI-licensed products with a public source_url",
+    ).set_defaults(func=list_inspectable)
+
+    subcommands.add_parser(
+        "inspect-check",
+        help="validate the source-inspection catalog and inspectable roster",
+    ).set_defaults(func=inspect_check)
+
+    prepare_inspect = subcommands.add_parser(
+        "inspect-prepare",
+        help="clone or copy an OSS checkout and run static detectors",
+    )
+    prepare_inspect.add_argument("--product", help="product id from competitors/")
+    prepare_inspect.add_argument("--run-id", help="stable run directory name")
+    prepare_inspect.add_argument(
+        "--fixture",
+        help="use inspect/fixtures/<name> instead of cloning (mini-ade, empty-ade)",
+    )
+    prepare_inspect.add_argument("--checkout", help="existing source tree to copy")
+    prepare_inspect.add_argument("--ref", help="git branch or tag when cloning")
+    prepare_inspect.set_defaults(func=inspect_prepare)
+
+    scan_inspect = subcommands.add_parser(
+        "inspect-scan",
+        help="write inspection.json from static detectors",
+    )
+    scan_inspect.add_argument("run_dir", help="inspect run directory")
+    scan_inspect.set_defaults(func=inspect_scan)
+
+    verify_inspect = subcommands.add_parser(
+        "inspect-verify",
+        help="verify inspection.json citations against the checkout",
+    )
+    verify_inspect.add_argument("run_dir", help="inspect run directory")
+    verify_inspect.set_defaults(func=inspect_verify)
+
+    inspect_one = subcommands.add_parser(
+        "inspect",
+        help="prepare + static scan + verify one product or fixture",
+    )
+    inspect_one.add_argument("--product", help="product id from competitors/")
+    inspect_one.add_argument("--run-id", help="stable run directory name")
+    inspect_one.add_argument("--fixture", help="inspect/fixtures/<name>")
+    inspect_one.add_argument("--checkout", help="existing source tree to copy")
+    inspect_one.add_argument("--ref", help="git branch or tag when cloning")
+    inspect_one.add_argument(
+        "--mode",
+        choices=("static", "agent"),
+        default="static",
+        help="static writes inspection.json; agent stops after prepare for Claude/Codex/Grok",
+    )
+    inspect_one.set_defaults(func=inspect_run)
 
     return parser
 

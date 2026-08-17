@@ -198,6 +198,22 @@ Record answers here when refined:
 
 ---
 
+## Phase 6 — OSS source inspection
+
+**Status:** shipped 2026-08-17.  
+**Goal:** answer feature questions (DAG, worktrees, guest CLIs) from checkout
+evidence, with a protocol Claude Code, Codex, and Grok Build can all run.
+
+| ID | Item | Priority | Done when |
+| --- | --- | --- | --- |
+| **6.1** | Inspectable roster = OSI license + `source_url` | P0 | `list-inspectable` lists the 11 OSS peers; Hive/BUSL and Tachyon/unknown stay out — **done** |
+| **6.2** | Feature catalog + static detectors + citation verifier | P0 | `inspect-check` + `harness/test_inspect.py` green — **done** |
+| **6.3** | Vendor-neutral agent prompt (`--mode agent`) | P0 | One prompt; `inspector.runtime` ∈ claude-code, codex, grok-build — **done** |
+| **6.4** | Live shallow clones of the 11 (optional, large) | P1 | Maintainer runs `inspect --product <id>` when disk/network allow |
+| **6.5** | Do not auto-merge detector hits into competitor JSON | P0 | Human review still required — documented |
+
+See `docs/inspect-harness.md`.
+
 ## Changelog
 
 | Date | Note |
@@ -208,3 +224,4 @@ Record answers here when refined:
 | 2026-08-11 | Phase 2.1: AgentsRoom profile enrichment (guest-cli harness-agnostic, xterm.js PTY, app composer, BYOK, multi-OS) from official site + llms.txt. |
 | 2026-08-11 | Phase 3.1 partial: Emdash Linux AppImage install smoke (v1.1.40, FUSE extract path). Phase 3.2: run_config guest/own runtime + execution_surface fairness docs/schema/harness. |
 | 2026-08-12 | Cataloged **Paseo** as Class A guest-cli ADE (self-hosted daemon + multi-surface clients; AGPL). |
+| 2026-08-17 | Phase 6: source-inspection harness for OSI products (static detectors + Claude/Codex/Grok prompt). |
